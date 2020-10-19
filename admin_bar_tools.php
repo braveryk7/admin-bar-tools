@@ -17,6 +17,7 @@ register_activation_hook(__FILE__, 'abt_default_insert_db');
 function abt_add_adminbar($wpAdminbar) {
 
     $url = urlencode(get_pagenum_link(get_query_var('paged')));
+    $joinUrlLists = ['1', '2', '4', '5'];
 
     $wpAdminbar->add_node([
         'id' => 'abt',
@@ -31,59 +32,17 @@ function abt_add_adminbar($wpAdminbar) {
 
     $result = $wpdb->get_results("SELECT * FROM $tableName");
 
-    // foreach($result as $key => $value) {
-
-    // }
-
-    $wpAdminbar->add_node([
-        'id' => 'abtpsi',
-        'title' => 'PageSpeed Insights',
-        'parent' => 'abt',
-        'href' => $result[0]->url . $url,
-        'meta' => [
-            'target' => '_blank'
-        ]
-    ]);
-
-    $wpAdminbar->add_node([
-        'id' => 'abtlh',
-        'title' => 'Lighthouse',
-        'parent' => 'abt',
-        'href' => $result[1]->url . $url,
-        'meta' => [
-            'target' => '_blank'
-        ]
-    ]);
-
-    $wpAdminbar->add_node([
-        'id' => 'abtgsc',
-        'title' => 'Google Search Console',
-        'parent' => 'abt',
-        'href' => $result[2]->url,
-        'meta' => [
-            'target' => '_blank'
-        ]
-    ]);
-
-    $wpAdminbar->add_node([
-        'id' => 'abtgc',
-        'title' => 'Google Cache',
-        'parent' => 'abt',
-        'href' => $result[3]->url . $url,
-        'meta' => [
-            'target' => '_blank'
-        ]
-    ]);
-
-    $wpAdminbar->add_node([
-        'id' => 'abtgidx',
-        'title' => 'Google Index',
-        'parent' => 'abt',
-        'href' => $result[4]->url . $url,
-        'meta' => [
-            'target' => '_blank'
-        ]
-    ]);
+    foreach($result as $key => $value) {
+        $wpAdminbar->add_node([
+            'id' => $value->shortname,
+            'title' => $value->name,
+            'parent' => 'abt',
+            'href' => in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url,
+            'meta' => [
+                'target' => '_blank'
+            ]
+        ]);
+    };
 }
 
 add_action('admin_bar_menu', 'abt_add_adminbar', 999);
