@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Admin Bar Links
+Plugin Name: Admin Bar Tools
 Plugin URI: https://www.braveryk7.com/
 Description: Use the admin bar conveniently.
 Version: 0.1
