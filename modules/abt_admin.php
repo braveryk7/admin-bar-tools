@@ -59,7 +59,7 @@
                 <p>Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).</p>
             </div>
         <?php endif ?>
-        <h1>Admin Bar Links Settings</h1>
+        <h1>Admin Bar Tools Settings</h1>
         <h2>Please select the menu you want to display.</h2>
         <form name="abt_settings_form" method="post">
             <input type="hidden" name="<?= $hiddenFieldName ?>" value="Y">
