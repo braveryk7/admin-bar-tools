@@ -68,7 +68,14 @@
                 'name' => 'Google Index',
                 'status' => 1,
                 'url' => 'https://www.google.com/search?q=site%3A'
-            ]
+            ],
+            6 => [
+                'id' => 65,
+                'shortname' => 'twitter',
+                'name' => 'Twitter Search',
+                'status' => 1,
+                'url' => 'https://twitter.com/search?f=live&q='
+            ],
         ];
 
         foreach($defaultValue as $key => $value) {
