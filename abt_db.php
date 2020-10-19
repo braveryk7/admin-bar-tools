@@ -1,18 +1,18 @@
 <?php
 
-    function abl_db() {
+    function abt_db() {
         global $wpdb;
-        $tableName = $wpdb->prefix . 'abl';
+        $tableName = $wpdb->prefix . 'abt';
         if($wpdb->get_var("SHOW TABLES LIKE '".$tableName."'") != $tableName) {
-            abl_create_db();
+            abt_create_db();
         }
     }
 
-    function abl_create_db() {
+    function abt_create_db() {
         global $wpdb;
         $dbVersion = '1.0';
 
-        $tableName = $wpdb->prefix . 'abl';
+        $tableName = $wpdb->prefix . 'abt';
         $charsetCollate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE $tableName (
@@ -28,9 +28,9 @@
         add_option('db_version', $dbVersion);
     }
 
-    function abl_default_insert_db() {
+    function abt_default_insert_db() {
         global $wpdb;
-        $tableName = $wpdb->prefix . 'abl';
+        $tableName = $wpdb->prefix . 'abt';
 
         $defaultValue = [
             1 => [
