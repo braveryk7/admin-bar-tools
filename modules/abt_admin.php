@@ -56,6 +56,7 @@
         <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
             <div class="updated">
                 <p>Update is successful!!</p>
+                <p>Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).</p>
             </div>
         <?php endif ?>
         <h1>Admin Bar Links Settings</h1>
