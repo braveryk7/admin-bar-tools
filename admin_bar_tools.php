@@ -33,15 +33,17 @@ function abt_add_adminbar($wpAdminbar) {
     $result = $wpdb->get_results("SELECT * FROM $tableName");
 
     foreach($result as $key => $value) {
-        $wpAdminbar->add_node([
-            'id' => $value->shortname,
-            'title' => $value->name,
-            'parent' => 'abt',
-            'href' => in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url,
-            'meta' => [
-                'target' => '_blank'
-            ]
-        ]);
+        if($value->status === '1') {
+            $wpAdminbar->add_node([
+                'id' => $value->shortname,
+                'title' => $value->name,
+                'parent' => 'abt',
+                'href' => in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url,
+                'meta' => [
+                    'target' => '_blank'
+                ]
+            ]);
+        };
     };
 }
 
