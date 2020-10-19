@@ -1,85 +1,45 @@
 <?php
 
-    function abt_db() {
-        global $wpdb;
-        $tableName = $wpdb->prefix . 'abt';
-        if($wpdb->get_var("SHOW TABLES LIKE '".$tableName."'") != $tableName) {
-            abt_create_db();
-        }
+    add_action('admin_menu', 'abt_addMenu');
+
+    function abt_addMenu() {
+        add_menu_page(
+            'Admin Bar Links',
+            'Admin Bar Links',
+            'administrator',
+            '__FILE__',
+            'abt_SettingsPage',
+            'dashicons-smiley'
+        );
+
+        // add_actions('admin_init', 'abt_Settings');
     }
 
-    function abt_create_db() {
-        global $wpdb;
-        $dbVersion = '1.0';
-
-        $tableName = $wpdb->prefix . 'abt';
-        $charsetCollate = $wpdb->get_charset_collate();
-
-        $sql = "CREATE TABLE $tableName (
-            id smallint(4) UNSIGNED NOT NULL PRIMARY KEY,
-            name varchar(255) NOT NULL,
-            status tinyint(1) UNSIGNED NOT NULL,
-            url text NOT NULL
-        ) $charsetCollate;";
-
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-
-        add_option('db_version', $dbVersion);
-    }
-
-    function abt_default_insert_db() {
+    function abt_SettingsPage() {
         global $wpdb;
         $tableName = $wpdb->prefix . 'abt';
 
-        $defaultValue = [
-            1 => [
-                'id' => 1,
-                'name' => 'PageSpeed Insights',
-                'status' => 1,
-                'url' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url='
-            ],
-            2 => [
-                'id' => 2,
-                'name' => 'Lighthouse',
-                'status' => 1,
-                'url' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl='
-            ],
-            3 => [
-                'id' => 3,
-                'name' => 'Google Search Console',
-                'status' => 1,
-                'url' => 'https://search.google.com/search-console'
-            ],
-            4 => [
-                'id' => 4,
-                'name' => 'Google Cache',
-                'status' => 1,
-                'url' => 'http://webcache.googleusercontent.com/search?q=cache%3A'
-            ],
-            5 => [
-                'id' => 5,
-                'name' => 'Google Index',
-                'status' => 1,
-                'url' => 'https://www.google.com/search?q=site%3A'
-            ]
-        ];
+        $result = $wpdb->get_results("SELECT * FROM $tableName");
+?>
+    <div class="wrap">
+        <h1>Admin Bar Links Settings</h1>
+        <h2>Please select the menu you want to display.</h2>
+        <form name="abt_settings_form" method="post">
+            <input type="hidden" name="" value="">
+            <?php foreach ($result as $key => $value) : ?>
+            <p>
+                <label>
+                    <input type="checkbox" name="" value="" <?= $value->status === '0' ? '' : 'checked' ?>>
+                    <?= $value->name ?>
+                </label>
+            </p>
+            <?php endforeach; ?>
+            <p class="submit">
+                <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+            </p>
 
-        foreach($defaultValue as $key => $value) {
-            $wpdb->insert(
-                $tableName,
-                [
-                    'id' => $defaultValue[$key]['id'],
-                    'name' => $defaultValue[$key]['name'],
-                    'status' => $defaultValue[$key]['status'],
-                    'url' => $defaultValue[$key]['url']
-                ],
-                [
-                    '%d',
-                    '%s',
-                    '%d',
-                    '%s'
-                ]
-            );
-        };
+        </form>
+    </div>
+
+<?php
     }
