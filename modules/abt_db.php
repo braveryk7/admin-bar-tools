@@ -76,6 +76,13 @@
                 'status' => 1,
                 'url' => 'https://twitter.com/search?f=live&q='
             ],
+            7 => [
+                'id' => 7,
+                'shortname' => 'facebook',
+                'name' => 'Facebook Search',
+                'status' => 1,
+                'url' => 'https://www.facebook.com/search/top?q='
+            ],
         ];
 
         foreach($defaultValue as $key => $value) {
