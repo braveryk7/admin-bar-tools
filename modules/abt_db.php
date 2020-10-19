@@ -70,7 +70,7 @@
                 'url' => 'https://www.google.com/search?q=site%3A'
             ],
             6 => [
-                'id' => 65,
+                'id' => 6,
                 'shortname' => 'twitter',
                 'name' => 'Twitter Search',
                 'status' => 1,
