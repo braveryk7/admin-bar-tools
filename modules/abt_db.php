@@ -34,11 +34,13 @@
         global $wpdb;
         $tableName = $wpdb->prefix . 'abt';
 
+        $TEXTDOMAIN = 'admin-bar-tools';
+
         $defaultValue = [
             1 => [
                 'id' => 1001,
                 'shortname' => 'psi',
-                'name' => 'PageSpeed Insights',
+                'name' => __('PageSpeed Insights', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=',
                 'adminurl' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA',
@@ -46,7 +48,7 @@
             2 => [
                 'id' => 1002,
                 'shortname' => 'lh',
-                'name' => 'Lighthouse',
+                'name' => __('Lighthouse', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=',
                 'adminurl' => 'https://googlechrome.github.io/lighthouse/viewer/',
@@ -54,7 +56,7 @@
             3 => [
                 'id' => 2001,
                 'shortname' => 'gsc',
-                'name' => 'Google Search Console',
+                'name' => __('Google Search Console', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://search.google.com/search-console',
                 'adminurl' => 'https://search.google.com/search-console',
@@ -62,7 +64,7 @@
             4 => [
                 'id' => 2002,
                 'shortname' => 'gc',
-                'name' => 'Google Cache',
+                'name' => __('Google Cache', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
                 'adminurl' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
@@ -70,7 +72,7 @@
             5 => [
                 'id' => 2003,
                 'shortname' => 'gi',
-                'name' => 'Google Index',
+                'name' => __('Google Index', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://www.google.com/search?q=site%3A',
                 'adminurl' => 'https://www.google.com/search?q=site%3A',
@@ -78,7 +80,7 @@
             6 => [
                 'id' => 3001,
                 'shortname' => 'twitter',
-                'name' => 'Twitter Search',
+                'name' => __('Twitter Search', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://twitter.com/search?f=live&q=',
                 'adminurl' => 'https://twitter.com/',
@@ -86,7 +88,7 @@
             7 => [
                 'id' => 3002,
                 'shortname' => 'facebook',
-                'name' => 'Facebook Search',
+                'name' => __('Facebook Search', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://www.facebook.com/search/top?q=',
                 'adminurl' => 'https://www.facebook.com/',
@@ -94,7 +96,7 @@
             8 => [
                 'id' => 3003,
                 'shortname' => 'hatena',
-                'name' => 'Hatena Bookmark',
+                'name' => __('Hatena Bookmark', $TEXTDOMAIN),
                 'status' => 1,
                 'url' => 'https://b.hatena.ne.jp/entry/s/',
                 'adminurl' => 'https://b.hatena.ne.jp/',
