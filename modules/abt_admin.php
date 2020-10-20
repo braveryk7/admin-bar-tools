@@ -51,16 +51,18 @@
             };
             $result = $wpdb->get_results("SELECT * FROM $tableName");
         };
+
+        $TEXTDOMAIN = 'admin-bar-tools';
 ?>
     <div class="wrap">
         <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
             <div class="updated">
-                <p>Update is successful!!</p>
-                <p>Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).</p>
+                <p><?= __('Update is successful!!', $TEXTDOMAIN) ?></p>
+                <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', $TEXTDOMAIN) ?></p>
             </div>
         <?php endif ?>
-        <h1>Admin Bar Tools Settings</h1>
-        <h2>Please select the menu you want to display.</h2>
+        <h1><?= __('Admin Bar Tools Settings', $TEXTDOMAIN) ?></h1>
+        <h2><?= __('Please select the menu you want to display.', $TEXTDOMAIN) ?></h2>
         <form name="abt_settings_form" method="post">
             <input type="hidden" name="<?= $hiddenFieldName ?>" value="Y">
             <?php foreach ($result as $key => $value) : ?>
