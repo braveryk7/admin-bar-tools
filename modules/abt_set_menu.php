@@ -6,7 +6,7 @@
 
     $wpAdminbar->add_node([
         'id' => 'abt',
-        'title' => 'Admin Bar Tools',
+        'title' => __('Admin Bar Tools', 'admin-bar-tools'),
         'meta' => [
             'target' => 'abt'
         ]
@@ -28,7 +28,7 @@
             };
             $wpAdminbar->add_node([
                 'id' => $value->shortname,
-                'title' => $value->name,
+                'title' => __($value->name, 'admin-bar-tools'),
                 'parent' => 'abt',
                 'href' => $linkUrl,
                 'meta' => [
