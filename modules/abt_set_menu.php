@@ -19,11 +19,16 @@
 
     foreach($result as $key => $value) {
         if($value->status === '1') {
+            if($value->id === '3003') {
+                $linkUrl = $value->url . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            } else {
+                $linkUrl = in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url;
+            };
             $wpAdminbar->add_node([
                 'id' => $value->shortname,
                 'title' => $value->name,
                 'parent' => 'abt',
-                'href' => in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url,
+                'href' => $linkUrl,
                 'meta' => [
                     'target' => '_blank'
                 ]
