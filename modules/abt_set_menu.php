@@ -2,7 +2,7 @@
     function abt_add_adminbar($wpAdminbar) {
 
     $url = urlencode(get_pagenum_link(get_query_var('paged')));
-    $joinUrlLists = ['1', '2', '4', '5', '6', '7'];
+    $joinUrlLists = ['1001', '1002', '2002', '2003', '3001', '3002'];
 
     $wpAdminbar->add_node([
         'id' => 'abt',
