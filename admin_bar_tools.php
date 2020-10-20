@@ -8,6 +8,7 @@
     Author URI: https://twitter.com/braveryk7
     Text Domain: admin-bar-tools
     Domain Path: /languages
+    License: GPL2
     */
 
     load_plugin_textdomain('admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages');
