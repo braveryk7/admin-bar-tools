@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
 "POT-Creation-Date: 2020-10-20 16:56+0900\n"
-"PO-Revision-Date: 2020-10-20 16:58+0900\n"
+"PO-Revision-Date: 2020-10-21 00:18+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: modules/abt_admin.php:64
 msgid "Admin Bar Tools Settings"
-msgstr "管理バーツール設定"
+msgstr "Admin Bar Tools設定"
 
 #: modules/abt_admin.php:65
 msgid "Please select the menu you want to display."
@@ -71,4 +71,4 @@ msgstr "はてなブックマーク"
 
 #: modules/abt_set_menu.php:9
 msgid "Admin Bar Tools"
-msgstr "管理バーツール"
+msgstr "Admin Bar Tools"
