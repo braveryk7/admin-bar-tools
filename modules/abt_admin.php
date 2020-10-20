@@ -4,8 +4,8 @@
 
     function abt_addMenu() {
         add_menu_page(
-            'Admin Bar Links',
-            'Admin Bar Links',
+            'Admin Bar Tools',
+            'Admin Bar Tools',
             'administrator',
             '__FILE__',
             'abt_settings_page',
