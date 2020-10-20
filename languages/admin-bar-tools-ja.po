@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-10-20 16:26+0900\n"
-"PO-Revision-Date: 2020-10-20 16:26+0900\n"
+"POT-Creation-Date: 2020-10-20 16:56+0900\n"
+"PO-Revision-Date: 2020-10-20 16:58+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -19,17 +19,55 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: modules/abt_admin.php:62
+#: modules/abt_admin.php:60
+msgid "Update is successful!!"
+msgstr ""
+
+#: modules/abt_admin.php:61
+msgid ""
+"Please reload once for the settings to take effect(Windows is F5 key, Mac is "
+"⌘ key + R key)."
+msgstr ""
+
+#: modules/abt_admin.php:64
 msgid "Admin Bar Tools Settings"
 msgstr "管理バーツール設定"
 
-#: modules/abt_admin.php:63
+#: modules/abt_admin.php:65
 msgid "Please select the menu you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: modules/abt_db.php:57
+#: modules/abt_db.php:43
+msgid "PageSpeed Insights"
+msgstr "PageSpeed Insights"
+
+#: modules/abt_db.php:51
+msgid "Lighthouse"
+msgstr "Lighthouse"
+
+#: modules/abt_db.php:59
 msgid "Google Search Console"
 msgstr "Googleサーチコンソール"
+
+#: modules/abt_db.php:67
+msgid "Google Cache"
+msgstr "Googleキャッシュ"
+
+#: modules/abt_db.php:75
+msgid "Google Index"
+msgstr "Googleインデックス"
+
+#: modules/abt_db.php:83
+msgid "Twitter Search"
+msgstr "Twitter検索"
+
+#: modules/abt_db.php:91
+msgid "Facebook Search"
+msgstr "Facebook検索"
+
+#: modules/abt_db.php:99
+msgid "Hatena Bookmark"
+msgstr "はてなブックマーク"
 
 #: modules/abt_set_menu.php:9
 msgid "Admin Bar Tools"
