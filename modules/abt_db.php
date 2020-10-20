@@ -20,7 +20,8 @@
             shortname varchar(255) NOT NULL,
             name varchar(255) NOT NULL,
             status tinyint(1) UNSIGNED NOT NULL,
-            url text NOT NULL
+            url text NOT NULL,
+            adminurl text NOT NULL
         ) $charsetCollate;";
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -39,56 +40,64 @@
                 'shortname' => 'psi',
                 'name' => 'PageSpeed Insights',
                 'status' => 1,
-                'url' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url='
+                'url' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=',
+                'adminurl' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA',
             ],
             2 => [
                 'id' => 1002,
                 'shortname' => 'lh',
                 'name' => 'Lighthouse',
                 'status' => 1,
-                'url' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl='
+                'url' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=',
+                'adminurl' => 'https://googlechrome.github.io/lighthouse/viewer/',
             ],
             3 => [
                 'id' => 2001,
                 'shortname' => 'gsc',
                 'name' => 'Google Search Console',
                 'status' => 1,
-                'url' => 'https://search.google.com/search-console'
+                'url' => 'https://search.google.com/search-console',
+                'adminurl' => 'https://search.google.com/search-console',
             ],
             4 => [
                 'id' => 2002,
                 'shortname' => 'gc',
                 'name' => 'Google Cache',
                 'status' => 1,
-                'url' => 'http://webcache.googleusercontent.com/search?q=cache%3A'
+                'url' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
+                'adminurl' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
             ],
             5 => [
                 'id' => 2003,
                 'shortname' => 'gi',
                 'name' => 'Google Index',
                 'status' => 1,
-                'url' => 'https://www.google.com/search?q=site%3A'
+                'url' => 'https://www.google.com/search?q=site%3A',
+                'adminurl' => 'https://www.google.com/search?q=site%3A',
             ],
             6 => [
                 'id' => 3001,
                 'shortname' => 'twitter',
                 'name' => 'Twitter Search',
                 'status' => 1,
-                'url' => 'https://twitter.com/search?f=live&q='
+                'url' => 'https://twitter.com/search?f=live&q=',
+                'adminurl' => 'https://twitter.com/',
             ],
             7 => [
                 'id' => 3002,
                 'shortname' => 'facebook',
                 'name' => 'Facebook Search',
                 'status' => 1,
-                'url' => 'https://www.facebook.com/search/top?q='
+                'url' => 'https://www.facebook.com/search/top?q=',
+                'adminurl' => 'https://www.facebook.com/',
             ],
             8 => [
                 'id' => 3003,
                 'shortname' => 'hatena',
                 'name' => 'Hatena Bookmark',
                 'status' => 1,
-                'url' => 'https://b.hatena.ne.jp/entry/s/'
+                'url' => 'https://b.hatena.ne.jp/entry/s/',
+                'adminurl' => 'https://b.hatena.ne.jp/',
             ],
         ];
 
@@ -100,13 +109,15 @@
                     'shortname' => $defaultValue[$key]['shortname'],
                     'name' => $defaultValue[$key]['name'],
                     'status' => $defaultValue[$key]['status'],
-                    'url' => $defaultValue[$key]['url']
+                    'url' => $defaultValue[$key]['url'],
+                    'adminurl' => $defaultValue[$key]['adminurl']
                 ],
                 [
                     '%d',
                     '%s',
                     '%s',
                     '%d',
+                    '%s',
                     '%s'
                 ]
             );
