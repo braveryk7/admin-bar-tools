@@ -19,10 +19,12 @@
 
     foreach($result as $key => $value) {
         if($value->status === '1') {
-            if($value->id === '3003') {
+            if(!is_admin() && $value->id === '3003') {
                 $linkUrl = $value->url . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-            } else {
+            } elseif(!is_admin()) {
                 $linkUrl = in_array($value->id, $joinUrlLists, true) ? $value->url . $url : $value->url;
+            } elseif(is_admin()) {
+                $linkUrl = $value->adminurl;
             };
             $wpAdminbar->add_node([
                 'id' => $value->shortname,
