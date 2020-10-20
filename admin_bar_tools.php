@@ -6,7 +6,11 @@
     Version: 0.1
     Author: Ken-chan
     Author URI: https://twitter.com/braveryk7
+    Text Domain: admin-bar-tools
+    Domain Path: /languages
     */
+
+    load_plugin_textdomain('admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages');
 
     include_once(dirname(__FILE__).'/modules/abt_admin.php');
     include_once(dirname(__FILE__).'/modules/abt_db.php');
