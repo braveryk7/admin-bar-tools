@@ -35,53 +35,60 @@
 
         $defaultValue = [
             1 => [
-                'id' => 1,
+                'id' => 1001,
                 'shortname' => 'psi',
                 'name' => 'PageSpeed Insights',
                 'status' => 1,
                 'url' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url='
             ],
             2 => [
-                'id' => 2,
+                'id' => 1002,
                 'shortname' => 'lh',
                 'name' => 'Lighthouse',
                 'status' => 1,
                 'url' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl='
             ],
             3 => [
-                'id' => 3,
+                'id' => 2001,
                 'shortname' => 'gsc',
                 'name' => 'Google Search Console',
                 'status' => 1,
                 'url' => 'https://search.google.com/search-console'
             ],
             4 => [
-                'id' => 4,
+                'id' => 2002,
                 'shortname' => 'gc',
                 'name' => 'Google Cache',
                 'status' => 1,
                 'url' => 'http://webcache.googleusercontent.com/search?q=cache%3A'
             ],
             5 => [
-                'id' => 5,
+                'id' => 2003,
                 'shortname' => 'gi',
                 'name' => 'Google Index',
                 'status' => 1,
                 'url' => 'https://www.google.com/search?q=site%3A'
             ],
             6 => [
-                'id' => 6,
+                'id' => 3001,
                 'shortname' => 'twitter',
                 'name' => 'Twitter Search',
                 'status' => 1,
                 'url' => 'https://twitter.com/search?f=live&q='
             ],
             7 => [
-                'id' => 7,
+                'id' => 3002,
                 'shortname' => 'facebook',
                 'name' => 'Facebook Search',
                 'status' => 1,
                 'url' => 'https://www.facebook.com/search/top?q='
+            ],
+            8 => [
+                'id' => 3003,
+                'shortname' => 'hatena',
+                'name' => 'Hatena Bookmark',
+                'status' => 1,
+                'url' => 'https://b.hatena.ne.jp/entry/s/'
             ],
         ];
 
