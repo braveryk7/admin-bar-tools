@@ -33,4 +33,5 @@ First release.
 - Japanease
 
 = Location =
+- English (United States)
 - Japanease
