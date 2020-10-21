@@ -155,3 +155,13 @@
 
         add_option('abt_locale', $locale);
     }
+
+    function abt_delete_db() {
+        global $wpdb;
+        $tableName = $wpdb->prefix . 'abt';
+    
+        delete_option('abt_locale');
+
+        $sql = "DROP TABLE $tableName;";
+        $wpdb->query($sql);
+    }
