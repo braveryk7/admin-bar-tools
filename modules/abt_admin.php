@@ -11,9 +11,7 @@
             'abt_settings_page',
             'dashicons-smiley'
         );
-
-        // add_actions('admin_init', 'abt_Settings');
-    }
+    };
 
     function abt_settings_page() {
 
@@ -28,6 +26,8 @@
         $resultName = array_column($result, 'name');
 
         $hiddenFieldName = 'hiddenStatus';
+
+        // $currentLocal = get_option('locale');
 
         if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') {
             foreach($resultName as $value) {
@@ -79,6 +79,5 @@
 
         </form>
     </div>
-
 <?php
-    }
+    };
