@@ -152,4 +152,6 @@
                 ]
             );
         };
+
+        add_option('abt_locale', $locale);
     }
