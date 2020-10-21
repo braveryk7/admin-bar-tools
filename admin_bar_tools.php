@@ -19,3 +19,5 @@
 
     register_activation_hook(__FILE__, 'abt_create_db');
     register_activation_hook(__FILE__, 'abt_default_insert_db');
+
+    register_uninstall_hook(__FILE__, 'abt_delete_db');
