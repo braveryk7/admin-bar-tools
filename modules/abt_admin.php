@@ -27,44 +27,53 @@
 
         $hiddenFieldName = 'hiddenStatus';
 
+        $TEXTDOMAIN = 'admin-bar-tools';
+
         // $currentLocale = get_option('locale');
 
         if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') {
-            foreach($resultName as $value) {
-                if(in_array($value, $_POST['checkStatus'], true)) {                    
-                    $wpdb->update(
-                        $tableName,
-                        ['status' => 1],
-                        ['name' => $value],
-                        ['%d'],
-                        ['%s']
-                    );
-                } else {                   
-                    $wpdb->update(
-                        $tableName,
-                        ['status' => 0],
-                        ['name' => $value],
-                        ['%d'],
-                        ['%s']
-                    );
+            if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) {
+                foreach($resultName as $value) {
+                    if(in_array($value, $_POST['checkStatus'], true)) {                    
+                        $wpdb->update(
+                            $tableName,
+                            ['status' => 1],
+                            ['name' => $value],
+                            ['%d'],
+                            ['%s']
+                        );
+                    } else {                   
+                        $wpdb->update(
+                            $tableName,
+                            ['status' => 0],
+                            ['name' => $value],
+                            ['%d'],
+                            ['%s']
+                        );
+                    };
                 };
+                $result = $wpdb->get_results("SELECT * FROM $tableName");
             };
-            $result = $wpdb->get_results("SELECT * FROM $tableName");
         };
-
-        $TEXTDOMAIN = 'admin-bar-tools';
 ?>
     <div class="wrap">
         <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
+            <?php if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) : ?>
             <div class="updated">
                 <p><?= __('Update is successful!!', $TEXTDOMAIN) ?></p>
                 <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', $TEXTDOMAIN) ?></p>
             </div>
+            <? else : ?>
+            <div class="error">
+                <p><?= __('An error has occurred. Please try again.', $TEXTDOMAIN) ?></p>
+            </div>
+            <? endif ?>
         <?php endif ?>
         <h1><?= __('Admin Bar Tools Settings', $TEXTDOMAIN) ?></h1>
         <h2><?= __('Please select the menu you want to display.', $TEXTDOMAIN) ?></h2>
         <form name="abt_settings_form" method="post">
             <input type="hidden" name="<?= esc_attr__($hiddenFieldName) ?>" value="Y">
+            <?php wp_nonce_field('abt_settings_nonce', 'abt_settings_nonce') ?>
             <?php foreach ($result as $key => $value) : ?>
             <p>
                 <label>
