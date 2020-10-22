@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-10-22 15:25+0900\n"
-"PO-Revision-Date: 2020-10-22 15:27+0900\n"
+"POT-Creation-Date: 2020-10-22 15:40+0900\n"
+"PO-Revision-Date: 2020-10-22 15:42+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -15,15 +15,19 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: modules/abt_admin.php:19
+#: modules/abt_admin.php:8
+msgid "Admin Bar Tools Setting"
+msgstr "Admin Bar Tools設定"
+
+#: modules/abt_admin.php:26
 msgid "You do not have sufficient permissions to access this page."
 msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: modules/abt_admin.php:63
+#: modules/abt_admin.php:70
 msgid "Update is successful!!"
 msgstr "設定が完了しました！"
 
-#: modules/abt_admin.php:64
+#: modules/abt_admin.php:71
 msgid ""
 "Please reload once for the settings to take effect(Windows is F5 key, Mac is "
 "⌘ key + R key)."
@@ -31,15 +35,15 @@ msgstr ""
 "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
 "キー+Rキー）"
 
-#: modules/abt_admin.php:68
+#: modules/abt_admin.php:75
 msgid "An error has occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#: modules/abt_admin.php:72
+#: modules/abt_admin.php:79
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: modules/abt_admin.php:73
+#: modules/abt_admin.php:80
 msgid "Please select the menu you want to display."
 msgstr "表示したい項目を選択してください。"
 
