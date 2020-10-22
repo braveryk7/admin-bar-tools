@@ -66,18 +66,18 @@
         };
 ?>
     <div class="wrap">
-        <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
-            <?php if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) : ?>
-            <div class="updated">
-                <p><?= __('Update is successful!!', $TEXTDOMAIN) ?></p>
-                <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', $TEXTDOMAIN) ?></p>
-            </div>
-            <? else : ?>
-            <div class="error">
-                <p><?= __('An error has occurred. Please try again.', $TEXTDOMAIN) ?></p>
-            </div>
-            <? endif ?>
+    <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
+        <?php if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) : ?>
+        <div class="updated">
+            <p><?= __('Update is successful!!', $TEXTDOMAIN) ?></p>
+            <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', $TEXTDOMAIN) ?></p>
+        </div>
+        <?php else : ?>
+        <div class="error">
+            <p><?= __('An error has occurred. Please try again.', $TEXTDOMAIN) ?></p>
+        </div>
         <?php endif ?>
+    <?php endif ?>
         <h1><?= __('Admin Bar Tools Settings', $TEXTDOMAIN) ?></h1>
         <h2><?= __('Please select the menu you want to display.', $TEXTDOMAIN) ?></h2>
         <form name="abt_settings_form" method="post">
@@ -90,11 +90,10 @@
                     <?= $value->name ?>
                 </label>
             </p>
-            <?php endforeach; ?>
+            <?php endforeach ?>
             <p class="submit">
                 <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
             </p>
-
         </form>
     </div>
 <?php
