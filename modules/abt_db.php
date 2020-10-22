@@ -27,7 +27,7 @@
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
 
-        add_option('db_version', $dbVersion);
+        add_option('abt_db_version', $dbVersion);
     }
 
     function abt_default_insert_db() {
