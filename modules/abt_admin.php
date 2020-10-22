@@ -27,7 +27,7 @@
 
         $hiddenFieldName = 'hiddenStatus';
 
-        // $currentLocal = get_option('locale');
+        // $currentLocale = get_option('locale');
 
         if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') {
             foreach($resultName as $value) {
@@ -64,11 +64,11 @@
         <h1><?= __('Admin Bar Tools Settings', $TEXTDOMAIN) ?></h1>
         <h2><?= __('Please select the menu you want to display.', $TEXTDOMAIN) ?></h2>
         <form name="abt_settings_form" method="post">
-            <input type="hidden" name="<?= $hiddenFieldName ?>" value="Y">
+            <input type="hidden" name="<?= esc_attr__($hiddenFieldName) ?>" value="Y">
             <?php foreach ($result as $key => $value) : ?>
             <p>
                 <label>
-                    <input type="checkbox" name="checkStatus[]" value="<?= $value->name ?>" <?= $value->status === '0' ? '' : 'checked' ?>>
+                    <input type="checkbox" name="checkStatus[]" value="<?= esc_attr__($value->name) ?>" <?= $value->status === '0' ? '' : 'checked' ?>>
                     <?= $value->name ?>
                 </label>
             </p>
