@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-10-20 16:56+0900\n"
-"PO-Revision-Date: 2020-10-21 00:18+0900\n"
+"POT-Creation-Date: 2020-10-22 15:25+0900\n"
+"PO-Revision-Date: 2020-10-22 15:27+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -15,57 +15,63 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: modules/abt_admin.php:21
+#: modules/abt_admin.php:19
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: modules/abt_admin.php:60
+#: modules/abt_admin.php:63
 msgid "Update is successful!!"
-msgstr ""
+msgstr "設定が完了しました！"
 
-#: modules/abt_admin.php:61
+#: modules/abt_admin.php:64
 msgid ""
 "Please reload once for the settings to take effect(Windows is F5 key, Mac is "
 "⌘ key + R key)."
 msgstr ""
+"設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
+"キー+Rキー）"
 
-#: modules/abt_admin.php:64
+#: modules/abt_admin.php:68
+msgid "An error has occurred. Please try again."
+msgstr "エラーが発生しました。もう一度やり直してください。"
+
+#: modules/abt_admin.php:72
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: modules/abt_admin.php:65
+#: modules/abt_admin.php:73
 msgid "Please select the menu you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: modules/abt_db.php:43
+#: modules/abt_db.php:71
 msgid "PageSpeed Insights"
 msgstr "PageSpeed Insights"
 
-#: modules/abt_db.php:51
+#: modules/abt_db.php:79
 msgid "Lighthouse"
 msgstr "Lighthouse"
 
-#: modules/abt_db.php:59
+#: modules/abt_db.php:87
 msgid "Google Search Console"
 msgstr "Googleサーチコンソール"
 
-#: modules/abt_db.php:67
+#: modules/abt_db.php:95
 msgid "Google Cache"
 msgstr "Googleキャッシュ"
 
-#: modules/abt_db.php:75
+#: modules/abt_db.php:103
 msgid "Google Index"
 msgstr "Googleインデックス"
 
-#: modules/abt_db.php:83
+#: modules/abt_db.php:111
 msgid "Twitter Search"
 msgstr "Twitter検索"
 
-#: modules/abt_db.php:91
+#: modules/abt_db.php:119
 msgid "Facebook Search"
 msgstr "Facebook検索"
 
-#: modules/abt_db.php:99
+#: modules/abt_db.php:127
 msgid "Hatena Bookmark"
 msgstr "はてなブックマーク"
 
