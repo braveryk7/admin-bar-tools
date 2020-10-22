@@ -3,13 +3,14 @@
     add_action('admin_menu', 'abt_addMenu');
 
     function abt_addMenu() {
-        add_menu_page(
-            'Admin Bar Tools',
-            'Admin Bar Tools',
+        $TEXTDOMAIN = 'admin-bar-tools';
+
+        add_options_page(
+            __('Admin Bar Tools Setting', $TEXTDOMAIN),
+            __('Admin Bar Tools Setting', $TEXTDOMAIN),
             'administrator',
-            '__FILE__',
-            'abt_settings_page',
-            'dashicons-smiley'
+            'admin-bar-tools-settings',
+            'abt_settings_page'
         );
     };
 
