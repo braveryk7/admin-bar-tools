@@ -15,6 +15,8 @@
     };
 
     function add_settings_links ( $links ) {
+        $TEXTDOMAIN = 'admin-bar-tools';
+
         $add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __('Settings', $TEXTDOMAIN) . '</a>';
         array_unshift( $links, $add_link);
         return $links;
