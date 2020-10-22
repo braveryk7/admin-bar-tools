@@ -30,8 +30,8 @@ First release.
 
 = Language =
 - English (United States)
-- Japanease
+- Japanese
 
 = Location =
 - English (United States)
-- Japanease
+- Japanese
