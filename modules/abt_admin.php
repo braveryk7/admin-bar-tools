@@ -100,5 +100,5 @@
     }
 
     if(is_admin()) {
-        $settingPages = new AdminSettings();
+        $settingsPage = new AdminSettings();
     }
