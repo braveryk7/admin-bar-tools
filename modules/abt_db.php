@@ -34,8 +34,6 @@
         global $wpdb;
         $tableName = $wpdb->prefix . 'abt';
 
-        $TEXTDOMAIN = 'admin-bar-tools';
-
         $locale = get_locale();
 
         $locationUrl = [
@@ -68,7 +66,7 @@
             1 => [
                 'id' => 1001,
                 'shortname' => 'psi',
-                'name' => __('PageSpeed Insights', $TEXTDOMAIN),
+                'name' => __('PageSpeed Insights', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['psi'],
                 'adminurl' => $locationUrl['psiAdmin'],
@@ -76,7 +74,7 @@
             2 => [
                 'id' => 1002,
                 'shortname' => 'lh',
-                'name' => __('Lighthouse', $TEXTDOMAIN),
+                'name' => __('Lighthouse', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['lh'],
                 'adminurl' => $locationUrl['lhAdmin'],
@@ -84,7 +82,7 @@
             3 => [
                 'id' => 2001,
                 'shortname' => 'gsc',
-                'name' => __('Google Search Console', $TEXTDOMAIN),
+                'name' => __('Google Search Console', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['gsc'],
                 'adminurl' => $locationUrl['gscAdmin'],
@@ -92,7 +90,7 @@
             4 => [
                 'id' => 2002,
                 'shortname' => 'gc',
-                'name' => __('Google Cache', $TEXTDOMAIN),
+                'name' => __('Google Cache', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['gc'],
                 'adminurl' => $locationUrl['gcAdmin'],
@@ -100,7 +98,7 @@
             5 => [
                 'id' => 2003,
                 'shortname' => 'gi',
-                'name' => __('Google Index', $TEXTDOMAIN),
+                'name' => __('Google Index', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['gi'],
                 'adminurl' => $locationUrl['giAdmin'],
@@ -108,7 +106,7 @@
             6 => [
                 'id' => 3001,
                 'shortname' => 'twitter',
-                'name' => __('Twitter Search', $TEXTDOMAIN),
+                'name' => __('Twitter Search', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['twitter'],
                 'adminurl' => $locationUrl['twitterAdmin'],
@@ -116,7 +114,7 @@
             7 => [
                 'id' => 3002,
                 'shortname' => 'facebook',
-                'name' => __('Facebook Search', $TEXTDOMAIN),
+                'name' => __('Facebook Search', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['facebook'],
                 'adminurl' => $locationUrl['facebookAdmin'],
@@ -124,7 +122,7 @@
             8 => [
                 'id' => 3003,
                 'shortname' => 'hatena',
-                'name' => __('Hatena Bookmark', $TEXTDOMAIN),
+                'name' => __('Hatena Bookmark', Constant::TEXTDOMAIN),
                 'status' => 1,
                 'url' => $locationUrl['hatena'],
                 'adminurl' => $locationUrl['hatenaAdmin'],
