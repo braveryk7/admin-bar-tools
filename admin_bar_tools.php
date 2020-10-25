@@ -25,6 +25,41 @@
 
     class Constant {
         const TEXTDOMAIN = 'admin-bar-tools';
+
+        static $locale;
+        private $psiUrl;
+        private $psiAdminUrl;
+        public static $locationUrl = [];
+
+        function __construct() {
+
+            self::$locale = get_locale();
+            if(self::$locale === 'ja') {
+                $this->psiUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
+                $this->psiAdminUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
+            } else {
+                $this->psiUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
+                $this->psiAdminUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
+            }
+            self::$locationUrl += [
+                'psi' => $this->psiUrl,
+                'psiAdmin' => $this->psiAdminUrl,
+                'lh' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=',
+                'lhAdmin' => 'https://googlechrome.github.io/lighthouse/viewer/',
+                'gsc' => 'https://search.google.com/search-console',
+                'gscAdmin' => 'https://search.google.com/search-console',
+                'gc' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
+                'gcAdmin' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
+                'gi' => 'https://www.google.com/search?q=site%3A',
+                'giAdmin' => 'https://www.google.com/search?q=site%3A',
+                'twitter' => 'https://twitter.com/search?f=live&q=',
+                'twitterAdmin' => 'https://twitter.com/',
+                'facebook' => 'https://www.facebook.com/search/top?q=',
+                'facebookAdmin' => 'https://www.facebook.com/',
+                'hatena' => 'https://b.hatena.ne.jp/entry/s/',
+                'hatenaAdmin' => 'https://b.hatena.ne.jp/',
+            ];
+        }
     }
 
     function abt_add_adminbar($wpAdminbar) {
