@@ -23,6 +23,10 @@
 
     register_uninstall_hook(__FILE__, 'abt_delete_db');
 
+    class Constant {
+        const TEXTDOMAIN = 'admin-bar-tools';
+    }
+
     function abt_add_adminbar($wpAdminbar) {
 
         $url = urlencode(get_pagenum_link(get_query_var('paged')));
