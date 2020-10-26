@@ -105,7 +105,7 @@
                 </label>
             </p>
             <?php endforeach ?>
-            <p><?= __('Locale/Language' Constant::TEXTDOMAIN) ?>:
+            <p><?= __('Locale/Language', Constant::TEXTDOMAIN) ?>:
                 <select name="localeSettings">
                     <option value="en_US"><?= __('English(United States)', Constant::TEXTDOMAIN) ?></option>
                     <option value="ja" <?php if(get_option('abt_locale') === 'ja') echo 'selected' ?>><?= __('Japanese', Constant::TEXTDOMAIN) ?></option>
