@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-10-22 16:19+0900\n"
-"PO-Revision-Date: 2020-10-22 16:22+0900\n"
+"POT-Creation-Date: 2020-10-26 23:56+0900\n"
+"PO-Revision-Date: 2020-10-26 23:57+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -15,11 +15,47 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: modules/abt_admin.php:9 modules/abt_admin.php:10
+#: admin_bar_tools.php:71
+msgid "PageSpeed Insights"
+msgstr "PageSpeed Insights"
+
+#: admin_bar_tools.php:79
+msgid "Lighthouse"
+msgstr "Lighthouse"
+
+#: admin_bar_tools.php:87
+msgid "Google Search Console"
+msgstr "Googleサーチコンソール"
+
+#: admin_bar_tools.php:95
+msgid "Google Cache"
+msgstr "Googleキャッシュ"
+
+#: admin_bar_tools.php:103
+msgid "Google Index"
+msgstr "Googleインデックス"
+
+#: admin_bar_tools.php:111
+msgid "Twitter Search"
+msgstr "Twitter検索"
+
+#: admin_bar_tools.php:119
+msgid "Facebook Search"
+msgstr "Facebook検索"
+
+#: admin_bar_tools.php:127
+msgid "Hatena Bookmark"
+msgstr "はてなブックマーク"
+
+#: admin_bar_tools.php:160
+msgid "Admin Bar Tools"
+msgstr "Admin Bar Tools"
+
+#: modules/abt_admin.php:10 modules/abt_admin.php:11
 msgid "Admin Bar Tools Setting"
 msgstr "Admin Bar Tools設定"
 
-#: modules/abt_admin.php:18
+#: modules/abt_admin.php:19
 msgid "Settings"
 msgstr "設定"
 
@@ -27,11 +63,11 @@ msgstr "設定"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: modules/abt_admin.php:70
+#: modules/abt_admin.php:86
 msgid "Update is successful!!"
 msgstr "設定が完了しました！"
 
-#: modules/abt_admin.php:71
+#: modules/abt_admin.php:87
 msgid ""
 "Please reload once for the settings to take effect(Windows is F5 key, Mac is "
 "⌘ key + R key)."
@@ -39,50 +75,26 @@ msgstr ""
 "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
 "キー+Rキー）"
 
-#: modules/abt_admin.php:75
+#: modules/abt_admin.php:91
 msgid "An error has occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#: modules/abt_admin.php:79
+#: modules/abt_admin.php:95
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: modules/abt_admin.php:80
+#: modules/abt_admin.php:96
 msgid "Please select the menu you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: modules/abt_db.php:71
-msgid "PageSpeed Insights"
-msgstr "PageSpeed Insights"
+#: modules/abt_admin.php:108
+msgid "Locale/Language"
+msgstr "国設定"
 
-#: modules/abt_db.php:79
-msgid "Lighthouse"
-msgstr "Lighthouse"
+#: modules/abt_admin.php:110
+msgid "English(United States)"
+msgstr "英語（アメリカ合衆国）"
 
-#: modules/abt_db.php:87
-msgid "Google Search Console"
-msgstr "Googleサーチコンソール"
-
-#: modules/abt_db.php:95
-msgid "Google Cache"
-msgstr "Googleキャッシュ"
-
-#: modules/abt_db.php:103
-msgid "Google Index"
-msgstr "Googleインデックス"
-
-#: modules/abt_db.php:111
-msgid "Twitter Search"
-msgstr "Twitter検索"
-
-#: modules/abt_db.php:119
-msgid "Facebook Search"
-msgstr "Facebook検索"
-
-#: modules/abt_db.php:127
-msgid "Hatena Bookmark"
-msgstr "はてなブックマーク"
-
-#: modules/abt_set_menu.php:9
-msgid "Admin Bar Tools"
-msgstr "Admin Bar Tools"
+#: modules/abt_admin.php:111
+msgid "Japanese"
+msgstr "日本語"
