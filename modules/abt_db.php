@@ -35,110 +35,18 @@
         $tableName = $wpdb->prefix . 'abt';
 
         $locale = get_locale();
+        $makeDbData = Constant::makeDbData();
 
-        $locationUrl = [
-            'psi' => 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=',
-            'psiAdmin' => 'https://developers.google.com/speed/pagespeed/insights/?hl=US',
-            'lh' => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=',
-            'lhAdmin' => 'https://googlechrome.github.io/lighthouse/viewer/',
-            'gsc' => 'https://search.google.com/search-console',
-            'gscAdmin' => 'https://search.google.com/search-console',
-            'gc' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
-            'gcAdmin' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
-            'gi' => 'https://www.google.com/search?q=site%3A',
-            'giAdmin' => 'https://www.google.com/search?q=site%3A',
-            'twitter' => 'https://twitter.com/search?f=live&q=',
-            'twitterAdmin' => 'https://twitter.com/',
-            'facebook' => 'https://www.facebook.com/search/top?q=',
-            'facebookAdmin' => 'https://www.facebook.com/',
-            'hatena' => 'https://b.hatena.ne.jp/entry/s/',
-            'hatenaAdmin' => 'https://b.hatena.ne.jp/',
-        ];
-
-        if($locale === 'ja') {
-            $locationUrl += [
-                'psi' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=',
-                'psiAdmin' => 'https://developers.google.com/speed/pagespeed/insights/?hl=JA'
-            ];
-        }
-
-        $defaultValue = [
-            1 => [
-                'id' => 1001,
-                'shortname' => 'psi',
-                'name' => __('PageSpeed Insights', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['psi'],
-                'adminurl' => $locationUrl['psiAdmin'],
-            ],
-            2 => [
-                'id' => 1002,
-                'shortname' => 'lh',
-                'name' => __('Lighthouse', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['lh'],
-                'adminurl' => $locationUrl['lhAdmin'],
-            ],
-            3 => [
-                'id' => 2001,
-                'shortname' => 'gsc',
-                'name' => __('Google Search Console', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['gsc'],
-                'adminurl' => $locationUrl['gscAdmin'],
-            ],
-            4 => [
-                'id' => 2002,
-                'shortname' => 'gc',
-                'name' => __('Google Cache', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['gc'],
-                'adminurl' => $locationUrl['gcAdmin'],
-            ],
-            5 => [
-                'id' => 2003,
-                'shortname' => 'gi',
-                'name' => __('Google Index', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['gi'],
-                'adminurl' => $locationUrl['giAdmin'],
-            ],
-            6 => [
-                'id' => 3001,
-                'shortname' => 'twitter',
-                'name' => __('Twitter Search', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['twitter'],
-                'adminurl' => $locationUrl['twitterAdmin'],
-            ],
-            7 => [
-                'id' => 3002,
-                'shortname' => 'facebook',
-                'name' => __('Facebook Search', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['facebook'],
-                'adminurl' => $locationUrl['facebookAdmin'],
-            ],
-            8 => [
-                'id' => 3003,
-                'shortname' => 'hatena',
-                'name' => __('Hatena Bookmark', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => $locationUrl['hatena'],
-                'adminurl' => $locationUrl['hatenaAdmin'],
-            ],
-        ];
-
-        foreach($defaultValue as $key => $value) {
+        foreach($makeDbData as $key => $value) {
             $wpdb->insert(
                 $tableName,
                 [
-                    'id' => $defaultValue[$key]['id'],
-                    'shortname' => $defaultValue[$key]['shortname'],
-                    'name' => $defaultValue[$key]['name'],
-                    'status' => $defaultValue[$key]['status'],
-                    'url' => $defaultValue[$key]['url'],
-                    'adminurl' => $defaultValue[$key]['adminurl']
+                    'id' => $makeDbData[$key]['id'],
+                    'shortname' => $makeDbData[$key]['shortname'],
+                    'name' => $makeDbData[$key]['name'],
+                    'status' => $makeDbData[$key]['status'],
+                    'url' => $makeDbData[$key]['url'],
+                    'adminurl' => $makeDbData[$key]['adminurl']
                 ],
                 [
                     '%d',
