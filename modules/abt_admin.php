@@ -34,8 +34,6 @@
 
             $hiddenFieldName = 'hiddenStatus';
 
-            // $currentLocale = get_option('locale');
-
             if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') {
                 if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) {
                     foreach($resultName as $value) {
@@ -58,7 +56,27 @@
                         };
                     };
                     $result = $wpdb->get_results("SELECT * FROM $tableName");
+                
+                    $locale = get_option('abt_locale');
+    
+                    if($_POST['localeSettings'] !== $locale) {
+                        $newLocationUrls = Constant::change_locale($_POST['localeSettings']);
+                        foreach($newLocationUrls as $key => $value) {
+                            $wpdb->update(
+                                $tableName,
+                                [
+                                    'url' => $newLocationUrls[$key]['url'],
+                                    'adminurl' => $newLocationUrls[$key]['adminurl']
+                                ],
+                                ['shortname' => $newLocationUrls[$key]['shortname']],
+                                ['%s'],
+                                ['%s']
+                            );
+                        };
+                        update_option('abt_locale', $_POST['localeSettings']);
+                    }
                 };
+
             };
 ?>
     <div class="wrap">
@@ -87,6 +105,12 @@
                 </label>
             </p>
             <?php endforeach ?>
+            <p><?= __('Locale/Language' Constant::TEXTDOMAIN) ?>:
+                <select name="localeSettings">
+                    <option value="en_US"><?= __('English(United States)', Constant::TEXTDOMAIN) ?></option>
+                    <option value="ja" <?php if(get_option('abt_locale') === 'ja') echo 'selected' ?>><?= __('Japanese', Constant::TEXTDOMAIN) ?></option>
+                </select>
+            </p>
             <p class="submit">
                 <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
             </p>
