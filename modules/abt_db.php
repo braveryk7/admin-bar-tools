@@ -35,86 +35,18 @@
         $tableName = $wpdb->prefix . 'abt';
 
         $locale = get_locale();
+        $makeDbData = Constant::makeDbData();
 
-        $urls = new Constant();
-
-        $defaultValue = [
-            1 => [
-                'id' => 1001,
-                'shortname' => 'psi',
-                'name' => __('PageSpeed Insights', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['psi'],
-                'adminurl' => Constant::$locationUrl['psiAdmin'],
-            ],
-            2 => [
-                'id' => 1002,
-                'shortname' => 'lh',
-                'name' => __('Lighthouse', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['lh'],
-                'adminurl' => Constant::$locationUrl['lhAdmin'],
-            ],
-            3 => [
-                'id' => 2001,
-                'shortname' => 'gsc',
-                'name' => __('Google Search Console', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['gsc'],
-                'adminurl' => Constant::$locationUrl['gscAdmin'],
-            ],
-            4 => [
-                'id' => 2002,
-                'shortname' => 'gc',
-                'name' => __('Google Cache', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['gc'],
-                'adminurl' => Constant::$locationUrl['gcAdmin'],
-            ],
-            5 => [
-                'id' => 2003,
-                'shortname' => 'gi',
-                'name' => __('Google Index', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['gi'],
-                'adminurl' => Constant::$locationUrl['giAdmin'],
-            ],
-            6 => [
-                'id' => 3001,
-                'shortname' => 'twitter',
-                'name' => __('Twitter Search', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['twitter'],
-                'adminurl' => Constant::$locationUrl['twitterAdmin'],
-            ],
-            7 => [
-                'id' => 3002,
-                'shortname' => 'facebook',
-                'name' => __('Facebook Search', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['facebook'],
-                'adminurl' => Constant::$locationUrl['facebookAdmin'],
-            ],
-            8 => [
-                'id' => 3003,
-                'shortname' => 'hatena',
-                'name' => __('Hatena Bookmark', Constant::TEXTDOMAIN),
-                'status' => 1,
-                'url' => Constant::$locationUrl['hatena'],
-                'adminurl' => Constant::$locationUrl['hatenaAdmin'],
-            ],
-        ];
-
-        foreach($defaultValue as $key => $value) {
+        foreach($makeDbData as $key => $value) {
             $wpdb->insert(
                 $tableName,
                 [
-                    'id' => $defaultValue[$key]['id'],
-                    'shortname' => $defaultValue[$key]['shortname'],
-                    'name' => $defaultValue[$key]['name'],
-                    'status' => $defaultValue[$key]['status'],
-                    'url' => $defaultValue[$key]['url'],
-                    'adminurl' => $defaultValue[$key]['adminurl']
+                    'id' => $makeDbData[$key]['id'],
+                    'shortname' => $makeDbData[$key]['shortname'],
+                    'name' => $makeDbData[$key]['name'],
+                    'status' => $makeDbData[$key]['status'],
+                    'url' => $makeDbData[$key]['url'],
+                    'adminurl' => $makeDbData[$key]['adminurl']
                 ],
                 [
                     '%d',
@@ -127,7 +59,7 @@
             );
         };
 
-        add_option('abt_locale', Constant::$locale);
+        add_option('abt_locale', $locale);
     }
 
     function abt_delete_db() {
