@@ -27,7 +27,7 @@
             };
 
             global $wpdb;
-            $tableName = $wpdb->prefix . 'abt';
+            $tableName = $wpdb->prefix . Constant::TABLENAME;
 
             $result = $wpdb->get_results("SELECT * FROM $tableName");
             $resultName = array_column($result, 'name');
