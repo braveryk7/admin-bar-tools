@@ -27,13 +27,16 @@
         const TEXTDOMAIN = 'admin-bar-tools';
 
         static $locale;
+        static $abtLocale;
         private $psiUrl;
         private $psiAdminUrl;
         public static $locationUrl = [];
+        public static $insertData = [];
 
         function __construct() {
 
             self::$locale = get_locale();
+            self::$abtLocale = get_option('abt_locale');
             if(self::$locale === 'ja') {
                 $this->psiUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
                 $this->psiAdminUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
@@ -41,6 +44,7 @@
                 $this->psiUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
                 $this->psiAdminUrl = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
             }
+
             self::$locationUrl += [
                 'psi' => $this->psiUrl,
                 'psiAdmin' => $this->psiAdminUrl,
@@ -59,6 +63,90 @@
                 'hatena' => 'https://b.hatena.ne.jp/entry/s/',
                 'hatenaAdmin' => 'https://b.hatena.ne.jp/',
             ];
+
+            self::$insertData += [
+                1 => [
+                    'id' => 1001,
+                    'shortname' => 'psi',
+                    'name' => __('PageSpeed Insights', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['psi'],
+                    'adminurl' => self::$locationUrl['psiAdmin'],
+                ],
+                2 => [
+                    'id' => 1002,
+                    'shortname' => 'lh',
+                    'name' => __('Lighthouse', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['lh'],
+                    'adminurl' => self::$locationUrl['lhAdmin'],
+                ],
+                3 => [
+                    'id' => 2001,
+                    'shortname' => 'gsc',
+                    'name' => __('Google Search Console', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['gsc'],
+                    'adminurl' => self::$locationUrl['gscAdmin'],
+                ],
+                4 => [
+                    'id' => 2002,
+                    'shortname' => 'gc',
+                    'name' => __('Google Cache', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['gc'],
+                    'adminurl' => self::$locationUrl['gcAdmin'],
+                ],
+                5 => [
+                    'id' => 2003,
+                    'shortname' => 'gi',
+                    'name' => __('Google Index', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['gi'],
+                    'adminurl' => self::$locationUrl['giAdmin'],
+                ],
+                6 => [
+                    'id' => 3001,
+                    'shortname' => 'twitter',
+                    'name' => __('Twitter Search', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['twitter'],
+                    'adminurl' => self::$locationUrl['twitterAdmin'],
+                ],
+                7 => [
+                    'id' => 3002,
+                    'shortname' => 'facebook',
+                    'name' => __('Facebook Search', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['facebook'],
+                    'adminurl' => self::$locationUrl['facebookAdmin'],
+                ],
+                8 => [
+                    'id' => 3003,
+                    'shortname' => 'hatena',
+                    'name' => __('Hatena Bookmark', self::TEXTDOMAIN),
+                    'status' => 1,
+                    'url' => self::$locationUrl['hatena'],
+                    'adminurl' => self::$locationUrl['hatenaAdmin'],
+                ]
+            ];
+        }
+
+        public static function makeDbData() {
+            new self();
+            return self::$insertData;
+        }
+
+        public static function change_locale($newLocale) {
+            new self();
+            if($newLocale === 'ja') {
+                self::$insertData['1']['url'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
+                self::$insertData['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
+            } elseif($newLocale === 'en_US') {
+                self::$insertData['1']['url'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
+                self::$insertData['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
+            }
+            return self::$insertData;
         }
     }
 
