@@ -27,7 +27,7 @@
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
 
-        add_option('abt_db_version', $dbVersion);
+        update_option('abt_db_version', $dbVersion);
     }
 
     function abt_default_insert_db() {
@@ -59,7 +59,7 @@
             );
         };
 
-        add_option('abt_locale', $locale);
+        update_option('abt_locale', $locale);
     }
 
     function abt_delete_db() {
