@@ -2,7 +2,7 @@
 
     function abt_db() {
         global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLENAME;
+        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
         if($wpdb->get_var("SHOW TABLES LIKE '".$tableName."'") != $tableName) {
             abt_create_db();
         }
@@ -11,7 +11,7 @@
     function abt_create_db() {
         global $wpdb;
 
-        $tableName = $wpdb->prefix . Constant::TABLENAME;
+        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
         $charsetCollate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE $tableName (
@@ -31,7 +31,7 @@
 
     function abt_default_insert_db() {
         global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLENAME;
+        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
 
         $locale = get_locale();
         $makeDbData = Constant::makeDbData();
@@ -63,7 +63,7 @@
 
     function abt_delete_db() {
         global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLENAME;
+        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
     
         delete_option('abt_locale');
 

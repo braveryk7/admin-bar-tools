@@ -7,8 +7,8 @@
 
         function abt_addMenu() {
             add_options_page(
-                __('Admin Bar Tools Setting', Constant::TEXTDOMAIN),
-                __('Admin Bar Tools Setting', Constant::TEXTDOMAIN),
+                __('Admin Bar Tools Setting', Constant::TEXT_DOMAIN),
+                __('Admin Bar Tools Setting', Constant::TEXT_DOMAIN),
                 'administrator',
                 'admin-bar-tools-settings',
                 [$this, 'abt_settings_page']
@@ -16,18 +16,18 @@
         }
 
         function add_settings_links ( $links ) {
-            $add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __('Settings', Constant::TEXTDOMAIN) . '</a>';
+            $add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __('Settings', Constant::TEXT_DOMAIN) . '</a>';
             array_unshift( $links, $add_link);
             return $links;
         }
 
         function abt_settings_page() {
             if(!current_user_can('manage_options')) {
-                wp_die(__('You do not have sufficient permissions to access this page.', Constant::TEXTDOMAIN));
+                wp_die(__('You do not have sufficient permissions to access this page.', Constant::TEXT_DOMAIN));
             };
 
             global $wpdb;
-            $tableName = $wpdb->prefix . Constant::TABLENAME;
+            $tableName = $wpdb->prefix . Constant::TABLE_NAME;
 
             $result = $wpdb->get_results("SELECT * FROM $tableName");
             $resultName = array_column($result, 'name');
@@ -83,17 +83,17 @@
     <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
         <?php if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) : ?>
         <div class="updated">
-            <p><?= __('Update is successful!!', Constant::TEXTDOMAIN) ?></p>
-            <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', Constant::TEXTDOMAIN) ?></p>
+            <p><?= __('Update is successful!!', Constant::TEXT_DOMAIN) ?></p>
+            <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', Constant::TEXT_DOMAIN) ?></p>
         </div>
         <?php else : ?>
         <div class="error">
-            <p><?= __('An error has occurred. Please try again.', Constant::TEXTDOMAIN) ?></p>
+            <p><?= __('An error has occurred. Please try again.', Constant::TEXT_DOMAIN) ?></p>
         </div>
         <?php endif ?>
     <?php endif ?>
-        <h1><?= __('Admin Bar Tools Settings', Constant::TEXTDOMAIN) ?></h1>
-        <h2><?= __('Please select the menu you want to display.', Constant::TEXTDOMAIN) ?></h2>
+        <h1><?= __('Admin Bar Tools Settings', Constant::TEXT_DOMAIN) ?></h1>
+        <h2><?= __('Please select the menu you want to display.', Constant::TEXT_DOMAIN) ?></h2>
         <form name="abt_settings_form" method="post">
             <input type="hidden" name="<?= esc_attr__($hiddenFieldName) ?>" value="Y">
             <?php wp_nonce_field('abt_settings_nonce', 'abt_settings_nonce') ?>
@@ -105,10 +105,10 @@
                 </label>
             </p>
             <?php endforeach ?>
-            <p><?= __('Locale/Language', Constant::TEXTDOMAIN) ?>:
+            <p><?= __('Locale/Language', Constant::TEXT_DOMAIN) ?>:
                 <select name="localeSettings">
-                    <option value="en_US"><?= __('English(United States)', Constant::TEXTDOMAIN) ?></option>
-                    <option value="ja" <?php if(get_option('abt_locale') === 'ja') echo 'selected' ?>><?= __('Japanese', Constant::TEXTDOMAIN) ?></option>
+                    <option value="en_US"><?= __('English(United States)', Constant::TEXT_DOMAIN) ?></option>
+                    <option value="ja" <?php if(get_option('abt_locale') === 'ja') echo 'selected' ?>><?= __('Japanese', Constant::TEXT_DOMAIN) ?></option>
                 </select>
             </p>
             <p class="submit">
