@@ -26,6 +26,7 @@
     class Constant {
         const TEXTDOMAIN = 'admin-bar-tools';
         const TABLENAME = 'abt';
+        const DB_VERSION = '1.0';
 
         static $locale;
         static $abtLocale;
