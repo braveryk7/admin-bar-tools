@@ -10,7 +10,6 @@
 
     function abt_create_db() {
         global $wpdb;
-        $dbVersion = '1.0';
 
         $tableName = $wpdb->prefix . Constant::TABLENAME;
         $charsetCollate = $wpdb->get_charset_collate();
@@ -27,7 +26,7 @@
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
 
-        update_option('abt_db_version', $dbVersion);
+        update_option('abt_db_version', Constant::DB_VERSION);
     }
 
     function abt_default_insert_db() {
