@@ -24,8 +24,8 @@
     register_uninstall_hook(__FILE__, 'abt_delete_db');
 
     class Constant {
-        const TEXTDOMAIN = 'admin-bar-tools';
-        const TABLENAME = 'abt';
+        const TEXT_DOMAIN = 'admin-bar-tools';
+        const TABLE_NAME = 'abt';
         const DB_VERSION = '1.0';
 
         static $locale;
@@ -70,7 +70,7 @@
                 1 => [
                     'id' => 1001,
                     'shortname' => 'psi',
-                    'name' => __('PageSpeed Insights', self::TEXTDOMAIN),
+                    'name' => __('PageSpeed Insights', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['psi'],
                     'adminurl' => self::$locationUrl['psiAdmin'],
@@ -78,7 +78,7 @@
                 2 => [
                     'id' => 1002,
                     'shortname' => 'lh',
-                    'name' => __('Lighthouse', self::TEXTDOMAIN),
+                    'name' => __('Lighthouse', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['lh'],
                     'adminurl' => self::$locationUrl['lhAdmin'],
@@ -86,7 +86,7 @@
                 3 => [
                     'id' => 2001,
                     'shortname' => 'gsc',
-                    'name' => __('Google Search Console', self::TEXTDOMAIN),
+                    'name' => __('Google Search Console', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['gsc'],
                     'adminurl' => self::$locationUrl['gscAdmin'],
@@ -94,7 +94,7 @@
                 4 => [
                     'id' => 2002,
                     'shortname' => 'gc',
-                    'name' => __('Google Cache', self::TEXTDOMAIN),
+                    'name' => __('Google Cache', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['gc'],
                     'adminurl' => self::$locationUrl['gcAdmin'],
@@ -102,7 +102,7 @@
                 5 => [
                     'id' => 2003,
                     'shortname' => 'gi',
-                    'name' => __('Google Index', self::TEXTDOMAIN),
+                    'name' => __('Google Index', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['gi'],
                     'adminurl' => self::$locationUrl['giAdmin'],
@@ -110,7 +110,7 @@
                 6 => [
                     'id' => 3001,
                     'shortname' => 'twitter',
-                    'name' => __('Twitter Search', self::TEXTDOMAIN),
+                    'name' => __('Twitter Search', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['twitter'],
                     'adminurl' => self::$locationUrl['twitterAdmin'],
@@ -118,7 +118,7 @@
                 7 => [
                     'id' => 3002,
                     'shortname' => 'facebook',
-                    'name' => __('Facebook Search', self::TEXTDOMAIN),
+                    'name' => __('Facebook Search', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['facebook'],
                     'adminurl' => self::$locationUrl['facebookAdmin'],
@@ -126,7 +126,7 @@
                 8 => [
                     'id' => 3003,
                     'shortname' => 'hatena',
-                    'name' => __('Hatena Bookmark', self::TEXTDOMAIN),
+                    'name' => __('Hatena Bookmark', self::TEXT_DOMAIN),
                     'status' => 1,
                     'url' => self::$locationUrl['hatena'],
                     'adminurl' => self::$locationUrl['hatenaAdmin'],
@@ -166,7 +166,7 @@
         ]);
     
         global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLENAME;
+        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
     
         $result = $wpdb->get_results("SELECT * FROM $tableName");
     
