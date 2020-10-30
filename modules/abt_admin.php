@@ -1,125 +1,141 @@
 <?php
 
-    class AdminSettings {
-        function __construct() {
-            add_action('admin_menu', [$this, 'abt_addMenu']);
-        }
+class AdminSettings {
+	/**
+	 * CONSTRUCT!!
+	 * WordPress Hook
+	 */
+	public function __construct() {
+		add_action( 'admin_menu', [ $this, 'abt_add_menu' ] );
+	}
 
-        function abt_addMenu() {
-            add_options_page(
-                __('Admin Bar Tools Setting', Constant::TEXT_DOMAIN),
-                __('Admin Bar Tools Setting', Constant::TEXT_DOMAIN),
-                'administrator',
-                'admin-bar-tools-settings',
-                [$this, 'abt_settings_page']
-            );
-        }
+	/**
+	 * Add Admin Bar Tools to admin bar
+	 */
+	public function abt_add_menu() {
+		add_options_page(
+			__( 'Admin Bar Tools Setting', 'admin-bar-tools' ),
+			__( 'Admin Bar Tools Setting', 'admin-bar-tools' ),
+			'administrator',
+			'admin-bar-tools-settings',
+			[ $this, 'abt_settings_page' ]
+		);
+	}
 
-        function add_settings_links ( $links ) {
-            $add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __('Settings', Constant::TEXT_DOMAIN) . '</a>';
-            array_unshift( $links, $add_link);
-            return $links;
-        }
+	/**
+	 * Add configuration link to plugin page
+	 *
+	 * @param array|string $links plugin page setting links.
+	 */
+	public function add_settings_links( $links ) {
+		$add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
+		array_unshift( $links, $add_link );
+		return $links;
+	}
 
-        function abt_settings_page() {
-            if(!current_user_can('manage_options')) {
-                wp_die(__('You do not have sufficient permissions to access this page.', Constant::TEXT_DOMAIN));
-            };
+	/**
+	 * Settings Page
+	 */
+	public function abt_settings_page() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'admin-bar-tools' ) );
+		};
 
-            global $wpdb;
-            $tableName = $wpdb->prefix . Constant::TABLE_NAME;
+		global $wpdb;
+		$table_name = $wpdb->prefix . Constant::TABLE_NAME;
 
-            $result = $wpdb->get_results("SELECT * FROM $tableName");
-            $resultName = array_column($result, 'name');
+		$result      = $wpdb->get_results( "SELECT * FROM $table_name" );
+		$result_name = array_column( $result, 'name' );
 
-            $hiddenFieldName = 'hiddenStatus';
+		$hidden_field_name = 'hiddenStatus';
 
-            if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') {
-                if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) {
-                    foreach($resultName as $value) {
-                        if(in_array($value, $_POST['checkStatus'], true)) {                    
-                            $wpdb->update(
-                                $tableName,
-                                ['status' => 1],
-                                ['name' => $value],
-                                ['%d'],
-                                ['%s']
-                            );
-                        } else {                   
-                            $wpdb->update(
-                                $tableName,
-                                ['status' => 0],
-                                ['name' => $value],
-                                ['%d'],
-                                ['%s']
-                            );
-                        };
-                    };
-                    $result = $wpdb->get_results("SELECT * FROM $tableName");
-                
-                    $locale = get_option('abt_locale');
-    
-                    if($_POST['localeSettings'] !== $locale) {
-                        $newLocationUrls = Constant::change_locale($_POST['localeSettings']);
-                        foreach($newLocationUrls as $key => $value) {
-                            $wpdb->update(
-                                $tableName,
-                                [
-                                    'url' => $newLocationUrls[$key]['url'],
-                                    'adminurl' => $newLocationUrls[$key]['adminurl']
-                                ],
-                                ['shortname' => $newLocationUrls[$key]['shortname']],
-                                ['%s'],
-                                ['%s']
-                            );
-                        };
-                        update_option('abt_locale', $_POST['localeSettings']);
-                    }
-                };
+		if ( isset( $_POST[ $hidden_field_name ] ) && 'Y' === $_POST[ $hidden_field_name ] ) {
+			if ( check_admin_referer( 'abt_settings_nonce', 'abt_settings_nonce' ) ) {
+				foreach ( $result_name as $value ) {
+					if ( isset( $_POST['checkStatus'] ) && in_array( $value, $_POST['checkStatus'], true ) ) {
+						$wpdb->update(
+							$table_name,
+							[ 'status' => 1 ],
+							[ 'name' => $value ],
+							[ '%d' ],
+							[ '%s' ],
+						);
+					} else {
+						$wpdb->update(
+							$table_name,
+							[ 'status' => 0 ],
+							[ 'name' => $value ],
+							[ '%d' ],
+							[ '%s' ],
+						);
+					};
+				};
+				$result = $wpdb->get_results( "SELECT * FROM $table_name" );
 
-            };
-?>
-    <div class="wrap">
-    <?php if(isset($_POST[$hiddenFieldName]) && $_POST[$hiddenFieldName] === 'Y') : ?>
-        <?php if(check_admin_referer('abt_settings_nonce', 'abt_settings_nonce')) : ?>
-        <div class="updated">
-            <p><?= __('Update is successful!!', Constant::TEXT_DOMAIN) ?></p>
-            <p><?= __('Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', Constant::TEXT_DOMAIN) ?></p>
-        </div>
-        <?php else : ?>
-        <div class="error">
-            <p><?= __('An error has occurred. Please try again.', Constant::TEXT_DOMAIN) ?></p>
-        </div>
-        <?php endif ?>
-    <?php endif ?>
-        <h1><?= __('Admin Bar Tools Settings', Constant::TEXT_DOMAIN) ?></h1>
-        <h2><?= __('Please select the menu you want to display.', Constant::TEXT_DOMAIN) ?></h2>
-        <form name="abt_settings_form" method="post">
-            <input type="hidden" name="<?= esc_attr__($hiddenFieldName) ?>" value="Y">
-            <?php wp_nonce_field('abt_settings_nonce', 'abt_settings_nonce') ?>
-            <?php foreach ($result as $key => $value) : ?>
-            <p>
-                <label>
-                    <input type="checkbox" name="checkStatus[]" value="<?= esc_attr__($value->name) ?>" <?= $value->status === '0' ? '' : 'checked' ?>>
-                    <?= $value->name ?>
-                </label>
-            </p>
-            <?php endforeach ?>
-            <p><?= __('Locale/Language', Constant::TEXT_DOMAIN) ?>:
-                <select name="localeSettings">
-                    <option value="en_US"><?= __('English(United States)', Constant::TEXT_DOMAIN) ?></option>
-                    <option value="ja" <?php if(get_option('abt_locale') === 'ja') echo 'selected' ?>><?= __('Japanese', Constant::TEXT_DOMAIN) ?></option>
-                </select>
-            </p>
-            <p class="submit">
-                <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-            </p>
-        </form>
-    </div>
-<?php
-        }
-    }
+				$locale = get_option( 'abt_locale' );
 
-    if(is_admin()) {
-        $settingsPage = new AdminSettings();
-    }
+				if ( isset( $_POST['localeSettings'] ) && $_POST['localeSettings'] !== $locale ) {
+					$post_locale       = sanitize_text_field( wp_unslash( $_POST['localeSettings'] ) );
+					$new_location_urls = Constant::change_locale( $post_locale );
+					foreach ( $new_location_urls as $key => $value ) {
+						$wpdb->update(
+							$table_name,
+							[
+								'url'      => $new_location_urls[ $key ]['url'],
+								'adminurl' => $new_location_urls[ $key ]['adminurl'],
+							],
+							[ 'shortname' => $new_location_urls[ $key ]['shortname'] ],
+							[ '%s' ],
+							[ '%s' ],
+						);
+					};
+					update_option( 'abt_locale', $post_locale );
+				}
+			};
+
+		};
+		?>
+<div class="wrap">
+		<?php if ( isset( $_POST[ $hidden_field_name ] ) && 'Y' === $_POST[ $hidden_field_name ] ) : ?>
+			<?php if ( check_admin_referer( 'abt_settings_nonce', 'abt_settings_nonce' ) ) : ?>
+	<div class="updated">
+		<p><?php esc_html_e( 'Update is successful!!', 'admin-bar-tools' ); ?></p>
+		<p><?php esc_html_e( 'Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', 'admin-bar-tools' ); ?></p>
+	</div>
+			<?php else : ?>
+	<div class="error">
+		<p><?php esc_html_e( 'An error has occurred. Please try again.', 'admin-bar-tools' ); ?></p>
+	</div>
+			<?php endif ?>
+		<?php endif ?>
+	<h1><?php esc_html_e( 'Admin Bar Tools Settings', 'admin-bar-tools' ); ?></h1>
+	<h2><?php esc_html_e( 'Please select the menu you want to display.', 'admin-bar-tools' ); ?></h2>
+	<form name="abt_settings_form" method="post">
+		<input type="hidden" name="<?php echo esc_attr( $hidden_field_name ); ?>" value="Y">
+		<?php wp_nonce_field( 'abt_settings_nonce', 'abt_settings_nonce' ); ?>
+		<?php foreach ( $result as $key => $value ) : ?>
+		<p>
+			<label>
+				<input type="checkbox" name="checkStatus[]" value="<?php esc_attr_e( $value->name ); ?>" <?php echo '0' === $value->status ? '' : 'checked'; ?>>
+				<?php echo esc_html( $value->name ); ?>
+			</label>
+		</p>
+		<?php endforeach ?>
+		<p><?php esc_html_e( 'Locale/Language', 'admin-bar-tools' ); ?>:
+			<select name="localeSettings">
+				<option value="en_US"><?php esc_html_e( 'English(United States)', 'admin-bar-tools' ); ?></option>
+				<option value="ja" <?php if (get_option( 'abt_locale' ) === 'ja') echo esc_attr( 'selected' ); ?>><?php esc_html_e( 'Japanese', 'admin-bar-tools' ); ?></option>
+			</select>
+		</p>
+		<p class="submit">
+			<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e( 'Save Changes' ); ?>" />
+		</p>
+	</form>
+</div>
+		<?php
+	}
+}
+
+if ( is_admin() ) {
+	$settings_page = new AdminSettings();
+}

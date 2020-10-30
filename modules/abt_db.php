@@ -1,72 +1,90 @@
 <?php
+/**
+ * Functions related to connecting to the database
+ *
+ * @package Admin Bar Tools
+ * @author Ken-chan
+ */
 
-    function abt_db() {
-        global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
-        if($wpdb->get_var("SHOW TABLES LIKE '".$tableName."'") != $tableName) {
-            abt_create_db();
-        }
-    }
+/**
+ * Search Tables.
+ */
+function abt_db() {
+	global $wpdb;
+	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
+	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
+		abt_create_db();
+	}
+}
 
-    function abt_create_db() {
-        global $wpdb;
+/**
+ * Create Table.
+ */
+function abt_create_db() {
+	global $wpdb;
 
-        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
-        $charsetCollate = $wpdb->get_charset_collate();
+	$table_name      = $wpdb->prefix . Constant::TABLE_NAME;
+	$charset_collate = $wpdb->get_charset_collate();
 
-        $sql = "CREATE TABLE $tableName (
-            id smallint(4) UNSIGNED NOT NULL PRIMARY KEY,
-            shortname varchar(255) NOT NULL,
-            name varchar(255) NOT NULL,
-            status tinyint(1) UNSIGNED NOT NULL,
-            url text NOT NULL,
-            adminurl text NOT NULL
-        ) $charsetCollate;";
+	$sql = "CREATE TABLE $table_name (
+		id smallint(4) UNSIGNED NOT NULL PRIMARY KEY,
+        shortname varchar(255) NOT NULL,
+        name varchar(255) NOT NULL,
+        status tinyint(1) UNSIGNED NOT NULL,
+        url text NOT NULL,
+        adminurl text NOT NULL
+	) $charset_collate;";
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
 
-        update_option('abt_db_version', Constant::DB_VERSION);
-    }
+	update_option( 'abt_db_version', Constant::DB_VERSION );
+}
 
-    function abt_default_insert_db() {
-        global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
+/**
+ * Insert default records.
+ */
+function abt_default_insert_db() {
+	global $wpdb;
+	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
 
-        $locale = get_locale();
-        $makeDbData = Constant::makeDbData();
+	$locale       = get_locale();
+	$make_db_data = Constant::make_table_data();
 
-        foreach($makeDbData as $key => $value) {
-            $wpdb->insert(
-                $tableName,
-                [
-                    'id' => $makeDbData[$key]['id'],
-                    'shortname' => $makeDbData[$key]['shortname'],
-                    'name' => $makeDbData[$key]['name'],
-                    'status' => $makeDbData[$key]['status'],
-                    'url' => $makeDbData[$key]['url'],
-                    'adminurl' => $makeDbData[$key]['adminurl']
-                ],
-                [
-                    '%d',
-                    '%s',
-                    '%s',
-                    '%d',
-                    '%s',
-                    '%s'
-                ]
-            );
-        };
+	foreach ( $make_db_data as $key => $value ) {
+		$wpdb->insert(
+			$table_name,
+			[
+				'id'        => $make_db_data[ $key ]['id'],
+				'shortname' => $make_db_data[ $key ]['shortname'],
+				'name'      => $make_db_data[ $key ]['name'],
+				'status'    => $make_db_data[ $key ]['status'],
+				'url'       => $make_db_data[ $key ]['url'],
+				'adminurl'  => $make_db_data[ $key ]['adminurl'],
+			],
+			[
+				'%d',
+				'%s',
+				'%s',
+				'%d',
+				'%s',
+				'%s',
+			]
+		);
+	};
 
-        update_option('abt_locale', $locale);
-    }
+	update_option( 'abt_locale', $locale );
+}
 
-    function abt_delete_db() {
-        global $wpdb;
-        $tableName = $wpdb->prefix . Constant::TABLE_NAME;
-    
-        delete_option('abt_locale');
+/**
+ * Delete table.
+ */
+function abt_delete_db() {
+	global $wpdb;
+	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
 
-        $sql = "DROP TABLE $tableName;";
-        $wpdb->query($sql);
-    }
+	delete_option( 'abt_locale' );
+
+	$sql = "DROP TABLE $table_name;";
+	$wpdb->query( $wpdb->prepare( 'DROP TABLE %s', $table_name ) );
+}
