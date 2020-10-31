@@ -1,15 +1,65 @@
 <?php
-class Abt_Data {
+/**
+ * Returns data class
+ *
+ * @author Ken-chan
+ * @package WordPress
+ * @subpackage Admin Bar Tools
+ * @since 0.0.1
+ */
+
+/**
+ * Returns data for view and database.
+ */
+class Abt_Return_Data {
 	const TABLE_NAME = 'abt';
 	const DB_VERSION = '1.0';
 
+	/**
+	 * Options table locale.
+	 *
+	 * @var string
+	 */
 	private static $locale;
-	private static $abt_locale;
-	private $psi_url;
-	private $psi_admin_url;
-	public static $location_url = [];
-	public static $insert_data  = [];
 
+	/**
+	 * _abt table locale.
+	 *
+	 * @var string
+	 */
+	private static $abt_locale;
+
+	/**
+	 * Pagespeed Insight URL by country.
+	 *
+	 * @var string
+	 */
+	private $psi_url;
+
+	/**
+	 * Pagespeed Insight admin page URL by country.
+	 *
+	 * @var string
+	 */
+	private $psi_admin_url;
+
+	/**
+	 * Various service URL.
+	 *
+	 * @var array
+	 */
+	public static $location_url = [];
+
+	/**
+	 * Array for database insertion.
+	 *
+	 * @var array
+	 */
+	public static $insert_data = [];
+
+	/**
+	 * Perform data initialization for view and database insertion.
+	 */
 	private function __construct() {
 		self::$locale     = get_locale();
 		self::$abt_locale = get_option( 'abt_locale' );
