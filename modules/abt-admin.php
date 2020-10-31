@@ -42,7 +42,7 @@ class AdminSettings {
 		};
 
 		global $wpdb;
-		$table_name = $wpdb->prefix . Constant::TABLE_NAME;
+		$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
 		$result      = $wpdb->get_results( "SELECT * FROM $table_name" );
 		$result_name = array_column( $result, 'name' );
@@ -76,7 +76,7 @@ class AdminSettings {
 
 				if ( isset( $_POST['localeSettings'] ) && $_POST['localeSettings'] !== $locale ) {
 					$post_locale       = sanitize_text_field( wp_unslash( $_POST['localeSettings'] ) );
-					$new_location_urls = Constant::change_locale( $post_locale );
+					$new_location_urls = Abt_Return_Data::change_locale( $post_locale );
 					foreach ( $new_location_urls as $key => $value ) {
 						$wpdb->update(
 							$table_name,

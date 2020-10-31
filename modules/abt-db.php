@@ -11,7 +11,7 @@
  */
 function abt_db() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
+	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
 		abt_create_db();
 	}
@@ -23,7 +23,7 @@ function abt_db() {
 function abt_create_db() {
 	global $wpdb;
 
-	$table_name      = $wpdb->prefix . Constant::TABLE_NAME;
+	$table_name      = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE $table_name (
@@ -38,7 +38,7 @@ function abt_create_db() {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta( $sql );
 
-	update_option( 'abt_db_version', Constant::DB_VERSION );
+	update_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
 }
 
 /**
@@ -46,10 +46,10 @@ function abt_create_db() {
  */
 function abt_default_insert_db() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
+	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
 	$locale       = get_locale();
-	$make_db_data = Constant::make_table_data();
+	$make_db_data = Abt_Return_Data::make_table_data();
 
 	foreach ( $make_db_data as $key => $value ) {
 		$wpdb->insert(
@@ -81,7 +81,7 @@ function abt_default_insert_db() {
  */
 function abt_delete_db() {
 	global $wpdb;
-	$table_name = $wpdb->prefix . Constant::TABLE_NAME;
+	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
 	delete_option( 'abt_locale' );
 
