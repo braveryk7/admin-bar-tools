@@ -13,8 +13,8 @@
 
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-require_once dirname( __FILE__ ) . '/modules/abt_admin.php';
-require_once dirname( __FILE__ ) . '/modules/abt_db.php';
+require_once dirname( __FILE__ ) . '/modules/abt-admin.php';
+require_once dirname( __FILE__ ) . '/modules/abt-db.php';
 
 register_activation_hook( __FILE__, 'abt_create_db' );
 register_activation_hook( __FILE__, 'abt_default_insert_db' );
