@@ -107,4 +107,29 @@ class Abt_Data {
 			],
 		];
 	}
+
+	/**
+	 * Make table data
+	 */
+	public static function make_table_data() {
+		new self();
+		return self::$insert_data;
+	}
+
+	/**
+	 * Change the locale on the settings page
+	 *
+	 * @param string $new_locale locale code.
+	 */
+	public static function change_locale( $new_locale ) {
+		new self();
+		if ( 'ja' === $new_locale ) {
+			self::$insert_data['1']['url']      = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
+			self::$insert_data['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
+		} elseif ( 'en_US' === $new_locale ) {
+			self::$insert_data['1']['url']      = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
+			self::$insert_data['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
+		}
+		return self::$insert_data;
+	}
 }
