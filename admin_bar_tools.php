@@ -27,9 +27,8 @@ register_uninstall_hook( __FILE__, 'abt_delete_db' );
  * Declare a constant
  */
 class Constant {
-	const TEXT_DOMAIN = 'admin-bar-tools';
-	const TABLE_NAME  = 'abt';
-	const DB_VERSION  = '1.0';
+	const TABLE_NAME = 'abt';
+	const DB_VERSION = '1.0';
 
 	/**
 	 * Constant
