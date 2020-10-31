@@ -9,6 +9,11 @@
  * Text Domain: admin-bar-tools
  * Domain Path: /languages
  * License: GPL2
+ *
+ * @author Ken-chan
+ * @package WordPress
+ * @subpackage Admin Bar Tools
+ * @since 0.0.1
  */
 
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
