@@ -13,18 +13,28 @@
  */
 class Abt_Connect_Database {
 
+
+	/**
+	 * Table name.
+	 *
+	 * @var string
+	 */
 	private $table_name;
 
+	/**
+	 * Gave prefix.
+	 */
 	public function __construct() {
 		global $wpdb;
 		$this->table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 	}
+
 	/**
 	 * Search Tables.
 	 */
 	public function abt_search_table() {
 		global $wpdb;
-		$get_table  = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
+		$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
 		if ( $get_table !== $this->table_name ) {
 			$this->abt_create_db();
 		}
