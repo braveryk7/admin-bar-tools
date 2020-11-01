@@ -3,7 +3,7 @@
  * Plugin Name: Admin Bar Tools
  * Plugin URI: https://www.braveryk7.com/
  * Description: Use the admin bar conveniently.
- * Version: 0.1
+ * Version: 0.0.1
  * Author: Ken-chan
  * Author URI: https://twitter.com/braveryk7
  * Text Domain: admin-bar-tools
