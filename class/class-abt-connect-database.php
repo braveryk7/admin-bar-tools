@@ -2,22 +2,27 @@
 /**
  * Functions related to connecting to the database
  *
- * @package Admin Bar Tools
  * @author Ken-chan
+ * @package WordPress
+ * @subpackage Admin Bar Tools
+ * @since 0.0.1
  */
 
+/**
+ * Handle database connection.
+ */
 class Abt_Connect_Database {
 
 	private $table_name;
 
-	function __construct() {
+	public function __construct() {
 		global $wpdb;
 		$this->table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 	}
 	/**
 	 * Search Tables.
 	 */
-	function abt_search_table() {
+	public function abt_search_table() {
 		global $wpdb;
 		$get_table  = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
 		if ( $get_table !== $this->table_name ) {
@@ -28,7 +33,7 @@ class Abt_Connect_Database {
 	/**
 	 * Create Table.
 	 */
-	function abt_create_db() {
+	private function abt_create_db() {
 		global $wpdb;
 
 		$charset_collate = $wpdb->get_charset_collate();
@@ -51,7 +56,7 @@ class Abt_Connect_Database {
 	/**
 	 * Insert default records.
 	 */
-	function abt_default_insert_db() {
+	public function abt_default_insert_db() {
 		global $wpdb;
 
 		$locale       = get_locale();
@@ -85,7 +90,7 @@ class Abt_Connect_Database {
 	/**
 	 * Delete table.
 	 */
-	function abt_delete_db() {
+	private function abt_delete_db() {
 		global $wpdb;
 
 		$wpdb->query( 'DROP TABLE IF EXISTS $this->table_name' ); // db call ok; no-cache ok.
