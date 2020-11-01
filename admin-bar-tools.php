@@ -22,8 +22,12 @@ require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 require_once dirname( __FILE__ ) . '/modules/abt-db.php';
 
-register_activation_hook( __FILE__, 'abt_create_db' );
-register_activation_hook( __FILE__, 'abt_default_insert_db' );
+function register() {
+	$db_class = new Abt_Connect_Database();
+	register_activation_hook( __FILE__, [ $db_class, 'abt_search_table' ] );
+	register_activation_hook( __FILE__, [ $db_class, 'abt_default_insert_db' ] );
+};
+register();
 
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
 
@@ -51,7 +55,7 @@ function abt_add_adminbar( $wp_admin_bar ) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
-	$result = $wpdb->get_results( 'SELECT * FROM $table_name' ); // db call ok; no-cache ok.
+	$result = $wpdb->get_results( "SELECT * FROM $table_name" ); // db call ok; no-cache ok.
 
 	foreach ( $result as $key => $value ) {
 		if ( '1' === $value->status ) {
