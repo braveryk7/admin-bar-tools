@@ -85,6 +85,7 @@ function abt_delete_db() {
 	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
 	delete_option( 'abt_locale' );
+	delete_option( 'abt_db_version' );
 
 	$wpdb->query( 'DROP TABLE IF EXISTS $table_name' ); // db call ok; no-cache ok.
 }
