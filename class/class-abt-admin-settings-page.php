@@ -11,7 +11,7 @@
 /**
  * Return admin settings page.
  */
-class Admin_Settings_Page {
+class Abt_Admin_Settings_Page {
 	/**
 	 * CONSTRUCT!!
 	 * WordPress Hook
@@ -148,5 +148,5 @@ class Admin_Settings_Page {
 }
 
 if ( is_admin() ) {
-	$settings_page = new Admin_Settings_Page();
+	$settings_page = new Abt_Admin_Settings_Page();
 }
