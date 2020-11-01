@@ -55,7 +55,7 @@ class Abt_Admin_Settings_Page {
 		global $wpdb;
 		$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
-		$result      = $wpdb->get_results( 'SELECT * FROM $table_name' );
+		$result      = $wpdb->get_results( 'SELECT * FROM $table_name' ); // db call ok; no-cache ok.
 		$result_name = array_column( $result, 'name' );
 
 		$hidden_field_name = 'hiddenStatus';
@@ -70,7 +70,7 @@ class Abt_Admin_Settings_Page {
 							[ 'name' => $value ],
 							[ '%d' ],
 							[ '%s' ],
-						);
+						); // db call ok; no-cache ok.
 					} else {
 						$wpdb->update(
 							$table_name,
@@ -78,10 +78,10 @@ class Abt_Admin_Settings_Page {
 							[ 'name' => $value ],
 							[ '%d' ],
 							[ '%s' ],
-						);
+						); // db call ok; no-cache ok.
 					};
 				};
-				$result = $wpdb->get_results( 'SELECT * FROM $table_name' );
+				$result = $wpdb->get_results( 'SELECT * FROM $table_name' ); // db call ok; no-cache ok.
 
 				$locale = get_option( 'abt_locale' );
 
@@ -98,7 +98,7 @@ class Abt_Admin_Settings_Page {
 							[ 'shortname' => $new_location_urls[ $key ]['shortname'] ],
 							[ '%s' ],
 							[ '%s' ],
-						);
+						); // db call ok; no-cache ok.
 					};
 					update_option( 'abt_locale', $post_locale );
 				}

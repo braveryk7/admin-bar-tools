@@ -85,6 +85,5 @@ function abt_delete_db() {
 
 	delete_option( 'abt_locale' );
 
-	$sql = "DROP TABLE $table_name;";
-	$wpdb->query( $wpdb->prepare( 'DROP TABLE %s', $table_name ) );
+	$wpdb->query( 'DROP TABLE IF EXISTS $table_name' );
 }
