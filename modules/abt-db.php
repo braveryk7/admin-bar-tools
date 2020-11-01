@@ -12,7 +12,8 @@
 function abt_db() {
 	global $wpdb;
 	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
-	if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
+	$get_table  = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ); // db call ok; no-cache ok.
+	if ( $get_table !== $table_name ) {
 		abt_create_db();
 	}
 }
@@ -70,7 +71,7 @@ function abt_default_insert_db() {
 				'%s',
 				'%s',
 			]
-		);
+		); // db call ok; no-cache ok.
 	};
 
 	update_option( 'abt_locale', $locale );
@@ -85,5 +86,5 @@ function abt_delete_db() {
 
 	delete_option( 'abt_locale' );
 
-	$wpdb->query( 'DROP TABLE IF EXISTS $table_name' );
+	$wpdb->query( 'DROP TABLE IF EXISTS $table_name' ); // db call ok; no-cache ok.
 }
