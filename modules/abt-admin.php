@@ -1,6 +1,17 @@
 <?php
+/**
+ * Admin settings page.
+ *
+ * @author Ken-chan
+ * @package WordPress
+ * @subpackage Admin Bar Tools
+ * @since 0.0.1
+ */
 
-class AdminSettings {
+/**
+ * Return admin settings page.
+ */
+class Admin_Settings_Page {
 	/**
 	 * CONSTRUCT!!
 	 * WordPress Hook
@@ -137,5 +148,5 @@ class AdminSettings {
 }
 
 if ( is_admin() ) {
-	$settings_page = new AdminSettings();
+	$settings_page = new Admin_Settings_Page();
 }
