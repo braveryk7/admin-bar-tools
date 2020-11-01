@@ -55,7 +55,7 @@ class Abt_Admin_Settings_Page {
 		global $wpdb;
 		$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
-		$result      = $wpdb->get_results( "SELECT * FROM $table_name" );
+		$result      = $wpdb->get_results( 'SELECT * FROM $table_name' );
 		$result_name = array_column( $result, 'name' );
 
 		$hidden_field_name = 'hiddenStatus';
@@ -81,7 +81,7 @@ class Abt_Admin_Settings_Page {
 						);
 					};
 				};
-				$result = $wpdb->get_results( "SELECT * FROM $table_name" );
+				$result = $wpdb->get_results( 'SELECT * FROM $table_name' );
 
 				$locale = get_option( 'abt_locale' );
 
@@ -127,7 +127,7 @@ class Abt_Admin_Settings_Page {
 		<?php foreach ( $result as $key => $value ) : ?>
 		<p>
 			<label>
-				<input type="checkbox" name="checkStatus[]" value="<?php esc_attr_e( $value->name ); ?>" <?php echo '0' === $value->status ? '' : 'checked'; ?>>
+				<input type="checkbox" name="checkStatus[]" value="<?php echo esc_attr( $value->name ); ?>" <?php echo '0' === $value->status ? '' : 'checked'; ?>>
 				<?php echo esc_html( $value->name ); ?>
 			</label>
 		</p>
@@ -135,7 +135,7 @@ class Abt_Admin_Settings_Page {
 		<p><?php esc_html_e( 'Locale/Language', 'admin-bar-tools' ); ?>:
 			<select name="localeSettings">
 				<option value="en_US"><?php esc_html_e( 'English(United States)', 'admin-bar-tools' ); ?></option>
-				<option value="ja" <?php if (get_option( 'abt_locale' ) === 'ja') echo esc_attr( 'selected' ); ?>><?php esc_html_e( 'Japanese', 'admin-bar-tools' ); ?></option>
+				<option value="ja" <?php echo 'ja' === get_option( 'abt_locale' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Japanese', 'admin-bar-tools' ); ?></option>
 			</select>
 		</p>
 		<p class="submit">
