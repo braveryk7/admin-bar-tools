@@ -29,9 +29,14 @@ function register() {
 };
 register();
 
+function uninstall() {
+	$db_class = new Abt_Connect_Database();
+	register_uninstall_hook( __FILE__, [ $db_class, 'abt_delete_db' ] );
+}
+uninstall();
+
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
 
-register_uninstall_hook( __FILE__, 'abt_delete_db' );
 
 /**
  * Insert Admin bar
