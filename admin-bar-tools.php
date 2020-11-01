@@ -19,13 +19,13 @@
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
-require_once dirname( __FILE__ ) . '/modules/abt-admin.php';
+require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 require_once dirname( __FILE__ ) . '/modules/abt-db.php';
 
 register_activation_hook( __FILE__, 'abt_create_db' );
 register_activation_hook( __FILE__, 'abt_default_insert_db' );
 
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Admin_Settings_Page::add_settings_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
 
 register_uninstall_hook( __FILE__, 'abt_delete_db' );
 
