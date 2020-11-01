@@ -20,7 +20,7 @@ load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) 
 
 require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
-require_once dirname( __FILE__ ) . '/modules/abt-db.php';
+require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 
 function register() {
 	$db_class = new Abt_Connect_Database();
