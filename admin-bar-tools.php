@@ -25,7 +25,7 @@ require_once dirname( __FILE__ ) . '/modules/abt-db.php';
 register_activation_hook( __FILE__, 'abt_create_db' );
 register_activation_hook( __FILE__, 'abt_default_insert_db' );
 
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'AdminSettings::add_settings_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Admin_Settings_Page::add_settings_links' );
 
 register_uninstall_hook( __FILE__, 'abt_delete_db' );
 
