@@ -22,12 +22,12 @@ require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 
-function register() {
+function activate() {
 	$db_class = new Abt_Connect_Database();
 	register_activation_hook( __FILE__, [ $db_class, 'abt_search_table' ] );
 	register_activation_hook( __FILE__, [ $db_class, 'abt_default_insert_db' ] );
 };
-register();
+activate();
 
 function uninstall() {
 	$db_class = new Abt_Connect_Database();
