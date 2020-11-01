@@ -22,6 +22,9 @@ require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 
+/**
+ * Activation Hook.
+ */
 function abt_activate() {
 	$db_class = new Abt_Connect_Database();
 	register_activation_hook( __FILE__, [ $db_class, 'abt_search_table' ] );
@@ -29,6 +32,9 @@ function abt_activate() {
 };
 abt_activate();
 
+/**
+ * Uninstall Hook.
+ */
 function abt_uninstall() {
 	$db_class = new Abt_Connect_Database();
 	register_uninstall_hook( __FILE__, [ $db_class, 'abt_delete_db' ] );
