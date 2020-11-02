@@ -80,7 +80,7 @@ function abt_add_adminbar( $wp_admin_bar ) {
 			$wp_admin_bar->add_node(
 				[
 					'id'     => $value->shortname,
-					'title'  => __( $value->name, 'admin-bar-tools' ),
+					'title'  => $value->name,
 					'parent' => 'abt',
 					'href'   => $link_url,
 					'meta'   => [
