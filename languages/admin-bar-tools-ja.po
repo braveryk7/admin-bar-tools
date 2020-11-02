@@ -15,6 +15,9 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-SearchPath-0: .\n"
 
+msgid "A plugin that allows you to add useful links to the admin bar."
+msgstr "管理バーに便利なリンクを追加できるプラグインです。"
+
 #: admin_bar_tools.php:71
 msgid "PageSpeed Insights"
 msgstr "PageSpeed Insights"
