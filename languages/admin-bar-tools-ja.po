@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-10-26 23:56+0900\n"
-"PO-Revision-Date: 2020-11-04 00:09+0900\n"
+"POT-Creation-Date: 2020-11-04 00:09+0900\n"
+"PO-Revision-Date: 2020-11-04 00:14+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -16,62 +16,24 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
-msgid "A plugin that allows you to add useful links to the admin bar."
-msgstr "管理バーに便利なリンクを追加できるプラグインです。"
-
-#: admin_bar_tools.php:71
-msgid "PageSpeed Insights"
-msgstr "PageSpeed Insights"
-
-#: admin_bar_tools.php:79
-msgid "Lighthouse"
-msgstr "Lighthouse"
-
-#: admin_bar_tools.php:87
-msgid "Google Search Console"
-msgstr "Googleサーチコンソール"
-
-#: admin_bar_tools.php:95
-msgid "Google Cache"
-msgstr "Googleキャッシュ"
-
-#: admin_bar_tools.php:103
-msgid "Google Index"
-msgstr "Googleインデックス"
-
-#: admin_bar_tools.php:111
-msgid "Twitter Search"
-msgstr "Twitter検索"
-
-#: admin_bar_tools.php:119
-msgid "Facebook Search"
-msgstr "Facebook検索"
-
-#: admin_bar_tools.php:127
-msgid "Hatena Bookmark"
-msgstr "はてなブックマーク"
-
-#: admin_bar_tools.php:160
+#: admin-bar-tools.php:59 class/class-abt-admin-settings-page.php:28
+#: class/class-abt-admin-settings-page.php:29
 msgid "Admin Bar Tools"
 msgstr "Admin Bar Tools"
 
-#: modules/abt_admin.php:10 modules/abt_admin.php:11
-msgid "Admin Bar Tools Setting"
-msgstr "Admin Bar Tools設定"
-
-#: modules/abt_admin.php:19
+#: class/class-abt-admin-settings-page.php:42
 msgid "Settings"
 msgstr "設定"
 
-#: modules/abt_admin.php:26
+#: class/class-abt-admin-settings-page.php:52
 msgid "You do not have sufficient permissions to access this page."
 msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: modules/abt_admin.php:86
+#: class/class-abt-admin-settings-page.php:113
 msgid "Update is successful!!"
 msgstr "設定が完了しました！"
 
-#: modules/abt_admin.php:87
+#: class/class-abt-admin-settings-page.php:114
 msgid ""
 "Please reload once for the settings to take effect(Windows is F5 key, Mac is "
 "⌘ key + R key)."
@@ -79,26 +41,68 @@ msgstr ""
 "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
 "キー+Rキー）"
 
-#: modules/abt_admin.php:91
+#: class/class-abt-admin-settings-page.php:118
 msgid "An error has occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#: modules/abt_admin.php:95
+#: class/class-abt-admin-settings-page.php:122
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: modules/abt_admin.php:96
+#: class/class-abt-admin-settings-page.php:123
 msgid "Please select the menu you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: modules/abt_admin.php:108
+#: class/class-abt-admin-settings-page.php:135
 msgid "Locale/Language"
 msgstr "国設定"
 
-#: modules/abt_admin.php:110
+#: class/class-abt-admin-settings-page.php:137
 msgid "English(United States)"
 msgstr "英語（アメリカ合衆国）"
 
-#: modules/abt_admin.php:111
+#: class/class-abt-admin-settings-page.php:138
 msgid "Japanese"
 msgstr "日本語"
+
+#: class/class-abt-admin-settings-page.php:142
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: class/class-abt-return-data.php:97
+msgid "PageSpeed Insights"
+msgstr "PageSpeed Insights"
+
+#: class/class-abt-return-data.php:105
+msgid "Lighthouse"
+msgstr "Lighthouse"
+
+#: class/class-abt-return-data.php:113
+msgid "Google Search Console"
+msgstr "Googleサーチコンソール"
+
+#: class/class-abt-return-data.php:121
+msgid "Google Cache"
+msgstr "Googleキャッシュ"
+
+#: class/class-abt-return-data.php:129
+msgid "Google Index"
+msgstr "Googleインデックス"
+
+#: class/class-abt-return-data.php:137
+msgid "Twitter Search"
+msgstr "Twitter検索"
+
+#: class/class-abt-return-data.php:145
+msgid "Facebook Search"
+msgstr "Facebook検索"
+
+#: class/class-abt-return-data.php:153
+msgid "Hatena Bookmark"
+msgstr "はてなブックマーク"
+
+#~ msgid "A plugin that allows you to add useful links to the admin bar."
+#~ msgstr "管理バーに便利なリンクを追加できるプラグインです。"
+
+#~ msgid "Admin Bar Tools Setting"
+#~ msgstr "Admin Bar Tools設定"
