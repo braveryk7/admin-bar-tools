@@ -173,7 +173,7 @@ class Abt_Return_Data {
 	 *
 	 * @param string $new_locale locale code.
 	 */
-	public static function change_locale( $new_locale ) {
+	public static function change_locale( string $new_locale ): array {
 		new self();
 		if ( 'ja' === $new_locale ) {
 			self::$insert_data['1']['url']      = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
