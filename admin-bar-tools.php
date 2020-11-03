@@ -49,9 +49,9 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Set
 /**
  * Insert Admin bar
  *
- * @param array $wp_admin_bar Admin bar.
+ * @param object $wp_admin_bar Admin bar.
  */
-function abt_add_adminbar( $wp_admin_bar ) {
+function abt_add_adminbar( object $wp_admin_bar ) {
 	$url            = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
 	$join_url_lists = [ '1001', '1002', '2002', '2003', '3001', '3002' ];
 
