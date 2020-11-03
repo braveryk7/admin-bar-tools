@@ -25,8 +25,8 @@ class Abt_Admin_Settings_Page {
 	 */
 	public function abt_add_menu() {
 		add_options_page(
-			__( 'Admin Bar Tools Setting', 'admin-bar-tools' ),
-			__( 'Admin Bar Tools Setting', 'admin-bar-tools' ),
+			__( 'Admin Bar Tools', 'admin-bar-tools' ),
+			__( 'Admin Bar Tools', 'admin-bar-tools' ),
 			'administrator',
 			'admin-bar-tools-settings',
 			[ $this, 'abt_settings_page' ]
