@@ -16,6 +16,8 @@
  * @since 0.0.1
  */
 
+declare( strict_types = 1 );
+
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
