@@ -70,7 +70,7 @@ function abt_add_adminbar( $wp_admin_bar ) {
 
 	foreach ( $result as $key => $value ) {
 		if ( '1' === $value->status ) {
-			if ( ! is_admin() && '3003' === $value->id && isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
+			if ( ! is_admin() && '3003' === $value->id && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
 				$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
 			} elseif ( ! is_admin() ) {
 				$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
