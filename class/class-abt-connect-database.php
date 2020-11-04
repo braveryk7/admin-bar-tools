@@ -111,4 +111,18 @@ class Abt_Connect_Database {
 		delete_option( 'abt_locale' );
 		delete_option( 'abt_db_version' );
 	}
+
+	/**
+	 * Return select table data.
+	 *
+	 * @param string $str SQL.
+	 * @return arrat $result Result.
+	 */
+	public function return_table_data( string $str ): array {
+		global $wpdb;
+		$table_name = $wpdb->prefix . $str;
+		$result     = $wpdb->get_results( "SELECT * FROM ${table_name}" ); // db call ok; no-cache ok.
+
+		return $result;
+	}
 }
