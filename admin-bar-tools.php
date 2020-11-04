@@ -65,10 +65,8 @@ function abt_add_adminbar( object $wp_admin_bar ) {
 		]
 	);
 
-	global $wpdb;
-	$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
-
-	$result = $wpdb->get_results( "SELECT * FROM ${table_name}" ); // db call ok; no-cache ok.
+	$db_call = new Abt_Connect_Database();
+	$result  = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
 
 	foreach ( $result as $key => $value ) {
 		if ( '1' === $value->status ) {

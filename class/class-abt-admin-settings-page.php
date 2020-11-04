@@ -55,9 +55,9 @@ class Abt_Admin_Settings_Page {
 		};
 
 		global $wpdb;
-		$table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
-
-		$result      = $wpdb->get_results( "SELECT * FROM ${table_name}" ); // db call ok; no-cache ok.
+		$table_name  = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
+		$db_call     = new Abt_Connect_Database();
+		$result      = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
 		$result_name = array_column( $result, 'name' );
 
 		$hidden_field_name = 'hiddenStatus';
@@ -83,7 +83,7 @@ class Abt_Admin_Settings_Page {
 						); // db call ok; no-cache ok.
 					};
 				};
-				$result = $wpdb->get_results( "SELECT * FROM ${table_name}" ); // db call ok; no-cache ok.
+				$result = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
 
 				$locale = get_option( 'abt_locale' );
 
