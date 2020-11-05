@@ -51,7 +51,7 @@ class Abt_Admin_Settings_Page {
 	 */
 	public function abt_settings_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'admin-bar-tools' ) );
+			wp_die( esc_html__( 'You have no sufficient permissions to access this page.', 'admin-bar-tools' ) );
 		};
 
 		global $wpdb;
@@ -112,8 +112,8 @@ class Abt_Admin_Settings_Page {
 		<?php if ( isset( $_POST[ $hidden_field_name ] ) && 'Y' === $_POST[ $hidden_field_name ] ) : ?>
 			<?php if ( check_admin_referer( 'abt_settings_nonce', 'abt_settings_nonce' ) ) : ?>
 	<div class="updated">
-		<p><?php esc_html_e( 'Update is successful!!', 'admin-bar-tools' ); ?></p>
-		<p><?php esc_html_e( 'Please reload once for the settings to take effect(Windows is F5 key, Mac is ⌘ key + R key).', 'admin-bar-tools' ); ?></p>
+		<p><?php esc_html_e( 'Your update has been successfully completed!!', 'admin-bar-tools' ); ?></p>
+		<p><?php esc_html_e( 'Please reload to reflect the settings. (F5 key for Windows, ⌘ key + R key for Mac).', 'admin-bar-tools' ); ?></p>
 	</div>
 			<?php else : ?>
 	<div class="error">
@@ -122,7 +122,7 @@ class Abt_Admin_Settings_Page {
 			<?php endif ?>
 		<?php endif ?>
 	<h1><?php esc_html_e( 'Admin Bar Tools Settings', 'admin-bar-tools' ); ?></h1>
-	<h2><?php esc_html_e( 'Please select the menu you want to display.', 'admin-bar-tools' ); ?></h2>
+	<h2><?php esc_html_e( 'Please select the items you want to display.', 'admin-bar-tools' ); ?></h2>
 	<form name="abt_settings_form" method="post">
 		<input type="hidden" name="<?php echo esc_attr( $hidden_field_name ); ?>" value="Y">
 		<?php wp_nonce_field( 'abt_settings_nonce', 'abt_settings_nonce' ); ?>
@@ -134,7 +134,7 @@ class Abt_Admin_Settings_Page {
 			</label>
 		</p>
 		<?php endforeach ?>
-		<p><?php esc_html_e( 'Locale/Language', 'admin-bar-tools' ); ?>:
+		<p><?php esc_html_e( 'Language (Country)', 'admin-bar-tools' ); ?>:
 			<select name="localeSettings">
 				<option value="en_US"><?php esc_html_e( 'English(United States)', 'admin-bar-tools' ); ?></option>
 				<option value="ja" <?php echo 'ja' === get_option( 'abt_locale' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Japanese', 'admin-bar-tools' ); ?></option>
