@@ -21,7 +21,7 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
-= 0.1 =
+= 1.0.0 =
 First release.
 
 == Screenshots ==
