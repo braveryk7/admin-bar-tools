@@ -10,14 +10,14 @@ License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 === Description ===
 
-## What Admin Bar Tools?
+## What is Admin Bar Tools?
 This plugin allows you to add useful links to the admin bar.
-Until now, in order to check PageSpeed ​​Insights, Twitter search, and Google index, I had to open each site and copy and paste the URL to check it.
-But with Admin Bar Tools you can do it with just one click.
-This is very revolutionary.
+In order to check PageSpeed ​​Insights, Twitter search, and Google index, you had to open each site and copy and paste the URL to confirm it until now.
+But Admin Bar Tools allows you to do it in just one click.
+This is very innovative.
 
-Since the top page of each tool can be accessed from the management page, there is no unnecessary operation.
-We are happy to help you with your writing.
+You can access each tool from individual pages, articles, and management screens, which eliminates the troublesome operations.
+We're glad that you can concentrate on writing.
 
 === Changelog ===
 

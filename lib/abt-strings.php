@@ -8,7 +8,29 @@
  * @since 0.0.1
  */
 
-$translation_strings = [
+$header = [
+	__( 'Contributors', 'admin-bar-tools' ),
+	__( 'Tags', 'admin-bar-tools' ),
+	__( 'Requires at least', 'admin-bar-tools' ),
+	__( 'Tested up to', 'admin-bar-tools' ),
+	__( 'Requires PHP', 'admin-bar-tools' ),
+	__( 'Stable tag', 'admin-bar-tools' ),
+	__( 'License', 'admin-bar-tools' ),
+	__( 'License URI', 'admin-bar-tools' ),
+	__( 'Donate link', 'admin-bar-tools' ),
+];
+
+$menu_name = [
+	__( 'Description', 'admin-bar-tools' ),
+	__( 'Installation', 'admin-bar-tools' ),
+	__( 'Frequently asked question', 'admin-bar-tools' ),
+	__( 'Changelog', 'admin-bar-tools' ),
+	__( 'Screenshots', 'admin-bar-tools' ),
+	__( 'Upgrade notice', 'admin-bar-tools' ),
+	__( 'Arbitrary section', 'admin-bar-tools' ),
+];
+
+$description = [
 	__( 'What is Admin Bar Tools?', 'admin-bar-tools' ),
 	__( 'This plugin allows you to add useful links to the admin bar.', 'admin-bar-tools' ),
 	__( 'In order to check PageSpeed ​​Insights, Twitter search, and Google index, you had to open each site and copy and paste the URL to confirm it until now.', 'admin-bar-tools' ),
