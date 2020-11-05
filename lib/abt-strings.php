@@ -39,3 +39,7 @@ $description = [
 	__( 'You can access each tool from individual pages, articles, and management screens, which eliminates the troublesome operations.', 'admin-bar-tools' ),
 	__( 'We\'re glad that you can concentrate on writing.', 'admin-bar-tools' ),
 ];
+
+$plugin_page_description = [
+	__( 'A plugin that allows you to add useful links to the admin bar.', 'admin-bar-tools' ),
+];
