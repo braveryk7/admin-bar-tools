@@ -25,6 +25,8 @@ We're glad that you can concentrate on writing.
 First release.
 
 == Screenshots ==
+1. Admin-bar
+2. Settings
 
 == Arbitrary section ==
 
