@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-11-04 00:09+0900\n"
-"PO-Revision-Date: 2020-11-04 00:14+0900\n"
+"POT-Creation-Date: 2020-11-06 00:42+0900\n"
+"PO-Revision-Date: 2020-11-06 00:51+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -16,93 +16,201 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
-#: admin-bar-tools.php:59 class/class-abt-admin-settings-page.php:28
-#: class/class-abt-admin-settings-page.php:29
+#: admin-bar-tools.php:61 class/class-abt-admin-settings-page.php:30
+#: class/class-abt-admin-settings-page.php:31
 msgid "Admin Bar Tools"
 msgstr "Admin Bar Tools"
 
-#: class/class-abt-admin-settings-page.php:42
+#: class/class-abt-admin-settings-page.php:44
 msgid "Settings"
 msgstr "設定"
 
-#: class/class-abt-admin-settings-page.php:52
-msgid "You do not have sufficient permissions to access this page."
+#: class/class-abt-admin-settings-page.php:54
+msgid "You have no sufficient permissions to access this page."
 msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: class/class-abt-admin-settings-page.php:113
-msgid "Update is successful!!"
+#: class/class-abt-admin-settings-page.php:115
+msgid "Your update has been successfully completed!!"
 msgstr "設定が完了しました！"
 
-#: class/class-abt-admin-settings-page.php:114
+#: class/class-abt-admin-settings-page.php:116
 msgid ""
-"Please reload once for the settings to take effect(Windows is F5 key, Mac is "
-"⌘ key + R key)."
+"Please reload to reflect the settings. (F5 key for Windows, ⌘ key + R key for "
+"Mac)."
 msgstr ""
 "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
 "キー+Rキー）"
 
-#: class/class-abt-admin-settings-page.php:118
+#: class/class-abt-admin-settings-page.php:120
 msgid "An error has occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#: class/class-abt-admin-settings-page.php:122
+#: class/class-abt-admin-settings-page.php:124
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: class/class-abt-admin-settings-page.php:123
-msgid "Please select the menu you want to display."
+#: class/class-abt-admin-settings-page.php:125
+msgid "Please select the items you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: class/class-abt-admin-settings-page.php:135
-msgid "Locale/Language"
-msgstr "国設定"
-
 #: class/class-abt-admin-settings-page.php:137
+msgid "Language (Country)"
+msgstr "言語（国）"
+
+#: class/class-abt-admin-settings-page.php:139
 msgid "English(United States)"
 msgstr "英語（アメリカ合衆国）"
 
-#: class/class-abt-admin-settings-page.php:138
+#: class/class-abt-admin-settings-page.php:140
 msgid "Japanese"
 msgstr "日本語"
 
-#: class/class-abt-admin-settings-page.php:142
+#: class/class-abt-admin-settings-page.php:144
 msgid "Save Changes"
 msgstr "変更を保存"
 
-#: class/class-abt-return-data.php:97
+#: class/class-abt-return-data.php:99
 msgid "PageSpeed Insights"
 msgstr "PageSpeed Insights"
 
-#: class/class-abt-return-data.php:105
+#: class/class-abt-return-data.php:107
 msgid "Lighthouse"
 msgstr "Lighthouse"
 
-#: class/class-abt-return-data.php:113
+#: class/class-abt-return-data.php:115
 msgid "Google Search Console"
 msgstr "Googleサーチコンソール"
 
-#: class/class-abt-return-data.php:121
+#: class/class-abt-return-data.php:123
 msgid "Google Cache"
 msgstr "Googleキャッシュ"
 
-#: class/class-abt-return-data.php:129
+#: class/class-abt-return-data.php:131
 msgid "Google Index"
 msgstr "Googleインデックス"
 
-#: class/class-abt-return-data.php:137
+#: class/class-abt-return-data.php:139
 msgid "Twitter Search"
 msgstr "Twitter検索"
 
-#: class/class-abt-return-data.php:145
+#: class/class-abt-return-data.php:147
 msgid "Facebook Search"
 msgstr "Facebook検索"
 
-#: class/class-abt-return-data.php:153
+#: class/class-abt-return-data.php:155
 msgid "Hatena Bookmark"
 msgstr "はてなブックマーク"
 
-#~ msgid "A plugin that allows you to add useful links to the admin bar."
-#~ msgstr "管理バーに便利なリンクを追加できるプラグインです。"
+#: lib/abt-strings.php:12
+msgid "Contributors"
+msgstr "製作者"
+
+#: lib/abt-strings.php:13
+msgid "Tags"
+msgstr "タグ"
+
+#: lib/abt-strings.php:14
+msgid "Requires at least"
+msgstr "必要なWordPressのバージョン"
+
+#: lib/abt-strings.php:15
+msgid "Tested up to"
+msgstr "テストしたWordPressのバージョン"
+
+#: lib/abt-strings.php:16
+msgid "Requires PHP"
+msgstr "必要なPHPのバージョン"
+
+#: lib/abt-strings.php:17
+msgid "Stable tag"
+msgstr "バージョン"
+
+#: lib/abt-strings.php:18
+msgid "License"
+msgstr "ライセンス"
+
+#: lib/abt-strings.php:19
+msgid "License URI"
+msgstr "ライセンスURI"
+
+#: lib/abt-strings.php:20
+msgid "Donate link"
+msgstr "寄付用リンク"
+
+#: lib/abt-strings.php:24
+msgid "Description"
+msgstr "説明"
+
+#: lib/abt-strings.php:25
+msgid "Installation"
+msgstr "インストール方法"
+
+#: lib/abt-strings.php:26
+msgid "Frequently asked question"
+msgstr "よくある質問"
+
+#: lib/abt-strings.php:27
+msgid "Changelog"
+msgstr "更新履歴"
+
+#: lib/abt-strings.php:28
+msgid "Screenshots"
+msgstr "スクリーンショット"
+
+#: lib/abt-strings.php:29
+msgid "Upgrade notice"
+msgstr "更新概要"
+
+#: lib/abt-strings.php:30
+msgid "Arbitrary section"
+msgstr "その他"
+
+#: lib/abt-strings.php:34
+msgid "What is Admin Bar Tools?"
+msgstr "Admin Bar Toolsとは？"
+
+#: lib/abt-strings.php:35
+msgid "This plugin allows you to add useful links to the admin bar."
+msgstr "このプラグインを使用すると、管理バーに便利なリンクを追加できます。"
+
+#: lib/abt-strings.php:36
+msgid ""
+"In order to check PageSpeed ​​Insights, Twitter search, and Google index, you "
+"had to open each site and copy and paste the URL to confirm it until now."
+msgstr ""
+"今まではPageSpeed Insights、Twitter検索、Googleインデックス等確認するには各サ"
+"イトを開き、URLをコピーして貼り付けて確認する必要がありました。"
+
+#: lib/abt-strings.php:37
+msgid "But Admin Bar Tools allows you to do it in just one click."
+msgstr ""
+"しかしAdmin Bar Toolsを使用すると、ワンクリックでそれを行うことができます。"
+
+#: lib/abt-strings.php:38
+msgid "This is very innovative."
+msgstr "これは非常に革新的です。"
+
+#: lib/abt-strings.php:39
+msgid ""
+"You can access each tool from individual pages, articles, and management "
+"screens, which eliminates the troublesome operations."
+msgstr ""
+"個別ページ、記事、管理画面から各ツールにアクセスできるため、面倒な操作は不要で"
+"す。"
+
+#: lib/abt-strings.php:40
+msgid "We're glad that you can concentrate on writing."
+msgstr "あなたが執筆に専念できることを嬉しく思います。"
+
+#: lib/abt-strings.php:44
+msgid "A plugin that allows you to add useful links to the admin bar."
+msgstr "管理バーに便利なリンクを追加できるプラグインです。"
+
+#~ msgid "Update is successful!!"
+#~ msgstr "設定が完了しました！"
+
+#~ msgid "Locale/Language"
+#~ msgstr "国設定"
 
 #~ msgid "Admin Bar Tools Setting"
 #~ msgstr "Admin Bar Tools設定"
