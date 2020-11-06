@@ -22,7 +22,7 @@ load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) 
 
 require_once dirname( __FILE__ ) . '/class/class-judgment-php-version.php';
 
-$require_php_version  = '7.5.0';
+$require_php_version  = '7.3.0';
 $get_php_version_bool = new Judgment_Php_Version();
 if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	echo '<p>' . esc_html_e( 'Admin Bar Tools requires at least PHP 7.3 or later.' ) . esc_html_e( 'Please upgrade PHP.' ) . '</p>';
