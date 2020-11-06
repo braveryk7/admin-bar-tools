@@ -43,3 +43,9 @@ $description = [
 $plugin_page_description = [
 	__( 'A plugin that allows you to add useful links to the admin bar.', 'admin-bar-tools' ),
 ];
+
+$other_strings = [
+	__( 'https://twitter.com/braveryk7', 'admin-bar-tools' ),
+	__( 'https://www.braveryk7.com', 'admin-bar-tools' ),
+	__( 'Ken-chan', 'admin-bar-tools' ),
+];
