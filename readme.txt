@@ -21,6 +21,9 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.0.3 =
+Add PHP version judgment logic.
+
 = 1.0.2 =
 Fix banner.
 
