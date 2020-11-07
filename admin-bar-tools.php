@@ -33,7 +33,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 		}
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	} else {
-		echo '<p>' . esc_html_e( 'Admin Bar Tools requires at least PHP 7.3 or later.' ) . esc_html_e( 'Please upgrade PHP.' ) . '</p>';
+		echo '<p>' . esc_html_e( 'Admin Bar Tools requires at least PHP 7.3.0 or later.' ) . esc_html_e( 'Please upgrade PHP.' ) . '</p>';
 		exit;
 	}
 } elseif ( true === $get_php_version_bool->judgment( $require_php_version ) ) {
