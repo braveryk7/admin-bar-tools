@@ -22,7 +22,7 @@ We're glad that you can concentrate on writing.
 === Changelog ===
 
 = 1.0.4 =
-Fix transions.
+Fix translation.
 
 = 1.0.3 =
 Add PHP version judgment logic.
