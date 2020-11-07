@@ -15,7 +15,7 @@ declare( strict_types = 1 );
  */
 class Judgment_Php_Version {
 	/**
-	 * Args.
+	 * Argument.
 	 *
 	 * @var int
 	 */
