@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2020-11-07 14:55+0900\n"
-"PO-Revision-Date: 2020-11-07 15:03+0900\n"
+"POT-Creation-Date: 2020-11-07 15:04+0900\n"
+"PO-Revision-Date: 2020-11-07 15:04+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -16,9 +16,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
-#: admin-bar-tools.php:36
-msgid "Admin Bar Tools requires at least PHP 7.3 or later. Please upgrade PHP."
-msgstr ""
+#: admin-bar-tools.php:36 modules/cancel-activate.php:19
+#, fuzzy
+#| msgid "Admin Bar Tools requires at least PHP 7.3 or later."
+msgid "Admin Bar Tools requires at least PHP 7.3.0 or later."
+msgstr "Admin Bar Toolsには、少なくともPHP7.3以降が必要です。"
+
+#: admin-bar-tools.php:36 modules/cancel-activate.php:20
+msgid "Please upgrade PHP."
+msgstr "PHPをアップグレードしてください。"
 
 #: admin-bar-tools.php:78 class/class-abt-admin-settings-page.php:30
 #: class/class-abt-admin-settings-page.php:31
@@ -230,17 +236,12 @@ msgstr ""
 "[プラグインエラー] PHPのバージョンが古いため、Admin Bar Toolsは停止されまし"
 "た。"
 
-#: modules/cancel-activate.php:19
-msgid "Admin Bar Tools requires at least PHP 7.3 or later."
-msgstr "Admin Bar Toolsには、少なくともPHP7.3以降が必要です。"
-
-#: modules/cancel-activate.php:20
-msgid "Please upgrade PHP."
-msgstr "PHPをアップグレードしてください。"
-
 #: modules/cancel-activate.php:23
 msgid "Current PHP version:"
 msgstr "現在のPHPバージョン："
+
+#~ msgid "Admin Bar Tools requires at least PHP 7.3 or later."
+#~ msgstr "Admin Bar Toolsには、少なくともPHP7.3以降が必要です。"
 
 #~ msgid "Update is successful!!"
 #~ msgstr "設定が完了しました！"
