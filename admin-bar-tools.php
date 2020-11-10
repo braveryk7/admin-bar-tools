@@ -56,8 +56,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	 * Uninstall Hook.
 	 */
 	function abt_uninstall() {
-		$db_class = new Abt_Connect_Database();
-		register_uninstall_hook( __FILE__, [ $db_class, 'abt_delete_db' ] );
+		register_uninstall_hook( __FILE__, 'Abt_Connect_Database::abt_delete_db' );
 	}
 	abt_uninstall();
 
