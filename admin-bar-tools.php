@@ -40,6 +40,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
+	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
 	/**
 	 * Activation Hook.
@@ -62,52 +63,5 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
 
-
-	/**
-	 * Insert Admin bar
-	 *
-	 * @param object $wp_admin_bar Admin bar.
-	 */
-	function abt_add_adminbar( object $wp_admin_bar ) {
-		$url            = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
-		$join_url_lists = [ '1001', '1002', '2002', '2003', '3001', '3002' ];
-
-		$wp_admin_bar->add_node(
-			[
-				'id'    => 'abt',
-				'title' => __( 'Admin Bar Tools', 'admin-bar-tools' ),
-				'meta'  => [
-					'target' => 'abt',
-				],
-			]
-		);
-
-		$db_call = new Abt_Connect_Database();
-		$result  = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
-
-		foreach ( $result as $key => $value ) {
-			if ( '1' === $value->status ) {
-				if ( ! is_admin() && '3003' === $value->id && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
-					$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-				} elseif ( ! is_admin() ) {
-					$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
-				} elseif ( is_admin() ) {
-					$link_url = $value->adminurl;
-				};
-				$wp_admin_bar->add_node(
-					[
-						'id'     => $value->shortname,
-						'title'  => $value->name,
-						'parent' => 'abt',
-						'href'   => $link_url,
-						'meta'   => [
-							'target' => '_blank',
-						],
-					]
-				);
-			};
-		};
-	}
-
-	add_action( 'admin_bar_menu', 'abt_add_adminbar', 999 );
+	add_action( 'admin_bar_menu', 'Abt_Add_Admin_Bar::add_admin_bar', 999 );
 }
