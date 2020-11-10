@@ -14,8 +14,12 @@ declare( strict_types = 1 );
  * Returns data for view and database.
  */
 class Abt_Return_Data {
-	const TABLE_NAME = 'abt';
-	const DB_VERSION = '1.0';
+	const TABLE_NAME  = 'abt';
+	const DB_VERSION  = '1.0';
+	const PSI_LOCALES = [
+		'en_US' => 'us',
+		'ja'    => 'ja',
+	];
 
 	/**
 	 * Options table locale.
@@ -175,12 +179,19 @@ class Abt_Return_Data {
 	 */
 	public static function change_locale( string $new_locale ): array {
 		new self();
-		if ( 'ja' === $new_locale ) {
-			self::$insert_data['1']['url']      = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
-			self::$insert_data['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
-		} elseif ( 'en_US' === $new_locale ) {
-			self::$insert_data['1']['url']      = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
-			self::$insert_data['1']['adminurl'] = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
+
+		if ( true === array_key_exists( $new_locale, self::PSI_LOCALES ) ) {
+			$insert_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ $new_locale ];
+			$insert_url       = $insert_admin_url . '&url=';
+
+			self::$insert_data['1']['url']      = $insert_url;
+			self::$insert_data['1']['adminurl'] = $insert_admin_url;
+		} else {
+			$insert_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=us';
+			$insert_url       = $insert_admin_url . '&url=';
+
+			self::$insert_data['1']['url']      = $insert_url;
+			self::$insert_data['1']['adminurl'] = $insert_admin_url;
 		}
 		return self::$insert_data;
 	}
