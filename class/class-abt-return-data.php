@@ -69,12 +69,13 @@ class Abt_Return_Data {
 	private function __construct() {
 		self::$locale     = get_locale();
 		self::$abt_locale = get_option( 'abt_locale' );
-		if ( 'ja' === self::$locale ) {
-			$this->psi_url       = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA&url=';
-			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=JA';
+
+		if ( true === array_key_exists( self::$locale, self::PSI_LOCALES ) ) {
+			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ self::$locale ];
+			$this->psi_url       = $this->psi_admin_url . '&url=';
 		} else {
-			$this->psi_url       = 'https://developers.google.com/speed/pagespeed/insights/?hl=US&url=';
-			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=US';
+			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=us';
+			$this->psi_url       = $this->psi_admin_url . '&url=';
 		}
 
 		self::$location_url += [
