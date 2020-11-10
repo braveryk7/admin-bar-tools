@@ -116,7 +116,7 @@ class Abt_Connect_Database {
 	 * Return select table data.
 	 *
 	 * @param string $str SQL.
-	 * @return arrat $result Result.
+	 * @return array $result Result.
 	 */
 	public function return_table_data( string $str ): array {
 		global $wpdb;
