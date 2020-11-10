@@ -15,7 +15,6 @@ declare( strict_types = 1 );
  */
 class Abt_Connect_Database {
 
-
 	/**
 	 * Table name.
 	 *
