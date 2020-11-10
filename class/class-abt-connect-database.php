@@ -102,10 +102,11 @@ class Abt_Connect_Database {
 	/**
 	 * Delete table.
 	 */
-	public function abt_delete_db() {
+	public static function abt_delete_db() {
 		global $wpdb;
+		$delete_table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
 
-		$sql = 'DROP TABLE IF EXISTS ' . $this->table_name;
+		$sql = 'DROP TABLE IF EXISTS ' . $delete_table_name;
 		$wpdb->query( "${sql}" ); // db call ok; no-cache ok.
 
 		delete_option( 'abt_locale' );
