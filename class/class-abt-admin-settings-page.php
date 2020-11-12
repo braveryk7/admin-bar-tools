@@ -91,8 +91,8 @@ class Abt_Admin_Settings_Page {
 
 				$locale = get_option( 'abt_locale' );
 
-				if ( isset( $_POST['localeSettings'] ) && $_POST['localeSettings'] !== $locale ) {
-					$post_locale       = sanitize_text_field( wp_unslash( $_POST['localeSettings'] ) );
+				if ( isset( $_POST['select-locale'] ) && $_POST['select-locale'] !== $locale ) {
+					$post_locale       = sanitize_text_field( wp_unslash( $_POST['select-locale'] ) );
 					$new_location_urls = Abt_Return_Data::change_locale( $post_locale );
 					foreach ( $new_location_urls as $key => $value ) {
 						$wpdb->update(
@@ -139,9 +139,10 @@ class Abt_Admin_Settings_Page {
 		</p>
 		<?php endforeach ?>
 		<p><?php esc_html_e( 'Language (Country)', 'admin-bar-tools' ); ?>:
-			<select name="localeSettings">
-				<option value="en_US"><?php esc_html_e( 'English(United States)', 'admin-bar-tools' ); ?></option>
-				<option value="ja" <?php echo 'ja' === get_option( 'abt_locale' ) ? 'selected' : ''; ?>><?php esc_html_e( 'Japanese', 'admin-bar-tools' ); ?></option>
+			<select name="select-locale">
+			<?php foreach ( Abt_Return_Data::PSI_LOCALES as $key => $value ) : ?>
+				<option value="<?php echo esc_attr( $key ); ?>" <?php echo get_option( 'abt_locale' ) === $key ? 'selected' : ''; ?>><?php echo esc_html( $value['name'] ); ?></option>
+			<?php endforeach ?>
 			</select>
 		</p>
 		<p class="submit">
