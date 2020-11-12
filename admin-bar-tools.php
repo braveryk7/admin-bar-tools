@@ -31,8 +31,8 @@ $get_php_version_bool = new Judgment_Php_Version();
 if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
-		require_once dirname( __FILE__ ) . '/modules/cancel-activate.php';
 		if ( is_admin() ) {
+			require_once dirname( __FILE__ ) . '/modules/cancel-activate.php';
 			cancel_activate();
 		}
 		deactivate_plugins( plugin_basename( __FILE__ ) );
