@@ -8,6 +8,10 @@
  * @since 0.0.1
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'You do not have access rights.' );
+}
+
 $header = [
 	__( 'Contributors', 'admin-bar-tools' ),
 	__( 'Tags', 'admin-bar-tools' ),

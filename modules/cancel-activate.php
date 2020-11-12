@@ -8,6 +8,10 @@
  * @since 1.0.3
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'You do not have access rights.' );
+}
+
 /**
  * Return error message.
  */

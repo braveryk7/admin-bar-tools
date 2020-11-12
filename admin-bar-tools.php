@@ -18,6 +18,10 @@
 
 declare( strict_types = 1 );
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'You do not have access rights.' );
+}
+
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 require_once dirname( __FILE__ ) . '/class/class-judgment-php-version.php';
