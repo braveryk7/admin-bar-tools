@@ -21,13 +21,165 @@ class Abt_Return_Data {
 	const TABLE_NAME  = 'abt';
 	const DB_VERSION  = '1.0';
 	const PSI_LOCALES = [
+		'ar'    => [
+			'id'   => 'ar',
+			'name' => 'العربية',
+		],
+		'bg_BG' => [
+			'id'   => 'bg',
+			'name' => 'Български',
+		],
+		'ca'    => [
+			'id'   => 'ca',
+			'name' => 'Català',
+		],
+		'cs'    => [
+			'id'   => 'cs',
+			'name' => 'Čeština',
+		],
+		'da_DK' => [
+			'id'   => 'da',
+			'name' => 'Dansk',
+		],
+		'da_DE' => [
+			'id'   => 'de',
+			'name' => 'Deutsch',
+		],
+		'el'    => [
+			'id'   => 'el',
+			'name' => 'Ελληνικά',
+		],
 		'en_US' => [
 			'id'   => 'us',
 			'name' => 'English (United States)',
 		],
+		'en_GB' => [
+			'id'   => 'en-GB',
+			'name' => 'English (UK)',
+		],
+		'es'    => [
+			'id'   => 'es_ES',
+			'name' => 'Español',
+		],
+		'fi'    => [
+			'id'   => 'fi',
+			'name' => 'Suomi',
+		],
+		'tl'    => [
+			'id'   => 'fil',
+			'name' => 'Tagalog',
+		],
+		'fr_FR' => [
+			'id'   => 'fr',
+			'name' => 'Français',
+		],
+		'hi_IN' => [
+			'id'   => 'hi',
+			'name' => 'हिन्दी',
+		],
+		'hr'    => [
+			'id'   => 'hr',
+			'name' => 'Hrvatski',
+		],
+		'hu_HU' => [
+			'id'   => 'hu',
+			'name' => 'Magyar',
+		],
+		'id_ID' => [
+			'id'   => 'id',
+			'name' => 'Bahasa Indonesia',
+		],
+		'it_IT' => [
+			'id'   => 'it',
+			'name' => 'Italiano',
+		],
+		'he_IL' => [
+			'id'   => 'iw',
+			'name' => 'עִבְרִית',
+		],
 		'ja'    => [
 			'id'   => 'ja',
 			'name' => '日本語',
+		],
+		'ko_KR' => [
+			'id'   => 'ko',
+			'name' => '한국어',
+		],
+		'lt_LT' => [
+			'id'   => 'lt',
+			'name' => 'Lietuvių kalba',
+		],
+		'lv'    => [
+			'id'   => 'lv',
+			'name' => 'Latviešu valoda',
+		],
+		'nl_NL' => [
+			'id'   => 'nl',
+			'name' => 'Nederlands',
+		],
+		'nb_NO' => [
+			'id'   => 'no',
+			'name' => 'Norsk bokmål',
+		],
+		'pl_PL' => [
+			'id'   => 'pl',
+			'name' => 'Polski',
+		],
+		'pt_BR' => [
+			'id'   => 'pt-BR',
+			'name' => 'Português do Brasil',
+		],
+		'pt_PT' => [
+			'id'   => 'pt-PT',
+			'name' => 'Português',
+		],
+		'ro_RO' => [
+			'id'   => 'ro',
+			'name' => 'Română',
+		],
+		'ru_RU' => [
+			'id'   => 'ru',
+			'name' => 'Русский',
+		],
+		'sk_SK' => [
+			'id'   => 'sk',
+			'name' => 'Slovenčina',
+		],
+		'sl_SI' => [
+			'id'   => 'sl',
+			'name' => 'Slovenščina',
+		],
+		'sr_RS' => [
+			'id'   => 'sr',
+			'name' => 'Српски језик',
+		],
+		'sv_SE' => [
+			'id'   => 'sv',
+			'name' => 'Svenska',
+		],
+		'th'    => [
+			'id'   => 'th',
+			'name' => 'ไทย',
+		],
+		'tr_TR' => [
+			'id'   => 'tr',
+			'name' => 'Türkçe',
+		],
+		'uk'    => [
+			'id'   => 'uk',
+			'name' => 'Українська',
+		],
+		'vi'    => [
+			'id'   => 'vi',
+			'name' => 'Tiếng Việt',
+		],
+		'zh_CN' => [
+			'id'   => 'zh-CN',
+			'name' => '简体中文',
+		],
+		'zh_TW' => [
+			'id'   => 'zh-TW',
+			'name' => '繁體中文',
 		],
 	];
 
