@@ -2,9 +2,9 @@
 Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
-Tested up to: 5.5.3
+Tested up to: 5.7.1
 Requires PHP: 7.3.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -20,6 +20,9 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.1.1 =
+Add PHP8 & WordPress 5.7.1.
 
 = 1.1.0 =
 Minor update.
