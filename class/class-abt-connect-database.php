@@ -39,8 +39,9 @@ class Abt_Connect_Database {
 	 */
 	public function abt_search_table() {
 		global $wpdb;
-		$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
-		if ( $get_table !== $this->table_name ) {
+		$current_db_version = get_option( 'abt_db_version' );
+		$get_table          = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
+		if ( $get_table !== $this->table_name || Abt_Return_Data::DB_VERSION !== $current_db_version ) {
 			$this->abt_create_db();
 		}
 	}
