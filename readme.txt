@@ -21,6 +21,9 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.2.0 =
+Add Bing Index.
+
 = 1.1.1 =
 Add PHP8 & WordPress 5.7.1.
 
