@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Return_Data {
 	const TABLE_NAME  = 'abt';
-	const DB_VERSION  = '1.0';
+	const DB_VERSION  = '1.1';
 	const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
@@ -251,6 +251,8 @@ class Abt_Return_Data {
 			'gcAdmin'       => 'https://webcache.googleusercontent.com/search?q=cache%3A',
 			'gi'            => 'https://www.google.com/search?q=site%3A',
 			'giAdmin'       => 'https://www.google.com/search?q=site%3A',
+			'bi'            => 'https://www.bing.com/search?q=site%3a',
+			'biAdmin'       => 'https://www.bing.com/search?q=site%3a',
 			'twitter'       => 'https://twitter.com/search?f=live&q=',
 			'twitterAdmin'  => 'https://twitter.com/',
 			'facebook'      => 'https://www.facebook.com/search/top?q=',
@@ -323,6 +325,14 @@ class Abt_Return_Data {
 				'status'    => 1,
 				'url'       => self::$location_url['hatena'],
 				'adminurl'  => self::$location_url['hatenaAdmin'],
+			],
+			5 => [
+				'id'        => 2011,
+				'shortname' => 'bi',
+				'name'      => __( 'Bing Index', 'admin-bar-tools' ),
+				'status'    => 1,
+				'url'       => self::$location_url['bi'],
+				'adminurl'  => self::$location_url['biAdmin'],
 			],
 		];
 	}
