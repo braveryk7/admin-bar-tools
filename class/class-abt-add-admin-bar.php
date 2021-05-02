@@ -25,7 +25,7 @@ class Abt_Add_Admin_Bar {
 	 */
 	public static function add_admin_bar( object $wp_admin_bar ) {
 		$url            = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
-		$join_url_lists = [ '1001', '1002', '2002', '2003', '3001', '3002' ];
+		$join_url_lists = [ '1001', '1002', '2002', '2003', '2011', '3001', '3002' ];
 
 		if ( true === is_user_logged_in() ) {
 			$wp_admin_bar->add_node(
