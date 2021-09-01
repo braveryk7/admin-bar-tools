@@ -108,9 +108,17 @@ class Abt_Admin_Settings_Page {
 					};
 					update_option( 'abt_locale', $post_locale );
 				}
+
+				if ( isset( $_POST['searchconsole_radio'] ) && $_POST['searchconsole_radio'] !== $locale ) {
+					$post_sc_radio = sanitize_text_field( wp_unslash( $_POST['searchconsole_radio'] ) );
+					update_option( 'abt_sc', $post_sc_radio );
+				}
 			};
 
 		};
+
+		$sc_radio_value = get_option( 'abt_sc' );
+
 		?>
 <div class="wrap">
 		<?php if ( isset( $_POST[ $hidden_field_name ] ) && 'Y' === $_POST[ $hidden_field_name ] ) : ?>
@@ -126,10 +134,10 @@ class Abt_Admin_Settings_Page {
 			<?php endif ?>
 		<?php endif ?>
 	<h1><?php esc_html_e( 'Admin Bar Tools Settings', 'admin-bar-tools' ); ?></h1>
-	<h2><?php esc_html_e( 'Please select the items you want to display.', 'admin-bar-tools' ); ?></h2>
 	<form name="abt_settings_form" method="post">
 		<input type="hidden" name="<?php echo esc_attr( $hidden_field_name ); ?>" value="Y">
 		<?php wp_nonce_field( 'abt_settings_nonce', 'abt_settings_nonce' ); ?>
+		<h2><?php esc_html_e( 'Please select the items you want to display.', 'admin-bar-tools' ); ?></h2>
 		<?php foreach ( $result as $key => $value ) : ?>
 		<p>
 			<label>
@@ -138,6 +146,19 @@ class Abt_Admin_Settings_Page {
 			</label>
 		</p>
 		<?php endforeach ?>
+		<h2><?php esc_html_e( 'Choose how you want to register with Google SearchConsole.', 'admin-bar-tools' ); ?></h2>
+		<p>			
+			<input type="radio" id="dont_use" name="searchconsole_radio" value="0" <?php echo '0' === $sc_radio_value ? 'checked' : ''; ?> />
+			<label for="dont_use"><?php esc_html_e( 'I don\'t use it.', 'admin-bar-tools' ); ?></label>
+		</p>
+		<p>
+			<input type="radio" id="sc_domain" name="searchconsole_radio" value="1" <?php echo '1' === $sc_radio_value ? 'checked' : ''; ?> />
+			<label for="sc_domain"><?php esc_html_e( 'Domain', 'admin-bar-tools' ); ?></label>
+		</p>
+		<p>
+			<input type="radio" id="sc_url" name="searchconsole_radio" value="2" <?php echo '2' === $sc_radio_value ? 'checked' : ''; ?> />
+			<label for="sc_url"><?php esc_html_e( 'URL Prefix', 'admin-bar-tools' ); ?></label>
+		</p>
 		<p><?php esc_html_e( 'Language (Country)', 'admin-bar-tools' ); ?>:
 			<select name="select-locale">
 			<?php foreach ( Abt_Return_Data::PSI_LOCALES as $key => $value ) : ?>
