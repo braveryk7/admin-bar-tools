@@ -47,6 +47,19 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
 	/**
+	 * Check database version.
+	 */
+	function abt_database_check() {
+		if ( current_user_can( 'manage_options' ) ) {
+			$db_class = new Abt_Connect_Database();
+			if ( ! $db_class->abt_db_check() ) {
+				$db_class->abt_default_insert_db();
+			}
+		}
+	}
+	add_action( 'admin_init', 'abt_database_check' );
+
+	/**
 	 * Activation Hook.
 	 */
 	function abt_activate() {

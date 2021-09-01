@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Return_Data {
 	const TABLE_NAME  = 'abt';
-	const DB_VERSION  = '1.1';
+	const DB_VERSION  = '1.2';
 	const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
