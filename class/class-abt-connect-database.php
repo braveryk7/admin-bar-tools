@@ -100,6 +100,9 @@ class Abt_Connect_Database {
 
 		update_option( 'abt_locale', $locale );
 		update_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
+		if ( ! get_option( 'abt_sc' ) ) {
+			add_option( 'abt_sc', 0 );
+		}
 	}
 
 	/**
