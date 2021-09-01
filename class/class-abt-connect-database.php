@@ -104,6 +104,18 @@ class Abt_Connect_Database {
 	}
 
 	/**
+	 * Check database version.
+	 */
+	public function abt_db_check(): bool {
+		$current_db_version = get_option( 'abt_db_version' );
+		if ( Abt_Return_Data::DB_VERSION === $current_db_version ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
 	 * Delete table.
 	 */
 	public static function abt_delete_db() {
