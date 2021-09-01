@@ -65,8 +65,6 @@ class Abt_Connect_Database {
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $sql );
-
-		update_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
 	}
 
 	/**
@@ -101,6 +99,7 @@ class Abt_Connect_Database {
 		};
 
 		update_option( 'abt_locale', $locale );
+		update_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
 	}
 
 	/**
