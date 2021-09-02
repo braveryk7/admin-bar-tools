@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2021-05-02 18:16+0900\n"
-"PO-Revision-Date: 2021-05-02 18:16+0900\n"
+"POT-Creation-Date: 2021-09-02 17:45+0900\n"
+"PO-Revision-Date: 2021-09-02 17:47+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
@@ -40,11 +40,11 @@ msgstr "設定"
 msgid "You have no sufficient permissions to access this page."
 msgstr "このページにアクセスするための十分な権限がありません。"
 
-#: class/class-abt-admin-settings-page.php:119
+#: class/class-abt-admin-settings-page.php:127
 msgid "Your update has been successfully completed!!"
 msgstr "設定が完了しました！"
 
-#: class/class-abt-admin-settings-page.php:120
+#: class/class-abt-admin-settings-page.php:128
 msgid ""
 "Please reload to reflect the settings. (F5 key for Windows, ⌘ key + R key for "
 "Mac)."
@@ -52,23 +52,39 @@ msgstr ""
 "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘"
 "キー+Rキー）"
 
-#: class/class-abt-admin-settings-page.php:124
+#: class/class-abt-admin-settings-page.php:132
 msgid "An error has occurred. Please try again."
 msgstr "エラーが発生しました。もう一度やり直してください。"
 
-#: class/class-abt-admin-settings-page.php:128
+#: class/class-abt-admin-settings-page.php:136
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: class/class-abt-admin-settings-page.php:129
+#: class/class-abt-admin-settings-page.php:140
 msgid "Please select the items you want to display."
 msgstr "表示したい項目を選択してください。"
 
-#: class/class-abt-admin-settings-page.php:141
+#: class/class-abt-admin-settings-page.php:149
+msgid "Choose how you want to register with Google SearchConsole."
+msgstr "Google SearchConsoleの登録方法を選択してください。"
+
+#: class/class-abt-admin-settings-page.php:152
+msgid "I don't use it."
+msgstr "未使用"
+
+#: class/class-abt-admin-settings-page.php:156
+msgid "Domain"
+msgstr "ドメイン"
+
+#: class/class-abt-admin-settings-page.php:160
+msgid "URL Prefix"
+msgstr "URLプレフィックス"
+
+#: class/class-abt-admin-settings-page.php:162
 msgid "Language (Country)"
 msgstr "言語（国）"
 
-#: class/class-abt-admin-settings-page.php:149
+#: class/class-abt-admin-settings-page.php:170
 msgid "Save Changes"
 msgstr "変更を保存"
 
