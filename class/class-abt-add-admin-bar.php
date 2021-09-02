@@ -40,37 +40,14 @@ class Abt_Add_Admin_Bar {
 
 			$db_call = new Abt_Connect_Database();
 			$result  = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
-			$abt_sc  = get_option( 'abt_sc' );
-
-			$domain      = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
-			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-			$ssl         = is_ssl() ? 'https://' : 'http://';
 
 			foreach ( $result as $key => $value ) {
 				if ( '1' === $value->status ) {
 					if ( ! is_admin() ) {
-						if ( '3003' === $value->id && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
+						if ( 'hatena' === $value->shortname && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
 							$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-						} elseif ( '2001' === $value->id ) {
-							if ( '1' === $abt_sc && isset( $_SERVER['SERVER_NAME'] ) ) {
-								if ( is_front_page() ) {
-									$front_url = '?resource_id=sc-domain:';
-									$link_url  = $value->url . $front_url . $domain;
-								} else {
-									$article_url = '/performance/search-analytics?resource_id=sc-domain:';
-									$link_url    = $value->url . $article_url . $domain . '&page=!' . $url;
-								}
-							} elseif ( '2' === $abt_sc ) {
-								if ( is_front_page() ) {
-									$front_url = '?resource_id=sc-domain:';
-									$link_url  = $value->url . $front_url . $url;
-								} else {
-									$article_url = '/performance/search-analytics?resource_id=sc-domain:';
-									$link_url    = $value->url . $article_url . rawurlencode( $ssl . $domain . '/' ) . '&page=!' . $url;
-								}
-							} else {
-								$link_url = $value->url;
-							}
+						} elseif ( 'gsc' === $value->shortname ) {
+							$link_url = self::searchconsole_url( $value->url, get_option( 'abt_sc' ), $url );
 						} else {
 							$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
 						}
@@ -91,5 +68,39 @@ class Abt_Add_Admin_Bar {
 				};
 			};
 		}
+	}
+
+	/**
+	 * Create Google SearchConsole URL.
+	 *
+	 * @param string $url           SearchConsole URL.
+	 * @param string $status        Use SearchConsole type (Don't use, Domain or URL Prefix).
+	 * @param string $encode_url    Use rawurlencode page url.
+	 *
+	 * @return string SearchConsole URL.
+	 */
+	private static function searchconsole_url( string $url, string $status, string $encode_url ): string {
+		$domain = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+		if ( '1' === $status ) {
+			if ( is_front_page() ) {
+				$parameter = '?resource_id=sc-domain:';
+				$gsc_url   = $url . $parameter . $domain;
+			} else {
+				$parameter = '/performance/search-analytics?resource_id=sc-domain:';
+				$gsc_url   = $url . $parameter . $domain . '&page=!' . $encode_url;
+			}
+		} elseif ( '2' === $status ) {
+			if ( is_front_page() ) {
+				$parameter = '?resource_id=sc-domain:';
+				$gsc_url   = $url . $parameter . $encode_url;
+			} else {
+				$parameter = '/performance/search-analytics?resource_id=sc-domain:';
+				$gsc_url   = $url . $parameter . rawurlencode( $ssl . $domain . '/' ) . '&page=!' . $encode_url;
+			}
+		} else {
+			$gsc_url = $url;
+		}
+
+		return $gsc_url;
 	}
 }
