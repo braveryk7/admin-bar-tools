@@ -40,13 +40,40 @@ class Abt_Add_Admin_Bar {
 
 			$db_call = new Abt_Connect_Database();
 			$result  = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
+			$abt_sc  = get_option( 'abt_sc' );
+
+			$domain      = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+			$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+			$ssl         = is_ssl() ? 'https://' : 'http://';
 
 			foreach ( $result as $key => $value ) {
 				if ( '1' === $value->status ) {
-					if ( ! is_admin() && '3003' === $value->id && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
-						$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-					} elseif ( ! is_admin() ) {
-						$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
+					if ( ! is_admin() ) {
+						if ( '3003' === $value->id && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
+							$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+						} elseif ( '2001' === $value->id ) {
+							if ( '1' === $abt_sc && isset( $_SERVER['SERVER_NAME'] ) ) {
+								if ( is_front_page() ) {
+									$front_url = '?resource_id=sc-domain:';
+									$link_url  = $value->url . $front_url . $domain;
+								} else {
+									$article_url = '/performance/search-analytics?resource_id=sc-domain:';
+									$link_url    = $value->url . $article_url . $domain . '&page=!' . $url;
+								}
+							} elseif ( '2' === $abt_sc ) {
+								if ( is_front_page() ) {
+									$front_url = '?resource_id=sc-domain:';
+									$link_url  = $value->url . $front_url . $url;
+								} else {
+									$article_url = '/performance/search-analytics?resource_id=sc-domain:';
+									$link_url    = $value->url . $article_url . rawurlencode( $ssl . $domain . '/' ) . '&page=!' . $url;
+								}
+							} else {
+								$link_url = $value->url;
+							}
+						} else {
+							$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
+						}
 					} elseif ( is_admin() ) {
 						$link_url = $value->adminurl;
 					};
