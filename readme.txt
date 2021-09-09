@@ -2,9 +2,9 @@
 Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
-Tested up to: 5.8.0
+Tested up to: 5.8.1
 Requires PHP: 7.3.0
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -20,6 +20,20 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.3.0 =
+
+Miner update.
+
+Support WordPress 5.8.1 .
+
+Improvement.
+
+* Google SearchConsole link to access the detail page with one click.
+
+Fix.
+
+* The problem that Bing introduced in 1.2.0 is not registered correctly.
 
 = 1.2.0 =
 Add Bing Index.
