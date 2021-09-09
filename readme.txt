@@ -21,6 +21,20 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.3.0 =
+
+Miner update.
+
+Support WordPress 5.8.1 .
+
+Improvement.
+
+* Google SearchConsole link to access the detail page with one click.
+
+Fix.
+
+* The problem that Bing introduced in 1.2.0 is not registered correctly.
+
 = 1.2.0 =
 Add Bing Index.
 
