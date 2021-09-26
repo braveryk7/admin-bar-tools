@@ -24,6 +24,7 @@ class Abt_Admin_Page {
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
+		add_action( 'rest_api_init', [ $this, 'register' ] );
 	}
 
 	/**
@@ -64,6 +65,44 @@ class Abt_Admin_Page {
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
+		);
+	}
+
+	/**
+	 * Set register.
+	 */
+	public function register() {
+		$array_item = [
+			'type'       => 'object',
+			'properties' => [
+				'name'      => [ 'type' => 'string' ],
+				'shortname' => [ 'type' => 'string' ],
+				'status'    => [ 'type' => 'boolean' ],
+				'url'       => [ 'type' => 'string' ],
+				'adminurl'  => [ 'type' => 'string' ],
+			],
+		];
+		register_setting(
+			'admin-bar-tools-settings',
+			'abt_status',
+			[
+				'show_in_rest' => [
+					'schema' => [
+						'type'       => 'object',
+						'properties' => [
+							'psi'      => $array_item,
+							'lh'       => $array_item,
+							'gsc'      => $array_item,
+							'gc'       => $array_item,
+							'gi'       => $array_item,
+							'twitter'  => $array_item,
+							'facebook' => $array_item,
+							'hatena'   => $array_item,
+							'bi'       => $array_item,
+						],
+					],
+				],
+			]
 		);
 	}
 
