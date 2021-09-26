@@ -57,6 +57,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 			$db_class = new Abt_Connect_Database();
 			if ( ! $db_class->abt_db_check() ) {
 				$db_class->abt_default_insert_db();
+				$db_class->add_abt_option();
 			}
 		}
 	}
