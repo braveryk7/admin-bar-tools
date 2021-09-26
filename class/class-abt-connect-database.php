@@ -68,6 +68,14 @@ class Abt_Connect_Database {
 	}
 
 	/**
+	 * Insert wp_option table.
+	 */
+	public function add_option() {
+		$abt_status = Abt_Return_Data::options();
+		update_option( 'abt_status', $abt_status );
+	}
+
+	/**
 	 * Insert default records.
 	 */
 	public function abt_default_insert_db() {
