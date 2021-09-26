@@ -43,8 +43,11 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 } elseif ( true === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
+	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
+
+	$admin_page = new Abt_Admin_Page();
 
 	/**
 	 * Check database version.
