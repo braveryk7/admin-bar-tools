@@ -49,8 +49,13 @@ export const Checkbox = () => {
 	} );
 
 	return (
-		<div className="wrap">
-			<h1>{ __( 'Admin Bar Tools Settings', 'admin-bar-tools' ) }</h1>
+		<>
+			<h2>
+				{ __(
+					'Please select the items you want to display.',
+					'admin-bar-tools'
+				) }
+			</h2>
 			{ Object.values( itemData ).map( ( item: ItemType ) => (
 				<CheckboxControl
 					key={ item.shortname }
@@ -59,6 +64,6 @@ export const Checkbox = () => {
 					onChange={ () => changeStatus( item.shortname ) }
 				/>
 			) ) }
-		</div>
+		</>
 	);
 };
