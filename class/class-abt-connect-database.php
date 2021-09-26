@@ -70,7 +70,7 @@ class Abt_Connect_Database {
 	/**
 	 * Insert wp_option table.
 	 */
-	public function add_option() {
+	public function add_abt_option() {
 		$abt_status = Abt_Return_Data::options();
 		update_option( 'abt_status', $abt_status );
 	}
