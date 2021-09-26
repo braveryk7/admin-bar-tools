@@ -226,6 +226,13 @@ class Abt_Return_Data {
 	public static $insert_data = [];
 
 	/**
+	 * Array for wp_option insertion.
+	 *
+	 * @var array
+	 */
+	public static $abt_status = [];
+
+	/**
 	 * Perform data initialization for view and database insertion.
 	 */
 	private function __construct() {
@@ -259,6 +266,72 @@ class Abt_Return_Data {
 			'facebookAdmin' => 'https://www.facebook.com/',
 			'hatena'        => 'https://b.hatena.ne.jp/entry/s/',
 			'hatenaAdmin'   => 'https://b.hatena.ne.jp/',
+		];
+
+		self::$abt_status += [
+			'psi'      => [
+				'name'      => __( 'PageSpeed Insights', 'admin-bar-tools' ),
+				'shortname' => 'psi',
+				'status'    => true,
+				'url'       => self::$location_url['psi'],
+				'adminurl'  => self::$location_url['psiAdmin'],
+			],
+			'lh'       => [
+				'name'      => __( 'Lighthouse', 'admin-bar-tools' ),
+				'shortname' => 'lh',
+				'status'    => true,
+				'url'       => self::$location_url['lh'],
+				'adminurl'  => self::$location_url['lhAdmin'],
+			],
+			'gsc'      => [
+				'name'      => __( 'Google Search Console', 'admin-bar-tools' ),
+				'shortname' => 'gsc',
+				'status'    => true,
+				'url'       => self::$location_url['gsc'],
+				'adminurl'  => self::$location_url['gscAdmin'],
+			],
+			'gc'       => [
+				'name'      => __( 'Google Cache', 'admin-bar-tools' ),
+				'shortname' => 'gc',
+				'status'    => true,
+				'url'       => self::$location_url['gc'],
+				'adminurl'  => self::$location_url['gcAdmin'],
+			],
+			'gi'       => [
+				'name'      => __( 'Google Index', 'admin-bar-tools' ),
+				'shortname' => 'gi',
+				'status'    => true,
+				'url'       => self::$location_url['twitter'],
+				'adminurl'  => self::$location_url['twitterAdmin'],
+			],
+			'twitter'  => [
+				'name'      => __( 'Twitter Search', 'admin-bar-tools' ),
+				'shortname' => 'twitter',
+				'status'    => true,
+				'url'       => self::$location_url['twitter'],
+				'adminurl'  => self::$location_url['twitterAdmin'],
+			],
+			'facebook' => [
+				'name'      => __( 'Facebook Search', 'admin-bar-tools' ),
+				'shortname' => 'facebook',
+				'status'    => true,
+				'url'       => self::$location_url['facebook'],
+				'adminurl'  => self::$location_url['facebookAdmin'],
+			],
+			'hatena'   => [
+				'name'      => __( 'Hatena Bookmark', 'admin-bar-tools' ),
+				'shortname' => 'hatena',
+				'status'    => true,
+				'url'       => self::$location_url['hatena'],
+				'adminurl'  => self::$location_url['hatenaAdmin'],
+			],
+			'bi'       => [
+				'name'      => __( 'Bing Index', 'admin-bar-tools' ),
+				'shortname' => 'bi',
+				'status'    => true,
+				'url'       => self::$location_url['bi'],
+				'adminurl'  => self::$location_url['biAdmin'],
+			],
 		];
 
 		self::$insert_data += [
@@ -335,6 +408,14 @@ class Abt_Return_Data {
 				'adminurl'  => self::$location_url['biAdmin'],
 			],
 		];
+	}
+
+	/**
+	 * Return options.
+	 */
+	public static function options() {
+		new self();
+		return self::$abt_status;
 	}
 
 	/**
