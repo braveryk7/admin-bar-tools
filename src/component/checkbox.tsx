@@ -50,12 +50,6 @@ export const Checkbox = () => {
 
 	return (
 		<>
-			<h2>
-				{ __(
-					'Please select the items you want to display.',
-					'admin-bar-tools'
-				) }
-			</h2>
 			{ Object.values( itemData ).map( ( item: ItemType ) => (
 				<CheckboxControl
 					key={ item.shortname }
