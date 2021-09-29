@@ -10,9 +10,9 @@ import { useSetApi } from '../hooks/useSetApi';
 import { apiType } from '../types/apiType';
 import { ItemType, shortNameType } from '../types/checkboxType';
 
-export const Checkbox = memo( ( props: { id: string } ) => {
+export const Checkbox = memo( ( props: { itemKey: string } ) => {
 	const { apiData, setApiData } = useContext( apiContext );
-	const { id } = props;
+	const { itemKey } = props;
 
 	const changeStatus = ( shortname: shortNameType ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
@@ -23,7 +23,7 @@ export const Checkbox = memo( ( props: { id: string } ) => {
 		setApiData( newItem );
 	};
 
-	useSetApi( apiData.abt_status!, id );
+	useSetApi( itemKey, apiData.abt_status! );
 
 	return (
 		<>
