@@ -104,6 +104,16 @@ class Abt_Admin_Page {
 				],
 			]
 		);
+
+		register_setting(
+			'admin-bar-tools-settings',
+			'abt_sc',
+			[
+				'type'         => 'number',
+				'show_in_rest' => true,
+				'default'      => get_option( 'abt_sc' ),
+			],
+		);
 	}
 
 	/**
