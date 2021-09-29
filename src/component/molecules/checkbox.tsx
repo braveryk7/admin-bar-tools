@@ -5,10 +5,10 @@ import api from '@wordpress/api'; // eslint-disable-line
 import { CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import { apiContext } from '..';
-import { useSetApi } from '../hooks/useSetApi';
-import { apiType } from '../types/apiType';
-import { ItemType, shortNameType } from '../types/checkboxType';
+import { apiContext } from '../..';
+import { useSetApi } from '../../hooks/useSetApi';
+import { apiType } from '../../types/apiType';
+import { ItemType, shortNameType } from '../../types/checkboxType';
 
 export const Checkbox = memo( ( props: { itemKey: string } ) => {
 	const { apiData, setApiData } = useContext( apiContext );
