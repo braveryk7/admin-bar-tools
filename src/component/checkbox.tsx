@@ -1,56 +1,33 @@
-import { useEffect, useState } from 'react';
+import { memo, useContext } from 'react';
 
 // @ts-ignore
 import api from '@wordpress/api'; // eslint-disable-line
 import { CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import {
-	ItemsWrapperType,
-	ItemType,
-	shortNameType,
-	WPApiType,
-} from '../types/checkboxType';
+import { apiContext } from '..';
+import { useSetApi } from '../hooks/useSetApi';
+import { apiType } from '../types/apiType';
+import { ItemType, shortNameType } from '../types/checkboxType';
 
-export const Checkbox = () => {
-	const [ itemData, setItemData ] = useState< ItemsWrapperType< ItemType > >(
-		{}
-	);
+export const Checkbox = memo( ( props: { id: string } ) => {
+	const { apiData, setApiData } = useContext( apiContext );
+	const { id } = props;
 
 	const changeStatus = ( shortname: shortNameType ) => {
-		const newItem = { ...itemData };
+		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
-		if ( newItem[ shortname ]!.status ) {
-			newItem[ shortname ]!.status = false;
-		} else {
-			newItem[ shortname ]!.status = true;
-		}
-		setItemData( newItem );
+		newItem.abt_status![ shortname ]!.status = ! newItem.abt_status![
+			shortname
+		]!.status;
+		setApiData( newItem );
 	};
 
-	useEffect( () => {
-		api.loadPromise.then( () => {
-			const model = new api.models.Settings();
-
-			model.fetch().then( ( res: WPApiType< ItemType > ) => {
-				setItemData( res.abt_status! );
-			} );
-		} );
-	}, [ setItemData ] );
-
-	api.loadPromise.then( () => {
-		const model = new api.models.Settings( {
-			abt_status: itemData,
-		} );
-		const save = model.save();
-
-		save.success( () => {} );
-		save.error( () => {} );
-	} );
+	useSetApi( apiData.abt_status!, id );
 
 	return (
 		<>
-			{ Object.values( itemData ).map( ( item: ItemType ) => (
+			{ Object.values( apiData.abt_status! ).map( ( item: ItemType ) => (
 				<CheckboxControl
 					key={ item.shortname }
 					label={ item.name }
@@ -60,4 +37,4 @@ export const Checkbox = () => {
 			) ) }
 		</>
 	);
-};
+} );
