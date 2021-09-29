@@ -20,9 +20,3 @@ export type ItemType = {
 export type ItemsWrapperType< T > = {
 	[ key: string ]: T;
 };
-
-export type WPApiType< T > = {
-	abt_status: { // eslint-disable-line
-		[ key: string ]: T;
-	};
-};
