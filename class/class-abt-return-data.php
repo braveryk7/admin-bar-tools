@@ -301,8 +301,8 @@ class Abt_Return_Data {
 				'name'      => __( 'Google Index', 'admin-bar-tools' ),
 				'shortname' => 'gi',
 				'status'    => true,
-				'url'       => self::$location_url['twitter'],
-				'adminurl'  => self::$location_url['twitterAdmin'],
+				'url'       => self::$location_url['gi'],
+				'adminurl'  => self::$location_url['giAdmin'],
 			],
 			'twitter'  => [
 				'name'      => __( 'Twitter Search', 'admin-bar-tools' ),
