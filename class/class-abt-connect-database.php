@@ -69,10 +69,16 @@ class Abt_Connect_Database {
 
 	/**
 	 * Insert wp_option table.
+	 *
+	 * @param array $data abt_status data or null.
 	 */
-	public function add_abt_option() {
-		$abt_status = Abt_Return_Data::options();
-		update_option( 'abt_status', $abt_status );
+	public function add_abt_option( ?array $data ) {
+		if ( null === $data ) {
+			$abt_status = Abt_Return_Data::options();
+			update_option( 'abt_status', $abt_status );
+		} else {
+			update_option( 'abt_status', $data );
+		}
 	}
 
 	/**
@@ -134,9 +140,16 @@ class Abt_Connect_Database {
 
 		$sql = 'DROP TABLE IF EXISTS ' . $delete_table_name;
 		$wpdb->query( "${sql}" ); // db call ok; no-cache ok.
+	}
 
+	/**
+	 * Delete wp_option Admin Bar Tools column.
+	 */
+	public function delete_wp_options() {
 		delete_option( 'abt_locale' );
 		delete_option( 'abt_db_version' );
+		delete_option( 'abt_status' );
+		delete_option( 'abt_sc' );
 	}
 
 	/**
@@ -151,5 +164,22 @@ class Abt_Connect_Database {
 		$result     = $wpdb->get_results( "SELECT * FROM ${table_name}" ); // db call ok; no-cache ok.
 
 		return $result;
+	}
+
+	/**
+	 * If wp_abt table exists, reflect the value of status column to abt_status of wp_options.
+	 */
+	public function wp_abt_to_abt_status() {
+		$result     = $this->return_table_data( 'abt' );
+		$abt_status = get_option( 'abt_status' ) ? get_option( 'abt_status' ) : Abt_Return_Data::options();
+
+		foreach ( $result as $value ) {
+			if ( '0' === $value->status ) {
+				$abt_status[ $value->shortname ]['status'] = false;
+			} elseif ( '1' === $value->status ) {
+				$abt_status[ $value->shortname ]['status'] = true;
+			}
+		}
+		return $abt_status;
 	}
 }
