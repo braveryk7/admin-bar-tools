@@ -1,5 +1,6 @@
 {
     "phpcs.executablePath": "./vendor/bin/phpcs",
+    "editor.bracketPairColorization.enabled": true,
     "editor.insertSpaces": false,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
