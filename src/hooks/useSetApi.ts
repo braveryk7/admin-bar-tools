@@ -5,8 +5,8 @@ import api from '@wordpress/api'; // eslint-disable-line
 import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '..';
+import { ItemsWrapperType, ItemType } from '../types/CheckboxType';
 import { WPApiType } from '../types/apiType';
-import { ItemsWrapperType, ItemType } from '../types/checkboxType';
 
 export const useSetApi = (
 	itemKey: string,

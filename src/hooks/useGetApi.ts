@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction, useEffect } from 'react';
 
 // @ts-ignore
 import api from '@wordpress/api'; // eslint-disable-line
+import { ItemType } from '../types/CheckboxType';
 import { apiType, WPApiType } from '../types/apiType';
-import { ItemType } from '../types/checkboxType';
 
 export const useGetApi = (
 	stateFunc: Dispatch< SetStateAction< apiType > >,

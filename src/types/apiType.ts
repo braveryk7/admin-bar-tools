@@ -1,4 +1,4 @@
-import { ItemsWrapperType, ItemType } from './checkboxType';
+import { ItemsWrapperType, ItemType } from './CheckboxType';
 
 export type apiType = {
 	abt_sc?: number; // eslint-disable-line
