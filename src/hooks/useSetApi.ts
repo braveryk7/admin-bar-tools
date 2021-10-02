@@ -8,9 +8,12 @@ import { apiContext } from '..';
 import { useSetApiType } from '../types/useSetApiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
-	const { setNoticeStatus, setNoticeValue, setNoticeMessage } = useContext(
-		apiContext
-	);
+	const {
+		setNoticeStatus,
+		setNoticeValue,
+		setNoticeMessage,
+		snackbarTimer,
+	} = useContext( apiContext );
 
 	const isFirstRender = useRef( true );
 
@@ -25,6 +28,7 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 				const save = model.save();
 
 				setNoticeStatus( false );
+				clearTimeout( snackbarTimer );
 
 				save.success( () => {
 					setNoticeStatus( true );
