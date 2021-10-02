@@ -5,13 +5,9 @@ import api from '@wordpress/api'; // eslint-disable-line
 import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '..';
-import { ItemsWrapperType, ItemType } from '../types/CheckboxType';
-import { WPApiType } from '../types/apiType';
+import { useSetApiType } from '../types/useSetApiType';
 
-export const useSetApi = (
-	itemKey: string,
-	value: ItemsWrapperType< ItemType > | number
-) => {
+export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const { setNoticeStatus, setNoticeValue, setNoticeMessage } = useContext(
 		apiContext
 	);
@@ -30,19 +26,15 @@ export const useSetApi = (
 
 				setNoticeStatus( false );
 
-				save.success(
-					( res: WPApiType< ItemType >, status: string ) => {
-						setNoticeStatus( true );
-						setNoticeValue( 'abt_success' );
-						setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
-						return [ res, status ];
-					}
-				);
-				save.error( ( res: WPApiType< ItemType >, status: string ) => {
+				save.success( () => {
+					setNoticeStatus( true );
+					setNoticeValue( 'abt_success' );
+					setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
+				} );
+				save.error( () => {
 					setNoticeStatus( true );
 					setNoticeValue( 'abt_error' );
 					setNoticeMessage( __( 'Error.', 'admin-bar-tools' ) );
-					return [ res, status ];
 				} );
 			} );
 		}
