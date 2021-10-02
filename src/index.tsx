@@ -1,6 +1,6 @@
 import './scss/index.scss';
 
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { render } from '@wordpress/element';
@@ -22,14 +22,21 @@ const AdminPage = () => {
 		undefined as noticeValueType
 	);
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
+	const [ snackbarTimer, setSnackbarTimer ] = useState(
+		setTimeout( () => {} )
+	);
 
 	useGetApi( setApiData, setApiStatus );
 
-	if ( noticeStatus ) {
-		setTimeout( () => {
-			setNoticeStatus( false );
-		}, 4000 );
-	}
+	useEffect( () => {
+		if ( noticeStatus ) {
+			setSnackbarTimer(
+				setTimeout( () => {
+					setNoticeStatus( false );
+				}, 4000 )
+			);
+		}
+	}, [ noticeStatus ] );
 
 	return (
 		<div id="wrap">
@@ -45,6 +52,7 @@ const AdminPage = () => {
 						setNoticeStatus,
 						setNoticeValue,
 						setNoticeMessage,
+						snackbarTimer,
 					} }
 				>
 					<Items
