@@ -1,8 +1,8 @@
 import './scss/index.scss';
 
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, useState } from 'react';
 
-import { Placeholder, Spinner } from '@wordpress/components';
+import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -10,26 +10,43 @@ import { Checkbox } from './component/molecules/Checkbox';
 import { Radio } from './component/molecules/Radio';
 import { Items } from './component/organisms/Items';
 import { useGetApi } from './hooks/useGetApi';
-import { apiType } from './types/apiType';
+import { apiContextType, noticeValueType } from './types/useContextType';
 
-export const apiContext = createContext(
-	{} as {
-		apiData: apiType;
-		setApiData: Dispatch< SetStateAction< apiType > >;
-	}
-);
+export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState( {} );
 	const [ apiStatus, setApiStatus ] = useState( false );
+	const [ noticeStatus, setNoticeStatus ] = useState( false );
+	const [ noticeValue, setNoticeValue ] = useState(
+		undefined as noticeValueType
+	);
+	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 
 	useGetApi( setApiData, setApiStatus );
+
+	if ( noticeStatus ) {
+		setTimeout( () => {
+			setNoticeStatus( false );
+		}, 4000 );
+	}
 
 	return (
 		<div id="wrap">
 			<h1>{ __( 'Admin Bar Tools Settings', 'admin-bar-tools' ) }</h1>
+			{ noticeStatus && (
+				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
+			) }
 			{ apiStatus ? (
-				<apiContext.Provider value={ { apiData, setApiData } }>
+				<apiContext.Provider
+					value={ {
+						apiData,
+						setApiData,
+						setNoticeStatus,
+						setNoticeValue,
+						setNoticeMessage,
+					} }
+				>
 					<Items
 						title={ __(
 							'Please select the items you want to display.',
