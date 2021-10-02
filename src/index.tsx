@@ -2,6 +2,7 @@ import './scss/index.scss';
 
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
 
+import { Placeholder, Spinner } from '@wordpress/components';
 import { render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -20,13 +21,14 @@ export const apiContext = createContext(
 
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState( {} );
+	const [ apiStatus, setApiStatus ] = useState( false );
 
-	useGetApi( setApiData );
+	useGetApi( setApiData, setApiStatus );
 
 	return (
 		<div id="wrap">
 			<h1>{ __( 'Admin Bar Tools Settings', 'admin-bar-tools' ) }</h1>
-			{ Object.keys( apiData ).length && (
+			{ apiStatus ? (
 				<apiContext.Provider value={ { apiData, setApiData } }>
 					<Items
 						title={ __(
@@ -47,6 +49,10 @@ const AdminPage = () => {
 						<Radio itemKey="abt_sc" />
 					</Items>
 				</apiContext.Provider>
+			) : (
+				<Placeholder label={ __( 'Data loading', 'admin-bar-tools' ) }>
+					<Spinner />
+				</Placeholder>
 			) }
 		</div>
 	);
