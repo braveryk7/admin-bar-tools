@@ -5,8 +5,8 @@ import { createContext, Dispatch, SetStateAction, useState } from 'react';
 import { render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { Checkbox } from './component/molecules/Checkbox';
 import { Radio } from './component/molecules/Radio';
-import { Checkbox } from './component/molecules/checkbox';
 import { Items } from './component/organisms/Items';
 import { useGetApi } from './hooks/useGetApi';
 import { apiType } from './types/apiType';
