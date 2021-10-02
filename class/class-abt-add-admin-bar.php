@@ -24,8 +24,10 @@ class Abt_Add_Admin_Bar {
 	 * @param object $wp_admin_bar Admin bar.
 	 */
 	public static function add_admin_bar( object $wp_admin_bar ) {
-		$url            = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
-		$join_url_lists = [ '1001', '1002', '2002', '2003', '2011', '3001', '3002' ];
+		$url             = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
+		$add_url_lists   = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
+		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
 		if ( true === is_user_logged_in() ) {
 			$wp_admin_bar->add_node(
@@ -38,35 +40,34 @@ class Abt_Add_Admin_Bar {
 				]
 			);
 
-			$db_call = new Abt_Connect_Database();
-			$result  = $db_call->return_table_data( Abt_Return_Data::TABLE_NAME );
+			$result = get_option( 'abt_status' );
 
-			foreach ( $result as $key => $value ) {
-				if ( '1' === $value->status ) {
-					if ( ! is_admin() ) {
-						if ( 'hatena' === $value->shortname && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
-							$link_url = $value->url . sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-						} elseif ( 'gsc' === $value->shortname ) {
-							$link_url = self::searchconsole_url( $value->url, get_option( 'abt_sc' ), $url );
+			foreach ( $result as $items ) {
+				if ( $items[ status ] ) {
+					if ( is_admin() ) {
+						$link_url = $items[ adminurl ];
+					} elseif ( ! is_admin() ) {
+						if ( 'hatena' === $items[ shortname ] && isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
+							$link_url = $items[ url ] . $sanitize_domain . $sanitize_uri;
+						} elseif ( 'gsc' === $items[ shortname ] ) {
+							$link_url = self::searchconsole_url( $items[ url ], get_option( 'abt_sc' ), $url );
 						} else {
-							$link_url = in_array( $value->id, $join_url_lists, true ) ? $value->url . $url : $value->url;
+							$link_url = in_array( $items[ shortname ], $add_url_lists, true ) ? $items[ url ] . $url : $items[ url ];
 						}
-					} elseif ( is_admin() ) {
-						$link_url = $value->adminurl;
-					};
+					}
 					$wp_admin_bar->add_node(
 						[
-							'id'     => $value->shortname,
-							'title'  => $value->name,
+							'id'     => $items[ shortname ],
+							'title'  => $items[ name ],
 							'parent' => 'abt',
 							'href'   => $link_url,
 							'meta'   => [
 								'target' => '_blank',
 							],
-						]
+						],
 					);
-				};
-			};
+				}
+			}
 		}
 	}
 

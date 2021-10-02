@@ -1,0 +1,40 @@
+.abt-item-wrapper {
+	margin-top: 30px;
+}
+
+.components-snackbar {
+	position: fixed;
+	top: 50px;
+	right: 30px;
+	animation-name: fade;
+	animation-duration: 4s;
+	animation-iteration-count: 5;
+}
+
+.abt {
+	&_success {
+		background-color: #00a32a;
+	}
+
+	&_error {
+		background-color: #d63638;
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.7;
+	}
+
+	75% {
+		opacity: 0.7;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}

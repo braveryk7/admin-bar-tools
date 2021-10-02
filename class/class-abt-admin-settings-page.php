@@ -175,6 +175,6 @@ class Abt_Admin_Settings_Page {
 	}
 }
 
-if ( is_admin() ) {
+if ( is_admin() && ! get_option( 'abt_status' ) ) {
 	$settings_page = new Abt_Admin_Settings_Page();
 }
