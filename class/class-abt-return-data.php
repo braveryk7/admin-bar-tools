@@ -265,63 +265,63 @@ class Abt_Return_Data {
 			'psi'      => [
 				'name'      => __( 'PageSpeed Insights', 'admin-bar-tools' ),
 				'shortname' => 'psi',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'psi' ) : true,
 				'url'       => self::$location_url['psi'],
 				'adminurl'  => self::$location_url['psiAdmin'],
 			],
 			'lh'       => [
 				'name'      => __( 'Lighthouse', 'admin-bar-tools' ),
 				'shortname' => 'lh',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'lh' ) : true,
 				'url'       => self::$location_url['lh'],
 				'adminurl'  => self::$location_url['lhAdmin'],
 			],
 			'gsc'      => [
 				'name'      => __( 'Google Search Console', 'admin-bar-tools' ),
 				'shortname' => 'gsc',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gsc' ) : true,
 				'url'       => self::$location_url['gsc'],
 				'adminurl'  => self::$location_url['gscAdmin'],
 			],
 			'gc'       => [
 				'name'      => __( 'Google Cache', 'admin-bar-tools' ),
 				'shortname' => 'gc',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gc' ) : true,
 				'url'       => self::$location_url['gc'],
 				'adminurl'  => self::$location_url['gcAdmin'],
 			],
 			'gi'       => [
 				'name'      => __( 'Google Index', 'admin-bar-tools' ),
 				'shortname' => 'gi',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gi' ) : true,
 				'url'       => self::$location_url['gi'],
 				'adminurl'  => self::$location_url['giAdmin'],
 			],
 			'twitter'  => [
 				'name'      => __( 'Twitter Search', 'admin-bar-tools' ),
 				'shortname' => 'twitter',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'twitter' ) : true,
 				'url'       => self::$location_url['twitter'],
 				'adminurl'  => self::$location_url['twitterAdmin'],
 			],
 			'facebook' => [
 				'name'      => __( 'Facebook Search', 'admin-bar-tools' ),
 				'shortname' => 'facebook',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'facebook' ) : true,
 				'url'       => self::$location_url['facebook'],
 				'adminurl'  => self::$location_url['facebookAdmin'],
 			],
 			'hatena'   => [
 				'name'      => __( 'Hatena Bookmark', 'admin-bar-tools' ),
 				'shortname' => 'hatena',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'hatena' ) : true,
 				'url'       => self::$location_url['hatena'],
 				'adminurl'  => self::$location_url['hatenaAdmin'],
 			],
 			'bi'       => [
 				'name'      => __( 'Bing Index', 'admin-bar-tools' ),
 				'shortname' => 'bi',
-				'status'    => true,
+				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'bi' ) : true,
 				'url'       => self::$location_url['bi'],
 				'adminurl'  => self::$location_url['biAdmin'],
 			],
@@ -334,5 +334,16 @@ class Abt_Return_Data {
 	public static function options() {
 		new self();
 		return self::$abt_status;
+	}
+
+	/**
+	 * If abt_status exist, return status.
+	 *
+	 * @param string $shortname abt_status key.
+	 */
+	private function get_abt_status( string $shortname ): bool {
+		$abt_status = get_option( 'abt_status' );
+
+		return $abt_status[ $shortname ]['status'];
 	}
 }
