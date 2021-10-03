@@ -32,6 +32,7 @@ class Abt_Connect_Database {
 	public function __construct() {
 		global $wpdb;
 		$this->table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
+		add_action( 'admin_init', [ $this, 'abt_database_check' ] );
 	}
 
 	/**
@@ -67,6 +68,29 @@ class Abt_Connect_Database {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 * Check database version.
+	 */
+	public function abt_database_check() {
+		if ( current_user_can( 'manage_options' ) ) {
+			if ( ! $this->abt_db_check() ) {
+				global $wpdb;
+				$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $this->table_name ) ); // db call ok; no-cache ok.
+
+				if ( $get_table ) {
+					$data = $this->wp_abt_to_abt_status();
+					$this->add_abt_option( $data );
+
+					if ( is_array( get_option( 'abt_status' ) ) ) {
+						$this->abt_delete_db();
+					}
+				} else {
+					$this->add_abt_option( null );
+				}
+			};
 		}
 	}
 

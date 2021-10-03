@@ -47,31 +47,20 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
-	$admin_page = new Abt_Admin_Page();
 	/**
-	 * Check database version.
+	 * Start admin page.
 	 */
-	function abt_database_check() {
-		if ( current_user_can( 'manage_options' ) ) {
-			$db_class = new Abt_Connect_Database();
-			if ( ! $db_class->abt_db_check() ) {
-				global $wpdb;
-				$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->prefix . Abt_Return_Data::TABLE_NAME ) ); // db call ok; no-cache ok.
+	new Abt_Admin_Page( __FILE__ );
 
-				if ( $get_table ) {
-					$data = $db_class->wp_abt_to_abt_status();
-					$db_class->add_abt_option( $data );
+	/**
+	 * Add admin bar menu.
+	 */
+	new Abt_Add_Admin_Bar();
 
-					if ( is_array( get_option( 'abt_status' ) ) ) {
-						$db_class->abt_delete_db();
-					}
-				} else {
-					$db_class->add_abt_option( null );
-				}
-			};
-		}
-	}
-	add_action( 'admin_init', 'abt_database_check' );
+	/**
+	 * Start database process.
+	 */
+	new Abt_Connect_Database();
 
 	/**
 	 * Activation Hook.
@@ -89,8 +78,4 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 		register_uninstall_hook( __FILE__, 'Abt_Connect_Database::delete_wp_options' );
 	}
 	abt_uninstall();
-
-	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
-
-	add_action( 'admin_bar_menu', 'Abt_Add_Admin_Bar::add_admin_bar', 999 );
 }
