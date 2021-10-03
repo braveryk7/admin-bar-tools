@@ -47,7 +47,10 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-connect-database.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
-	$admin_page = new Abt_Admin_Page();
+	/**
+	 * Start admin page.
+	 */
+	new Abt_Admin_Page( __FILE__ );
 
 	/**
 	 * Add admin bar menu.
@@ -94,6 +97,4 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 		register_uninstall_hook( __FILE__, 'Abt_Connect_Database::delete_wp_options' );
 	}
 	abt_uninstall();
-
-	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
 }
