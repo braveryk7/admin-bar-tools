@@ -41,6 +41,17 @@ class Abt_Admin_Page {
 	}
 
 	/**
+	 * Add configuration link to plugin page.
+	 *
+	 * @param array|string $links plugin page setting links.
+	 */
+	public function add_settings_links( array $links ): array {
+		$add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
+		array_unshift( $links, $add_link );
+		return $links;
+	}
+
+	/**
 	 * Enqueue scripts.
 	 *
 	 * @param string $hook_shuffix WordPress hook_shuffix.
