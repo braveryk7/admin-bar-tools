@@ -48,6 +48,11 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
 	$admin_page = new Abt_Admin_Page();
+
+	/**
+	 * Add admin bar menu.
+	 */
+	$add_admin_bar = new Abt_Add_Admin_Bar();
 	/**
 	 * Check database version.
 	 */
@@ -91,6 +96,4 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	abt_uninstall();
 
 	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'Abt_Admin_Settings_Page::add_settings_links' );
-
-	add_action( 'admin_bar_menu', 'Abt_Add_Admin_Bar::add_admin_bar', 999 );
 }
