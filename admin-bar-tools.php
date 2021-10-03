@@ -55,20 +55,18 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 		if ( current_user_can( 'manage_options' ) ) {
 			$db_class = new Abt_Connect_Database();
 			if ( ! $db_class->abt_db_check() ) {
-				$db_class->abt_default_insert_db();
-
 				global $wpdb;
 				$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->prefix . Abt_Return_Data::TABLE_NAME ) ); // db call ok; no-cache ok.
 
 				if ( $get_table ) {
 					$data = $db_class->wp_abt_to_abt_status();
 					$db_class->add_abt_option( $data );
+
+					if ( is_array( get_option( 'abt_status' ) ) ) {
+						$db_class->abt_delete_db();
+					}
 				} else {
 					$db_class->add_abt_option( null );
-				}
-
-				if ( is_array( get_option( 'abt_status' ) ) ) {
-					$db_class->abt_delete_db();
 				}
 			};
 		}
@@ -79,9 +77,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	 * Activation Hook.
 	 */
 	function abt_activate() {
-		$db_class = new Abt_Connect_Database();
-		register_activation_hook( __FILE__, [ $db_class, 'abt_search_table' ] );
-		register_activation_hook( __FILE__, [ $db_class, 'abt_default_insert_db' ] );
+		register_activation_hook( __FILE__, 'Abt_Connect_Database::create_abt_options' );
 	};
 	abt_activate();
 
