@@ -20,11 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Abt_Admin_Page {
 	/**
 	 * WordPress hook.
+	 *
+	 * @param string $path admin-bar-tools.php path.
 	 */
-	public function __construct() {
+	public function __construct( string $path ) {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
 		add_action( 'rest_api_init', [ $this, 'register' ] );
+		add_filter( 'plugin_action_links_' . plugin_basename( $path ), [ $this, 'add_settings_links' ] );
 	}
 
 	/**
