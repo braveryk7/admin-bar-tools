@@ -58,29 +58,9 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	new Abt_Add_Admin_Bar();
 
 	/**
-	 * Check database version.
+	 * Start database process.
 	 */
-	function abt_database_check() {
-		if ( current_user_can( 'manage_options' ) ) {
-			$db_class = new Abt_Connect_Database();
-			if ( ! $db_class->abt_db_check() ) {
-				global $wpdb;
-				$get_table = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->prefix . Abt_Return_Data::TABLE_NAME ) ); // db call ok; no-cache ok.
-
-				if ( $get_table ) {
-					$data = $db_class->wp_abt_to_abt_status();
-					$db_class->add_abt_option( $data );
-
-					if ( is_array( get_option( 'abt_status' ) ) ) {
-						$db_class->abt_delete_db();
-					}
-				} else {
-					$db_class->add_abt_option( null );
-				}
-			};
-		}
-	}
-	add_action( 'admin_init', 'abt_database_check' );
+	new Abt_Connect_Database();
 
 	/**
 	 * Activation Hook.
