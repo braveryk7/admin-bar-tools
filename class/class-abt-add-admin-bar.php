@@ -19,11 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Add_Admin_Bar {
 	/**
+	 * WordPress hook.
+	 */
+	public function __construct() {
+		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999 );
+	}
+	/**
 	 * Insert Admin bar
 	 *
 	 * @param object $wp_admin_bar Admin bar.
 	 */
-	public static function add_admin_bar( object $wp_admin_bar ) {
+	public function add_admin_bar( object $wp_admin_bar ) {
 		$url             = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
 		$add_url_lists   = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
 		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
@@ -80,7 +86,7 @@ class Abt_Add_Admin_Bar {
 	 *
 	 * @return string SearchConsole URL.
 	 */
-	private static function searchconsole_url( string $url, string $status, string $encode_url ): string {
+	private function searchconsole_url( string $url, string $status, string $encode_url ): string {
 		$domain = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
 		if ( '1' === $status ) {
 			if ( is_front_page() ) {
