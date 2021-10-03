@@ -55,7 +55,8 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	/**
 	 * Add admin bar menu.
 	 */
-	$add_admin_bar = new Abt_Add_Admin_Bar();
+	new Abt_Add_Admin_Bar();
+
 	/**
 	 * Check database version.
 	 */
