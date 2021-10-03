@@ -219,13 +219,6 @@ class Abt_Return_Data {
 	public static $location_url = [];
 
 	/**
-	 * Array for database insertion.
-	 *
-	 * @var array
-	 */
-	public static $insert_data = [];
-
-	/**
 	 * Array for wp_option insertion.
 	 *
 	 * @var array
@@ -333,81 +326,6 @@ class Abt_Return_Data {
 				'adminurl'  => self::$location_url['biAdmin'],
 			],
 		];
-
-		self::$insert_data += [
-			1 => [
-				'id'        => 1001,
-				'shortname' => 'psi',
-				'name'      => __( 'PageSpeed Insights', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['psi'],
-				'adminurl'  => self::$location_url['psiAdmin'],
-			],
-			2 => [
-				'id'        => 1002,
-				'shortname' => 'lh',
-				'name'      => __( 'Lighthouse', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['lh'],
-				'adminurl'  => self::$location_url['lhAdmin'],
-			],
-			3 => [
-				'id'        => 2001,
-				'shortname' => 'gsc',
-				'name'      => __( 'Google Search Console', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['gsc'],
-				'adminurl'  => self::$location_url['gscAdmin'],
-			],
-			4 => [
-				'id'        => 2002,
-				'shortname' => 'gc',
-				'name'      => __( 'Google Cache', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['gc'],
-				'adminurl'  => self::$location_url['gcAdmin'],
-			],
-			5 => [
-				'id'        => 2003,
-				'shortname' => 'gi',
-				'name'      => __( 'Google Index', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['gi'],
-				'adminurl'  => self::$location_url['giAdmin'],
-			],
-			6 => [
-				'id'        => 3001,
-				'shortname' => 'twitter',
-				'name'      => __( 'Twitter Search', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['twitter'],
-				'adminurl'  => self::$location_url['twitterAdmin'],
-			],
-			7 => [
-				'id'        => 3002,
-				'shortname' => 'facebook',
-				'name'      => __( 'Facebook Search', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['facebook'],
-				'adminurl'  => self::$location_url['facebookAdmin'],
-			],
-			8 => [
-				'id'        => 3003,
-				'shortname' => 'hatena',
-				'name'      => __( 'Hatena Bookmark', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['hatena'],
-				'adminurl'  => self::$location_url['hatenaAdmin'],
-			],
-			5 => [
-				'id'        => 2011,
-				'shortname' => 'bi',
-				'name'      => __( 'Bing Index', 'admin-bar-tools' ),
-				'status'    => 1,
-				'url'       => self::$location_url['bi'],
-				'adminurl'  => self::$location_url['biAdmin'],
-			],
-		];
 	}
 
 	/**
@@ -416,37 +334,5 @@ class Abt_Return_Data {
 	public static function options() {
 		new self();
 		return self::$abt_status;
-	}
-
-	/**
-	 * Make table data
-	 */
-	public static function make_table_data() {
-		new self();
-		return self::$insert_data;
-	}
-
-	/**
-	 * Change the locale on the settings page
-	 *
-	 * @param string $new_locale locale code.
-	 */
-	public static function change_locale( string $new_locale ): array {
-		new self();
-
-		if ( true === array_key_exists( $new_locale, self::PSI_LOCALES ) ) {
-			$insert_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ $new_locale ]['id'];
-			$insert_url       = $insert_admin_url . '&url=';
-
-			self::$insert_data['1']['url']      = $insert_url;
-			self::$insert_data['1']['adminurl'] = $insert_admin_url;
-		} else {
-			$insert_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=us';
-			$insert_url       = $insert_admin_url . '&url=';
-
-			self::$insert_data['1']['url']      = $insert_url;
-			self::$insert_data['1']['adminurl'] = $insert_admin_url;
-		}
-		return self::$insert_data;
 	}
 }
