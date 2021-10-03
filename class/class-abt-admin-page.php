@@ -49,7 +49,7 @@ class Abt_Admin_Page {
 	 * @param array|string $links plugin page setting links.
 	 */
 	public function add_settings_links( array $links ): array {
-		$add_link = '<a href="options-general.php?page=admin-bar-tools-settings">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
+		$add_link = '<a href="options-general.php?page=admin-bar-tools">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
 		array_unshift( $links, $add_link );
 		return $links;
 	}
