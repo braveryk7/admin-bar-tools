@@ -268,6 +268,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'psi' ) : true,
 				'url'       => self::$location_url['psi'],
 				'adminurl'  => self::$location_url['psiAdmin'],
+				'order'     => 1,
 			],
 			'lh'       => [
 				'name'      => __( 'Lighthouse', 'admin-bar-tools' ),
@@ -275,6 +276,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'lh' ) : true,
 				'url'       => self::$location_url['lh'],
 				'adminurl'  => self::$location_url['lhAdmin'],
+				'order'     => 2,
 			],
 			'gsc'      => [
 				'name'      => __( 'Google Search Console', 'admin-bar-tools' ),
@@ -282,6 +284,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gsc' ) : true,
 				'url'       => self::$location_url['gsc'],
 				'adminurl'  => self::$location_url['gscAdmin'],
+				'order'     => 3,
 			],
 			'gc'       => [
 				'name'      => __( 'Google Cache', 'admin-bar-tools' ),
@@ -289,6 +292,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gc' ) : true,
 				'url'       => self::$location_url['gc'],
 				'adminurl'  => self::$location_url['gcAdmin'],
+				'order'     => 4,
 			],
 			'gi'       => [
 				'name'      => __( 'Google Index', 'admin-bar-tools' ),
@@ -296,6 +300,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'gi' ) : true,
 				'url'       => self::$location_url['gi'],
 				'adminurl'  => self::$location_url['giAdmin'],
+				'order'     => 5,
 			],
 			'twitter'  => [
 				'name'      => __( 'Twitter Search', 'admin-bar-tools' ),
@@ -303,6 +308,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'twitter' ) : true,
 				'url'       => self::$location_url['twitter'],
 				'adminurl'  => self::$location_url['twitterAdmin'],
+				'order'     => 6,
 			],
 			'facebook' => [
 				'name'      => __( 'Facebook Search', 'admin-bar-tools' ),
@@ -310,6 +316,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'facebook' ) : true,
 				'url'       => self::$location_url['facebook'],
 				'adminurl'  => self::$location_url['facebookAdmin'],
+				'order'     => 7,
 			],
 			'hatena'   => [
 				'name'      => __( 'Hatena Bookmark', 'admin-bar-tools' ),
@@ -317,6 +324,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'hatena' ) : true,
 				'url'       => self::$location_url['hatena'],
 				'adminurl'  => self::$location_url['hatenaAdmin'],
+				'order'     => 8,
 			],
 			'bi'       => [
 				'name'      => __( 'Bing Index', 'admin-bar-tools' ),
@@ -324,6 +332,7 @@ class Abt_Return_Data {
 				'status'    => get_option( 'abt_status' ) ? $this->get_abt_status( 'bi' ) : true,
 				'url'       => self::$location_url['bi'],
 				'adminurl'  => self::$location_url['biAdmin'],
+				'order'     => 9,
 			],
 		];
 	}
