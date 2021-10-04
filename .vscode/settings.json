@@ -1,5 +1,6 @@
 {
     "phpcs.executablePath": "./vendor/bin/phpcs",
+    "phpcbf.executablePath": "./vendor/bin/phpcbf",
     "editor.bracketPairColorization.enabled": true,
     "editor.insertSpaces": false,
     "editor.codeActionsOnSave": {
@@ -17,6 +18,7 @@
         "editor.insertSpaces": true,
     },
     "[php]": {
+        "editor.defaultFormatter": "persoderlind.vscode-phpcbf",
         "editor.tabSize": 4,
         "editor.insertSpaces": false,
     },
