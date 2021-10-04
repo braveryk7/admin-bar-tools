@@ -15,6 +15,7 @@ export type ItemType = {
 	status: boolean;
 	url: string;
 	adminurl: string;
+	order: number;
 };
 
 export type ItemsWrapperType< T > = {
