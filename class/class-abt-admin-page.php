@@ -94,6 +94,7 @@ class Abt_Admin_Page {
 				'status'    => [ 'type' => 'boolean' ],
 				'url'       => [ 'type' => 'string' ],
 				'adminurl'  => [ 'type' => 'string' ],
+				'order'     => [ 'type' => 'number' ],
 			],
 		];
 		register_setting(
