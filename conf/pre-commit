@@ -12,8 +12,8 @@ ESC=$(printf '\033')
 
 for branch in "${forbidden_branches[@]}"
 	do
-		if [ "${current_branch#refs/heads/}" = $branch ]; then
-			printf "${ESC}[91m%s${ESC}[m\n" "  Cannot commit to ${current_branch#refs/heads/} branch."
+		if [ "${current_branch}" = $branch ]; then
+			printf "${ESC}[91m%s${ESC}[m\n" "  Cannot commit to ${current_branch} branch."
 			exit 1
 		fi
 	done
