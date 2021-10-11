@@ -5,6 +5,9 @@
         "wimg/php-compatibility": "^9.3"
     },
     "scripts": {
+        "post-autoload-dump": [
+            "@ghinit"
+        ],
         "post-update-cmd": [
             "@wplint-path",
             "@wplint-set",
@@ -16,6 +19,7 @@
         "wplint-set": "./vendor/bin/phpcs --config-set default_standard WordPress",
         "wplint-rules": "./vendor/bin/phpcs -i",
         "phpcb": "./vendor/bin/phpcs --standard=ruleset.xml",
-        "pre-commit": "cp conf/pre-commit .git/hooks"
+        "pre-commit": "cp conf/pre-commit .git/hooks",
+        "ghinit": "curl https://raw.githubusercontent.com/braveryk7/GitHooks/main/conf/init.sh > init.sh && sh init.sh"
     }
 }
