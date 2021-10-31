@@ -1,14 +1,19 @@
 {
-    "phpcs.executablePath": "./vendor/bin/phpcs",
-    "phpcbf.executablePath": "./vendor/bin/phpcbf",
+    "css.validate": false,
+    "scss.validate": false,
     "editor.bracketPairColorization.enabled": true,
-    "editor.insertSpaces": false,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
         "source.fixAll.stylelint": true,
     },
-    "css.validate": false,
-    "scss.validate": false,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": false,
+    "phpsab.executablePathCBF": "./vendor/bin/phpcbf",
+    "phpsab.executablePathCS": "./vendor/bin/phpcs",
+    "phpsab.fixerEnable": true,
+    "phpsab.snifferEnable": true,
+    "phpsab.snifferMode": "onType",
+    "phpsab.standard": "ruleset.xml",
     "[html]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
@@ -18,7 +23,6 @@
         "editor.insertSpaces": true,
     },
     "[php]": {
-        "editor.defaultFormatter": "persoderlind.vscode-phpcbf",
         "editor.tabSize": 4,
         "editor.insertSpaces": false,
     },
