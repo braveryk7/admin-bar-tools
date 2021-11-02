@@ -11,6 +11,10 @@
 	animation-iteration-count: 5;
 }
 
+.select-location > .components-base-control {
+	width: 250px;
+}
+
 .abt {
 	&_success {
 		background-color: #00a32a;
