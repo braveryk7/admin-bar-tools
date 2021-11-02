@@ -8,6 +8,7 @@ import { __ } from '@wordpress/i18n';
 
 import { Checkbox } from './component/molecules/Checkbox';
 import { Radio } from './component/molecules/Radio';
+import { Select } from './component/molecules/Select';
 import { Items } from './component/organisms/Items';
 import { useGetApi } from './hooks/useGetApi';
 import { apiContextType, noticeValueType } from './types/useContextType';
@@ -72,6 +73,12 @@ const AdminPage = () => {
 						classValue="select-radio"
 					>
 						<Radio itemKey="abt_sc" />
+					</Items>
+					<Items
+						title={ __( 'Location', 'admin-bar-tools' ) }
+						classValue="select-location"
+					>
+						<Select itemKey="abt_locale" />
 					</Items>
 				</apiContext.Provider>
 			) : (
