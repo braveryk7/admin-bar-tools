@@ -4,7 +4,7 @@ import { SelectControl } from '@wordpress/components';
 
 import { apiContext } from '../..';
 import { useSetApi } from '../../hooks/useSetApi';
-import { psiLocals } from '../../lib/locale';
+import { psiLocales } from '../../lib/locale';
 import { apiType } from '../../types/apiType';
 
 export const Select = memo( ( props: { itemKey: string } ) => {
@@ -23,7 +23,7 @@ export const Select = memo( ( props: { itemKey: string } ) => {
 	return (
 		<SelectControl
 			value={ apiData.abt_locale }
-			options={ Object.values( psiLocals ).map( ( locale: any ) => ( {
+			options={ Object.values( psiLocales ).map( ( locale: any ) => ( {
 				label: locale.name,
 				value: locale.id,
 			} ) ) }
