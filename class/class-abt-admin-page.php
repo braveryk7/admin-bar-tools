@@ -129,6 +129,16 @@ class Abt_Admin_Page {
 				'default'      => get_option( 'abt_sc' ),
 			],
 		);
+
+		register_setting(
+			'admin-bar-tools-settings',
+			'abt_locale',
+			[
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => get_option( 'abt_locale' ),
+			],
+		);
 	}
 
 	/**
