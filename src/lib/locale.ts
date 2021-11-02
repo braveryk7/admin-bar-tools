@@ -1,4 +1,4 @@
-export const psiLocals = {
+export const psiLocales = {
 	ar: {
 		id: 'ar',
 		name: 'العربية', // Arabic.
