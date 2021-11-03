@@ -3,12 +3,12 @@
 }
 
 .components-snackbar {
-	position: fixed;
-	top: 50px;
-	right: 30px;
-	animation-name: fade;
 	animation-duration: 4s;
 	animation-iteration-count: 5;
+	animation-name: fade;
+	position: fixed;
+	right: 30px;
+	top: 50px;
 }
 
 .select-location > .components-base-control {
@@ -16,6 +16,7 @@
 }
 
 .abt {
+
 	&_success {
 		background-color: #00a32a;
 	}
@@ -26,6 +27,7 @@
 }
 
 @keyframes fade {
+
 	0% {
 		opacity: 0;
 	}
