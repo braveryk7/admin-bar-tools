@@ -3,7 +3,6 @@ import { memo, useContext } from 'react';
 // @ts-ignore
 import api from '@wordpress/api'; // eslint-disable-line
 import { CheckboxControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '../..';
 import { useSetApi } from '../../hooks/useSetApi';

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import { RadioControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '../..';
 import { useSetApi } from '../../hooks/useSetApi';
@@ -23,9 +24,9 @@ export const Radio = ( props: { itemKey: string } ) => {
 		<RadioControl
 			selected={ apiData.abt_sc }
 			options={ [
-				{ label: "I don't use it.", value: 0 },
-				{ label: 'Domain', value: 1 },
-				{ label: 'URL Prefix', value: 2 },
+				{ label: __( "I don't use it.", 'admin-bar-tools' ), value: 0 },
+				{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
+				{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: 2 },
 			] }
 			onChange={ ( value: number ) => changeValue( value ) }
 		/>
