@@ -66,6 +66,10 @@ excludes=(
 	".stylelintrc.yaml"
 	".stylelintrc.yml"
 	"jest.config.js"
+	"jest.config.cjs"
+	"jest.config.mjs"
+	"jest.config.ts"
+	"jest.config.json"
 	"tsconfig.json"
 	"webpack.config.js"
 )
