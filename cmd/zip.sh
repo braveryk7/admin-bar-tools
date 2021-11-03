@@ -34,6 +34,7 @@ excludes=(
 	".DS_Store"
 	"src"
 	"cmd"
+	"conf"
 	# composer
 	"vendor"
 	"composer.json"
@@ -46,6 +47,7 @@ excludes=(
 	"package-lock.json"
 	".babelrc"
 	".eslintrc.json"
+	".stylelintrc.yml"
 	"jest.config.js"
 	"tsconfig.json"
 	"webpack.config.js"
