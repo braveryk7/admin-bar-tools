@@ -75,7 +75,10 @@ const AdminPage = () => {
 						<Radio itemKey="abt_sc" />
 					</Items>
 					<Items
-						title={ __( 'Location', 'admin-bar-tools' ) }
+						title={ __(
+							'Please set the location.',
+							'admin-bar-tools'
+						) }
 						classValue="select-location"
 					>
 						<Select itemKey="abt_locale" />
