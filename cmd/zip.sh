@@ -39,7 +39,10 @@ excludes=(
 	"vendor"
 	"composer.json"
 	"composer.lock"
+	".phpcs.xml"
 	"phpcs.xml"
+	".phpcs.xml.dist"
+	"phpcs.xml.dist"
 	"ruleset.xml"
 	# npm
 	"node_modules"
