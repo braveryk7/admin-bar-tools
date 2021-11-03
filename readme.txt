@@ -4,11 +4,13 @@ Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
 Tested up to: 5.8.1
 Requires PHP: 7.3.0
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 === Description ===
+
+Admin Bar Tools gives you access to useful tools for running WordPress.
 
 ## What is Admin Bar Tools?
 This plugin allows you to add useful links to the admin bar.
@@ -20,6 +22,18 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.4.0 =
+
+Miner update.
+
+Addition of functions.
+
+* Make your admin panel a simple and beautiful React component
+
+Improvement.
+
+* Development environment.
 
 = 1.3.0 =
 
