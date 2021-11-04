@@ -54,7 +54,7 @@ class Abt_Add_Admin_Bar {
 						$link_url = $items['adminurl'];
 					} elseif ( ! is_admin() ) {
 						if ( 'hatena' === $items['shortname'] ) {
-							$link_url = $items[ url ] . $sanitize_domain . $sanitize_uri;
+							$link_url = $items['url'] . $sanitize_domain . $sanitize_uri;
 						} elseif ( 'gsc' === $items['shortname'] ) {
 							$link_url = self::searchconsole_url( $items['url'], get_option( 'abt_sc' ), $url );
 						} else {
