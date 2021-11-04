@@ -75,7 +75,7 @@ class Abt_Admin_Page {
 		);
 
 		wp_enqueue_script(
-			'admin-bar-tools-settings-script',
+			'abt-script',
 			WP_PLUGIN_URL . '/admin-bar-tools/build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
@@ -83,7 +83,7 @@ class Abt_Admin_Page {
 		);
 
 		wp_set_script_translations(
-			'admin-bar-tools-settings-script',
+			'abt-script',
 			'admin-bar-tools',
 			dirname( $this->path ) . '/languages'
 		);
