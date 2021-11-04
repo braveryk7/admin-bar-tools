@@ -49,22 +49,22 @@ class Abt_Add_Admin_Bar {
 			$result = get_option( 'abt_status' );
 
 			foreach ( $result as $items ) {
-				if ( $items[ status ] ) {
+				if ( $items['status'] ) {
 					if ( is_admin() ) {
-						$link_url = $items[ adminurl ];
+						$link_url = $items['adminurl'];
 					} elseif ( ! is_admin() ) {
-						if ( 'hatena' === $items[ shortname ] ) {
+						if ( 'hatena' === $items['shortname'] ) {
 							$link_url = $items[ url ] . $sanitize_domain . $sanitize_uri;
-						} elseif ( 'gsc' === $items[ shortname ] ) {
-							$link_url = self::searchconsole_url( $items[ url ], get_option( 'abt_sc' ), $url );
+						} elseif ( 'gsc' === $items['shortname'] ) {
+							$link_url = self::searchconsole_url( $items['url'], get_option( 'abt_sc' ), $url );
 						} else {
-							$link_url = in_array( $items[ shortname ], $add_url_lists, true ) ? $items[ url ] . $url : $items[ url ];
+							$link_url = in_array( $items['shortname'], $add_url_lists, true ) ? $items['url'] . $url : $items['url'];
 						}
 					}
 					$wp_admin_bar->add_node(
 						[
-							'id'     => $items[ shortname ],
-							'title'  => $items[ name ],
+							'id'     => $items['shortname'],
+							'title'  => $items['name'],
 							'parent' => 'abt',
 							'href'   => $link_url,
 							'meta'   => [
