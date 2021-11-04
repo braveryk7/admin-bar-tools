@@ -65,7 +65,7 @@ class Abt_Admin_Page {
 			return;
 		}
 
-		$asset_file = require_once WP_PLUGIN_DIR . '/admin-bar-tools/build/index.asset.php';
+		$asset_file = require_once dirname( $this->path ) . '/build/index.asset.php';
 
 		wp_enqueue_style(
 			'admin-bar-tools-settings-style',
