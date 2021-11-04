@@ -24,9 +24,9 @@ class Abt_Admin_Page {
 	 * @param string $path admin-bar-tools.php path.
 	 */
 	public function __construct( string $path ) {
+		$this->path = $path;
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
-		add_action( 'init', [ $this, 'script_translations' ] );
 		add_action( 'rest_api_init', [ $this, 'register' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( $path ), [ $this, 'add_settings_links' ] );
 	}
@@ -81,15 +81,11 @@ class Abt_Admin_Page {
 			$asset_file['version'],
 			true
 		);
-	}
 
-	/**
-	 * Set JavaScript translations.
-	 */
-	public function script_translations() {
 		wp_set_script_translations(
 			'admin-bar-tools-settings-script',
-			'admin-bar-tools'
+			'admin-bar-tools',
+			dirname( $this->path ) . '/languages'
 		);
 	}
 
