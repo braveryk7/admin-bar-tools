@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Return_Data {
 	const TABLE_NAME  = 'abt';
-	const DB_VERSION  = '1.3';
+	const DB_VERSION  = '1.4';
 	const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
@@ -251,8 +251,8 @@ class Abt_Return_Data {
 			'gcAdmin'       => 'https://webcache.googleusercontent.com/search?q=cache%3A',
 			'gi'            => 'https://www.google.com/search?q=site%3A',
 			'giAdmin'       => 'https://www.google.com/search?q=site%3A',
-			'bi'            => 'https://www.bing.com/search?q=site%3a',
-			'biAdmin'       => 'https://www.bing.com/search?q=site%3a',
+			'bi'            => 'https://www.bing.com/search?q=url%3a',
+			'biAdmin'       => 'https://www.bing.com/search?q=url%3a',
 			'twitter'       => 'https://twitter.com/search?f=live&q=',
 			'twitterAdmin'  => 'https://twitter.com/',
 			'facebook'      => 'https://www.facebook.com/search/top?q=',
