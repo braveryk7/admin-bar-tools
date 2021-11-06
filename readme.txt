@@ -27,7 +27,7 @@ We're glad that you can concentrate on writing.
 
 Improvement.
 
-* 開発環境
+* Development environment.
 
 Fix.
 
