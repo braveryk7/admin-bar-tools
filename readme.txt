@@ -25,6 +25,10 @@ We're glad that you can concentrate on writing.
 
 = 1.4.3 =
 
+Improvement.
+
+* 開発環境
+
 Fix.
 
 * Bing Index URL from "site:" to "url:"
