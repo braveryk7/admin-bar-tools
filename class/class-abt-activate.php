@@ -17,6 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Activate process.
  */
-class Abt_Activate extends Sct_Base {
-
+class Abt_Activate extends Abt_Base {
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
+	}
 }
