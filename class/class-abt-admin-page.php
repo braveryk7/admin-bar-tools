@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Admin page.
  */
-class Abt_Admin_Page {
+class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * WordPress hook.
 	 *
@@ -40,7 +40,7 @@ class Abt_Admin_Page {
 			'Admin Bar Tools',
 			'administrator',
 			'admin-bar-tools',
-			[ $this, 'abt_settings' ]
+			[ $this, $this->add_prefix( 'settings' ) ]
 		);
 	}
 
@@ -68,22 +68,22 @@ class Abt_Admin_Page {
 		$asset_file = require_once dirname( $this->path ) . '/build/index.asset.php';
 
 		wp_enqueue_style(
-			'admin-bar-tools-settings-style',
-			WP_PLUGIN_URL . '/admin-bar-tools/build/index.css',
+			$this->add_prefix( 'style' ),
+			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.css',
 			[ 'wp-components' ],
 			$asset_file['version'],
 		);
 
 		wp_enqueue_script(
-			'abt-script',
-			WP_PLUGIN_URL . '/admin-bar-tools/build/index.js',
+			$this->add_prefix( 'script' ),
+			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
 		);
 
 		wp_set_script_translations(
-			'abt-script',
+			$this->add_prefix( 'script' ),
 			'admin-bar-tools',
 			dirname( $this->path ) . '/languages'
 		);
@@ -106,7 +106,7 @@ class Abt_Admin_Page {
 		];
 		register_setting(
 			'admin-bar-tools-settings',
-			'abt_status',
+			$this->add_prefix( 'status' ),
 			[
 				'show_in_rest' => [
 					'schema' => [
@@ -129,21 +129,21 @@ class Abt_Admin_Page {
 
 		register_setting(
 			'admin-bar-tools-settings',
-			'abt_sc',
+			$this->add_prefix( 'sc' ),
 			[
 				'type'         => 'number',
 				'show_in_rest' => true,
-				'default'      => get_option( 'abt_sc' ),
+				'default'      => get_option( $this->add_prefix( 'sc' ) ),
 			],
 		);
 
 		register_setting(
 			'admin-bar-tools-settings',
-			'abt_locale',
+			$this->add_prefix( 'locale' ),
 			[
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => get_option( 'abt_locale' ),
+				'default'      => get_option( $this->add_prefix( 'locale' ) ),
 			],
 		);
 	}

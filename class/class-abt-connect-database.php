@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handle database connection.
  */
-class Abt_Connect_Database {
+class Abt_Connect_Database extends Abt_Base {
 
 	/**
 	 * Table name.
@@ -31,7 +31,7 @@ class Abt_Connect_Database {
 	 */
 	public function __construct() {
 		global $wpdb;
-		$this->table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
+		$this->table_name = $wpdb->prefix . self::TABLE_NAME;
 		add_action( 'admin_init', [ $this, 'abt_database_check' ] );
 	}
 
@@ -54,7 +54,7 @@ class Abt_Connect_Database {
 	 */
 	public static function create_abt_options() {
 		add_option( 'abt_locale', get_locale() );
-		add_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
+		add_option( 'abt_db_version', self::DB_VERSION );
 		add_option( 'abt_status', Abt_Return_Data::options() );
 		add_option( 'abt_sc', 0 );
 	}
@@ -64,7 +64,7 @@ class Abt_Connect_Database {
 	 */
 	public function abt_db_check(): bool {
 		$current_db_version = get_option( 'abt_db_version' );
-		if ( Abt_Return_Data::DB_VERSION === $current_db_version ) {
+		if ( self::DB_VERSION === $current_db_version ) {
 			return true;
 		} else {
 			return false;
@@ -99,7 +99,7 @@ class Abt_Connect_Database {
 	 */
 	public static function abt_delete_db() {
 		global $wpdb;
-		$delete_table_name = $wpdb->prefix . Abt_Return_Data::TABLE_NAME;
+		$delete_table_name = $wpdb->prefix . self::TABLE_NAME;
 
 		$sql = 'DROP TABLE IF EXISTS ' . $delete_table_name;
 		$wpdb->query( "${sql}" ); // db call ok; no-cache ok.

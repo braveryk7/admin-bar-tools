@@ -41,6 +41,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 		exit;
 	}
 } elseif ( true === $get_php_version_bool->judgment( $require_php_version ) ) {
+	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Add Admin Bar Tools to admin bar.
  */
-class Abt_Add_Admin_Bar {
+class Abt_Add_Admin_Bar extends Abt_Base {
 	/**
 	 * WordPress hook.
 	 */
@@ -38,15 +38,15 @@ class Abt_Add_Admin_Bar {
 		if ( true === is_user_logged_in() ) {
 			$wp_admin_bar->add_node(
 				[
-					'id'    => 'abt',
+					'id'    => self::PREFIX,
 					'title' => __( 'Admin Bar Tools', 'admin-bar-tools' ),
 					'meta'  => [
-						'target' => 'abt',
+						'target' => self::PREFIX,
 					],
 				]
 			);
 
-			$result = get_option( 'abt_status' );
+			$result = get_option( $this->add_prefix( 'status' ) );
 
 			foreach ( $result as $items ) {
 				if ( $items['status'] ) {
@@ -56,7 +56,7 @@ class Abt_Add_Admin_Bar {
 						if ( 'hatena' === $items['shortname'] ) {
 							$link_url = $items['url'] . $sanitize_domain . $sanitize_uri;
 						} elseif ( 'gsc' === $items['shortname'] ) {
-							$link_url = self::searchconsole_url( $items['url'], get_option( 'abt_sc' ), $url );
+							$link_url = self::searchconsole_url( $items['url'], get_option( $this->add_prefix( 'sc' ) ), $url );
 						} else {
 							$link_url = in_array( $items['shortname'], $add_url_lists, true ) ? $items['url'] . $url : $items['url'];
 						}
@@ -65,7 +65,7 @@ class Abt_Add_Admin_Bar {
 						[
 							'id'     => $items['shortname'],
 							'title'  => $items['name'],
-							'parent' => 'abt',
+							'parent' => self::PREFIX,
 							'href'   => $link_url,
 							'meta'   => [
 								'target' => '_blank',
