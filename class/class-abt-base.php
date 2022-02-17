@@ -218,6 +218,14 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return plugin file path.
+	 * e.g. /DocumentRoot/wp-content/plugins/send-chat-tools/admin-bar-tools.php
+	 */
+	protected function get_plugin_path(): string {
+		return $this->get_plugin_dir( self::PLUGIN_SLUG ) . '/' . self::PLUGIN_FILE;
+	}
+
+	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
