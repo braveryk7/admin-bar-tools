@@ -27,13 +27,6 @@ class Abt_Return_Data {
 	private static $locale;
 
 	/**
-	 * _abt table locale.
-	 *
-	 * @var string
-	 */
-	private static $abt_locale;
-
-	/**
 	 * Pagespeed Insight URL by country.
 	 *
 	 * @var string
@@ -65,8 +58,7 @@ class Abt_Return_Data {
 	 * Perform data initialization for view and database insertion.
 	 */
 	private function __construct() {
-		self::$locale     = get_locale();
-		self::$abt_locale = get_option( 'abt_locale' );
+		self::$locale = get_locale();
 
 		if ( true === array_key_exists( self::$locale, self::PSI_LOCALES ) ) {
 			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ self::$locale ]['id'];
