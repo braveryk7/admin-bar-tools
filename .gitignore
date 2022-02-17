@@ -27,3 +27,14 @@ build/
 #-------------------------------
 .eslintcache
 .stylelintcache
+
+#-------------------------------
+#   Created by Tester
+#-------------------------------
+.cache/
+.phpunit.result.cache
+
+#-------------------------------
+#   etc
+#-------------------------------
+admin-bar-tools.zip
