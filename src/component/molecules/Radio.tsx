@@ -1,6 +1,5 @@
-import { useContext } from 'react';
-
 import { RadioControl } from '@wordpress/components';
+import { useContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '../..';
@@ -14,7 +13,7 @@ export const Radio = ( props: { itemKey: string } ) => {
 	const changeValue = ( value: number ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
-		newItem.abt_options.sc = Number( value );
+		newItem.abt_options.sc = value;
 		setApiData( newItem );
 	};
 
@@ -28,7 +27,7 @@ export const Radio = ( props: { itemKey: string } ) => {
 				{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
 				{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: 2 },
 			] }
-			onChange={ ( value: number ) => changeValue( value ) }
+			onChange={ ( value: number ) => changeValue( Number( value ) ) }
 		/>
 	);
 };
