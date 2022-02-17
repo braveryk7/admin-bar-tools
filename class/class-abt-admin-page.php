@@ -68,7 +68,7 @@ class Abt_Admin_Page extends Abt_Base {
 		$asset_file = require_once dirname( $this->path ) . '/build/index.asset.php';
 
 		wp_enqueue_style(
-			'admin-bar-tools-settings-style',
+			$this->add_prefix( 'style' ),
 			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.css',
 			[ 'wp-components' ],
 			$asset_file['version'],
