@@ -118,7 +118,7 @@ class Abt_Activate extends Abt_Base {
 		];
 
 		foreach ( $location_url as $key => $value ) {
-			$abt_status[ $key ] = [
+			$abt_options[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
 				'status'    => get_option( $this->add_prefix( 'status' ) ) ? get_option( 'abt_status' )[ $key ]['status'] : true,
@@ -128,7 +128,7 @@ class Abt_Activate extends Abt_Base {
 			];
 		}
 
-		return $abt_status;
+		return $abt_options;
 	}
 
 	/**
