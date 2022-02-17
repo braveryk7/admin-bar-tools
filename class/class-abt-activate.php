@@ -150,7 +150,7 @@ class Abt_Activate extends Abt_Base {
 			foreach ( $old_options as $old_key => $old_value ) {
 				switch ( $old_key ) {
 					case 'abt_status':
-						$abt_options['status'] = $old_value;
+						$abt_options['items'] = $old_value;
 						break;
 					case 'abt_locale':
 						$abt_options['locale'] = $old_value;
