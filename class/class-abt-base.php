@@ -208,6 +208,16 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return plugin directory.
+	 * e.g. /DocumentRoot/wp-content/plugins/send-chat-tools
+	 *
+	 * @param string $plugin_name Plugin name.
+	 */
+	protected function get_plugin_dir( string $plugin_name ): string {
+		return WP_PLUGIN_DIR . '/' . $plugin_name;
+	}
+
+	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
