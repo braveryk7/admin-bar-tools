@@ -21,12 +21,23 @@ export type locations = {
 
 export type locationItems = {
 	name: string;
-	shortname: string;
-	status: number;
+	shortname: shortNameType;
+	status: boolean;
 	url: string;
 	admin: string;
 	order: number;
 };
+
+export type shortNameType =
+	| 'psi'
+	| 'lh'
+	| 'gsc'
+	| 'gc'
+	| 'gi'
+	| 'twitter'
+	| 'facebook'
+	| 'hatena'
+	| 'bi';
 
 export type WPApiType< T > = {
 	[ key: string ]: {
