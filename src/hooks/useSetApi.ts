@@ -5,7 +5,7 @@ import api from '@wordpress/api'; // eslint-disable-line
 import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '..';
-import { useSetApiType } from '../types/useSetApiType';
+import { useSetApiType } from '../types/apiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {
