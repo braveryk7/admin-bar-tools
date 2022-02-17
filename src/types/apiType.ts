@@ -44,3 +44,7 @@ export type WPApiType< T > = {
 		[ key: string ]: T;
 	};
 };
+
+export type useSetApiType = {
+	( itemKey: string, value: apiType ): void;
+};
