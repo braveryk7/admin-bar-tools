@@ -209,7 +209,7 @@ class Abt_Base {
 
 	/**
 	 * Return plugin directory.
-	 * e.g. /DocumentRoot/wp-content/plugins/send-chat-tools
+	 * e.g. /DocumentRoot/wp-content/plugins/admin-bar-tools
 	 *
 	 * @param string $plugin_name Plugin name.
 	 */
