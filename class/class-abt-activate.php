@@ -41,6 +41,15 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
+	 * Uninstall wp_options column.
+	 */
+	public static function uninstall_options(): void {
+		foreach ( self::OPTIONS_COLUMN as $option_name ) {
+			delete_option( self::add_prefix( $option_name ) );
+		}
+	}
+
+	/**
 	 * Create status item value.
 	 */
 	private function create_status(): array {
