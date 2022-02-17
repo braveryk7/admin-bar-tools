@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Abt_Base {
 	protected const PREFIX      = 'abt';
 	protected const PLUGIN_SLUG = 'admin-bar-tools';
+	protected const PLUGIN_NAME = 'Admin Bar Tools';
 
 	/**
 	 * Return add prefix.
