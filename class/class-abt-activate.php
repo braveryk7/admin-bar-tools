@@ -24,4 +24,18 @@ class Abt_Activate extends Abt_Base {
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
 	}
+
+	/**
+	 * Register wp_options column.
+	 */
+	public function register_options(): void {
+		$options = [
+			'status'  => $this->create_abt_status(),
+			'locale'  => get_locale(),
+			'sc'      => 0,
+			'version' => self::VERSION,
+		];
+
+		add_option( $this->add_prefix( 'options' ), $options );
+	}
 }
