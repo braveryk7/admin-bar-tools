@@ -23,6 +23,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
+		add_action( 'wp_loaded', [ $this, 'migration_options' ], 5 );
 	}
 
 	/**
@@ -119,5 +120,41 @@ class Abt_Activate extends Abt_Base {
 		}
 
 		return $abt_status;
+	}
+
+	/**
+	 * Fix use old wp_options -> create new options and migration.
+	 */
+	public function migration_options(): void {
+		$abt_options = get_option( $this->add_prefix( 'options' ) );
+
+		if ( ! $abt_options && get_option( $this->add_prefix( 'status' ) ) ) {
+			$this->register_options();
+			$old_options = [];
+
+			foreach ( self::OLD_OPTIONS_COLUMN as $key ) {
+				$old_options[ $key ] = get_option( $this->add_prefix( $key ) );
+				// phpcs:ignore
+				// delete_option( $this->add_prefix( $key ) );
+			}
+
+			foreach ( $old_options as $old_key => $old_value ) {
+				switch ( $old_key ) {
+					case 'abt_status':
+						$abt_options['status'] = $old_value;
+						break;
+					case 'abt_locale':
+						$abt_options['locale'] = $old_value;
+						break;
+					case 'abt_sc':
+						$abt_options['sc'] = $old_value;
+						break;
+					case 'abt_db_version':
+						$abt_options['version'] = $old_value;
+						break;
+				}
+			}
+			update_option( $this->add_prefix( 'options' ), $abt_options );
+		}
 	}
 }
