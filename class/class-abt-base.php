@@ -33,6 +33,16 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return plugin url.
+	 * e.g. https://expamle.com/wp-content/plugins/admin-bar-tools
+	 *
+	 * @param string $plugin_name Plugin name.
+	 */
+	protected function get_plugin_url( string $plugin_name ): string {
+		return WP_PLUGIN_URL . '/' . $plugin_name;
+	}
+
+	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
