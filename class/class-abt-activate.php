@@ -121,7 +121,7 @@ class Abt_Activate extends Abt_Base {
 			$abt_status[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => get_option( $this->add_prefix( 'status' ) ) ? $this->get_abt_status( $key ) : true,
+				'status'    => get_option( $this->add_prefix( 'status' ) ) ? get_option( 'abt_status' )[ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],
