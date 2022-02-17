@@ -54,7 +54,7 @@ class Abt_Connect_Database extends Abt_Base {
 	 */
 	public static function create_abt_options() {
 		add_option( 'abt_locale', get_locale() );
-		add_option( 'abt_db_version', Abt_Return_Data::DB_VERSION );
+		add_option( 'abt_db_version', self::DB_VERSION );
 		add_option( 'abt_status', Abt_Return_Data::options() );
 		add_option( 'abt_sc', 0 );
 	}
@@ -64,7 +64,7 @@ class Abt_Connect_Database extends Abt_Base {
 	 */
 	public function abt_db_check(): bool {
 		$current_db_version = get_option( 'abt_db_version' );
-		if ( Abt_Return_Data::DB_VERSION === $current_db_version ) {
+		if ( self::DB_VERSION === $current_db_version ) {
 			return true;
 		} else {
 			return false;
