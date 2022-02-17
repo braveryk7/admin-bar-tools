@@ -18,6 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Returns data for view and database.
  */
 class Abt_Return_Data {
+	const PSI_LOCALES2 = [
+		'ar' => [
+			'id'   => 'ar',
+			'name' => 'العربية',
+		],
+	];
+
 	const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
