@@ -42,6 +42,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	}
 } elseif ( true === $get_php_version_bool->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
+	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-return-data.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-settings-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
@@ -52,6 +53,11 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	 * Start admin page.
 	 */
 	new Abt_Admin_Page( __FILE__ );
+
+	/**
+	 * Plugin activate.
+	 */
+	new Abt_Activate();
 
 	/**
 	 * Add admin bar menu.
