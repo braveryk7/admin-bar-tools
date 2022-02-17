@@ -25,7 +25,7 @@ class Abt_Base {
 	protected const TABLE_NAME  = self::PREFIX;
 	protected const VERSION     = '1.4';
 
-	private const PSI_LOCALES = [
+	protected const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
 			'name' => 'العربية', // Arabic.
