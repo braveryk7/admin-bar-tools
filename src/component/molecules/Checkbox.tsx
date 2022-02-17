@@ -1,8 +1,5 @@
-import { memo, useContext } from 'react';
-
-// @ts-ignore
-import api from '@wordpress/api'; // eslint-disable-line
 import { CheckboxControl } from '@wordpress/components';
+import { memo, useContext } from '@wordpress/element';
 
 import { apiContext } from '../..';
 import { useSetApi } from '../../hooks/useSetApi';
