@@ -1,25 +1,25 @@
 export type apiType = {
 	abt_options: {
-		items: locations;
+		items: locationsType;
 		locale: string;
 		sc: number;
 		version: number;
 	};
 };
 
-export type locations = {
-	psi: locationItems;
-	lh: locationItems;
-	gsc: locationItems;
-	gc: locationItems;
-	gi: locationItems;
-	bi: locationItems;
-	twitter: locationItems;
-	facebook: locationItems;
-	hatena: locationItems;
+export type locationsType = {
+	psi: locationItemsType;
+	lh: locationItemsType;
+	gsc: locationItemsType;
+	gc: locationItemsType;
+	gi: locationItemsType;
+	bi: locationItemsType;
+	twitter: locationItemsType;
+	facebook: locationItemsType;
+	hatena: locationItemsType;
 };
 
-export type locationItems = {
+export type locationItemsType = {
 	name: string;
 	shortname: shortNameType;
 	status: boolean;
