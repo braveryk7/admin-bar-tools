@@ -18,7 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Send Chat Tools base class.
  */
 class Abt_Base {
-	protected const PREFIX = 'abt';
+	protected const PREFIX      = 'abt';
+	protected const PLUGIN_SLUG = 'admin-bar-tools';
 
 	/**
 	 * Return add prefix.
