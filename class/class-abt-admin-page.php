@@ -93,57 +93,21 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Set register.
 	 */
 	public function register() {
-		$array_item = [
-			'type'       => 'object',
-			'properties' => [
-				'name'      => [ 'type' => 'string' ],
-				'shortname' => [ 'type' => 'string' ],
-				'status'    => [ 'type' => 'boolean' ],
-				'url'       => [ 'type' => 'string' ],
-				'adminurl'  => [ 'type' => 'string' ],
-				'order'     => [ 'type' => 'number' ],
-			],
-		];
 		register_setting(
 			'admin-bar-tools-settings',
-			$this->add_prefix( 'status' ),
+			$this->add_prefix( 'options' ),
 			[
 				'show_in_rest' => [
 					'schema' => [
 						'type'       => 'object',
 						'properties' => [
-							'psi'      => $array_item,
-							'lh'       => $array_item,
-							'gsc'      => $array_item,
-							'gc'       => $array_item,
-							'gi'       => $array_item,
-							'twitter'  => $array_item,
-							'facebook' => $array_item,
-							'hatena'   => $array_item,
-							'bi'       => $array_item,
+							'items'   => [],
+							'locale'  => [],
+							'sc'      => [],
+							'version' => [],
 						],
 					],
 				],
-			]
-		);
-
-		register_setting(
-			'admin-bar-tools-settings',
-			$this->add_prefix( 'sc' ),
-			[
-				'type'         => 'number',
-				'show_in_rest' => true,
-				'default'      => get_option( $this->add_prefix( 'sc' ) ),
-			],
-		);
-
-		register_setting(
-			'admin-bar-tools-settings',
-			$this->add_prefix( 'locale' ),
-			[
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => get_option( $this->add_prefix( 'locale' ) ),
 			],
 		);
 	}
