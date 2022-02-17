@@ -1,6 +1,6 @@
 export type apiType = {
 	abt_options: {
-		status: {};
+		items: locations;
 		locale: string;
 		sc: number;
 		version: number;
