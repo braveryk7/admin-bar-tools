@@ -19,4 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Base {
 	protected const PREFIX = 'abt';
+
+	/**
+	 * Return add prefix.
+	 *
+	 * @param string $value After prefix value.
+	 */
+	public static function add_prefix( string $value ): string {
+		return self::PREFIX . '_' . $value;
+	}
 }
