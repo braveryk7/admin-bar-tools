@@ -48,5 +48,5 @@ export type WPApiType< T > = {
 };
 
 export type useSetApiType = {
-	( itemKey: string, value: apiType ): void;
+	( itemKey: string, value: abtOptionsType ): void;
 };
