@@ -46,33 +46,31 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$result = get_option( $this->add_prefix( 'status' ) );
+			$result = get_option( $this->add_prefix( 'options' ) );
 
-			foreach ( $result as $items ) {
-				if ( $items['status'] ) {
-					if ( is_admin() ) {
-						$link_url = $items['adminurl'];
-					} elseif ( ! is_admin() ) {
-						if ( 'hatena' === $items['shortname'] ) {
-							$link_url = $items['url'] . $sanitize_domain . $sanitize_uri;
-						} elseif ( 'gsc' === $items['shortname'] ) {
-							$link_url = self::searchconsole_url( $items['url'], get_option( $this->add_prefix( 'sc' ) ), $url );
-						} else {
-							$link_url = in_array( $items['shortname'], $add_url_lists, true ) ? $items['url'] . $url : $items['url'];
-						}
+			foreach ( $result['items'] as $item ) {
+				if ( is_admin() ) {
+					$link_url = $item['adminurl'];
+				} elseif ( ! is_admin() ) {
+					if ( 'hatena' === $item['shortname'] ) {
+						$link_url = $item['url'] . $sanitize_domain . $sanitize_uri;
+					} elseif ( 'gsc' === $item['shortname'] ) {
+						$link_url = self::searchconsole_url( $item['url'], get_option( $this->add_prefix( 'sc' ) ), $url );
+					} else {
+						$link_url = in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'];
 					}
-					$wp_admin_bar->add_node(
-						[
-							'id'     => $items['shortname'],
-							'title'  => $items['name'],
-							'parent' => self::PREFIX,
-							'href'   => $link_url,
-							'meta'   => [
-								'target' => '_blank',
-							],
-						],
-					);
 				}
+				$wp_admin_bar->add_node(
+					[
+						'id'     => $item['shortname'],
+						'title'  => $item['name'],
+						'parent' => self::PREFIX,
+						'href'   => $link_url,
+						'meta'   => [
+							'target' => '_blank',
+						],
+					],
+				);
 			}
 		}
 	}
