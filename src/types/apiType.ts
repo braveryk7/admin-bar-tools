@@ -1,10 +1,12 @@
 export type apiType = {
-	abt_options: {
-		items: locationsType;
-		locale: string;
-		sc: number;
-		version: number;
-	};
+	abt_options: abtOptionsType;
+};
+
+export type abtOptionsType = {
+	items: locationsType;
+	locale: string;
+	sc: number;
+	version: number;
 };
 
 export type locationsType = {
