@@ -22,6 +22,7 @@ class Abt_Base {
 	protected const PLUGIN_SLUG = 'admin-bar-tools';
 	protected const PLUGIN_NAME = 'Admin Bar Tools';
 	protected const PLUGIN_FILE = self::PLUGIN_SLUG . '.php';
+	protected const TABLE_NAME  = self::PREFIX;
 
 	/**
 	 * Return add prefix.
