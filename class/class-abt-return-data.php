@@ -18,14 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Returns data for view and database.
  */
 class Abt_Return_Data {
-
-	/**
-	 * Options table locale.
-	 *
-	 * @var string
-	 */
-	private static $locale;
-
 	/**
 	 * Pagespeed Insight URL by country.
 	 *
@@ -58,10 +50,8 @@ class Abt_Return_Data {
 	 * Perform data initialization for view and database insertion.
 	 */
 	private function __construct() {
-		self::$locale = get_locale();
-
-		if ( true === array_key_exists( self::$locale, self::PSI_LOCALES ) ) {
-			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ self::$locale ]['id'];
+		if ( true === array_key_exists( get_locale(), self::PSI_LOCALES ) ) {
+			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=' . self::PSI_LOCALES[ get_locale() ]['id'];
 			$this->psi_url       = $this->psi_admin_url . '&url=';
 		} else {
 			$this->psi_admin_url = 'https://developers.google.com/speed/pagespeed/insights/?hl=us';
