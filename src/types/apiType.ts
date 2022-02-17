@@ -1,9 +1,10 @@
-import { ItemsWrapperType, ItemType } from './CheckboxType';
-
 export type apiType = {
-	abt_locale?: string;
-	abt_sc?: number;
-	abt_status?: ItemsWrapperType< ItemType >;
+	abt_options: {
+		status: {};
+		locale: string;
+		sc: number;
+		version: number;
+	};
 };
 
 export type WPApiType< T > = {
