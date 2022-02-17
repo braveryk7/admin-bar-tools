@@ -53,9 +53,9 @@ class Abt_Activate extends Abt_Base {
 	 * Create status item value.
 	 */
 	private function create_items(): array {
-		$abt_status = [];
-		$locale     = get_locale();
-		$psi        = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+		$abt_options = [];
+		$locale      = get_locale();
+		$psi         = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
 		$psi_url       = $psi_admin_url . '&url=';
