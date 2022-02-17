@@ -25,6 +25,13 @@ class Abt_Base {
 	protected const TABLE_NAME  = self::PREFIX;
 	protected const VERSION     = '1.4';
 
+	protected const OLD_OPTIONS_COLUMN = [
+		'status',
+		'locale',
+		'sc',
+		'db_version',
+	];
+
 	protected const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
