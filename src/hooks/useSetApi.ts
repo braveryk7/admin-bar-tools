@@ -9,6 +9,7 @@ import { useSetApiType } from '../types/apiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {
+		apiData,
 		setNoticeStatus,
 		setNoticeValue,
 		setNoticeMessage,
@@ -42,5 +43,5 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 				} );
 			} );
 		}
-	}, [ itemKey, value ] );
+	}, [ apiData ] );
 };
