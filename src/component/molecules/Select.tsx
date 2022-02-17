@@ -1,6 +1,5 @@
-import { memo, useContext } from 'react';
-
 import { SelectControl } from '@wordpress/components';
+import { memo, useContext } from '@wordpress/element';
 
 import { apiContext } from '../..';
 import { useSetApi } from '../../hooks/useSetApi';
@@ -14,7 +13,7 @@ export const Select = memo( ( props: { itemKey: string } ) => {
 	const changeLocale = ( value: string ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
-		newItem.abt_options.locale = String( value );
+		newItem.abt_options.locale = value;
 		setApiData( newItem );
 	};
 
