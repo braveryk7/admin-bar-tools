@@ -14,15 +14,15 @@ export const Radio = ( props: { itemKey: string } ) => {
 	const changeValue = ( value: number ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
-		newItem.abt_sc = Number( value );
+		newItem.abt_options.sc = Number( value );
 		setApiData( newItem );
 	};
 
-	useSetApi( itemKey, apiData.abt_sc! );
+	useSetApi( itemKey, apiData.abt_options );
 
 	return (
 		<RadioControl
-			selected={ apiData.abt_sc }
+			selected={ apiData.abt_options.sc }
 			options={ [
 				{ label: __( "I don't use it.", 'admin-bar-tools' ), value: 0 },
 				{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
