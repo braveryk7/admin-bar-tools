@@ -1,14 +1,14 @@
-import { useContext, useEffect, useRef } from 'react';
-
 // @ts-ignore
 import api from '@wordpress/api'; // eslint-disable-line
+import { useContext, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { apiContext } from '..';
-import { useSetApiType } from '../types/useSetApiType';
+import { useSetApiType } from '../types/apiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {
+		apiData,
 		setNoticeStatus,
 		setNoticeValue,
 		setNoticeMessage,
@@ -42,5 +42,5 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 				} );
 			} );
 		}
-	}, [ itemKey, value ] );
+	}, [ apiData ] );
 };

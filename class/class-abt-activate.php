@@ -31,7 +31,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function register_options(): void {
 		$options = [
-			'status'  => $this->create_abt_status(),
+			'items'   => $this->create_items(),
 			'locale'  => get_locale(),
 			'sc'      => 0,
 			'version' => self::VERSION,
@@ -52,10 +52,10 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * Create status item value.
 	 */
-	private function create_status(): array {
-		$abt_status = [];
-		$locale     = get_locale();
-		$psi        = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+	private function create_items(): array {
+		$items  = [];
+		$locale = get_locale();
+		$psi    = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
 		$psi_url       = $psi_admin_url . '&url=';
@@ -118,7 +118,7 @@ class Abt_Activate extends Abt_Base {
 		];
 
 		foreach ( $location_url as $key => $value ) {
-			$abt_status[ $key ] = [
+			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
 				'status'    => get_option( $this->add_prefix( 'status' ) ) ? get_option( 'abt_status' )[ $key ]['status'] : true,
@@ -128,7 +128,7 @@ class Abt_Activate extends Abt_Base {
 			];
 		}
 
-		return $abt_status;
+		return $items;
 	}
 
 	/**
@@ -150,7 +150,7 @@ class Abt_Activate extends Abt_Base {
 			foreach ( $old_options as $old_key => $old_value ) {
 				switch ( $old_key ) {
 					case 'abt_status':
-						$abt_options['status'] = $old_value;
+						$abt_options['items'] = $old_value;
 						break;
 					case 'abt_locale':
 						$abt_options['locale'] = $old_value;
