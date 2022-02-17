@@ -1,9 +1,7 @@
 import './scss/index.scss';
 
-import { createContext, useEffect, useState } from 'react';
-
 import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
-import { render } from '@wordpress/element';
+import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { Checkbox } from './component/molecules/Checkbox';
@@ -12,11 +10,12 @@ import { Select } from './component/molecules/Select';
 import { Items } from './component/organisms/Items';
 import { useGetApi } from './hooks/useGetApi';
 import { apiContextType, noticeValueType } from './types/useContextType';
+import { getApiInitValue } from './utils/constant';
 
 export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
-	const [ apiData, setApiData ] = useState( {} );
+	const [ apiData, setApiData ] = useState( getApiInitValue() );
 	const [ apiStatus, setApiStatus ] = useState( false );
 	const [ noticeStatus, setNoticeStatus ] = useState( false );
 	const [ noticeValue, setNoticeValue ] = useState(
@@ -63,7 +62,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-display"
 					>
-						<Checkbox itemKey="abt_status" />
+						<Checkbox itemKey="abt_options" />
 					</Items>
 					<Items
 						title={ __(
@@ -72,7 +71,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-radio"
 					>
-						<Radio itemKey="abt_sc" />
+						<Radio itemKey="abt_options" />
 					</Items>
 					<Items
 						title={ __(
@@ -81,7 +80,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-location"
 					>
-						<Select itemKey="abt_locale" />
+						<Select itemKey="abt_options" />
 					</Items>
 				</apiContext.Provider>
 			) : (
