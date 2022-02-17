@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Returns data for view and database.
  */
 class Abt_Return_Data {
-	const DB_VERSION  = '1.4';
 	const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
