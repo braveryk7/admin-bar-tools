@@ -52,7 +52,7 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * Create status item value.
 	 */
-	private function create_status(): array {
+	private function create_items(): array {
 		$abt_status = [];
 		$locale     = get_locale();
 		$psi        = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
