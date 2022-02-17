@@ -31,7 +31,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function register_options(): void {
 		$options = [
-			'items'   => $this->create_abt_status(),
+			'items'   => $this->create_items(),
 			'locale'  => get_locale(),
 			'sc'      => 0,
 			'version' => self::VERSION,
