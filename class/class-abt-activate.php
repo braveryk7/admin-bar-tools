@@ -53,9 +53,10 @@ class Abt_Activate extends Abt_Base {
 	 * Create status item value.
 	 */
 	private function create_items(): array {
-		$items  = [];
-		$locale = get_locale();
-		$psi    = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+		$items       = [];
+		$locale      = get_locale();
+		$abt_options = $this->get_abt_options();
+		$psi         = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
 		$psi_url       = $psi_admin_url . '&url=';
@@ -121,7 +122,7 @@ class Abt_Activate extends Abt_Base {
 			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => get_option( $this->add_prefix( 'status' ) ) ? get_option( 'abt_status' )[ $key ]['status'] : true,
+				'status'    => $abt_options ? $abt_options['items'][ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],
@@ -135,7 +136,7 @@ class Abt_Activate extends Abt_Base {
 	 * Fix use old wp_options -> create new options and migration.
 	 */
 	public function migration_options(): void {
-		$abt_options = get_option( $this->add_prefix( 'options' ) );
+		$abt_options = $this->get_abt_options();
 
 		if ( ! $abt_options && get_option( $this->add_prefix( 'status' ) ) ) {
 			$this->register_options();

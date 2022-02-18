@@ -46,7 +46,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$abt_options = get_option( $this->add_prefix( 'options' ) );
+			$abt_options = $this->get_abt_options();
 
 			foreach ( $abt_options['items'] as $item ) {
 				if ( is_admin() ) {
