@@ -149,13 +149,13 @@ class Abt_Activate extends Abt_Base {
 			}
 
 			foreach ( $old_options as $old_key => $old_value ) {
-				if ( 'abt_status' === $old_key ) {
+				if ( 'status' === $old_key ) {
 					$abt_options['items'] = $old_value;
-				} elseif ( 'abt_locale' === $old_key ) {
+				} elseif ( 'locale' === $old_key ) {
 					$abt_options['locale'] = $old_value;
-				} elseif ( 'abt_sc' === $old_key ) {
+				} elseif ( 'sc' === $old_key ) {
 					$abt_options['sc'] = $old_value;
-				} elseif ( 'abt_db_version' === $old_key ) {
+				} elseif ( 'db_version' === $old_key ) {
 					$abt_options['version'] = $old_value;
 				}
 			}
