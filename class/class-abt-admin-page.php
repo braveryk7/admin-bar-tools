@@ -85,7 +85,7 @@ class Abt_Admin_Page extends Abt_Base {
 		wp_set_script_translations(
 			$this->add_prefix( 'script' ),
 			self::PLUGIN_SLUG,
-			dirname( $this->path ) . '/languages'
+			$this->get_plugin_dir() . '/languages',
 		);
 	}
 
