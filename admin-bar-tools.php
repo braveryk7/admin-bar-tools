@@ -49,7 +49,7 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	/**
 	 * Start admin page.
 	 */
-	new Abt_Admin_Page( __FILE__ );
+	new Abt_Admin_Page();
 
 	/**
 	 * Plugin activate.

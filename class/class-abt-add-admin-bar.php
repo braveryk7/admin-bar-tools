@@ -47,6 +47,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			);
 
 			$abt_options = $this->get_abt_options();
+			$link_url    = '';
 
 			foreach ( $abt_options['items'] as $item ) {
 				if ( $item['status'] ) {

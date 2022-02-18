@@ -20,11 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * WordPress hook.
-	 *
-	 * @param string $path admin-bar-tools.php path.
 	 */
-	public function __construct( string $path ) {
-		$this->path = $path;
+	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
 		add_action( 'rest_api_init', [ $this, 'register' ] );
@@ -85,7 +82,7 @@ class Abt_Admin_Page extends Abt_Base {
 		wp_set_script_translations(
 			$this->add_prefix( 'script' ),
 			self::PLUGIN_SLUG,
-			dirname( $this->path ) . '/languages'
+			$this->get_plugin_dir() . '/languages',
 		);
 	}
 
