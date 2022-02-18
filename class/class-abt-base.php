@@ -223,10 +223,10 @@ class Abt_Base {
 	 * Return plugin directory.
 	 * e.g. /DocumentRoot/wp-content/plugins/admin-bar-tools
 	 *
-	 * @param string $plugin_name Plugin name.
+	 * @param string $plugin_slug Plugin slug.
 	 */
-	protected function get_plugin_dir( string $plugin_name = self::PLUGIN_SLUG ): string {
-		return WP_PLUGIN_DIR . '/' . $plugin_name;
+	protected function get_plugin_dir( string $plugin_slug = self::PLUGIN_SLUG ): string {
+		return WP_PLUGIN_DIR . '/' . $plugin_slug;
 	}
 
 	/**
