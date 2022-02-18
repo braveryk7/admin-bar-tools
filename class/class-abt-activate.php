@@ -159,7 +159,7 @@ class Abt_Activate extends Abt_Base {
 					$abt_options['version'] = $old_value;
 				}
 			}
-			update_option( $this->add_prefix( 'options' ), $abt_options );
+			$this->set_abt_options( $abt_options );
 		}
 	}
 }
