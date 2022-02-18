@@ -23,4 +23,11 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	protected function setUp() :void {
 		$this->instance = new Abt_Base();
 	}
+
+	/**
+	 * TEST: add_prefix()
+	 */
+	public function test_add_prefix() {
+		$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
+	}
 }
