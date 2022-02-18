@@ -46,16 +46,16 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$result = get_option( $this->add_prefix( 'options' ) );
+			$abt_options = $this->get_abt_options();
 
-			foreach ( $result['items'] as $item ) {
+			foreach ( $abt_options['items'] as $item ) {
 				if ( is_admin() ) {
 					$link_url = $item['adminurl'];
 				} elseif ( ! is_admin() ) {
 					if ( 'hatena' === $item['shortname'] ) {
 						$link_url = $item['url'] . $sanitize_domain . $sanitize_uri;
 					} elseif ( 'gsc' === $item['shortname'] ) {
-						$link_url = self::searchconsole_url( $item['url'], get_option( $this->add_prefix( 'sc' ) ), $url );
+						$link_url = $this->searchconsole_url( $item['url'], $abt_options['sc'], $url );
 					} else {
 						$link_url = in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'];
 					}
@@ -79,31 +79,23 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * Create Google SearchConsole URL.
 	 *
 	 * @param string $url           SearchConsole URL.
-	 * @param string $status        Use SearchConsole type (Don't use, Domain or URL Prefix).
+	 * @param int    $status        Use SearchConsole type (Don't use, Domain or URL Prefix).
 	 * @param string $encode_url    Use rawurlencode page url.
 	 *
 	 * @return string SearchConsole URL.
 	 */
-	private function searchconsole_url( string $url, string $status, string $encode_url ): string {
-		$domain = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
-		if ( '1' === $status ) {
-			if ( is_front_page() ) {
-				$parameter = '?resource_id=sc-domain:';
-				$gsc_url   = $url . $parameter . $domain;
-			} else {
-				$parameter = '/performance/search-analytics?resource_id=sc-domain:';
-				$gsc_url   = $url . $parameter . $domain . '&page=!' . $encode_url;
-			}
-		} elseif ( '2' === $status ) {
-			if ( is_front_page() ) {
-				$parameter = '?resource_id=sc-domain:';
-				$gsc_url   = $url . $parameter . $encode_url;
-			} else {
-				$parameter = '/performance/search-analytics?resource_id=sc-domain:';
-				$gsc_url   = $url . $parameter . rawurlencode( $ssl . $domain . '/' ) . '&page=!' . $encode_url;
-			}
-		} else {
-			$gsc_url = $url;
+	private function searchconsole_url( string $url, int $status, string $encode_url ): string {
+		$domain    = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+		$gsc_url   = $url;
+		$parameter = [
+			'?resource_id=sc-domain:',
+			'/performance/search-analytics?resource_id=sc-domain:',
+		];
+
+		if ( 1 === $status ) {
+			$gsc_url .= is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url;
+		} elseif ( 2 === $status ) {
+			$gsc_url .= is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url;
 		}
 
 		return $gsc_url;

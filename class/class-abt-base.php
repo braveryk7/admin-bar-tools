@@ -18,12 +18,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Send Chat Tools base class.
  */
 class Abt_Base {
-	protected const PREFIX      = 'abt';
-	protected const PLUGIN_SLUG = 'admin-bar-tools';
-	protected const PLUGIN_NAME = 'Admin Bar Tools';
-	protected const PLUGIN_FILE = self::PLUGIN_SLUG . '.php';
-	protected const TABLE_NAME  = self::PREFIX;
-	protected const VERSION     = '1.4';
+	protected const PREFIX              = 'abt';
+	protected const PLUGIN_SLUG         = 'admin-bar-tools';
+	protected const PLUGIN_NAME         = 'Admin Bar Tools';
+	protected const PLUGIN_FILE         = self::PLUGIN_SLUG . '.php';
+	protected const TABLE_NAME          = self::PREFIX;
+	protected const VERSION             = '1.4';
+	protected const OPTIONS_COLUMN_NAME = 'options';
+
+	public const OPTIONS_COLUMN = [
+		'options',
+	];
 
 	protected const OLD_OPTIONS_COLUMN = [
 		'status',
@@ -210,7 +215,7 @@ class Abt_Base {
 	 *
 	 * @param string $plugin_name Plugin name.
 	 */
-	protected function get_plugin_url( string $plugin_name ): string {
+	protected function get_plugin_url( string $plugin_name = self::PLUGIN_SLUG ): string {
 		return WP_PLUGIN_URL . '/' . $plugin_name;
 	}
 
@@ -218,18 +223,46 @@ class Abt_Base {
 	 * Return plugin directory.
 	 * e.g. /DocumentRoot/wp-content/plugins/admin-bar-tools
 	 *
-	 * @param string $plugin_name Plugin name.
+	 * @param string $plugin_slug Plugin slug.
 	 */
-	protected function get_plugin_dir( string $plugin_name ): string {
-		return WP_PLUGIN_DIR . '/' . $plugin_name;
+	protected function get_plugin_dir( string $plugin_slug = self::PLUGIN_SLUG ): string {
+		return WP_PLUGIN_DIR . '/' . $plugin_slug;
 	}
 
 	/**
 	 * Return plugin file path.
 	 * e.g. /DocumentRoot/wp-content/plugins/send-chat-tools/admin-bar-tools.php
+	 *
+	 * @param string $plugin_slug Plugin slug. e.g. send-chat-tools .
+	 * @param string $plugin_file Plugin file. e.g. send-chat-tools.php .
 	 */
-	protected function get_plugin_path(): string {
-		return $this->get_plugin_dir( self::PLUGIN_SLUG ) . '/' . self::PLUGIN_FILE;
+	protected function get_plugin_path( string $plugin_slug = self::PLUGIN_SLUG, string $plugin_file = self::PLUGIN_FILE ): string {
+		return $this->get_plugin_dir( $plugin_slug ) . '/' . $plugin_file;
+	}
+
+	/**
+	 * Return option group.
+	 * Use register_setting.
+	 * e.g. admin-bar-tools-settings
+	 */
+	protected function get_option_group(): string {
+		return self::PLUGIN_SLUG . '-settings';
+	}
+
+	/**
+	 * Get abt_options.
+	 */
+	protected function get_abt_options(): array {
+		return get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
+	}
+
+	/**
+	 * Set abt_options.
+	 *
+	 * @param array $abt_options abt_options column data.
+	 */
+	protected function set_abt_options( array $abt_options ): void {
+		update_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ), $abt_options );
 	}
 
 	/**

@@ -28,7 +28,7 @@ class Abt_Admin_Page extends Abt_Base {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
 		add_action( 'rest_api_init', [ $this, 'register' ] );
-		add_filter( 'plugin_action_links_' . plugin_basename( $path ), [ $this, 'add_settings_links' ] );
+		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_path() ), [ $this, 'add_settings_links' ] );
 	}
 
 	/**
@@ -50,7 +50,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 * @param array|string $links plugin page setting links.
 	 */
 	public function add_settings_links( array $links ): array {
-		$add_link = '<a href="options-general.php?page=admin-bar-tools">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
+		$add_link = '<a href="options-general.php?page=' . self::PLUGIN_SLUG . '">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
 		array_unshift( $links, $add_link );
 		return $links;
 	}
@@ -65,18 +65,18 @@ class Abt_Admin_Page extends Abt_Base {
 			return;
 		}
 
-		$asset_file = require_once dirname( $this->path ) . '/build/index.asset.php';
+		$asset_file = require_once $this->get_plugin_dir() . '/build/index.asset.php';
 
 		wp_enqueue_style(
 			$this->add_prefix( 'style' ),
-			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.css',
+			$this->get_plugin_url() . '/build/index.css',
 			[ 'wp-components' ],
 			$asset_file['version'],
 		);
 
 		wp_enqueue_script(
 			$this->add_prefix( 'script' ),
-			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.js',
+			$this->get_plugin_url() . '/build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
@@ -84,7 +84,7 @@ class Abt_Admin_Page extends Abt_Base {
 
 		wp_set_script_translations(
 			$this->add_prefix( 'script' ),
-			'admin-bar-tools',
+			self::PLUGIN_SLUG,
 			dirname( $this->path ) . '/languages'
 		);
 	}
@@ -94,7 +94,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function register() {
 		register_setting(
-			'admin-bar-tools-settings',
+			$this->get_option_group(),
 			$this->add_prefix( 'options' ),
 			[
 				'show_in_rest' => [
@@ -116,6 +116,6 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Settings page.
 	 */
 	public function abt_settings() {
-		echo '<div id="admin-bar-tools-settings"></div>';
+		echo '<div id="' . esc_attr( $this->get_option_group() ) . '"></div>';
 	}
 }
