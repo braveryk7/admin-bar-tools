@@ -25,6 +25,10 @@ class Abt_Base {
 	protected const TABLE_NAME  = self::PREFIX;
 	protected const VERSION     = '1.4';
 
+	public const OPTIONS_COLUMN = [
+		'options',
+	];
+
 	protected const OLD_OPTIONS_COLUMN = [
 		'status',
 		'locale',
