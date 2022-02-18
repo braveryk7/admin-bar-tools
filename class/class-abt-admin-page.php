@@ -65,7 +65,7 @@ class Abt_Admin_Page extends Abt_Base {
 			return;
 		}
 
-		$asset_file = require_once dirname( $this->path ) . '/build/index.asset.php';
+		$asset_file = require_once $this->get_plugin_dir() . '/build/index.asset.php';
 
 		wp_enqueue_style(
 			$this->add_prefix( 'style' ),
