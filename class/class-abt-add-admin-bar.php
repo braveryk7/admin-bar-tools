@@ -92,15 +92,10 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			'/performance/search-analytics?resource_id=sc-domain:',
 		];
 
-		switch ( $status ) {
-			case 1:
-				$gsc_url .= is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url;
-				break;
-			case 2:
-				$gsc_url .= is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url;
-				break;
-			default:
-				break;
+		if ( 1 === $status ) {
+			$gsc_url .= is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url;
+		} elseif ( 2 === $status ) {
+			$gsc_url .= is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url;
 		}
 
 		return $gsc_url;
