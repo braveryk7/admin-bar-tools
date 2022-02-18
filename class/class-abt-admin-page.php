@@ -94,7 +94,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function register() {
 		register_setting(
-			'admin-bar-tools-settings',
+			$this->get_plugin_path(),
 			$this->add_prefix( 'options' ),
 			[
 				'show_in_rest' => [
@@ -116,6 +116,6 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Settings page.
 	 */
 	public function abt_settings() {
-		echo '<div id="admin-bar-tools-settings"></div>';
+		echo '<div id="' . esc_attr( $this->get_plugin_path() ) . '"></div>';
 	}
 }
