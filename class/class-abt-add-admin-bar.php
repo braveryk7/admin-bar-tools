@@ -46,16 +46,16 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$result = get_option( $this->add_prefix( 'options' ) );
+			$abt_options = get_option( $this->add_prefix( 'options' ) );
 
-			foreach ( $result['items'] as $item ) {
+			foreach ( $abt_options['items'] as $item ) {
 				if ( is_admin() ) {
 					$link_url = $item['adminurl'];
 				} elseif ( ! is_admin() ) {
 					if ( 'hatena' === $item['shortname'] ) {
 						$link_url = $item['url'] . $sanitize_domain . $sanitize_uri;
 					} elseif ( 'gsc' === $item['shortname'] ) {
-						$link_url = self::searchconsole_url( $item['url'], get_option( $this->add_prefix( 'sc' ) ), $url );
+						$link_url = $this->searchconsole_url( $item['url'], $abt_options['sc'], $url );
 					} else {
 						$link_url = in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'];
 					}
