@@ -81,4 +81,17 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
 	}
+
+	/**
+	 * TEST: get_option_group()
+	 */
+	public function test_get_option_group() {
+		$method = new ReflectionMethod( $this->instance, 'get_option_group' );
+		$method->setAccessible( true );
+
+		$this->assertSame(
+			'admin-bar-tools-settings',
+			$method->invoke( $this->instance )
+		);
+	}
 }
