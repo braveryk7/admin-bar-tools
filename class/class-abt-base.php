@@ -225,7 +225,7 @@ class Abt_Base {
 	 *
 	 * @param string $plugin_name Plugin name.
 	 */
-	protected function get_plugin_dir( string $plugin_name ): string {
+	protected function get_plugin_dir( string $plugin_name = self::PLUGIN_SLUG ): string {
 		return WP_PLUGIN_DIR . '/' . $plugin_name;
 	}
 
