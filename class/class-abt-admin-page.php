@@ -28,7 +28,7 @@ class Abt_Admin_Page extends Abt_Base {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
 		add_action( 'rest_api_init', [ $this, 'register' ] );
-		add_filter( 'plugin_action_links_' . plugin_basename( $path ), [ $this, 'add_settings_links' ] );
+		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_path() ), [ $this, 'add_settings_links' ] );
 	}
 
 	/**
