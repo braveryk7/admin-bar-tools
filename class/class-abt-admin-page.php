@@ -69,14 +69,14 @@ class Abt_Admin_Page extends Abt_Base {
 
 		wp_enqueue_style(
 			$this->add_prefix( 'style' ),
-			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.css',
+			$this->get_plugin_url() . '/build/index.css',
 			[ 'wp-components' ],
 			$asset_file['version'],
 		);
 
 		wp_enqueue_script(
 			$this->add_prefix( 'script' ),
-			$this->get_plugin_url( self::PLUGIN_SLUG ) . '/build/index.js',
+			$this->get_plugin_url() . '/build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
