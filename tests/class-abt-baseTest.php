@@ -15,4 +15,12 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	 * @var object $instance instance.
 	 */
 	private $instance;
+
+	/**
+	 * SetUp.
+	 * Create instance.
+	 */
+	protected function setUp() :void {
+		$this->instance = new Abt_Base();
+	}
 }
