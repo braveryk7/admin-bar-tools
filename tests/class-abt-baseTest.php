@@ -9,4 +9,10 @@ require_once './class/class-abt-base.php';
  * Test: Sct_Base
  */
 class Abt_BaseTest extends PHPUnit\Framework\TestCase {
+	/**
+	 * This test class instance.
+	 *
+	 * @var object $instance instance.
+	 */
+	private $instance;
 }
