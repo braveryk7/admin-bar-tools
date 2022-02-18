@@ -232,9 +232,12 @@ class Abt_Base {
 	/**
 	 * Return plugin file path.
 	 * e.g. /DocumentRoot/wp-content/plugins/send-chat-tools/admin-bar-tools.php
+	 *
+	 * @param string $plugin_slug Plugin slug. e.g. send-chat-tools .
+	 * @param string $plugin_file Plugin file. e.g. send-chat-tools.php .
 	 */
-	protected function get_plugin_path(): string {
-		return $this->get_plugin_dir( self::PLUGIN_SLUG ) . '/' . self::PLUGIN_FILE;
+	protected function get_plugin_path( string $plugin_slug = self::PLUGIN_SLUG, string $plugin_file = self::PLUGIN_FILE ): string {
+		return $this->get_plugin_dir( $plugin_slug ) . '/' . $plugin_file;
 	}
 
 	/**
