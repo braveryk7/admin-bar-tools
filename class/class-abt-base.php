@@ -233,6 +233,15 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return option group.
+	 * Use register_setting.
+	 * e.g. admin-bar-tools-settings
+	 */
+	protected function get_option_group(): string {
+		return self::PLUGIN_SLUG . '-settings';
+	}
+
+	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
