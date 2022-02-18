@@ -148,19 +148,14 @@ class Abt_Activate extends Abt_Base {
 			}
 
 			foreach ( $old_options as $old_key => $old_value ) {
-				switch ( $old_key ) {
-					case 'abt_status':
-						$abt_options['items'] = $old_value;
-						break;
-					case 'abt_locale':
-						$abt_options['locale'] = $old_value;
-						break;
-					case 'abt_sc':
-						$abt_options['sc'] = $old_value;
-						break;
-					case 'abt_db_version':
-						$abt_options['version'] = $old_value;
-						break;
+				if ( 'abt_status' === $old_key ) {
+					$abt_options['items'] = $old_value;
+				} elseif ( 'abt_locale' === $old_key ) {
+					$abt_options['locale'] = $old_value;
+				} elseif ( 'abt_sc' === $old_key ) {
+					$abt_options['sc'] = $old_value;
+				} elseif ( 'abt_db_version' === $old_key ) {
+					$abt_options['version'] = $old_value;
 				}
 			}
 			update_option( $this->add_prefix( 'options' ), $abt_options );
