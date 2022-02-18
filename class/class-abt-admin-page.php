@@ -94,7 +94,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function register() {
 		register_setting(
-			$this->get_plugin_path(),
+			$this->get_option_group(),
 			$this->add_prefix( 'options' ),
 			[
 				'show_in_rest' => [
@@ -116,6 +116,6 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Settings page.
 	 */
 	public function abt_settings() {
-		echo '<div id="' . esc_attr( $this->get_plugin_path() ) . '"></div>';
+		echo '<div id="' . esc_attr( $this->get_option_group() ) . '"></div>';
 	}
 }
