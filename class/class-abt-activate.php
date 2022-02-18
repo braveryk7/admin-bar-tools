@@ -154,7 +154,7 @@ class Abt_Activate extends Abt_Base {
 				} elseif ( 'locale' === $old_key ) {
 					$abt_options['locale'] = $old_value;
 				} elseif ( 'sc' === $old_key ) {
-					$abt_options['sc'] = $old_value;
+					$abt_options['sc'] = (int) $old_value;
 				} elseif ( 'db_version' === $old_key ) {
 					$abt_options['version'] = $old_value;
 				}
