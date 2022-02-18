@@ -64,4 +64,21 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
+
+	/**
+	 * TEST: get_plugin_path()
+	 */
+	public function test_get_plugin_path() {
+		$method = new ReflectionMethod( $this->instance, 'get_plugin_path' );
+		$method->setAccessible( true );
+
+		$this->assertSame(
+			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			$method->invoke( $this->instance )
+		);
+		$this->assertSame(
+			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
+		);
+	}
 }
