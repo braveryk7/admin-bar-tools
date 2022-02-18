@@ -38,3 +38,4 @@ build/
 #   etc
 #-------------------------------
 admin-bar-tools.zip
+languages/js/*.mo
