@@ -1,22 +1,29 @@
 name: PHPUnit
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
     name: PHPUnit
-
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        php-version: ['7.4', '8.0', '8.1']
     steps:
-    - name: Checkout
-    uses: actions/checkout@v2
+      - name: Setup -> PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extension-csv: mbstring, xdebug, dom
 
-    -name: Validate composer.json and composer.lock
-    run: composer validate
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-    run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-    - name: Run test suite
-    run: composer run-script test
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run test suite
+        run: composer run-script test
