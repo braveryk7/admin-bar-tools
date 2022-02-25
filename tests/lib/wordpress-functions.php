@@ -11,6 +11,10 @@ function plugin_basename() {
 	return true;
 }
 
+function __( $value ) {
+	return $value;
+}
+
 function esc_attr( $string ) {
 	return $string;
 }
