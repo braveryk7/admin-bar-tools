@@ -11,4 +11,14 @@ class Abt_ActivateTest extends PHPUnit\Framework\TestCase {
 	 * @var object $instance instance.
 	 */
 	private $instance;
+
+	/**
+	 * Settings: ABSPATH, test class file, WordPress functions.
+	 */
+	public static function setUpBeforeClass(): void {
+		define( 'ABSPATH', '' );
+
+		require_once './class/class-abt-activate.php';
+		require_once './tests/lib/wordpress-functions.php';
+	}
 }
