@@ -50,4 +50,11 @@ class Abt_ActivateTest extends PHPUnit\Framework\TestCase {
 	public function test_create_items() {
 		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
+
+	/**
+	 * TEST: migration_options()
+	 */
+	public function test_migration_options() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
