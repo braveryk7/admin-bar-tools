@@ -29,4 +29,11 @@ class Abt_Admin_PageTest extends PHPUnit\Framework\TestCase {
 	protected function setUp() :void {
 		$this->instance = new Abt_Admin_Page();
 	}
+
+	/**
+	 * TEST: add_menu()
+	 */
+	public function test_add_menu() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
