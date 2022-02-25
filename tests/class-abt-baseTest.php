@@ -94,4 +94,11 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 			$method->invoke( $this->instance )
 		);
 	}
+
+	/**
+	 * TEST: get_abt_options()
+	 */
+	public function test_get_abt_options() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
