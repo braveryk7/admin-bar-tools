@@ -2,7 +2,7 @@
 declare( strict_types = 1 );
 
 /**
- * Test: Abt_Activate
+ * Test: Abt_Add_Admin_Bar
  */
 class Abt_Add_Admin_BarTest extends PHPUnit\Framework\TestCase {
 	/**
