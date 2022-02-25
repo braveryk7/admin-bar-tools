@@ -21,4 +21,12 @@ class Abt_Add_Admin_Bar extends PHPUnit\Framework\TestCase {
 		require_once './class/class-abt-add-admin-bar.php';
 		require_once './tests/lib/wordpress-functions.php';
 	}
+
+	/**
+	 * SetUp.
+	 * Create instance.
+	 */
+	protected function setUp() :void {
+		$this->instance = new Abt_Add_Admin_Bar();
+	}
 }
