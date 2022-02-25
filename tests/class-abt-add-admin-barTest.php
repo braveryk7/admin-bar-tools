@@ -36,4 +36,11 @@ class Abt_Add_Admin_BarTest extends PHPUnit\Framework\TestCase {
 	public function test_add_admin_bar() {
 		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
+
+	/**
+	 * TEST: searchconsole_url()
+	 */
+	public function test_searchconsole_url() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
