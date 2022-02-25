@@ -57,4 +57,11 @@ class Abt_Admin_PageTest extends PHPUnit\Framework\TestCase {
 	public function test_register() {
 		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
+
+	/**
+	 * TEST: abt_settings()
+	 */
+	public function test_abt_settings() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
