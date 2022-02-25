@@ -20,6 +20,10 @@ class Abt_ActivateTest extends PHPUnit\Framework\TestCase {
 			define( 'ABSPATH', '' );
 		}
 
+		if ( ! class_exists( 'Abt_Base ' ) ) {
+			require_once './class/class-abt-base.php';
+		}
+
 		require_once './class/class-abt-activate.php';
 		require_once './tests/lib/wordpress-functions.php';
 	}
