@@ -16,7 +16,9 @@ class Abt_Add_Admin_BarTest extends PHPUnit\Framework\TestCase {
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
-		define( 'ABSPATH', '' );
+		if ( ! defined( 'ABSPATH' ) ) {
+			define( 'ABSPATH', '' );
+		}
 
 		require_once './class/class-abt-add-admin-bar.php';
 		require_once './tests/lib/wordpress-functions.php';
