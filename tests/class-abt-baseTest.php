@@ -108,4 +108,11 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	public function test_set_abt_options() {
 		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
+
+	/**
+	 * TEST: console()
+	 */
+	public function test_console() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
