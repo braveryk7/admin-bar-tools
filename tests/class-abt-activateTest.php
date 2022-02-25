@@ -29,4 +29,11 @@ class Abt_ActivateTest extends PHPUnit\Framework\TestCase {
 	protected function setUp() :void {
 		$this->instance = new Abt_Activate();
 	}
+
+	/**
+	 * TEST: register_options()
+	 */
+	public function test_register_options() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
