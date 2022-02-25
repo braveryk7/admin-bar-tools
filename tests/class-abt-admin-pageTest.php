@@ -47,7 +47,12 @@ class Abt_Admin_PageTest extends PHPUnit\Framework\TestCase {
 	 * TEST: add_settings_links()
 	 */
 	public function test_add_settings_links() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$this->assertSame(
+			[
+				'<a href="options-general.php?page=admin-bar-tools">Settings</a>',
+			],
+			$this->instance->add_settings_links( [] ),
+		);
 	}
 
 	/**
