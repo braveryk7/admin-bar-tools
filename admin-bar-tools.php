@@ -60,4 +60,10 @@ if ( false === $get_php_version_bool->judgment( $require_php_version ) ) {
 	 * Add admin bar menu.
 	 */
 	new Abt_Add_Admin_Bar();
+
+	/**
+	 * Plugin uninstall hook.
+	 * Delete wp_options column.
+	 */
+	register_uninstall_hook( __FILE__, 'Abt_Activate::uninstall_options' );
 }
