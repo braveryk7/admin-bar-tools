@@ -15,8 +15,8 @@ function __( $value ) {
 	return $value;
 }
 
-function esc_attr( $string ) {
-	return $string;
+function esc_attr( $value ) {
+	return $value;
 }
 
 function register_activation_hook() {
