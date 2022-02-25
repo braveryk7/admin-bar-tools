@@ -21,4 +21,12 @@ class Abt_ActivateTest extends PHPUnit\Framework\TestCase {
 		require_once './class/class-abt-activate.php';
 		require_once './tests/lib/wordpress-functions.php';
 	}
+
+	/**
+	 * SetUp.
+	 * Create instance.
+	 */
+	protected function setUp() :void {
+		$this->instance = new Abt_Activate();
+	}
 }
