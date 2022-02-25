@@ -1,10 +1,6 @@
 <?php
 declare( strict_types = 1 );
 
-define( 'ABSPATH', '' );
-
-require_once './class/class-abt-base.php';
-
 /**
  * Test: Sct_Base
  */
@@ -15,6 +11,18 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	 * @var object $instance instance.
 	 */
 	private $instance;
+
+	/**
+	 * Settings: ABSPATH, test class file, WordPress functions.
+	 */
+	public static function setUpBeforeClass(): void {
+		if ( ! defined( 'ABSPATH' ) ) {
+			define( 'ABSPATH', '' );
+		}
+
+		require_once './class/class-abt-base.php';
+		require_once './tests/lib/wordpress-functions.php';
+	}
 
 	/**
 	 * SetUp.
@@ -93,5 +101,26 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 			'admin-bar-tools-settings',
 			$method->invoke( $this->instance )
 		);
+	}
+
+	/**
+	 * TEST: get_abt_options()
+	 */
+	public function test_get_abt_options() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
+	 * TEST: set_abt_options()
+	 */
+	public function test_set_abt_options() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
+	 * TEST: console()
+	 */
+	public function test_console() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
 }
