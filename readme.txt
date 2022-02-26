@@ -2,7 +2,7 @@
 Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
-Tested up to: 5.8.1
+Tested up to: 5.9.1
 Requires PHP: 7.3.0
 Stable tag: 1.5.0
 License: GPLv2 or later
