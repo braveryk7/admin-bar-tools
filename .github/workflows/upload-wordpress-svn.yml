@@ -41,7 +41,7 @@ jobs:
         id: svn-env
 
       - name: SVN checkout
-        run: svn co ${{ secrets.SVN_URL }} --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }}
+        run: svn co ${{ secrets.SVN_URL }}
 
       - name: Before SVN status
         run: svn st ${{ steps.svn-env.outputs.PROJECT_NAME }}/
@@ -63,4 +63,4 @@ jobs:
         run: |
           VERSION=`echo ${{ steps.svn-env.outputs.VERSION }} | sed -e "s/v//"`
           cd ${{ steps.svn-env.outputs.PROJECT_NAME }}
-          svn ci -m "version ${VERSION} release" && svn up
+          svn ci -m "version ${VERSION} release" --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} && svn up
