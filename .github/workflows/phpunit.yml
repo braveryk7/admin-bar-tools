@@ -19,7 +19,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Cache composer packages
+        id: vendor_cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
       - name: Install dependencies
+        if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress --no-suggest
 
       - name: Run test suite
