@@ -3,4 +3,13 @@
 		<const name="WP_PLUGIN_URL" value="https://example.com/wp-content/plugins" />
 		<const name="WP_PLUGIN_DIR" value="/DocumentRoot/wp-content/plugins" />
 	</php>
+    <coverage>
+        <include>
+            <directory suffix=".php">/class</directory>
+			<file>admin-bar-tools.php</file>
+        </include>
+        <report>
+			<clover outputFile="tests/logs/phpunit_result.xml" />
+        </report>
+    </coverage>
 </phpunit>
