@@ -29,7 +29,7 @@ Miner update.
 
 Important:
 
-* PHP 8.0 and earlier will no longer be supported after next minor update (1.4.0). The update is now scheduled for April.
+* PHP 8.0 and earlier will no longer be supported after next minor update (1.6.0). The update is now scheduled for April.
 
 Improvements:
 
