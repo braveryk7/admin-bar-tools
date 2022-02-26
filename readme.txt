@@ -23,6 +23,27 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.5.0 =
+
+Miner update.
+
+Important:
+
+* PHP 8.0 and earlier will no longer be supported after next minor update (1.4.0). The update is now scheduled for April.
+
+Improvements:
+
+* The internal design of PHP has been substantially revised.
+* Most options starting with "abt" have been removed and replaced by the abt_options column.
+
+Development:
+
+* The development environment has been largely upgraded for future updates.
+* PHPUnit has been installed to enable a more precise testing environment.
+* We installed PHPStan to build a static analysis environment.
+* Updated settings for ESLint, Stylelint, and PHP_Codesniffer.
+* Adopted small tools (zip.sh, git hooks).
+
 = 1.4.3 =
 
 Improvement.
