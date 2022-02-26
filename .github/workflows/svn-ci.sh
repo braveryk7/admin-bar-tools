@@ -5,7 +5,7 @@
 # 2. SVN username
 # 3. SVN password
 
-if [ $# != 3]; then
+if [ $# != 3 ]; then
 	echo "Require 3 arguments."
 	exit 1
 fi
