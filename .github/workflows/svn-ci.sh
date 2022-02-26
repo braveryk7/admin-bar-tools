@@ -5,11 +5,12 @@
 # 2. SVN username
 # 3. SVN password
 
-if [ $# != 3 ]; then
-	echo "Require 3 arguments."
+if [ $# != 4 ]; then
+	echo "Require 4 arguments."
 	exit 1
 fi
 
-svn info --username "${2}"
+svn info --username "${2}" "${4}"
 
-svn ci -m "version ${1} release" --non-interactive --no-auth-cache --password "${3}" && svn up
+svn ci -m "version ${1} release" --non-interactive --no-auth-cache --password "${3}"
+svn up
