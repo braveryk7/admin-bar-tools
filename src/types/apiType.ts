@@ -26,7 +26,7 @@ export type locationItemsType = {
 	shortname: shortNameType;
 	status: boolean;
 	url: string;
-	admin: string;
+	adminurl: string;
 	order: number;
 };
 
