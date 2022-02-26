@@ -12,6 +12,13 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Cache npm packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
       - name: Checkout
         uses: actions/checkout@v2
 
