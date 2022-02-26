@@ -5,7 +5,7 @@
 	</php>
     <coverage>
         <include>
-            <directory suffix=".php">/class</directory>
+            <directory suffix=".php">class/</directory>
 			<file>admin-bar-tools.php</file>
         </include>
         <report>
