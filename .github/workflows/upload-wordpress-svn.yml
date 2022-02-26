@@ -1,4 +1,4 @@
-name: PHPUnit
+name: Upload WordPress SVN
 
 on:
   push:
@@ -7,10 +7,57 @@ on:
 
 jobs:
   upload:
-    name: Upload to WordPress Directory
+    name: Upload WordPress SVN
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Cache npm packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: JS build
+        run: npm run build
+
+      - name: Set outputs
+        run: |
+          TAG=${GITHUB_REF##*/}
+          echo ::set-output name=VERSION::$TAG
+          echo ::set-output name=PROJECT_NAME::admin-bar-tools
+        id: svn-env
+
+      - name: SVN checkout
+        run: svn co ${{ secrets.SVN_URL }}
+
+      - name: Before SVN status
+        run: svn st ${{ steps.svn-env.outputs.PROJECT_NAME }}/
+
+      - name: test.sh
+        run: bash .github/workflows/test.sh
+
+      - name: SVN add & update
+        run: |
+          svn add ${{ steps.svn-env.outputs.PROJECT_NAME }}/trunk/* --force
+          svn cp ${{ steps.svn-env.outputs.PROJECT_NAME }}/trunk/ ${{ steps.svn-env.outputs.PROJECT_NAME }}/tags/${{ steps.svn-env.outputs.VERSION }}
+          svn update ${{ steps.svn-env.outputs.PROJECT_NAME }}/trunk/*
+          svn update ${{ steps.svn-env.outputs.PROJECT_NAME }}/tags/*
+
+      - name: After SVN status
+        run: svn st ${{ steps.svn-env.outputs.PROJECT_NAME }}/
+
+      - name: SVN commit
+        run: |
+          VERSION=`echo ${{ steps.svn-env.outputs.VERSION }} | sed -e "s/v//"`
+          svn ci -m "version ${VERSION} release" && svn up
