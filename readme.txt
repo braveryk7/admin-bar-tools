@@ -46,7 +46,7 @@ Development:
 
 = 1.4.3 =
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -64,7 +64,7 @@ Fix.
 
 = 1.4.1 =
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -80,7 +80,7 @@ Addition of functions.
 
 * Make your admin panel a simple and beautiful React component
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -90,7 +90,7 @@ Miner update.
 
 Support WordPress 5.8.1 .
 
-Improvement.
+Improvements:
 
 * Google SearchConsole link to access the detail page with one click.
 
