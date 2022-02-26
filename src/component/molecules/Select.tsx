@@ -13,6 +13,12 @@ export const Select = memo( ( props: { itemKey: string } ) => {
 	const changeLocale = ( value: string ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
+		const psiUrl = {
+			url: `https://developers.google.com/speed/pagespeed/insights/?hl=${ value }&url=`,
+			adminurl: `https://developers.google.com/speed/pagespeed/insights/?hl=${ value }`,
+		};
+		newItem.abt_options.items.psi.url = psiUrl.url;
+		newItem.abt_options.items.psi.adminurl = psiUrl.adminurl;
 		newItem.abt_options.locale = value;
 		setApiData( newItem );
 	};
