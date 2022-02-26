@@ -62,4 +62,4 @@ jobs:
         run: |
           VERSION=`echo ${{ steps.svn-env.outputs.VERSION }} | sed -e "s/v//"`
           cd ${{ steps.svn-env.outputs.PROJECT_NAME }}
-          bash ../.github/workflows/svn-ci.sh $VERSION ${{ secrets.SVN_USERNAME }} ${{ secrets.SVN_PASSWORD }} ${{ secrets.SVN_URL }}
+          svn ci -m "version ${VERSION} release" --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} --non-interactive --no-auth-cache
