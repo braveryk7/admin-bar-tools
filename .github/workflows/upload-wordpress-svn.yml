@@ -46,8 +46,8 @@ jobs:
       - name: Before SVN status
         run: svn st ${{ steps.svn-env.outputs.PROJECT_NAME }}/
 
-      - name: test.sh
-        run: bash .github/workflows/test.sh
+      - name: Use create-rsync-cmd.sh
+        run: bash .github/workflows/create-rsync-cmd.sh
 
       - name: SVN add & update
         run: |
