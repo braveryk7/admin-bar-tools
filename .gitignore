@@ -33,6 +33,7 @@ build/
 #-------------------------------
 .cache/
 .phpunit.result.cache
+tests/logs/
 
 #-------------------------------
 #   etc
