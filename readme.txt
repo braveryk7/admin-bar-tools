@@ -2,9 +2,9 @@
 Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
-Tested up to: 5.8.1
+Tested up to: 5.9.1
 Requires PHP: 7.3.0
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -23,9 +23,30 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.5.0 =
+
+Miner update.
+
+Important:
+
+* PHP 8.0 and earlier will no longer be supported after next minor update (1.4.0). The update is now scheduled for April.
+
+Improvements:
+
+* The internal design of PHP has been substantially revised.
+* Most options starting with "abt" have been removed and replaced by the abt_options column.
+
+Development:
+
+* The development environment has been largely upgraded for future updates.
+* PHPUnit has been installed to enable a more precise testing environment.
+* We installed PHPStan to build a static analysis environment.
+* Updated settings for ESLint, Stylelint, and PHP_Codesniffer.
+* Adopted small tools (zip.sh, git hooks).
+
 = 1.4.3 =
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -43,7 +64,7 @@ Fix.
 
 = 1.4.1 =
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -59,7 +80,7 @@ Addition of functions.
 
 * Make your admin panel a simple and beautiful React component
 
-Improvement.
+Improvements:
 
 * Development environment.
 
@@ -69,7 +90,7 @@ Miner update.
 
 Support WordPress 5.8.1 .
 
-Improvement.
+Improvements:
 
 * Google SearchConsole link to access the detail page with one click.
 
