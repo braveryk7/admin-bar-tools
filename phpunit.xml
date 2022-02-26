@@ -9,7 +9,7 @@
 			<file>admin-bar-tools.php</file>
         </include>
         <report>
-			<clover outputFile="tests/logs/phpunit_result.xml" />
+			<clover outputFile="tests/logs/clover.xml" />
         </report>
     </coverage>
 </phpunit>
