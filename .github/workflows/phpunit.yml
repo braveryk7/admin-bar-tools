@@ -29,7 +29,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.vendor_cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-scripts --no-progress --no-suggest
+        run: composer install --prefer-dist --no-scripts --no-progress
 
       - name: Run test suite
         run: composer run-script test
