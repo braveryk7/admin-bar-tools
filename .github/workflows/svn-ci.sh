@@ -10,6 +10,6 @@ if [ $# != 3 ]; then
 	exit 1
 fi
 
-svn info --username= ${2}
+svn info --username "${2}"
 
-svn ci -m "version ${1} release" --non-interactive --no-auth-cache --password ${3} && svn up
+svn ci -m "version ${1} release" --non-interactive --no-auth-cache --password "${3}" && svn up
