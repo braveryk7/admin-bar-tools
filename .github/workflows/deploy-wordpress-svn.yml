@@ -1,4 +1,4 @@
-name: Upload WordPress SVN
+name: Deploy WordPress SVN
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   upload:
-    name: Upload WordPress SVN
+    name: Deploy WordPress SVN
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
