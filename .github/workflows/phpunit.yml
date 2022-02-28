@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'class/**'
+      - 'tests/**'
       - 'admin-bar-tools.php'
 
 jobs:
