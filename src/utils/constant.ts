@@ -6,7 +6,7 @@ export const getApiInitValue = () => {
 		shortname: 'psi',
 		status: false,
 		url: '',
-		admin: '',
+		adminurl: '',
 		order: 0,
 	};
 
