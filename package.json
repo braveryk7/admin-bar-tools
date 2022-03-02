@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@wordpress/components": "^17.0.0",
 		"@wordpress/element": "^4.0.1",
-		"@wordpress/i18n": "^4.2.2"
+		"@wordpress/i18n": "^4.3.1"
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.15.0",
