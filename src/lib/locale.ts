@@ -1,6 +1,4 @@
-import { psiLocalesType } from 'types/LocaleType';
-
-export const psiLocales: psiLocalesType = {
+export const psiLocales = {
 	ar: {
 		id: 'ar',
 		name: 'العربية', // Arabic.
