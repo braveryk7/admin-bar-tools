@@ -1,6 +1,4 @@
 export type psiLocalesType = {
-	[ key:string ]: {
-		id: string,
-		name: string,
-	}
+	id: string,
+	name: string,
 }
