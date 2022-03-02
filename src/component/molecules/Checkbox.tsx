@@ -21,7 +21,7 @@ export const Checkbox = memo( ( props: { itemKey: string } ) => {
 
 	return (
 		<>
-			{ Object.values( apiData.abt_options.items! ).map(
+			{ Object.values( apiData.abt_options.items ).map(
 				( item: locationItemsType ) => (
 					<CheckboxControl
 						key={ item.shortname }

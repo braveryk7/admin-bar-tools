@@ -15,19 +15,19 @@
 		"zip": "sh cmd/zip.sh"
 	},
 	"dependencies": {
-		"@wordpress/block-editor": "^7.0.2",
-		"@wordpress/blocks": "^11.1.0",
-		"@wordpress/components": "^17.0.0",
+		"@wordpress/components": "^19.5.0",
 		"@wordpress/element": "^4.0.1",
-		"@wordpress/i18n": "^4.2.2"
+		"@wordpress/i18n": "^4.3.1"
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.15.0",
-		"@types/wordpress__components": "^14.0.3",
+		"@types/react": "^17.0.39",
+		"@types/wordpress__components": "^19.3.0",
+		"@typescript-eslint/eslint-plugin": "^5.13.0",
+		"@typescript-eslint/parser": "^5.13.0",
 		"@wordpress/scripts": "^22.0.1",
-		"stylelint": "^14.5.3",
+		"eslint-import-resolver-typescript": "^2.5.0",
 		"stylelint-order": "^5.0.0",
-		"ts-jest": "^27.0.5",
-		"typescript": "^4.4.2"
+		"typescript": "^4.6.2"
 	}
 }
