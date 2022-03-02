@@ -22,16 +22,14 @@ const AdminPage = () => {
 		undefined as noticeValueType
 	);
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
-	const [ snackbarTimer, setSnackbarTimer ] = useState(
-		setTimeout( () => {} )
-	);
+	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
 	useGetApi( setApiData, setApiStatus );
 
 	useEffect( () => {
 		if ( noticeStatus ) {
 			setSnackbarTimer(
-				setTimeout( () => {
+				window.setTimeout( () => {
 					setNoticeStatus( false );
 				}, 4000 )
 			);
