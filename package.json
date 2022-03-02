@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@babel/preset-typescript": "^7.15.0",
-		"@types/wordpress__components": "^14.0.3",
+		"@types/wordpress__components": "^19.3.0",
 		"@wordpress/scripts": "^22.0.1",
 		"stylelint": "^14.5.3",
 		"stylelint-order": "^5.0.0",
