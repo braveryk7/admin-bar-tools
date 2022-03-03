@@ -5,13 +5,6 @@ export type apiType = {
 	version: number;
 };
 
-export type abtOptionsType = {
-	items: locationsType;
-	locale: string;
-	sc: number;
-	version: number;
-};
-
 export type locationsType = {
 	psi: locationItemsType;
 	lh: locationItemsType;
@@ -51,5 +44,5 @@ export type WPApiType< T > = {
 };
 
 export type useSetApiType = {
-	( itemKey: string, value: abtOptionsType ): void;
+	( itemKey: string, value: apiType ): void;
 };
