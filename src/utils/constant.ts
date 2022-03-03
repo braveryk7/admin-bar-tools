@@ -23,12 +23,10 @@ export const getApiInitValue = () => {
 	};
 
 	const abtOptions: apiType = {
-		abt_options: {
-			items: { ...locations },
-			locale: '',
-			sc: 0,
-			version: 0,
-		},
+		items: { ...locations },
+		locale: '',
+		sc: 0,
+		version: 0,
 	};
 
 	return abtOptions;
