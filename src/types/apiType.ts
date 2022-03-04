@@ -6,15 +6,7 @@ export type apiType = {
 };
 
 export type locationsType = {
-	psi: locationItemsType;
-	lh: locationItemsType;
-	gsc: locationItemsType;
-	gc: locationItemsType;
-	gi: locationItemsType;
-	bi: locationItemsType;
-	twitter: locationItemsType;
-	facebook: locationItemsType;
-	hatena: locationItemsType;
+	[key in shortNameType]: locationItemsType;
 };
 
 export type locationItemsType = {
