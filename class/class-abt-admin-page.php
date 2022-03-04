@@ -91,7 +91,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function register_rest_api() {
 		register_rest_route(
-			'admin-bar-tools/v1',
+			$this->get_api_namespace(),
 			'/options',
 			[
 				'methods'             => WP_REST_Server::READABLE,
@@ -101,7 +101,7 @@ class Abt_Admin_Page extends Abt_Base {
 		);
 
 		register_rest_route(
-			'admin-bar-tools/v1',
+			$this->get_api_namespace(),
 			'/update',
 			[
 				'methods'             => WP_REST_Server::EDITABLE,
