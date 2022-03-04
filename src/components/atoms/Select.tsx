@@ -5,7 +5,7 @@ import { itemKeyType } from 'types/apiType';
 
 import { apiContext } from '../..';
 import { useChangeValue } from '../../hooks/useChangeValue';
-import { psiLocales } from '../../lib/locale';
+import { psiLocales } from '../../utils/constant';
 
 export const Select = memo( ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );
