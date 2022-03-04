@@ -8,7 +8,6 @@ import { useSetApiType } from '../types/apiType';
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {
 		apiData,
-		setNoticeStatus,
 		setNoticeValue,
 		setNoticeMessage,
 		snackbarTimer,
@@ -20,7 +19,7 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 		if ( isFirstRender.current ) {
 			isFirstRender.current = false;
 		} else {
-			setNoticeStatus( false );
+			setNoticeValue( undefined );
 			clearTimeout( snackbarTimer );
 
 			apiFetch( {
@@ -28,11 +27,9 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 				method: 'POST',
 				data: { [ itemKey ]: value[ itemKey ] },
 			} ).then( ( ) => {
-				setNoticeStatus( true );
 				setNoticeValue( 'abt_success' );
 				setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
 			} ).catch( ( ) => {
-				setNoticeStatus( true );
 				setNoticeValue( 'abt_error' );
 				setNoticeMessage( __( 'Error.', 'admin-bar-tools' ) );
 			} );

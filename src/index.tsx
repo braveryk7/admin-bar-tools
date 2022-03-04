@@ -17,7 +17,6 @@ export const apiContext = createContext( {} as apiContextType );
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState( getApiInitValue() );
 	const [ apiStatus, setApiStatus ] = useState( false );
-	const [ noticeStatus, setNoticeStatus ] = useState( false );
 	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
@@ -25,19 +24,19 @@ const AdminPage = () => {
 	useGetApi( setApiData, setApiStatus );
 
 	useEffect( () => {
-		if ( noticeStatus ) {
+		if ( noticeValue ) {
 			setSnackbarTimer(
 				window.setTimeout( () => {
-					setNoticeStatus( false );
+					setNoticeValue( undefined );
 				}, 4000 )
 			);
 		}
-	}, [ noticeStatus ] );
+	}, [ noticeValue ] );
 
 	return (
 		<div id="wrap">
 			<h1>{ __( 'Admin Bar Tools Settings', 'admin-bar-tools' ) }</h1>
-			{ noticeStatus && (
+			{ noticeValue && (
 				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
 			) }
 			{ apiStatus ? (
@@ -45,7 +44,6 @@ const AdminPage = () => {
 					value={ {
 						apiData,
 						setApiData,
-						setNoticeStatus,
 						setNoticeValue,
 						setNoticeMessage,
 						snackbarTimer,
