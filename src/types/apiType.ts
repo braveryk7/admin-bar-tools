@@ -28,6 +28,8 @@ export type WPApiType< T > = {
 	};
 };
 
+export type itemKeyType = 'items' | 'locale' | 'sc' | 'version';
+
 export type useSetApiType = {
-	( itemKey: string, value: apiType ): void;
+	( itemKey: itemKeyType, value: apiType ): void;
 };
