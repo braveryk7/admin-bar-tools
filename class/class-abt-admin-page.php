@@ -112,6 +112,13 @@ class Abt_Admin_Page extends Abt_Base {
 	}
 
 	/**
+	 * Return WordPress  administrator permission.
+	 */
+	public function get_wordpress_permission(): bool {
+		return current_user_can( 'administrator' );
+	}
+
+	/**
 	 * Settings page.
 	 */
 	public function abt_settings() {
