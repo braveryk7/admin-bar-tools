@@ -1,8 +1,6 @@
-export type apiType = {
-	abt_options: abtOptionsType;
-};
+import { shortNameList } from 'utils/constant';
 
-export type abtOptionsType = {
+export type apiType = {
 	items: locationsType;
 	locale: string;
 	sc: number;
@@ -10,15 +8,7 @@ export type abtOptionsType = {
 };
 
 export type locationsType = {
-	psi: locationItemsType;
-	lh: locationItemsType;
-	gsc: locationItemsType;
-	gc: locationItemsType;
-	gi: locationItemsType;
-	bi: locationItemsType;
-	twitter: locationItemsType;
-	facebook: locationItemsType;
-	hatena: locationItemsType;
+	[key in shortNameType]: locationItemsType;
 };
 
 export type locationItemsType = {
@@ -30,23 +20,10 @@ export type locationItemsType = {
 	order: number;
 };
 
-export type shortNameType =
-	| 'psi'
-	| 'lh'
-	| 'gsc'
-	| 'gc'
-	| 'gi'
-	| 'twitter'
-	| 'facebook'
-	| 'hatena'
-	| 'bi';
+export type shortNameType = typeof shortNameList[number];
 
-export type WPApiType< T > = {
-	[ key: string ]: {
-		[ key: string ]: T;
-	};
-};
+export type itemKeyType = 'items' | 'locale' | 'sc' | 'version';
 
 export type useSetApiType = {
-	( itemKey: string, value: abtOptionsType ): void;
+	( itemKey: itemKeyType, value: apiType ): void;
 };

@@ -1,5 +1,17 @@
 import { apiType, locationItemsType, locationsType } from '../types/apiType';
 
+export const shortNameList = [
+	'psi',
+	'lh',
+	'gsc',
+	'gc',
+	'gi',
+	'bi',
+	'twitter',
+	'facebook',
+	'hatena',
+] as const;
+
 export const getApiInitValue = () => {
 	const locationItems: locationItemsType = {
 		name: '',
@@ -23,12 +35,10 @@ export const getApiInitValue = () => {
 	};
 
 	const abtOptions: apiType = {
-		abt_options: {
-			items: { ...locations },
-			locale: '',
-			sc: 0,
-			version: 0,
-		},
+		items: { ...locations },
+		locale: '',
+		sc: 0,
+		version: 0,
 	};
 
 	return abtOptions;

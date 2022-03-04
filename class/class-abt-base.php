@@ -22,6 +22,8 @@ class Abt_Base {
 	protected const PLUGIN_SLUG         = 'admin-bar-tools';
 	protected const PLUGIN_NAME         = 'Admin Bar Tools';
 	protected const PLUGIN_FILE         = self::PLUGIN_SLUG . '.php';
+	protected const API_NAME            = self::PLUGIN_SLUG;
+	protected const API_VERSION         = 'v1';
 	protected const TABLE_NAME          = self::PREFIX;
 	protected const VERSION             = '1.4';
 	protected const OPTIONS_COLUMN_NAME = 'options';
@@ -238,6 +240,17 @@ class Abt_Base {
 	 */
 	protected function get_plugin_path( string $plugin_slug = self::PLUGIN_SLUG, string $plugin_file = self::PLUGIN_FILE ): string {
 		return $this->get_plugin_dir( $plugin_slug ) . '/' . $plugin_file;
+	}
+
+	/**
+	 * Return WP-API parameter.
+	 * e.g. admin-bar-tools/v1
+	 *
+	 * @param string $api_name    Plugin unique name.
+	 * @param string $api_version Plugin API version.
+	 */
+	protected function get_api_namespace( string $api_name = self::API_NAME, string $api_version = self::API_VERSION ) {
+		return "${api_name}/${api_version}";
 	}
 
 	/**

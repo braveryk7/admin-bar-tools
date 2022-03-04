@@ -1,5 +1,4 @@
-// @ts-ignore
-import api from '@wordpress/api';
+import apiFetch from '@wordpress/api-fetch';
 import { useContext, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -21,25 +20,21 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 		if ( isFirstRender.current ) {
 			isFirstRender.current = false;
 		} else {
-			api.loadPromise.then( () => {
-				const model = new api.models.Settings( {
-					[ itemKey ]: value,
-				} );
-				const save = model.save();
+			setNoticeStatus( false );
+			clearTimeout( snackbarTimer );
 
-				setNoticeStatus( false );
-				clearTimeout( snackbarTimer );
-
-				save.success( () => {
-					setNoticeStatus( true );
-					setNoticeValue( 'abt_success' );
-					setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
-				} );
-				save.error( () => {
-					setNoticeStatus( true );
-					setNoticeValue( 'abt_error' );
-					setNoticeMessage( __( 'Error.', 'admin-bar-tools' ) );
-				} );
+			apiFetch( {
+				path: '/admin-bar-tools/v1/update',
+				method: 'POST',
+				data: { [ itemKey ]: value[ itemKey ] },
+			} ).then( ( ) => {
+				setNoticeStatus( true );
+				setNoticeValue( 'abt_success' );
+				setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
+			} ).catch( ( ) => {
+				setNoticeStatus( true );
+				setNoticeValue( 'abt_error' );
+				setNoticeMessage( __( 'Error.', 'admin-bar-tools' ) );
 			} );
 		}
 	}, [ apiData ] );

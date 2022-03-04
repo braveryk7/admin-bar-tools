@@ -24,8 +24,8 @@ class Abt_Admin_Page extends Abt_Base {
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
-		add_action( 'rest_api_init', [ $this, 'register' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_path() ), [ $this, 'add_settings_links' ] );
+		add_action( 'rest_api_init', [ $this, 'register_rest_api' ] );
 	}
 
 	/**
@@ -87,26 +87,67 @@ class Abt_Admin_Page extends Abt_Base {
 	}
 
 	/**
-	 * Set register.
+	 * Create custom endpoint.
 	 */
-	public function register() {
-		register_setting(
-			$this->get_option_group(),
-			$this->add_prefix( 'options' ),
+	public function register_rest_api() {
+		register_rest_route(
+			$this->get_api_namespace(),
+			'/options',
 			[
-				'show_in_rest' => [
-					'schema' => [
-						'type'       => 'object',
-						'properties' => [
-							'items'   => [],
-							'locale'  => [],
-							'sc'      => [],
-							'version' => [],
-						],
-					],
-				],
-			],
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => [ $this, 'readable_api' ],
+				'permission_callback' => [ $this, 'get_wordpress_permission' ],
+			]
 		);
+
+		register_rest_route(
+			$this->get_api_namespace(),
+			'/update',
+			[
+				'methods'             => WP_REST_Server::EDITABLE,
+				'callback'            => [ $this, 'editable_api' ],
+				'permission_callback' => [ $this, 'get_wordpress_permission' ],
+			]
+		);
+	}
+
+	/**
+	 * Return WordPress  administrator permission.
+	 */
+	public function get_wordpress_permission(): bool {
+		return current_user_can( 'administrator' );
+	}
+
+	/**
+	 * Custom endpoint for read.
+	 */
+	public function readable_api() {
+		$abt_options = $this->get_abt_options();
+		return new WP_REST_Response( $abt_options, 200 );
+	}
+
+	/**
+	 * Custom endpoint for edit.
+	 *
+	 * @param WP_REST_Request $request WP_REST_Request object.
+	 */
+	public function editable_api( WP_REST_Request $request ) {
+		$abt_options = $this->get_abt_options();
+		$params      = $request->get_json_params();
+
+		if ( array_key_exists( 'items', $params ) ) {
+			$abt_options['items'] = $params['items'];
+		} elseif ( array_key_exists( 'sc', $params ) ) {
+			$abt_options['sc'] = $params['sc'];
+		} elseif ( array_key_exists( 'locale', $params ) ) {
+			$abt_options['locale'] = $params['locale'];
+		} else {
+			return new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] );
+		}
+
+		$this->set_abt_options( $abt_options );
+
+		return new WP_REST_Response( $params, 200 );
 	}
 
 	/**
