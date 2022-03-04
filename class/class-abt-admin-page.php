@@ -147,14 +147,7 @@ class Abt_Admin_Page extends Abt_Base {
 
 		$this->set_abt_options( $abt_options );
 
-		$response = new WP_REST_Response();
-		$response->set_status( 200 );
-		$response->set_data(
-			[
-				'params' => $params,
-			]
-		);
-		return $response;
+		return new WP_REST_Response( $params, 200 );
 	}
 
 	/**
