@@ -243,6 +243,17 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return WP-API parameter.
+	 * e.g. admin-bar-tools/v1
+	 *
+	 * @param string $api_name    Plugin unique name.
+	 * @param string $api_version Plugin API version.
+	 */
+	protected function get_api_namespace( string $api_name = self::API_NAMESPACE, string $api_version = self::API_VERSION ) {
+		return "${api_name}/${api_version}";
+	}
+
+	/**
 	 * Return option group.
 	 * Use register_setting.
 	 * e.g. admin-bar-tools-settings
