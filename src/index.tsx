@@ -18,9 +18,7 @@ const AdminPage = () => {
 	const [ apiData, setApiData ] = useState( getApiInitValue() );
 	const [ apiStatus, setApiStatus ] = useState( false );
 	const [ noticeStatus, setNoticeStatus ] = useState( false );
-	const [ noticeValue, setNoticeValue ] = useState(
-		undefined as noticeValueType
-	);
+	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
