@@ -24,8 +24,8 @@ class Abt_Admin_Page extends Abt_Base {
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
-		add_action( 'rest_api_init', [ $this, 'register' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_path() ), [ $this, 'add_settings_links' ] );
+		add_action( 'rest_api_init', [ $this, 'register_rest_api' ] );
 	}
 
 	/**
@@ -87,25 +87,27 @@ class Abt_Admin_Page extends Abt_Base {
 	}
 
 	/**
-	 * Set register.
+	 * Create custom endpoint.
 	 */
-	public function register() {
-		register_setting(
-			$this->get_option_group(),
-			$this->add_prefix( 'options' ),
+	public function register_rest_api() {
+		register_rest_route(
+			'admin-bar-tools/v1',
+			'/options',
 			[
-				'show_in_rest' => [
-					'schema' => [
-						'type'       => 'object',
-						'properties' => [
-							'items'   => [],
-							'locale'  => [],
-							'sc'      => [],
-							'version' => [],
-						],
-					],
-				],
-			],
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => [ $this, 'get_options' ],
+				'permission_callback' => [ $this, 'get_wordpress_permission' ],
+			]
+		);
+
+		register_rest_route(
+			'admin-bar-tools/v1',
+			'/update',
+			[
+				'methods'             => WP_REST_Server::EDITABLE,
+				'callback'            => [ $this, 'update_options' ],
+				'permission_callback' => [ $this, 'get_wordpress_permission' ],
+			]
 		);
 	}
 
