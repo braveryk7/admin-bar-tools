@@ -249,7 +249,7 @@ class Abt_Base {
 	 * @param string $api_name    Plugin unique name.
 	 * @param string $api_version Plugin API version.
 	 */
-	protected function get_api_namespace( string $api_name = self::API_NAMESPACE, string $api_version = self::API_VERSION ) {
+	protected function get_api_namespace( string $api_name = self::API_NAME, string $api_version = self::API_VERSION ) {
 		return "${api_name}/${api_version}";
 	}
 
