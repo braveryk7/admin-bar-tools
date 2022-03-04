@@ -1,3 +1,5 @@
+import { shortNameList } from 'utils/constant';
+
 export type apiType = {
 	items: locationsType;
 	locale: string;
@@ -18,16 +20,7 @@ export type locationItemsType = {
 	order: number;
 };
 
-export type shortNameType =
-	| 'psi'
-	| 'lh'
-	| 'gsc'
-	| 'gc'
-	| 'gi'
-	| 'twitter'
-	| 'facebook'
-	| 'hatena'
-	| 'bi';
+export type shortNameType = typeof shortNameList[number];
 
 export type WPApiType< T > = {
 	[ key: string ]: {
