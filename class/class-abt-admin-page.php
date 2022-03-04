@@ -122,7 +122,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Custom endpoint for read.
 	 */
 	public function readable_api() {
-		$abt_options = get_option( 'abt_options' );
+		$abt_options = $this->get_abt_options();
 		return new WP_REST_Response( $abt_options, 200 );
 	}
 
