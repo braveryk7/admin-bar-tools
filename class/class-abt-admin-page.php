@@ -95,7 +95,7 @@ class Abt_Admin_Page extends Abt_Base {
 			'/options',
 			[
 				'methods'             => WP_REST_Server::READABLE,
-				'callback'            => [ $this, 'get_options' ],
+				'callback'            => [ $this, 'readable_api' ],
 				'permission_callback' => [ $this, 'get_wordpress_permission' ],
 			]
 		);
@@ -116,6 +116,14 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function get_wordpress_permission(): bool {
 		return current_user_can( 'administrator' );
+	}
+
+	/**
+	 * Custom endpoint for read.
+	 */
+	public function readable_api() {
+		$abt_options = get_option( 'abt_options' );
+		return new WP_REST_Response( $abt_options, 200 );
 	}
 
 	/**
