@@ -10,7 +10,7 @@ export const useGetApi = (
 	setApiStatus: Dispatch< SetStateAction< boolean > >
 ) => {
 	useEffect( () => {
-		apiFetch< apiType >( { path: '/abt/v1/options' } ).then( ( value ) => {
+		apiFetch< apiType >( { path: '/admin-bar-tools/v1/options' } ).then( ( value ) => {
 			stateFunc( value );
 			setApiStatus( true );
 		} );
