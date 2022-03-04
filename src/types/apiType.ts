@@ -22,12 +22,6 @@ export type locationItemsType = {
 
 export type shortNameType = typeof shortNameList[number];
 
-export type WPApiType< T > = {
-	[ key: string ]: {
-		[ key: string ]: T;
-	};
-};
-
 export type itemKeyType = 'items' | 'locale' | 'sc' | 'version';
 
 export type useSetApiType = {
