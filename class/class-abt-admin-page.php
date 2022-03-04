@@ -105,7 +105,7 @@ class Abt_Admin_Page extends Abt_Base {
 			'/update',
 			[
 				'methods'             => WP_REST_Server::EDITABLE,
-				'callback'            => [ $this, 'update_options' ],
+				'callback'            => [ $this, 'editable_api' ],
 				'permission_callback' => [ $this, 'get_wordpress_permission' ],
 			]
 		);
@@ -124,6 +124,37 @@ class Abt_Admin_Page extends Abt_Base {
 	public function readable_api() {
 		$abt_options = get_option( 'abt_options' );
 		return new WP_REST_Response( $abt_options, 200 );
+	}
+
+	/**
+	 * Custom endpoint for edit.
+	 *
+	 * @param WP_REST_Request $request WP_REST_Request object.
+	 */
+	public function editable_api( WP_REST_Request $request ) {
+		$abt_options = $this->get_abt_options();
+		$params      = $request->get_json_params();
+
+		if ( array_key_exists( 'items', $params ) ) {
+			$abt_options['items'] = $params['items'];
+		} elseif ( array_key_exists( 'sc', $params ) ) {
+			$abt_options['sc'] = $params['sc'];
+		} elseif ( array_key_exists( 'locale', $params ) ) {
+			$abt_options['locale'] = $params['locale'];
+		} else {
+			return new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] );
+		}
+
+		$this->set_abt_options( $abt_options );
+
+		$response = new WP_REST_Response();
+		$response->set_status( 200 );
+		$response->set_data(
+			[
+				'params' => $params,
+			]
+		);
+		return $response;
 	}
 
 	/**
