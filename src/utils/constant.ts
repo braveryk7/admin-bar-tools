@@ -1,5 +1,17 @@
 import { apiType, locationItemsType, locationsType } from '../types/apiType';
 
+export const shortNameList = [
+	'psi',
+	'lh',
+	'gsc',
+	'gc',
+	'gi',
+	'bi',
+	'twitter',
+	'facebook',
+	'hatena',
+] as const;
+
 export const getApiInitValue = () => {
 	const locationItems: locationItemsType = {
 		name: '',
