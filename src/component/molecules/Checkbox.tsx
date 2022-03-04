@@ -3,9 +3,9 @@ import { memo, useContext } from '@wordpress/element';
 
 import { apiContext } from '../..';
 import { useChangeValue } from '../../hooks/useChangeValue';
-import { locationItemsType } from '../../types/apiType';
+import { itemKeyType, locationItemsType } from '../../types/apiType';
 
-export const Checkbox = memo( ( props: { itemKey: string } ) => {
+export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );
 	const { itemKey } = props;
 	const changeValue = useChangeValue( itemKey );

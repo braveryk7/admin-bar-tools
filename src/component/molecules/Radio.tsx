@@ -1,11 +1,12 @@
 import { RadioControl } from '@wordpress/components';
 import { useContext } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { itemKeyType } from 'types/apiType';
 
 import { apiContext } from '../..';
 import { useChangeValue } from '../../hooks/useChangeValue';
 
-export const Radio = ( props: { itemKey: string } ) => {
+export const Radio = ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );
 	const { itemKey } = props;
 	const changeValue = useChangeValue( itemKey );
