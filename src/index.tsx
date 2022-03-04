@@ -60,7 +60,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-display"
 					>
-						<Checkbox itemKey="abt_options" />
+						<Checkbox itemKey="items" />
 					</Items>
 					<Items
 						title={ __(
@@ -69,7 +69,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-radio"
 					>
-						<Radio itemKey="abt_options" />
+						<Radio itemKey="sc" />
 					</Items>
 					<Items
 						title={ __(
@@ -78,7 +78,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-location"
 					>
-						<Select itemKey="abt_options" />
+						<Select itemKey="locale" />
 					</Items>
 				</apiContext.Provider>
 			) : (
