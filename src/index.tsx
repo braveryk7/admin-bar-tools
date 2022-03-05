@@ -4,10 +4,10 @@ import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { Checkbox } from './component/molecules/Checkbox';
-import { Radio } from './component/molecules/Radio';
-import { Select } from './component/molecules/Select';
-import { Items } from './component/organisms/Items';
+import { Checkbox } from './components/atoms/Checkbox';
+import { Radio } from './components/atoms/Radio';
+import { Select } from './components/atoms/Select';
+import { Items } from './components/molecules/Items';
 import { useGetApi } from './hooks/useGetApi';
 import { apiContextType, noticeValueType } from './types/useContextType';
 import { getApiInitValue } from './utils/constant';
@@ -17,29 +17,26 @@ export const apiContext = createContext( {} as apiContextType );
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState( getApiInitValue() );
 	const [ apiStatus, setApiStatus ] = useState( false );
-	const [ noticeStatus, setNoticeStatus ] = useState( false );
-	const [ noticeValue, setNoticeValue ] = useState(
-		undefined as noticeValueType
-	);
+	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
 	useGetApi( setApiData, setApiStatus );
 
 	useEffect( () => {
-		if ( noticeStatus ) {
+		if ( noticeValue ) {
 			setSnackbarTimer(
 				window.setTimeout( () => {
-					setNoticeStatus( false );
+					setNoticeValue( undefined );
 				}, 4000 )
 			);
 		}
-	}, [ noticeStatus ] );
+	}, [ noticeValue ] );
 
 	return (
 		<div id="wrap">
 			<h1>{ __( 'Admin Bar Tools Settings', 'admin-bar-tools' ) }</h1>
-			{ noticeStatus && (
+			{ noticeValue && (
 				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
 			) }
 			{ apiStatus ? (
@@ -47,7 +44,6 @@ const AdminPage = () => {
 					value={ {
 						apiData,
 						setApiData,
-						setNoticeStatus,
 						setNoticeValue,
 						setNoticeMessage,
 						snackbarTimer,

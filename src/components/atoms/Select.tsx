@@ -1,11 +1,10 @@
 import { SelectControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
-import { psiLocalesType } from 'types/LocaleType';
 import { itemKeyType } from 'types/apiType';
 
 import { apiContext } from '../..';
 import { useChangeValue } from '../../hooks/useChangeValue';
-import { psiLocales } from '../../lib/locale';
+import { psiLocales } from '../../utils/constant';
 
 export const Select = memo( ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );
@@ -15,7 +14,7 @@ export const Select = memo( ( props: { itemKey: itemKeyType } ) => {
 	return (
 		<SelectControl
 			value={ apiData.locale }
-			options={ Object.values( psiLocales ).map( ( locale: psiLocalesType ) => ( {
+			options={ Object.values( psiLocales ).map( ( locale ) => ( {
 				label: locale.name,
 				value: locale.id,
 			} ) ) }
