@@ -185,20 +185,13 @@ export const getApiInitValue = () => {
 		order: 0,
 	};
 
-	const locations: locationsType = {
-		psi: { ...locationItems },
-		lh: { ...locationItems },
-		gsc: { ...locationItems },
-		gc: { ...locationItems },
-		gi: { ...locationItems },
-		bi: { ...locationItems },
-		twitter: { ...locationItems },
-		facebook: { ...locationItems },
-		hatena: { ...locationItems },
-	};
+	const locations: Partial<locationsType> = {};
+	shortNameList.forEach( ( item ) => {
+		locations[ item ] = { ...locationItems };
+	} );
 
 	const abtOptions: apiType = {
-		items: { ...locations },
+		items: { ...locations as Required< locationsType > },
 		locale: '',
 		sc: 0,
 		version: 0,
