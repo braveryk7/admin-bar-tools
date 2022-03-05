@@ -16,7 +16,7 @@ export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState< apiType | null >( null );
-	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
+	const [ noticeValue, setNoticeValue ] = useState< noticeValueType >( null );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
@@ -26,7 +26,7 @@ const AdminPage = () => {
 		if ( noticeValue ) {
 			setSnackbarTimer(
 				window.setTimeout( () => {
-					setNoticeValue( undefined );
+					setNoticeValue( null );
 				}, 4000 )
 			);
 		}
