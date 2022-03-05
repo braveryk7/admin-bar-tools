@@ -1,33 +1,33 @@
-import './scss/index.scss';
+import 'src/scss/index.scss';
 
 import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { Checkbox } from './components/atoms/Checkbox';
-import { Radio } from './components/atoms/Radio';
-import { Select } from './components/atoms/Select';
-import { Items } from './components/molecules/Items';
-import { useGetApi } from './hooks/useGetApi';
-import { apiContextType, noticeValueType } from './types/useContextType';
-import { getApiInitValue } from './utils/constant';
+import { Checkbox } from 'src/components/atoms/Checkbox';
+import { Radio } from 'src/components/atoms/Radio';
+import { Select } from 'src/components/atoms/Select';
+import { Items } from 'src/components/molecules/Items';
+import { useGetApi } from 'src/hooks/useGetApi';
+
+import { apiType } from 'src/types/apiType';
+import { apiContextType, noticeValueType } from 'src/types/useContextType';
 
 export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
-	const [ apiData, setApiData ] = useState( getApiInitValue() );
-	const [ apiStatus, setApiStatus ] = useState( false );
-	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
+	const [ apiData, setApiData ] = useState< apiType | null >( null );
+	const [ noticeValue, setNoticeValue ] = useState< noticeValueType >( null );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
-	useGetApi( setApiData, setApiStatus );
+	useGetApi( setApiData );
 
 	useEffect( () => {
 		if ( noticeValue ) {
 			setSnackbarTimer(
 				window.setTimeout( () => {
-					setNoticeValue( undefined );
+					setNoticeValue( null );
 				}, 4000 )
 			);
 		}
@@ -39,7 +39,7 @@ const AdminPage = () => {
 			{ noticeValue && (
 				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
 			) }
-			{ apiStatus ? (
+			{ apiData ? (
 				<apiContext.Provider
 					value={ {
 						apiData,

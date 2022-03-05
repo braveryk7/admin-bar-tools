@@ -1,9 +1,10 @@
 import { CheckboxControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
 
-import { apiContext } from '../..';
-import { useChangeValue } from '../../hooks/useChangeValue';
-import { itemKeyType, locationItemsType } from '../../types/apiType';
+import { useChangeValue } from 'src/hooks/useChangeValue';
+import { apiContext } from 'src/index';
+
+import { itemKeyType, locationItemsType } from 'src/types/apiType';
 
 export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );
@@ -12,16 +13,18 @@ export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 
 	return (
 		<>
-			{ Object.values( apiData.items ).map(
-				( item: locationItemsType ) => (
-					<CheckboxControl
-						key={ item.shortname }
-						label={ item.name }
-						checked={ item.status }
-						onChange={ () => changeValue( item.shortname ) }
-					/>
+			{ apiData &&
+				Object.values( apiData.items ).map(
+					( item: locationItemsType ) => (
+						<CheckboxControl
+							key={ item.shortname }
+							label={ item.name }
+							checked={ item.status }
+							onChange={ () => changeValue( item.shortname ) }
+						/>
+					)
 				)
-			) }
+			}
 		</>
 	);
 } );

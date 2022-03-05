@@ -1,4 +1,4 @@
-import { shortNameList } from 'utils/constant';
+import { shortNameList } from 'src/utils/constant';
 
 export type apiType = {
 	items: locationsType;
@@ -25,5 +25,5 @@ export type shortNameType = typeof shortNameList[number];
 export type itemKeyType = 'items' | 'locale' | 'sc' | 'version';
 
 export type useSetApiType = {
-	( itemKey: itemKeyType, value: apiType ): void;
+	( itemKey: itemKeyType, value: apiType | null ): void;
 };

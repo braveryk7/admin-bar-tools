@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { apiType } from './apiType';
+import { apiType } from 'src/types/apiType';
 
-export type noticeValueType = 'abt_success' | 'abt_error' | undefined;
+export type noticeValueType = 'abt_success' | 'abt_error' | null;
 
 export type apiContextType = {
-	apiData: apiType;
-	setApiData: Dispatch< SetStateAction< apiType > >;
+	apiData: apiType | null;
+	setApiData: Dispatch< SetStateAction< apiType | null > >;
 	setNoticeValue: Dispatch< SetStateAction< noticeValueType > >;
 	setNoticeMessage: Dispatch< SetStateAction< string > >;
 	snackbarTimer: number;

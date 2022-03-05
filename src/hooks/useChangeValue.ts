@@ -1,9 +1,10 @@
 import { useContext } from '@wordpress/element';
-import { apiType, itemKeyType, shortNameType } from 'types/apiType';
 
-import { apiContext } from '../';
-import { shortNameList } from '../utils/constant';
-import { useSetApi } from './useSetApi';
+import { useSetApi } from 'src/hooks/useSetApi';
+import { apiContext } from 'src/index';
+import { shortNameList } from 'src/utils/constant';
+
+import { apiType, itemKeyType, shortNameType } from 'src/types/apiType';
 
 export const useChangeValue = ( itemKey: itemKeyType ) => {
 	const { apiData, setApiData } = useContext( apiContext );

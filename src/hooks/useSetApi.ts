@@ -2,8 +2,9 @@ import apiFetch from '@wordpress/api-fetch';
 import { useContext, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { apiContext } from '..';
-import { useSetApiType } from '../types/apiType';
+import { apiContext } from 'src/index';
+
+import { useSetApiType } from 'src/types/apiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {
@@ -18,8 +19,8 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	useEffect( () => {
 		if ( isFirstRender.current ) {
 			isFirstRender.current = false;
-		} else {
-			setNoticeValue( undefined );
+		} else if ( value ) {
+			setNoticeValue( null );
 			clearTimeout( snackbarTimer );
 
 			apiFetch( {
