@@ -25,7 +25,6 @@ rules:
   max-len:
     - 2
     - code: 100
-  "@typescript-eslint/ban-ts-comment": off
   import/order:
     - warn
     - groups:
