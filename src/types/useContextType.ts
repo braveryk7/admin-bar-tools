@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 
 import { apiType } from './apiType';
 
-export type noticeValueType = 'abt_success' | 'abt_error' | undefined;
+export type noticeValueType = 'abt_success' | 'abt_error' | null;
 
 export type apiContextType = {
 	apiData: apiType | null;
