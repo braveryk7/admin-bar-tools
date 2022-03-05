@@ -12,13 +12,16 @@ export const Select = memo( ( props: { itemKey: itemKeyType } ) => {
 	const changeValue = useChangeValue( itemKey );
 
 	return (
-		<SelectControl
-			value={ apiData.locale }
-			options={ Object.values( psiLocales ).map( ( locale ) => ( {
-				label: locale.name,
-				value: locale.id,
-			} ) ) }
-			onChange={ ( value ) => changeValue( value ) }
-		/>
+		<>
+			{ apiData && <SelectControl
+				value={ apiData.locale }
+				options={ Object.values( psiLocales ).map( ( locale ) => ( {
+					label: locale.name,
+					value: locale.id,
+				} ) ) }
+				onChange={ ( value ) => changeValue( value ) }
+			/>
+			}
+		</>
 	);
 } );

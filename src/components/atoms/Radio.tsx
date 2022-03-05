@@ -12,14 +12,16 @@ export const Radio = ( props: { itemKey: itemKeyType } ) => {
 	const changeValue = useChangeValue( itemKey );
 
 	return (
-		<RadioControl
-			selected={ apiData.sc }
-			options={ [
-				{ label: __( "I don't use it.", 'admin-bar-tools' ), value: 0 },
-				{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
-				{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: 2 },
-			] }
-			onChange={ ( value: number ) => changeValue( Number( value ) ) }
-		/>
+		<>
+			{ apiData && <RadioControl
+				selected={ apiData.sc }
+				options={ [
+					{ label: __( "I don't use it.", 'admin-bar-tools' ), value: 0 },
+					{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
+					{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: 2 },
+				] }
+				onChange={ ( value: number ) => changeValue( Number( value ) ) }
+			/> }
+		</>
 	);
 };

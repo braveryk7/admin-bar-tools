@@ -12,16 +12,18 @@ export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 
 	return (
 		<>
-			{ Object.values( apiData.items ).map(
-				( item: locationItemsType ) => (
-					<CheckboxControl
-						key={ item.shortname }
-						label={ item.name }
-						checked={ item.status }
-						onChange={ () => changeValue( item.shortname ) }
-					/>
+			{ apiData &&
+				Object.values( apiData.items ).map(
+					( item: locationItemsType ) => (
+						<CheckboxControl
+							key={ item.shortname }
+							label={ item.name }
+							checked={ item.status }
+							onChange={ () => changeValue( item.shortname ) }
+						/>
+					)
 				)
-			) }
+			}
 		</>
 	);
 } );
