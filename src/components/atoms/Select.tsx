@@ -1,9 +1,11 @@
 import { SelectControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
+
 import { useChangeValue } from 'src/hooks/useChangeValue';
 import { apiContext } from 'src/index';
-import { itemKeyType } from 'src/types/apiType';
 import { psiLocales } from 'src/utils/constant';
+
+import { itemKeyType } from 'src/types/apiType';
 
 export const Select = memo( ( props: { itemKey: itemKeyType } ) => {
 	const { apiData } = useContext( apiContext );

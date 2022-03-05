@@ -1,9 +1,10 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useContext, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { useSetApiType } from 'src/types/apiType';
 
-import { apiContext } from '..';
+import { apiContext } from 'src/index';
+
+import { useSetApiType } from 'src/types/apiType';
 
 export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	const {

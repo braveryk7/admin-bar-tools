@@ -1,7 +1,9 @@
 import { CheckboxControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
+
 import { useChangeValue } from 'src/hooks/useChangeValue';
 import { apiContext } from 'src/index';
+
 import { itemKeyType, locationItemsType } from 'src/types/apiType';
 
 export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {

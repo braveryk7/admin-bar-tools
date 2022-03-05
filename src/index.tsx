@@ -1,13 +1,15 @@
-import './scss/index.scss';
+import 'src/scss/index.scss';
 
 import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
 import { Checkbox } from 'src/components/atoms/Checkbox';
 import { Radio } from 'src/components/atoms/Radio';
 import { Select } from 'src/components/atoms/Select';
 import { Items } from 'src/components/molecules/Items';
 import { useGetApi } from 'src/hooks/useGetApi';
+
 import { apiType } from 'src/types/apiType';
 import { apiContextType, noticeValueType } from 'src/types/useContextType';
 
