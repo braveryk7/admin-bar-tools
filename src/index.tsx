@@ -3,6 +3,7 @@ import './scss/index.scss';
 import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { apiType } from 'types/apiType';
 
 import { Checkbox } from './components/atoms/Checkbox';
 import { Radio } from './components/atoms/Radio';
@@ -10,18 +11,16 @@ import { Select } from './components/atoms/Select';
 import { Items } from './components/molecules/Items';
 import { useGetApi } from './hooks/useGetApi';
 import { apiContextType, noticeValueType } from './types/useContextType';
-import { getApiInitValue } from './utils/constant';
 
 export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
-	const [ apiData, setApiData ] = useState( getApiInitValue() );
-	const [ apiStatus, setApiStatus ] = useState( false );
+	const [ apiData, setApiData ] = useState< apiType | null >( null );
 	const [ noticeValue, setNoticeValue ] = useState( undefined as noticeValueType );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
-	useGetApi( setApiData, setApiStatus );
+	useGetApi( setApiData );
 
 	useEffect( () => {
 		if ( noticeValue ) {
@@ -39,7 +38,7 @@ const AdminPage = () => {
 			{ noticeValue && (
 				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
 			) }
-			{ apiStatus ? (
+			{ apiData ? (
 				<apiContext.Provider
 					value={ {
 						apiData,
