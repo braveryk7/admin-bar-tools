@@ -18,7 +18,7 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 	useEffect( () => {
 		if ( isFirstRender.current ) {
 			isFirstRender.current = false;
-		} else {
+		} else if ( value ) {
 			setNoticeValue( null );
 			clearTimeout( snackbarTimer );
 
