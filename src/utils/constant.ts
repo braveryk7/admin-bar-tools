@@ -1,5 +1,3 @@
-import { apiType, locationItemsType, locationsType } from '../types/apiType';
-
 export const shortNameList = [
 	'psi',
 	'lh',
@@ -173,29 +171,4 @@ export const psiLocales = {
 		id: 'zh-TW',
 		name: '繁體中文', // traditional Chinese.
 	},
-};
-
-export const getApiInitValue = () => {
-	const locationItems: locationItemsType = {
-		name: '',
-		shortname: 'psi',
-		status: false,
-		url: '',
-		adminurl: '',
-		order: 0,
-	};
-
-	const locations: Partial<locationsType> = {};
-	shortNameList.forEach( ( item ) => {
-		locations[ item ] = { ...locationItems };
-	} );
-
-	const abtOptions: apiType = {
-		items: { ...locations as Required< locationsType > },
-		locale: '',
-		sc: 0,
-		version: 0,
-	};
-
-	return abtOptions;
 };
