@@ -1,4 +1,4 @@
-import { shortNameList } from 'utils/constant';
+import { shortNameList } from 'src/utils/constant';
 
 export type apiType = {
 	items: locationsType;

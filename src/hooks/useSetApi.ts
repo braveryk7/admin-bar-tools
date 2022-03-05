@@ -1,7 +1,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useContext, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { useSetApiType } from 'types/apiType';
+import { useSetApiType } from 'src/types/apiType';
 
 import { apiContext } from '..';
 

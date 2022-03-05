@@ -1,4 +1,4 @@
-import { ItemsPropsType } from '../../types/ComponentsType';
+import { ItemsPropsType } from 'src/types/ComponentsType';
 
 export const Items = ( props: ItemsPropsType ) => {
 	const { classValue, title, children } = props;
