@@ -1,6 +1,6 @@
 import 'src/scss/index.scss';
 
-import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
+import { Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -81,11 +81,7 @@ const AdminPage = () => {
 					</Items>
 				</apiContext.Provider>
 			) }
-			{ ! apiData && ! apiError && (
-				<Placeholder label={ __( 'Data loading', 'admin-bar-tools' ) }>
-					<Spinner />
-				</Placeholder>
-			) }
+			{ ! apiData && ! apiError && <Spinner /> }
 			{ apiError && <ApiError /> }
 		</div>
 	);
