@@ -12,9 +12,9 @@ export const useGetApi = (
 	useEffect( () => {
 		apiFetch< apiType >(
 			{ path: '/admin-bar-tools/v1/option' }
-		).then( ( value ) => {
+		).then( ( response ) => {
 			setApiError( false );
-			stateFunc( value );
+			stateFunc( response );
 		} ).catch( () => {
 			setApiError( true );
 		} );
