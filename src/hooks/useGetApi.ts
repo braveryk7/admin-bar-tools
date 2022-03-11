@@ -11,7 +11,7 @@ export const useGetApi = (
 ) => {
 	useEffect( () => {
 		apiFetch< apiType >(
-			{ path: '/admin-bar-tools/v1/option' }
+			{ path: '/admin-bar-tools/v1/options' }
 		).then( ( response ) => {
 			setApiError( false );
 			stateFunc( response );
