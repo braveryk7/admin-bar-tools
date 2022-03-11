@@ -4,6 +4,7 @@ import { Placeholder, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { ApiError } from 'src/components/atoms/ApiError';
 import { Checkbox } from 'src/components/atoms/Checkbox';
 import { Radio } from 'src/components/atoms/Radio';
 import { Select } from 'src/components/atoms/Select';
@@ -17,11 +18,12 @@ export const apiContext = createContext( {} as apiContextType );
 
 const AdminPage = () => {
 	const [ apiData, setApiData ] = useState< apiType | undefined >( undefined );
+	const [ apiError, setApiError ] = useState( false );
 	const [ noticeValue, setNoticeValue ] = useState< noticeValueType | undefined >( undefined );
 	const [ noticeMessage, setNoticeMessage ] = useState( '' );
 	const [ snackbarTimer, setSnackbarTimer ] = useState( 0 );
 
-	useGetApi( setApiData );
+	useGetApi( setApiData, setApiError );
 
 	useEffect( () => {
 		if ( noticeValue ) {
@@ -39,11 +41,12 @@ const AdminPage = () => {
 			{ noticeValue && (
 				<Snackbar className={ noticeValue }>{ noticeMessage }</Snackbar>
 			) }
-			{ apiData ? (
+			{ apiData && (
 				<apiContext.Provider
 					value={ {
 						apiData,
 						setApiData,
+						setApiError,
 						setNoticeValue,
 						setNoticeMessage,
 						snackbarTimer,
@@ -77,11 +80,13 @@ const AdminPage = () => {
 						<Select itemKey="locale" />
 					</Items>
 				</apiContext.Provider>
-			) : (
+			) }
+			{ ! apiData && ! apiError && (
 				<Placeholder label={ __( 'Data loading', 'admin-bar-tools' ) }>
 					<Spinner />
 				</Placeholder>
 			) }
+			{ apiError && <ApiError /> }
 		</div>
 	);
 };

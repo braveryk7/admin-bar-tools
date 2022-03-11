@@ -7,12 +7,16 @@ import { apiType } from 'src/types/apiType';
 
 export const useGetApi = (
 	stateFunc: Dispatch< SetStateAction< apiType | undefined > >,
+	setApiError: Dispatch< SetStateAction< boolean > >,
 ) => {
 	useEffect( () => {
 		apiFetch< apiType >(
-			{ path: '/admin-bar-tools/v1/options' }
+			{ path: '/admin-bar-tools/v1/option' }
 		).then( ( value ) => {
+			setApiError( false );
 			stateFunc( value );
+		} ).catch( () => {
+			setApiError( true );
 		} );
 	}, [ stateFunc ] );
 };
