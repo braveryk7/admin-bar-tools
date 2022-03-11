@@ -6,7 +6,7 @@ import { useEffect } from '@wordpress/element';
 import { apiType } from 'src/types/apiType';
 
 export const useGetApi = (
-	stateFunc: Dispatch< SetStateAction< apiType | null > >,
+	stateFunc: Dispatch< SetStateAction< apiType | undefined > >,
 ) => {
 	useEffect( () => {
 		apiFetch< apiType >(
