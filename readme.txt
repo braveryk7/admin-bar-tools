@@ -2,9 +2,9 @@
 Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
-Tested up to: 5.9.1
+Tested up to: 5.9.2
 Requires PHP: 7.3.0
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -22,6 +22,25 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.5.1 =
+
+Improvements:
+
+* The @wordpress/api-fetch package has been adopted for quicker and safer use of the setting page.
+* The design of the screen during data loading has been simplified.
+* We now show an error message when data retrieval failures occur in the WordPress REST API.
+
+Fixes:
+
+* We have fixed a problem that was causing API errors being output to PHP.
+* Refactoring of code has been implemented.
+* Some legacy code has been removed.
+* We have resolved an issue that caused a critical error in some environments during updates.
+
+Development:
+
+* The development environment has been reorganized.
 
 = 1.5.0 =
 
