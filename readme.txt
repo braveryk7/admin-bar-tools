@@ -145,8 +145,6 @@ First release.
 1. Admin-bar
 2. Settings
 
-== Arbitrary section ==
-
 = Language =
 - English (United States)
 - Japanese
