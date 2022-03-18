@@ -4,7 +4,7 @@ Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
 Tested up to: 5.9.2
 Requires PHP: 7.3.0
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -22,6 +22,13 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.5.2 =
+
+Fixes:
+
+* Translation.
+* Refactoring of code has been implemented.
 
 = 1.5.1 =
 
