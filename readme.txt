@@ -23,6 +23,13 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.5.2 =
+
+Fixes:
+
+* Translation.
+* Refactoring of code has been implemented.
+
 = 1.5.1 =
 
 Improvements:
