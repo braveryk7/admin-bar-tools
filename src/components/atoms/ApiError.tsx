@@ -3,13 +3,23 @@ import { __ } from '@wordpress/i18n';
 
 export const ApiError = () => {
 	const messageList = [
-		__( 'Admin Bar Toolsは、設定読み込みにWordPress REST APIを使用しています。', 'admin-bar-tools' ),
-		__( 'もしこのエラーが続けて表示される場合は、WordPress REST APIが無効化されている可能性があります。', 'admin-bar-tools' ),
-		__( 'WordPress REST APIはプラグインやテーマのfunctions.phpファイルで設定することができます。', 'admin-bar-tools' ),
-		__( 'WordPress REST APIを有効化して再度アクセスしてください。', 'admin-bar-tools' ),
+		__( 'Admin Bar Tools uses the WordPress REST API for setting loading.', 'admin-bar-tools' ),
+		__(
+			'If you continue to see this error, the WordPress REST API may be disabled.',
+			'admin-bar-tools'
+		),
+		__(
+			// eslint-disable-next-line
+			"The WordPress REST API can be set up in a plugin or in your theme's functions.php file.",
+			'admin-bar-tools'
+		),
+		__(
+			'Please activate the WordPress REST API and try accessing it again.',
+			'admin-bar-tools'
+		),
 	];
 	return (
-		<Panel header={ __( 'API接続に失敗しました。', 'admin-bar-tools' ) } >
+		<Panel header={ __( 'API connection failed.', 'admin-bar-tools' ) } >
 			<PanelBody>
 				{ messageList.map( ( message, index ) => (
 					<PanelRow key={ index }>{ message }</PanelRow>
