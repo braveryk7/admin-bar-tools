@@ -138,7 +138,7 @@ class Abt_Activate extends Abt_Base {
 	public function migration_options(): void {
 		$abt_options = get_option( $this->add_prefix( 'options' ) );
 
-		if ( ! $abt_options && get_option( $this->add_prefix( 'status' ) ) ) {
+		if ( ! $abt_options ) {
 			$this->register_options();
 			$old_options = [];
 
