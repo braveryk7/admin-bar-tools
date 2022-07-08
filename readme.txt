@@ -25,7 +25,13 @@ We're glad that you can concentrate on writing.
 
 = 1.5.3 =
 
-Support WordPress 6.0
+Improvements:
+
+* Support WordPress 6.0
+
+Development:
+
+* The development environment has been reorganized.
 
 = 1.5.2 =
 
