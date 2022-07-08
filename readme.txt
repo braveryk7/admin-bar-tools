@@ -23,6 +23,10 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.5.3 =
+
+Support WordPress 6.0
+
 = 1.5.2 =
 
 Fixes:
