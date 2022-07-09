@@ -36,5 +36,8 @@ jobs:
         if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
+      - name: Check Vendor Directory
+        run: ls -la
+
       - name: Run test suite
         run: composer run-script test
