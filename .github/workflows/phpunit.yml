@@ -2,12 +2,12 @@ name: PHPUnit
 
 on: [ pull_request ]
 
-on: 
-  pull_request:
-    paths:
-      - 'class/**'
-      - 'tests/**'
-      - 'admin-bar-tools.php'
+# on: 
+#   pull_request:
+#     paths:
+#       - 'class/**'
+#       - 'tests/**'
+#       - 'admin-bar-tools.php'
 
 jobs:
   test:
