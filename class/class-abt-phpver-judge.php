@@ -19,13 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Phpver_Judge {
 	/**
-	 * Argument.
-	 *
-	 * @var int
-	 */
-	private $version_received;
-
-	/**
 	 * Judgment PHP version.
 	 *
 	 * @param int $version_received php version.
