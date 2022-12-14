@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
-require_once dirname( __FILE__ ) . '/class/class-judgment-php-version.php';
+require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
 
 $get_php_version_bool = new Judgment_Php_Version();
 if ( false === $get_php_version_bool->judgment( Abt_Base::REQUIRED_PHP_VERSION ) ) {
