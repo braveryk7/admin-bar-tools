@@ -21,14 +21,10 @@ class Abt_Phpver_Judge {
 	/**
 	 * Judgment PHP version.
 	 *
-	 * @param int $version_received php version.
+	 * @param string $version_received php version.
 	 * @return bool
 	 */
-	public function judgment( $version_received ) {
-		if ( version_compare( PHP_VERSION, $version_received, '>=' ) ) {
-			return true;
-		} else {
-			return false;
-		}
+	public function judgment( string $version_received ): bool {
+		return version_compare( PHP_VERSION, $version_received, '>=' ) ? true : false;
 	}
 }
