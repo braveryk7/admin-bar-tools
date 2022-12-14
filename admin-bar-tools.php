@@ -27,7 +27,7 @@ load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) 
 require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
 
-$get_php_version_bool = new Judgment_Php_Version();
+$get_php_version_bool = new Abt_Phpver_Judge();
 if ( false === $get_php_version_bool->judgment( Abt_Base::REQUIRED_PHP_VERSION ) ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
