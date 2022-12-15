@@ -34,7 +34,7 @@ if ( ! $get_php_version_bool->judgment( Abt_Base::get_required_php_version() ) )
 		Abt_Base::get_plugin_name(),
 		Abt_Base::get_required_php_version()
 	);
-} elseif ( $get_php_version_bool->judgment( Abt_Base::get_required_php_version() ) ) {
+} else {
 	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
