@@ -28,6 +28,7 @@ require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
 
 $get_php_version_bool = new Abt_Phpver_Judge();
+
 if ( ! $get_php_version_bool->judgment( Abt_Base::get_required_php_version() ) ) {
 	$get_php_version_bool->deactivate(
 		__FILE__,
