@@ -27,4 +27,30 @@ class Abt_Phpver_Judge {
 	public function judgment( string $version_received ): bool {
 		return version_compare( PHP_VERSION, $version_received, '>=' ) ? true : false;
 	}
+
+	/**
+	 * Show deactivate error message.
+	 *
+	 * @param string $project Project name.
+	 * @param string $version PHP version.
+	 */
+	public function deactivate_message( string $project, string $version ) {
+		$messages = [
+			'header'  => sprintf(
+				/* translators: 1: Plugin name */
+				__( '[Plugin error] %s has been stopped because the PHP version is old.', 'admin-bar-tools' ),
+				$project,
+			),
+			'require' => sprintf(
+				/* translators: 1: Plugin name 2: PHP version */
+				__( '%1$s requires at least PHP %2$s or later.', 'admin-bar-tools' ),
+				$project,
+				$version,
+			),
+			'upgrade' => __( 'Please upgrade PHP.', 'admin-bar-tools' ),
+			'current' => __( 'Current PHP version:', 'admin-bar-tools' ),
+		];
+
+		return $messages;
+	}
 }
