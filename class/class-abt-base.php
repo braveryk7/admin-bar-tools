@@ -222,6 +222,14 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return plugin name.
+	 * e.g. Admin Bar Tools
+	 */
+	public static function get_plugin_name(): string {
+		return self::PLUGIN_NAME;
+	}
+
+	/**
 	 * Return plugin directory.
 	 * e.g. /DocumentRoot/wp-content/plugins/admin-bar-tools
 	 *
