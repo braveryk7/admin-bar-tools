@@ -29,6 +29,49 @@ class Abt_Phpver_Judge {
 	}
 
 	/**
+	 * Deactivate plugin & show deactivate massege.
+	 *
+	 * @param string $path Plugin path.
+	 * @param string $project Project name.
+	 * @param string $version PHP version.
+	 */
+	public function deactivate( string $path, string $project, string $version ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		if ( is_plugin_active( plugin_basename( $path ) ) ) {
+			if ( is_admin() ) {
+				$messages = $this->deactivate_message( $project, $version );
+
+				?>
+				<div class="error">
+					<p><?php echo esc_html( $messages['header'] ); ?></p>
+					<p>
+						<?php echo esc_html( $messages['require'] ); ?>
+						<?php echo esc_html( $messages['upgrade'] ); ?>
+					</p>
+					<p>
+						<?php echo esc_html( $messages['current'] ); ?>
+						<?php echo PHP_VERSION; ?>
+					</p>
+				</div>
+				<?php
+
+			}
+			deactivate_plugins( plugin_basename( $path ) );
+		} else {
+			$messages = $this->deactivate_message( $project, $version );
+
+			?>
+			<p>
+				<?php echo esc_html( $messages['require'] ); ?>
+				<?php echo esc_html( $messages['upgrade'] ); ?>
+			</p>
+			<?php
+
+			exit;
+		}
+	}
+
+	/**
 	 * Show deactivate error message.
 	 *
 	 * @param string $project Project name.
