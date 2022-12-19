@@ -40,6 +40,13 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: get_plugin_name()
+	 */
+	public function test_get_plugin_name() {
+		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
+	}
+
+	/**
 	 * TEST: return_plugin_url()
 	 */
 	public function test_get_plugin_url() {
@@ -115,6 +122,16 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 	 */
 	public function test_set_abt_options() {
 		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
+	 * TEST: get_required_php_version()
+	 */
+	public function test_get_required_php_version() {
+		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '7.4.0' );
+		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8' );
+		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8.1' );
+		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8.1.5' );
 	}
 
 	/**
