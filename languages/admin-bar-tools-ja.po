@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2022-03-05 22:19+0900\n"
-"PO-Revision-Date: 2022-03-05 22:22+0900\n"
+"POT-Creation-Date: 2023-01-03 23:05+0900\n"
+"PO-Revision-Date: 2023-01-03 23:06+0900\n"
 "Last-Translator: Ken-chan\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -21,14 +21,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: img\n"
 "X-Poedit-SearchPathExcluded-5: languages\n"
 "X-Poedit-SearchPathExcluded-6: node_modules\n"
-
-#: admin-bar-tools.php:40 modules/cancel-activate.php:25
-msgid "Admin Bar Tools requires at least PHP 7.3.0 or later."
-msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
-
-#: admin-bar-tools.php:40 modules/cancel-activate.php:26
-msgid "Please upgrade PHP."
-msgstr "PHPをアップグレードしてください。"
 
 #: class/class-abt-activate.php:68
 msgid "PageSpeed Insights"
@@ -78,6 +70,24 @@ msgstr "設定"
 msgid "Required key does not exist"
 msgstr "必要なキーが存在しません"
 
+#: class/class-abt-phpver-judge.php:84
+#, php-format
+msgid "[Plugin error] %s has been stopped because the PHP version is old."
+msgstr "[プラグインエラー] PHPのバージョンが古いため、%sは停止されました。"
+
+#: class/class-abt-phpver-judge.php:89
+#, php-format
+msgid "%1$s requires at least PHP %2$s or later."
+msgstr "%1$sには、少なくともPHP%2$s以降が必要です。"
+
+#: class/class-abt-phpver-judge.php:93 modules/cancel-activate.php:26
+msgid "Please upgrade PHP."
+msgstr "PHPをアップグレードしてください。"
+
+#: class/class-abt-phpver-judge.php:94 modules/cancel-activate.php:29
+msgid "Current PHP version:"
+msgstr "現在のPHPバージョン："
+
 #: modules/cancel-activate.php:23
 msgid ""
 "[Plugin error] Admin Bar Tools has been stopped because the PHP version is "
@@ -86,9 +96,9 @@ msgstr ""
 "[プラグインエラー] PHPのバージョンが古いため、Admin Bar Toolsは停止されまし"
 "た。"
 
-#: modules/cancel-activate.php:29
-msgid "Current PHP version:"
-msgstr "現在のPHPバージョン："
+#: modules/cancel-activate.php:25
+msgid "Admin Bar Tools requires at least PHP 7.3.0 or later."
+msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
 
 #~ msgid "You have no sufficient permissions to access this page."
 #~ msgstr "このページにアクセスするための十分な権限がありません。"
@@ -224,9 +234,6 @@ msgstr "現在のPHPバージョン："
 
 #~ msgid "Japanese"
 #~ msgstr "日本語"
-
-#~ msgid "Admin Bar Tools requires at least PHP 7.3 or later."
-#~ msgstr "Admin Bar Toolsには、少なくともPHP7.3以降が必要です。"
 
 #~ msgid "Update is successful!!"
 #~ msgstr "設定が完了しました！"
