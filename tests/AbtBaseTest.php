@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 /**
  * Test: Sct_Base
  */
-class Abt_BaseTest extends PHPUnit\Framework\TestCase {
+class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -126,12 +126,19 @@ class Abt_BaseTest extends PHPUnit\Framework\TestCase {
 
 	/**
 	 * TEST: get_required_php_version()
+	 *
+	 * @test
+	 * @testWith [ "7.4.0", "8", "8.1", "8.1.5" ]
+	 *
+	 * @param string $version PHP version.
 	 */
-	public function test_get_required_php_version() {
-		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '7.4.0' );
-		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8' );
-		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8.1' );
-		$this->assertMatchesRegularExpression( '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/', '8.1.5' );
+	public function test_get_required_php_version( $version ) {
+		$pattern = '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/';
+
+		$this->assertMatchesRegularExpression( $pattern, $version );
+
+		// Current version.
+		$this->assertMatchesRegularExpression( $pattern, Abt_Base::get_required_php_version() );
 	}
 
 	/**
