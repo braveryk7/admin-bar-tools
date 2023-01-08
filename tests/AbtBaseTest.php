@@ -128,7 +128,10 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * TEST: get_required_php_version()
 	 *
 	 * @test
-	 * @testWith [ "7.4.0", "8", "8.1", "8.1.5" ]
+	 * @testWith [ "7.4.0" ]
+	 *           [ "8" ]
+	 *           [ "8.1" ]
+	 *           [ "8.1.5" ]
 	 *
 	 * @param string $version PHP version.
 	 */
