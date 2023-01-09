@@ -40,13 +40,6 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * TEST: get_plugin_name()
-	 */
-	public function test_get_plugin_name() {
-		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
-	}
-
-	/**
 	 * TEST: return_plugin_url()
 	 */
 	public function test_get_plugin_url() {
@@ -61,6 +54,13 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 			'https://example.com/wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
+	}
+
+	/**
+	 * TEST: get_plugin_name()
+	 */
+	public function test_get_plugin_name() {
+		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
 	}
 
 	/**
@@ -95,6 +95,13 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
+	}
+
+	/**
+	 * TEST: get_api_namespace()
+	 */
+	public function test_get_api_namespace() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
 
 	/**
