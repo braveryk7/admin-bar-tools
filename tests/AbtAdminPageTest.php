@@ -77,6 +77,13 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: readable_api()
+	 */
+	public function test_readable_api() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
 	 * TEST: register()
 	 */
 	public function test_register() {
