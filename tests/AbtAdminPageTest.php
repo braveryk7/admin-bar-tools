@@ -70,6 +70,13 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: get_wordpress_permission()
+	 */
+	public function test_get_wordpress_permission() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
 	 * TEST: register()
 	 */
 	public function test_register() {
