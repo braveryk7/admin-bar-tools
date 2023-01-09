@@ -98,6 +98,13 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: get_api_namespace()
+	 */
+	public function test_get_api_namespace() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
 	 * TEST: get_option_group()
 	 */
 	public function test_get_option_group() {
