@@ -27,10 +27,10 @@ load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) 
 require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
 
-$get_php_version_bool = new Abt_Phpver_Judge();
+$abt_phpver_judge = new Abt_Phpver_Judge();
 
-if ( ! $get_php_version_bool->judgment( Abt_Base::get_required_php_version() ) ) {
-	$get_php_version_bool->deactivate(
+if ( ! $abt_phpver_judge->judgment( Abt_Base::get_required_php_version() ) ) {
+	$abt_phpver_judge->deactivate(
 		__FILE__,
 		Abt_Base::get_plugin_name(),
 		Abt_Base::get_required_php_version()
