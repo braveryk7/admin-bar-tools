@@ -31,7 +31,7 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Add WordPress menu.
 	 */
-	public function add_menu() {
+	public function add_menu(): void {
 		add_options_page(
 			'Admin Bar Tools',
 			'Admin Bar Tools',
