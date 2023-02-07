@@ -31,7 +31,7 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Add WordPress menu.
 	 */
-	public function add_menu() {
+	public function add_menu(): void {
 		add_options_page(
 			'Admin Bar Tools',
 			'Admin Bar Tools',
@@ -89,7 +89,7 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Create custom endpoint.
 	 */
-	public function register_rest_api() {
+	public function register_rest_api(): void {
 		register_rest_route(
 			$this->get_api_namespace(),
 			'/options',
