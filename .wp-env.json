@@ -1,7 +1,4 @@
 {
-	"config": {
-		"WP_DEBUG": true,
-		"WP_MEMORY_LIMIT": "512M"
-	},
+	"config": {},
 	"core": "https://ja.wordpress.org/latest-ja.zip"
 }
