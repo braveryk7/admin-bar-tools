@@ -2,5 +2,6 @@
 	"config": {},
 	"core": null,
 	"phpVersion": null,
-	"plugins": []
+	"plugins": [],
+	"themes": []
 }
