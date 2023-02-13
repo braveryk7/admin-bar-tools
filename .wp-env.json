@@ -1,3 +1,4 @@
 {
-	"core": "https://ja.wordpress.org/latest-ja.zip"
+	"core": "https://ja.wordpress.org/latest-ja.zip",
+	"port": 48000
 }
