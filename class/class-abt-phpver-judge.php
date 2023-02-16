@@ -77,7 +77,7 @@ class Abt_Phpver_Judge {
 	 * @param string $project Project name.
 	 * @param string $version PHP version.
 	 */
-	public function deactivate_message( string $project, string $version ) {
+	public function deactivate_message( string $project, string $version ): array {
 		$messages = [
 			'header'  => sprintf(
 				/* translators: 1: Plugin name */
