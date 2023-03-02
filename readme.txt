@@ -23,6 +23,27 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.5.4 =
+
+Important:
+
+* Please update your PHP version to 8.0 or higher. The next update will not allow use with PHP 8.0 or lower and will automatically disable the plugin. This change is scheduled around March 18st.
+
+Improvements:
+
+* It is now ready for WordPress 6.1.1.
+* The PHP versioning logic has been revised.
+* We have expanded the testing of various methods.
+* We are now ready to terminate support for PHP7 series.
+
+Fixes:
+
+* The syntax that caused errors in PHP8.2 has been fixed.
+
+Development:
+
+* The genuine WordPress wp-env environment has been installed.
+
 = 1.5.3 =
 
 Improvements:
