@@ -35,7 +35,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
 		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
-		if ( true === is_user_logged_in() ) {
+		if ( is_user_logged_in() ) {
 			$wp_admin_bar->add_node(
 				[
 					'id'    => self::PREFIX,
