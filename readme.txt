@@ -27,7 +27,7 @@ We're glad that you can concentrate on writing.
 
 Important:
 
-* Please update your PHP version to 8.0 or higher. The next update will not allow use with PHP 8.0 or lower and will automatically disable the plugin. This change is scheduled around March 18st.
+* Please update your PHP version to 8.0 or higher. The next update will not allow use with PHP 8.0 or lower and will automatically disable the plugin. This change is scheduled around March 28st.
 
 Improvements:
 
