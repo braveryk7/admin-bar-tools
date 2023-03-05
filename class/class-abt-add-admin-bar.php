@@ -53,7 +53,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				if ( $item['status'] ) {
 					if ( is_admin() ) {
 						$link_url = $item['adminurl'];
-					} elseif ( ! is_admin() ) {
+					} else {
 						$link_url = match ( $item['shortname'] ) {
 							'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
 							'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
