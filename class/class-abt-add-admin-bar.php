@@ -53,14 +53,12 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				if ( $item['status'] ) {
 					if ( is_admin() ) {
 						$link_url = $item['adminurl'];
-					} elseif ( ! is_admin() ) {
-						if ( 'hatena' === $item['shortname'] ) {
-							$link_url = $item['url'] . $sanitize_domain . $sanitize_uri;
-						} elseif ( 'gsc' === $item['shortname'] ) {
-							$link_url = $this->searchconsole_url( $item['url'], $abt_options['sc'], $url );
-						} else {
-							$link_url = in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'];
-						}
+					} else {
+						$link_url = match ( $item['shortname'] ) {
+							'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+							'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+							default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+						};
 					}
 					$wp_admin_bar->add_node(
 						[
@@ -95,11 +93,10 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			'/performance/search-analytics?resource_id=sc-domain:',
 		];
 
-		if ( 1 === $status ) {
-			$gsc_url .= is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url;
-		} elseif ( 2 === $status ) {
-			$gsc_url .= is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url;
-		}
+		$gsc_url .= match ( $status ) {
+			1 => is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url,
+			2 => is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url,
+		};
 
 		return $gsc_url;
 	}
