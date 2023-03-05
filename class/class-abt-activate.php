@@ -136,7 +136,7 @@ class Abt_Activate extends Abt_Base {
 	 * Fix use old wp_options -> create new options and migration.
 	 */
 	public function migration_options(): void {
-		$abt_options = get_option( $this->add_prefix( 'options' ) );
+		$abt_options = $this->get_abt_options();
 
 		if ( ! $abt_options ) {
 			$this->register_options();
