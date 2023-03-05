@@ -273,7 +273,7 @@ class Abt_Base {
 	/**
 	 * Get abt_options.
 	 */
-	protected function get_abt_options(): array {
+	protected function get_abt_options(): array|bool {
 		return get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
 	}
 
