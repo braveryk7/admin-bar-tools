@@ -37,7 +37,7 @@ class Abt_Activate extends Abt_Base {
 			'version' => self::VERSION,
 		];
 
-		add_option( $this->add_prefix( 'options' ), $options );
+		$this->set_abt_options( $options );
 	}
 
 	/**
