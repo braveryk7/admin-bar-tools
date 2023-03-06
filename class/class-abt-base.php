@@ -32,13 +32,6 @@ class Abt_Base {
 		'options',
 	];
 
-	protected const OLD_OPTIONS_COLUMN = [
-		'status',
-		'locale',
-		'sc',
-		'db_version',
-	];
-
 	protected const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
