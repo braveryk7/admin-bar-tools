@@ -23,7 +23,6 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
-		add_action( 'init', [ $this, 'migration_options' ], 10 );
 	}
 
 	/**
