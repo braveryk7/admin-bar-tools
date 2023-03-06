@@ -130,34 +130,4 @@ class Abt_Activate extends Abt_Base {
 
 		return $items;
 	}
-
-	/**
-	 * Fix use old wp_options -> create new options and migration.
-	 */
-	public function migration_options(): void {
-		$abt_options = $this->get_abt_options();
-
-		if ( ! $abt_options ) {
-			$this->register_options();
-			$old_options = [];
-
-			foreach ( self::OLD_OPTIONS_COLUMN as $key ) {
-				$old_options[ $key ] = get_option( $this->add_prefix( $key ) );
-				delete_option( $this->add_prefix( $key ) );
-			}
-
-			foreach ( $old_options as $old_key => $old_value ) {
-				if ( 'status' === $old_key ) {
-					$abt_options['items'] = $old_value;
-				} elseif ( 'locale' === $old_key ) {
-					$abt_options['locale'] = $old_value;
-				} elseif ( 'sc' === $old_key ) {
-					$abt_options['sc'] = (int) $old_value;
-				} elseif ( 'db_version' === $old_key ) {
-					$abt_options['version'] = $old_value;
-				}
-			}
-			$this->set_abt_options( $abt_options );
-		}
-	}
 }
