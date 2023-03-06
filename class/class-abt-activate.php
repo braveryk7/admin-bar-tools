@@ -37,7 +37,7 @@ class Abt_Activate extends Abt_Base {
 			'version' => self::VERSION,
 		];
 
-		add_option( $this->add_prefix( 'options' ), $options );
+		$this->set_abt_options( $options );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class Abt_Activate extends Abt_Base {
 	private function create_items(): array {
 		$items       = [];
 		$locale      = get_locale();
-		$abt_options = get_option( $this->add_prefix( 'options' ) );
+		$abt_options = $this->get_abt_options();
 		$psi         = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
@@ -136,7 +136,7 @@ class Abt_Activate extends Abt_Base {
 	 * Fix use old wp_options -> create new options and migration.
 	 */
 	public function migration_options(): void {
-		$abt_options = get_option( $this->add_prefix( 'options' ) );
+		$abt_options = $this->get_abt_options();
 
 		if ( ! $abt_options ) {
 			$this->register_options();
