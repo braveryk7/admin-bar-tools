@@ -94,8 +94,9 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		];
 
 		$gsc_url .= match ( $status ) {
-			1 => is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url,
-			2 => is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url,
+			1       => is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url,
+			2       => is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url,
+			default => null,
 		};
 
 		return $gsc_url;
