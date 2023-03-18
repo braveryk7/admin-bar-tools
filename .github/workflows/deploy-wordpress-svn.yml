@@ -36,7 +36,7 @@ jobs:
         run: |
           TAG=`echo ${GITHUB_REF##*/} | sed -e "s/v//"`
           echo "VERSION=$TAG" >> $GITHUB_OUTPUT
-          echo ::set-output name=PROJECT_NAME::admin-bar-tools
+          echo "PROJECT_NAME=admin-bar-tools" >> $GITHUB_OUTPUT
         id: svn-env
 
       - name: SVN checkout
