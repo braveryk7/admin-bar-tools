@@ -57,7 +57,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 *
 	 * @param string $hook_shuffix WordPress hook_shuffix.
 	 */
-	public function add_scripts( string $hook_shuffix ) {
+	public function add_scripts( string $hook_shuffix ): void {
 		if ( 'settings_page_admin-bar-tools' !== $hook_shuffix ) {
 			return;
 		}
