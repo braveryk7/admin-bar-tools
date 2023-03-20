@@ -57,7 +57,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 *
 	 * @param string $hook_shuffix WordPress hook_shuffix.
 	 */
-	public function add_scripts( string $hook_shuffix ) {
+	public function add_scripts( string $hook_shuffix ): void {
 		if ( 'settings_page_admin-bar-tools' !== $hook_shuffix ) {
 			return;
 		}
@@ -121,7 +121,7 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Custom endpoint for read.
 	 */
-	public function readable_api() {
+	public function readable_api(): WP_REST_Response {
 		$abt_options = $this->get_abt_options();
 		return new WP_REST_Response( $abt_options, 200 );
 	}
@@ -131,19 +131,16 @@ class Abt_Admin_Page extends Abt_Base {
 	 *
 	 * @param WP_REST_Request $request WP_REST_Request object.
 	 */
-	public function editable_api( WP_REST_Request $request ) {
+	public function editable_api( WP_REST_Request $request ): WP_REST_Response {
 		$abt_options = $this->get_abt_options();
 		$params      = $request->get_json_params();
 
-		if ( array_key_exists( 'items', $params ) ) {
-			$abt_options['items'] = $params['items'];
-		} elseif ( array_key_exists( 'sc', $params ) ) {
-			$abt_options['sc'] = $params['sc'];
-		} elseif ( array_key_exists( 'locale', $params ) ) {
-			$abt_options['locale'] = $params['locale'];
-		} else {
-			return new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] );
-		}
+		match ( true ) {
+			array_key_exists( 'items', $params )  => $abt_options['items']  = $params['items'],
+			array_key_exists( 'sc', $params )     => $abt_options['sc']     = $params['sc'],
+			array_key_exists( 'locale', $params ) => $abt_options['locale'] = $params['locale'],
+			default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
+		};
 
 		$this->set_abt_options( $abt_options );
 
