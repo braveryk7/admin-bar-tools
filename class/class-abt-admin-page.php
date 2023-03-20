@@ -131,7 +131,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 *
 	 * @param WP_REST_Request $request WP_REST_Request object.
 	 */
-	public function editable_api( WP_REST_Request $request ) {
+	public function editable_api( WP_REST_Request $request ): WP_REST_Response {
 		$abt_options = $this->get_abt_options();
 		$params      = $request->get_json_params();
 
