@@ -32,6 +32,14 @@ class Abt_Base {
 		'options',
 	];
 
+	protected const OPTIONS_KEY = [
+		'items',
+		'locale',
+		'sc',
+		'theme_support',
+		'version',
+	];
+
 	protected const PSI_LOCALES = [
 		'ar'    => [
 			'id'   => 'ar',
