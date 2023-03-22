@@ -4,6 +4,7 @@ export type apiType = {
 	items: locationsType;
 	locale: string;
 	sc: number;
+	theme_support: boolean,
 	version: number;
 };
 
