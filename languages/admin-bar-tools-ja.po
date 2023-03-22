@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: admin-bar-tools\n"
-"POT-Creation-Date: 2023-01-03 23:05+0900\n"
-"PO-Revision-Date: 2023-01-03 23:06+0900\n"
+"POT-Creation-Date: 2023-03-21 18:29+0900\n"
+"PO-Revision-Date: 2023-03-21 18:29+0900\n"
 "Last-Translator: Ken-chan\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -22,51 +22,63 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-5: languages\n"
 "X-Poedit-SearchPathExcluded-6: node_modules\n"
 
-#: class/class-abt-activate.php:68
+#: class/class-abt-activate.php:77
 msgid "PageSpeed Insights"
 msgstr "PageSpeed Insights"
 
-#: class/class-abt-activate.php:74
+#: class/class-abt-activate.php:83
 msgid "Lighthouse"
 msgstr "Lighthouse"
 
-#: class/class-abt-activate.php:80
+#: class/class-abt-activate.php:89
 msgid "Google Search Console"
 msgstr "Googleサーチコンソール"
 
-#: class/class-abt-activate.php:86
+#: class/class-abt-activate.php:95
 msgid "Google Cache"
 msgstr "Googleキャッシュ"
 
-#: class/class-abt-activate.php:92
+#: class/class-abt-activate.php:101
 msgid "Google Index"
 msgstr "Googleインデックス"
 
-#: class/class-abt-activate.php:98
+#: class/class-abt-activate.php:107
 msgid "Bing Index"
 msgstr "Bingインデックス"
 
-#: class/class-abt-activate.php:104
+#: class/class-abt-activate.php:113
 msgid "Twitter Search"
 msgstr "Twitter検索"
 
-#: class/class-abt-activate.php:110
+#: class/class-abt-activate.php:119
 msgid "Facebook Search"
 msgstr "Facebook検索"
 
-#: class/class-abt-activate.php:116
+#: class/class-abt-activate.php:125
 msgid "Hatena Bookmark"
 msgstr "はてなブックマーク"
 
-#: class/class-abt-add-admin-bar.php:42
+#: class/class-abt-add-admin-bar.php:43
 msgid "Admin Bar Tools"
 msgstr "Admin Bar Tools"
+
+#: class/class-abt-add-admin-bar.php:149
+msgid "Official Site"
+msgstr "公式サイト"
+
+#: class/class-abt-add-admin-bar.php:150
+msgid "Manual"
+msgstr "マニュアル"
+
+#: class/class-abt-add-admin-bar.php:151
+msgid "Forum"
+msgstr "フォーラム"
 
 #: class/class-abt-admin-page.php:50
 msgid "Settings"
 msgstr "設定"
 
-#: class/class-abt-admin-page.php:145
+#: class/class-abt-admin-page.php:142
 msgid "Required key does not exist"
 msgstr "必要なキーが存在しません"
 
@@ -80,25 +92,19 @@ msgstr "[プラグインエラー] PHPのバージョンが古いため、%sは�
 msgid "%1$s requires at least PHP %2$s or later."
 msgstr "%1$sには、少なくともPHP%2$s以降が必要です。"
 
-#: class/class-abt-phpver-judge.php:93 modules/cancel-activate.php:26
+#: class/class-abt-phpver-judge.php:93
 msgid "Please upgrade PHP."
 msgstr "PHPをアップグレードしてください。"
 
-#: class/class-abt-phpver-judge.php:94 modules/cancel-activate.php:29
+#: class/class-abt-phpver-judge.php:94
 msgid "Current PHP version:"
 msgstr "現在のPHPバージョン："
 
-#: modules/cancel-activate.php:23
-msgid ""
-"[Plugin error] Admin Bar Tools has been stopped because the PHP version is "
-"old."
-msgstr ""
-"[プラグインエラー] PHPのバージョンが古いため、Admin Bar Toolsは停止されまし"
-"た。"
+#~ msgid "[Plugin error] Admin Bar Tools has been stopped because the PHP version is old."
+#~ msgstr "[プラグインエラー] PHPのバージョンが古いため、Admin Bar Toolsは停止されました。"
 
-#: modules/cancel-activate.php:25
-msgid "Admin Bar Tools requires at least PHP 7.3.0 or later."
-msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
+#~ msgid "Admin Bar Tools requires at least PHP 7.3.0 or later."
+#~ msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
 
 #~ msgid "You have no sufficient permissions to access this page."
 #~ msgstr "このページにアクセスするための十分な権限がありません。"
@@ -106,12 +112,8 @@ msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
 #~ msgid "Your update has been successfully completed!!"
 #~ msgstr "設定が完了しました！"
 
-#~ msgid ""
-#~ "Please reload to reflect the settings. (F5 key for Windows, ⌘ key + R key "
-#~ "for Mac)."
-#~ msgstr ""
-#~ "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは"
-#~ "⌘キー+Rキー）"
+#~ msgid "Please reload to reflect the settings. (F5 key for Windows, ⌘ key + R key for Mac)."
+#~ msgstr "設定を反映させるために一度画面を更新してください。（WindowsはF5キー、Macは⌘キー+Rキー）"
 
 #~ msgid "An error has occurred. Please try again."
 #~ msgstr "エラーが発生しました。もう一度やり直してください。"
@@ -191,28 +193,17 @@ msgstr "Admin Bar Toolsには、少なくともPHP7.3.0以降が必要です。"
 #~ msgid "This plugin allows you to add useful links to the admin bar."
 #~ msgstr "このプラグインを使用すると、管理バーに便利なリンクを追加できます。"
 
-#~ msgid ""
-#~ "In order to check PageSpeed ​​Insights, Twitter search, and Google index, "
-#~ "you had to open each site and copy and paste the URL to confirm it until "
-#~ "now."
-#~ msgstr ""
-#~ "今まではPageSpeed Insights、Twitter検索、Googleインデックス等確認するには"
-#~ "各サイトを開き、URLをコピーして貼り付けて確認する必要がありました。"
+#~ msgid "In order to check PageSpeed ​​Insights, Twitter search, and Google index, you had to open each site and copy and paste the URL to confirm it until now."
+#~ msgstr "今まではPageSpeed Insights、Twitter検索、Googleインデックス等確認するには各サイトを開き、URLをコピーして貼り付けて確認する必要がありました。"
 
 #~ msgid "But Admin Bar Tools allows you to do it in just one click."
-#~ msgstr ""
-#~ "しかしAdmin Bar Toolsを使用すると、ワンクリックでそれを行うことができま"
-#~ "す。"
+#~ msgstr "しかしAdmin Bar Toolsを使用すると、ワンクリックでそれを行うことができます。"
 
 #~ msgid "This is very innovative."
 #~ msgstr "これは非常に革新的です。"
 
-#~ msgid ""
-#~ "You can access each tool from individual pages, articles, and management "
-#~ "screens, which eliminates the troublesome operations."
-#~ msgstr ""
-#~ "個別ページ、記事、管理画面から各ツールにアクセスできるため、面倒な操作は不"
-#~ "要です。"
+#~ msgid "You can access each tool from individual pages, articles, and management screens, which eliminates the troublesome operations."
+#~ msgstr "個別ページ、記事、管理画面から各ツールにアクセスできるため、面倒な操作は不要です。"
 
 #~ msgid "We're glad that you can concentrate on writing."
 #~ msgstr "あなたが執筆に専念できることを嬉しく思います。"
