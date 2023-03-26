@@ -3,8 +3,8 @@ Contributors: braveryk7
 Tags: admin bar, admin menu, toolbar, development
 Requires at least: 5.5.1
 Tested up to: 6.1.1
-Requires PHP: 7.3.0
-Stable tag: 1.5.4
+Requires PHP: 8.0.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -22,6 +22,23 @@ You can access each tool from individual pages, articles, and management screens
 We're glad that you can concentrate on writing.
 
 === Changelog ===
+
+= 1.6.0 =
+
+Important:
+
+* It is now ready for WordPress 6.2.
+* We no longer support PHP7 series. This plugin can only be activated with PHP8 or higher.
+
+New Feature:
+
+* If you are using a particular theme, the theme's support page (official site/manuals/forums) will now be displayed.
+* Supported themes are as follows.
+  * [Cocoon](https://wp-cocoon.com/)
+  * [JIN](https://jin-theme.com/)
+  * [JIN:R](https://jinr.jp/)
+  * [THE SONIC](https://the-sonic.jp/)
+  * [SANGO](https://saruwakakun.design/)
 
 = 1.5.4 =
 
