@@ -56,10 +56,11 @@ class Abt_Activate extends Abt_Base {
 	public function register_options(): void {
 		if ( ! $this->get_abt_options() ) {
 			$options = [
-				'items'   => $this->create_items(),
-				'locale'  => get_locale(),
-				'sc'      => 0,
-				'version' => self::VERSION,
+				'items'         => $this->create_items(),
+				'locale'        => get_locale(),
+				'sc'            => 0,
+				'theme_support' => true,
+				'version'       => self::VERSION,
 			];
 
 			$this->set_abt_options( $options );
