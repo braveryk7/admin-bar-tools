@@ -34,11 +34,11 @@ New Feature:
 
 * If you are using a particular theme, the theme's support page (official site/manuals/forums) will now be displayed.
 * Supported themes are as follows.
-  * [Cocoon](https://wp-cocoon.com/)
-  * [JIN](https://jin-theme.com/)
-  * [JIN:R](https://jinr.jp/)
-  * [THE SONIC](https://the-sonic.jp/)
-  * [SANGO](https://saruwakakun.design/)
+	* [Cocoon](https://wp-cocoon.com/)
+	* [JIN](https://jin-theme.com/)
+	* [JIN:R](https://jinr.jp/)
+	* [THE SONIC](https://the-sonic.jp/)
+	* [SANGO](https://saruwakakun.design/)
 
 = 1.5.4 =
 
