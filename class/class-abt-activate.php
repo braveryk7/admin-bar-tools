@@ -54,14 +54,16 @@ class Abt_Activate extends Abt_Base {
 	 * Register wp_options column.
 	 */
 	public function register_options(): void {
-		$options = [
-			'items'   => $this->create_items(),
-			'locale'  => get_locale(),
-			'sc'      => 0,
-			'version' => self::VERSION,
-		];
+		if ( ! $this->get_abt_options() ) {
+			$options = [
+				'items'   => $this->create_items(),
+				'locale'  => get_locale(),
+				'sc'      => 0,
+				'version' => self::VERSION,
+			];
 
-		$this->set_abt_options( $options );
+			$this->set_abt_options( $options );
+		}
 	}
 
 	/**
