@@ -24,18 +24,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
 
-$abt_phpver_judge = new Abt_Phpver_Judge();
+$abt_phpver_judge    = new Abt_Phpver_Judge();
+$require_php_version = '8.0.0';
 
-if ( ! $abt_phpver_judge->judgment( Abt_Base::get_required_php_version() ) ) {
+if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	$abt_phpver_judge->deactivate(
 		__FILE__,
-		Abt_Base::get_plugin_name(),
-		Abt_Base::get_required_php_version()
+		'Admin Bar Tools',
+		$require_php_version,
 	);
 } else {
+	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
