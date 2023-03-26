@@ -18,15 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Send Chat Tools base class.
  */
 class Abt_Base {
-	protected const PREFIX               = 'abt';
-	protected const PLUGIN_SLUG          = 'admin-bar-tools';
-	protected const PLUGIN_NAME          = 'Admin Bar Tools';
-	protected const PLUGIN_FILE          = self::PLUGIN_SLUG . '.php';
-	protected const API_NAME             = self::PLUGIN_SLUG;
-	protected const API_VERSION          = 'v1';
-	protected const VERSION              = '1.4';
-	protected const OPTIONS_COLUMN_NAME  = 'options';
-	protected const REQUIRED_PHP_VERSION = '7.3.0';
+	protected const PREFIX              = 'abt';
+	protected const PLUGIN_SLUG         = 'admin-bar-tools';
+	protected const PLUGIN_NAME         = 'Admin Bar Tools';
+	protected const PLUGIN_FILE         = self::PLUGIN_SLUG . '.php';
+	protected const API_NAME            = self::PLUGIN_SLUG;
+	protected const API_VERSION         = 'v1';
+	protected const VERSION             = '1.4';
+	protected const OPTIONS_COLUMN_NAME = 'options';
 
 	public const OPTIONS_COLUMN = [
 		'options',
