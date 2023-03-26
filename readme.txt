@@ -23,6 +23,12 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= v1.6.2 =
+
+Fixes:
+
+* Fixed an issue where WordPress 6.2 support was not reflected.
+
 = 1.6.1 =
 
 Fixes:
