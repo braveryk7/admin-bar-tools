@@ -23,6 +23,12 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.6.1 =
+
+Fixes:
+
+* Fixed an error that occurred during a new installation.
+
 = 1.6.0 =
 
 Important:
