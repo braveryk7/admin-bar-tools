@@ -288,13 +288,6 @@ class Abt_Base {
 	}
 
 	/**
-	 * Get required PHP version.
-	 */
-	public static function get_required_php_version(): string {
-		return self::REQUIRED_PHP_VERSION;
-	}
-
-	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
