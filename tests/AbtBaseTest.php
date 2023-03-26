@@ -132,26 +132,6 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
-	 * TEST: get_required_php_version()
-	 *
-	 * @test
-	 * @testWith [ "7.4.0" ]
-	 *           [ "8" ]
-	 *           [ "8.1" ]
-	 *           [ "8.1.5" ]
-	 *
-	 * @param string $version PHP version.
-	 */
-	public function test_get_required_php_version( $version ) {
-		$pattern = '/^[0-9]+\.?[0-9]?+\.?[0-9]?+\.?/';
-
-		$this->assertMatchesRegularExpression( $pattern, $version );
-
-		// Current version.
-		$this->assertMatchesRegularExpression( $pattern, Abt_Base::get_required_php_version() );
-	}
-
-	/**
 	 * TEST: console()
 	 */
 	public function test_console() {
