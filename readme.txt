@@ -23,6 +23,23 @@ We're glad that you can concentrate on writing.
 
 === Changelog ===
 
+= 1.6.0 =
+
+Important:
+
+* It is now ready for WordPress 6.2.
+* We no longer support PHP7 series. This plugin can only be activated with PHP8 or higher.
+
+New Feature:
+
+* If you are using a particular theme, the theme's support page (official site/manuals/forums) will now be displayed.
+* Supported themes are as follows.
+  * [Cocoon](https://wp-cocoon.com/)
+  * [JIN](https://jin-theme.com/)
+  * [JIN:R](https://jinr.jp/)
+  * [THE SONIC](https://the-sonic.jp/)
+  * [SANGO](https://saruwakakun.design/)
+
 = 1.5.4 =
 
 Important:
