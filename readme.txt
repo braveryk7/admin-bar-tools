@@ -145,7 +145,7 @@ Fix.
 
 Fix.
 
-* Transration
+* Translation
 
 * PHP8
 

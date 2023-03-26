@@ -29,7 +29,7 @@ class Abt_Phpver_Judge {
 	}
 
 	/**
-	 * Deactivate plugin & show deactivate massege.
+	 * Deactivate plugin & show deactivate massage.
 	 *
 	 * @param string $path Plugin path.
 	 * @param string $project Project name.
