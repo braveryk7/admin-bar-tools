@@ -9,7 +9,7 @@ import { apiType, itemKeyType, shortNameType } from 'src/types/apiType';
 export const useChangeValue = ( itemKey: itemKeyType ) => {
 	const { apiData, setApiData } = useContext( apiContext );
 
-	const changeValue = ( value: string | number ) => {
+	const changeValue = ( value: string | number | boolean ) => {
 		const newItem: apiType = JSON.parse( JSON.stringify( { ...apiData } ) );
 
 		const isShortName = ( shortName: string ): shortName is shortNameType => {
@@ -37,6 +37,11 @@ export const useChangeValue = ( itemKey: itemKeyType ) => {
 			case 'sc':
 				if ( typeof value === 'number' ) {
 					newItem.sc = value;
+				}
+				break;
+			case 'theme_support':
+				if ( typeof value === 'boolean' ) {
+					newItem.theme_support = value;
 				}
 				break;
 			default:
