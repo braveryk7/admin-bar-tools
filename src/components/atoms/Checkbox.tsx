@@ -28,7 +28,7 @@ export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 			}
 			{ apiData && itemKey === 'theme_support' &&
 			<CheckboxControl
-				label={ __( 'Theme Support', 'admin-bar-tools' ) }
+				label={ __( 'Use Theme Support', 'admin-bar-tools' ) }
 				checked={ apiData.theme_support }
 				onChange={ () => changeValue( ! apiData.theme_support ) }
 			/>
