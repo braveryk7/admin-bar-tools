@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Admin Bar Tools 1.4.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/admin-bar-"
 "tools\n"
-"POT-Creation-Date: 2022-03-18T08:14:40+00:00\n"
-"PO-Revision-Date: 2022-03-18 17:21+0900\n"
+"POT-Creation-Date: 2023-03-28T08:52:01+00:00\n"
+"PO-Revision-Date: 2023-03-28 17:52+0900\n"
 "Last-Translator: Ken-chan\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Domain: admin-bar-tools\n"
 
 #. Plugin Name of the plugin
@@ -57,47 +57,55 @@ msgstr ""
 "WordPress REST APIはプラグインやテーマのfunctions.phpファイルで設定するこ"
 "とができます。"
 
-#: build/index.js:26 build/index.js:10
+#: build/index.js:27 build/index.js:10
 msgid "Please activate the WordPress REST API and try accessing it again."
 msgstr "WordPress REST APIを有効化して再度アクセスしてください。"
 
-#: build/index.js:28 build/index.js:12
+#: build/index.js:29 build/index.js:12
 msgid "API connection failed."
 msgstr "API接続に失敗しました。"
 
-#: build/index.js:110 build/index.js:44
+#: build/index.js:75 build/index.js:32
+msgid "Use Theme Support"
+msgstr "テーマサポートを使用"
+
+#: build/index.js:118 build/index.js:47
 msgid "I don't use it."
 msgstr "未使用"
 
-#: build/index.js:113 build/index.js:45
+#: build/index.js:121 build/index.js:48
 msgid "Domain"
 msgstr "ドメイン"
 
-#: build/index.js:116 build/index.js:46
+#: build/index.js:124 build/index.js:49
 msgid "URL Prefix"
 msgstr "URLプレフィックス"
 
-#: build/index.js:343 build/index.js:152
+#: build/index.js:346 build/index.js:160
 msgid "Success."
 msgstr "成功"
 
-#: build/index.js:346 build/index.js:155
+#: build/index.js:349 build/index.js:163
 msgid "Error."
 msgstr "エラー"
 
-#: build/index.js:406 build/index.js:187
+#: build/index.js:408 build/index.js:195
 msgid "Admin Bar Tools Settings"
 msgstr "Admin Bar Tools設定"
 
-#: build/index.js:418 build/index.js:197
+#: build/index.js:420 build/index.js:205
 msgid "Please select the items you want to display."
 msgstr "表示する項目を選択してください。"
 
-#: build/index.js:423 build/index.js:200
+#: build/index.js:425 build/index.js:208
+msgid "Please select whether you want to use the Theme Support."
+msgstr "テーマサポートを利用するかどうかを選択してください。"
+
+#: build/index.js:430 build/index.js:211
 msgid "Choose how you want to register with Google SearchConsole."
 msgstr "Google Search Consoleの登録方法を選択してください。"
 
-#: build/index.js:428 build/index.js:203
+#: build/index.js:435 build/index.js:214
 msgid "Please set the location."
 msgstr "ロケーションを選択してください。"
 
