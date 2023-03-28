@@ -23,7 +23,7 @@ export type locationItemsType = {
 
 export type shortNameType = typeof shortNameList[number];
 
-export type itemKeyType = 'items' | 'locale' | 'sc' | 'version';
+export type itemKeyType = 'items' | 'locale' | 'sc' | 'theme_support' | 'version';
 
 export type useSetApiType = {
 	( itemKey: itemKeyType, value: apiType | undefined ): void;

@@ -63,6 +63,15 @@ const AdminPage = () => {
 					</Items>
 					<Items
 						title={ __(
+							'Please select whether you want to use the Theme Support.',
+							'admin-bar-tools'
+						) }
+						classValue="select-display"
+					>
+						<Checkbox itemKey="theme_support" />
+					</Items>
+					<Items
+						title={ __(
 							'Choose how you want to register with Google SearchConsole.',
 							'admin-bar-tools'
 						) }

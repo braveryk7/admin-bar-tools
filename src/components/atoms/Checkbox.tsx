@@ -1,5 +1,6 @@
 import { CheckboxControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 import { useChangeValue } from 'src/hooks/useChangeValue';
 import { apiContext } from 'src/index';
@@ -13,7 +14,7 @@ export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 
 	return (
 		<>
-			{ apiData &&
+			{ apiData && itemKey === 'items' &&
 				Object.values( apiData.items ).map(
 					( item: locationItemsType ) => (
 						<CheckboxControl
@@ -24,6 +25,13 @@ export const Checkbox = memo( ( props: { itemKey: itemKeyType } ) => {
 						/>
 					)
 				)
+			}
+			{ apiData && itemKey === 'theme_support' &&
+			<CheckboxControl
+				label={ __( 'Use Theme Support', 'admin-bar-tools' ) }
+				checked={ apiData.theme_support }
+				onChange={ () => changeValue( ! apiData.theme_support ) }
+			/>
 			}
 		</>
 	);
