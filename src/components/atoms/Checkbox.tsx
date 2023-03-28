@@ -1,6 +1,6 @@
 import { CheckboxControl } from '@wordpress/components';
 import { memo, useContext } from '@wordpress/element';
-import { __ } from '@wordpress/i18n/build-types';
+import { __ } from '@wordpress/i18n';
 
 import { useChangeValue } from 'src/hooks/useChangeValue';
 import { apiContext } from 'src/index';
