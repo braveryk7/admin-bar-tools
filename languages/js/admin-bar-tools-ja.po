@@ -3,10 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Admin Bar Tools 1.4.3\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/admin-bar-"
-"tools\n"
-"POT-Creation-Date: 2023-03-28T08:52:01+00:00\n"
-"PO-Revision-Date: 2023-03-28 17:52+0900\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/admin-bar-tools\n"
+"POT-Creation-Date: 2023-03-31T01:22:44+00:00\n"
+"PO-Revision-Date: 2023-03-31 10:23+0900\n"
 "Last-Translator: Ken-chan\n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -39,23 +38,22 @@ msgstr "https://twitter.com/braveryk7"
 
 #: build/index.js:25 build/index.js:5
 msgid "Admin Bar Tools uses the WordPress REST API for setting loading."
-msgstr ""
-"Admin Bar Toolsは、設定読み込みにWordPress REST APIを使用しています。"
+msgstr "Admin Bar Toolsは、設定読み込みにWordPress REST APIを使用しています。"
 
 #: build/index.js:25 build/index.js:6
 msgid ""
 "If you continue to see this error, the WordPress REST API may be disabled."
 msgstr ""
-"もしこのエラーが続けて表示される場合は、WordPress REST APIが無効化されてい"
-"る可能性があります。"
+"もしこのエラーが続けて表示される場合は、WordPress REST APIが無効化されている"
+"可能性があります。"
 
 #: build/index.js:25 build/index.js:7
 msgid ""
 "The WordPress REST API can be set up in a plugin or in your theme's "
 "functions.php file."
 msgstr ""
-"WordPress REST APIはプラグインやテーマのfunctions.phpファイルで設定するこ"
-"とができます。"
+"WordPress REST APIはプラグインやテーマのfunctions.phpファイルで設定することが"
+"できます。"
 
 #: build/index.js:27 build/index.js:10
 msgid "Please activate the WordPress REST API and try accessing it again."
@@ -101,11 +99,23 @@ msgstr "表示する項目を選択してください。"
 msgid "Please select whether you want to use the Theme Support."
 msgstr "テーマサポートを利用するかどうかを選択してください。"
 
-#: build/index.js:430 build/index.js:211
+#: build/index.js:429 build/index.js:212
+msgid ""
+"Links to the official WordPress theme site, manuals, and user forums will be "
+"displayed."
+msgstr ""
+"WordPressテーマ公式サイト、マニュアル、ユーザーフォーラムへのリンクが表示され"
+"ます。"
+
+#: build/index.js:431 build/index.js:217
+msgid "List of eligible WordPress themes."
+msgstr "対象となるWordPressテーマの一覧です。"
+
+#: build/index.js:442 build/index.js:236
 msgid "Choose how you want to register with Google SearchConsole."
 msgstr "Google Search Consoleの登録方法を選択してください。"
 
-#: build/index.js:435 build/index.js:214
+#: build/index.js:447 build/index.js:239
 msgid "Please set the location."
 msgstr "ロケーションを選択してください。"
 

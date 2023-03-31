@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-28T08:52:01+00:00\n"
+"POT-Creation-Date: 2023-03-31T01:22:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: admin-bar-tools\n"
@@ -104,12 +104,22 @@ msgstr ""
 msgid "Please select whether you want to use the Theme Support."
 msgstr ""
 
-#: build/index.js:430
-#: build/index.js:211
+#: build/index.js:429
+#: build/index.js:212
+msgid "Links to the official WordPress theme site, manuals, and user forums will be displayed."
+msgstr ""
+
+#: build/index.js:431
+#: build/index.js:217
+msgid "List of eligible WordPress themes."
+msgstr ""
+
+#: build/index.js:442
+#: build/index.js:236
 msgid "Choose how you want to register with Google SearchConsole."
 msgstr ""
 
-#: build/index.js:435
-#: build/index.js:214
+#: build/index.js:447
+#: build/index.js:239
 msgid "Please set the location."
 msgstr ""

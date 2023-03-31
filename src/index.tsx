@@ -1,6 +1,6 @@
 import 'src/scss/index.scss';
 
-import { Snackbar, Spinner } from '@wordpress/components';
+import { ExternalLink, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -70,6 +70,36 @@ const AdminPage = () => {
 					>
 						<Checkbox itemKey="theme_support" />
 					</Items>
+					<p>
+						{ __(
+						// eslint-disable-next-line
+						'Links to the official WordPress theme site, manuals, and user forums will be displayed.',
+							'admin-bar-tools'
+						) }
+					</p>
+					<p>
+						{ __(
+							'List of eligible WordPress themes.',
+							'admin-bar-tools'
+						) }
+					</p>
+					<ul>
+						<li>
+							<ExternalLink href="https://wp-cocoon.com/">Cocoon</ExternalLink>
+						</li>
+						<li>
+							<ExternalLink href="https://jin-theme.com/">JIN</ExternalLink>
+						</li>
+						<li>
+							<ExternalLink href="https://jinr.jp/">JIN:R</ExternalLink>
+						</li>
+						<li>
+							<ExternalLink href="https://saruwakakun.design/">SANGO</ExternalLink>
+						</li>
+						<li>
+							<ExternalLink href="https://the-sonic.jp/">THE SONIC</ExternalLink>
+						</li>
+					</ul>
 					<Items
 						title={ __(
 							'Choose how you want to register with Google SearchConsole.',
