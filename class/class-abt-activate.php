@@ -24,6 +24,21 @@ class Abt_Activate extends Abt_Base {
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
 		add_action( 'init', [ $this, 'check_abt_options_column_exists' ], 10 );
+		add_filter( 'http_request_args', [ $this, 'check_environment' ], 0, 1 );
+	}
+
+	/**
+	 * For development environments (development or local), set sslverify to false.
+	 *
+	 * @param array $args WordPress environment variables.
+	 */
+	public function check_environment( $args ) {
+		$args['sslverify'] = match ( wp_get_environment_type() ) {
+			'development', 'local' => false,
+			'production', 'staging' => true,
+			default => true,
+		};
+		return $args;
 	}
 
 	/**
