@@ -1,5 +1,7 @@
 import 'src/scss/index.scss';
 
+import locales from '../common/locales.json';
+
 import { ExternalLink, Snackbar, Spinner } from '@wordpress/components';
 import { createContext, useEffect, useState, render } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -116,7 +118,7 @@ const AdminPage = () => {
 						) }
 						classValue="select-location"
 					>
-						<Select itemKey="locale" />
+						<Select itemKey="locale" locales={ locales } />
 					</Items>
 				</apiContext.Provider>
 			) }

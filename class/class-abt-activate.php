@@ -24,6 +24,21 @@ class Abt_Activate extends Abt_Base {
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
 		add_action( 'init', [ $this, 'check_abt_options_column_exists' ], 10 );
+		add_filter( 'http_request_args', [ $this, 'check_environment' ], 0, 1 );
+	}
+
+	/**
+	 * For development environments (development or local), set sslverify to false.
+	 *
+	 * @param array $args WordPress environment variables.
+	 */
+	public function check_environment( $args ) {
+		$args['sslverify'] = match ( wp_get_environment_type() ) {
+			'development', 'local' => false,
+			'production', 'staging' => true,
+			default => true,
+		};
+		return $args;
 	}
 
 	/**
@@ -80,13 +95,23 @@ class Abt_Activate extends Abt_Base {
 	 * Create status item value.
 	 */
 	private function create_items(): array {
-		$items       = [];
-		$locale      = get_locale();
-		$abt_options = $this->get_abt_options();
-		$psi         = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+		$items          = [];
+		$current_locale = get_locale();
+		$abt_options    = $this->get_abt_options();
+		$psi            = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
-		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
-		$psi_url       = $psi_admin_url . '&url=';
+		try {
+			$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
+
+			if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
+				$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
+				$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+			}
+		} catch ( Exception $e ) {
+			$psi_admin_url = $psi . 'us';
+		}
+
+		$psi_url = $psi_admin_url . '&url=';
 
 		$location_url = [
 			'psi'      => [
