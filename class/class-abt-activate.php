@@ -80,13 +80,23 @@ class Abt_Activate extends Abt_Base {
 	 * Create status item value.
 	 */
 	private function create_items(): array {
-		$items       = [];
-		$locale      = get_locale();
-		$abt_options = $this->get_abt_options();
-		$psi         = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+		$items          = [];
+		$current_locale = get_locale();
+		$abt_options    = $this->get_abt_options();
+		$psi            = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
-		$psi_admin_url = array_key_exists( $locale, self::PSI_LOCALES ) ? $psi . self::PSI_LOCALES[ $locale ]['id'] : $psi . 'us';
-		$psi_url       = $psi_admin_url . '&url=';
+		try {
+			$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
+
+			if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
+				$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
+				$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+			}
+		} catch ( Exception $e ) {
+			$psi_admin_url = $psi . 'us';
+		}
+
+		$psi_url = $psi_admin_url . '&url=';
 
 		$location_url = [
 			'psi'      => [
