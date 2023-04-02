@@ -36,6 +36,11 @@ build/
 tests/logs/
 
 #-------------------------------
+#   WordPress environment
+#-------------------------------
+.wp-env.override.json
+
+#-------------------------------
 #   etc
 #-------------------------------
 admin-bar-tools.zip
