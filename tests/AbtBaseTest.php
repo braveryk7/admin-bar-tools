@@ -135,6 +135,10 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * TEST: console()
 	 */
 	public function test_console() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$method = new ReflectionMethod( $this->instance, 'console' );
+		$method->setAccessible( true );
+
+		$this->expectOutputString( '<script>console.log("test");</script>' );
+		$method->invoke( $this->instance, 'test' );
 	}
 }
