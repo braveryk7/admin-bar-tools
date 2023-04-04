@@ -22,3 +22,7 @@ function esc_attr( $value ) {
 function register_activation_hook() {
 	return true;
 }
+
+function wp_json_encode( $value ) {
+	return json_encode( $value ); //phpcs:ignore
+}
