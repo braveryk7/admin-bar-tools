@@ -101,7 +101,18 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * TEST: get_api_namespace()
 	 */
 	public function test_get_api_namespace() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$method = new ReflectionMethod( $this->instance, 'get_api_namespace' );
+		$method->setAccessible( true );
+
+		$this->assertSame(
+			'admin-bar-tools/v1',
+			$method->invoke( $this->instance )
+		);
+
+		$this->assertSame(
+			'admin-bar-tools/v1',
+			$method->invoke( $this->instance, 'admin-bar-tools', 'v1' )
+		);
 	}
 
 	/**
