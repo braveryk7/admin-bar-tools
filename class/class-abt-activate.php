@@ -46,6 +46,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function check_abt_options_column_exists() {
 		$abt_options = $this->get_abt_options();
+		$this->create_items();
 
 		if ( ! $abt_options ) {
 			$this->register_options();
@@ -107,16 +108,14 @@ class Abt_Activate extends Abt_Base {
 				$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
 				$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
 			}
-		} catch ( Exception $e ) {
-			$psi_admin_url = $psi . 'us';
+		} finally {
+			$psi_url = $psi_admin_url ?? $psi . 'us';
 		}
-
-		$psi_url = $psi_admin_url . '&url=';
 
 		$location_url = [
 			'psi'      => [
-				'url'   => $psi_url,
-				'admin' => $psi_admin_url,
+				'url'   => $psi_url . '&url=',
+				'admin' => $psi_url,
 				'name'  => __( 'PageSpeed Insights', 'admin-bar-tools' ),
 				'order' => 1,
 			],
