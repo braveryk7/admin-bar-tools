@@ -76,7 +76,7 @@ class Abt_Activate extends Abt_Base {
 				'locale'        => get_locale(),
 				'sc'            => 0,
 				'theme_support' => true,
-				'version'       => self::VERSION,
+				'version'       => $this->get_version(),
 			];
 
 			$this->set_abt_options( $options );
