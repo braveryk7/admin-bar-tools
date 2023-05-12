@@ -5,6 +5,9 @@ on:
     paths:
       - 'src/**'
 
+env:
+  CACHE_TAG: v1
+
 jobs:
   test:
     name: JS Lint
