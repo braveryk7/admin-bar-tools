@@ -2,6 +2,7 @@
 	"recommendations": [
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
+		"robberphex.php-debug",
 		"stylelint.vscode-stylelint",
 		"tungvn.wordpress-snippet",
 		"valeryanm.vscode-phpsab",
