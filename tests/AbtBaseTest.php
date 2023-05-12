@@ -116,6 +116,17 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: get_version()
+	 */
+	public function test_get_version(): void {
+		$method = new ReflectionMethod( $this->instance, 'get_version' );
+		$method->setAccessible( true );
+
+		$this->assertIsString( $method->invoke( $this->instance ) );
+		$this->assertMatchesRegularExpression( '/^\d+\.\d+\.\d+$/', $method->invoke( $this->instance ) );
+	}
+
+	/**
 	 * TEST: get_option_group()
 	 */
 	public function test_get_option_group() {
