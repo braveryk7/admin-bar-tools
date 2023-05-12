@@ -55,10 +55,10 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Enqueue scripts.
 	 *
-	 * @param string $hook_shuffix WordPress hook_shuffix.
+	 * @param string $hook_suffix WordPress hook_shuffix.
 	 */
-	public function add_scripts( string $hook_shuffix ): void {
-		if ( 'settings_page_admin-bar-tools' !== $hook_shuffix ) {
+	public function add_scripts( string $hook_suffix ): void {
+		if ( 'settings_page_admin-bar-tools' !== $hook_suffix ) {
 			return;
 		}
 
