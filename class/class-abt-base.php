@@ -99,6 +99,14 @@ class Abt_Base {
 	}
 
 	/**
+	 * Return VERSION constant.
+	 * e.g. 1.6.2
+	 */
+	protected function get_version(): string {
+		return self::VERSION;
+	}
+
+	/**
 	 * Return option group.
 	 * Use register_setting.
 	 * e.g. admin-bar-tools-settings
