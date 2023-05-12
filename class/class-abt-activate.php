@@ -52,7 +52,7 @@ class Abt_Activate extends Abt_Base {
 			$this->register_options();
 		}
 
-		if ( self::VERSION !== $abt_options['version'] ) {
+		if ( $this->get_version() !== $abt_options['version'] ) {
 			foreach ( self::OPTIONS_KEY as $key_name ) {
 				if ( ! array_key_exists( $key_name, $abt_options ) ) {
 					if ( 'theme_support' === $key_name ) {
@@ -76,7 +76,7 @@ class Abt_Activate extends Abt_Base {
 				'locale'        => get_locale(),
 				'sc'            => 0,
 				'theme_support' => true,
-				'version'       => self::VERSION,
+				'version'       => $this->get_version(),
 			];
 
 			$this->set_abt_options( $options );

@@ -24,7 +24,7 @@ class Abt_Base {
 	protected const PLUGIN_FILE         = self::PLUGIN_SLUG . '.php';
 	protected const API_NAME            = self::PLUGIN_SLUG;
 	protected const API_VERSION         = 'v1';
-	protected const VERSION             = '1.6.2';
+	private const VERSION               = '1.6.2';
 	protected const OPTIONS_COLUMN_NAME = 'options';
 
 	public const OPTIONS_COLUMN = [
@@ -96,6 +96,14 @@ class Abt_Base {
 	 */
 	protected function get_api_namespace( string $api_name = self::API_NAME, string $api_version = self::API_VERSION ): string {
 		return "{$api_name}/{$api_version}";
+	}
+
+	/**
+	 * Return VERSION constant.
+	 * e.g. 1.6.2
+	 */
+	protected function get_version(): string {
+		return self::VERSION;
 	}
 
 	/**
