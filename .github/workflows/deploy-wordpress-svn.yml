@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+env:
+  CACHE_TAG: v1
+
 jobs:
   upload:
     name: Deploy WordPress SVN
