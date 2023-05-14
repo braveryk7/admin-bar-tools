@@ -33,8 +33,8 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function add_menu(): void {
 		add_options_page(
-			'Admin Bar Tools',
-			'Admin Bar Tools',
+			$this->get_plugin_name(),
+			$this->get_plugin_name(),
 			'administrator',
 			'admin-bar-tools',
 			[ $this, $this->add_prefix( 'settings' ) ]
