@@ -74,8 +74,8 @@ const AdminPage = () => {
 					</Items>
 					<p>
 						{ __(
-						// eslint-disable-next-line
-						'Links to the official WordPress theme site, manuals, and user forums will be displayed.',
+							// eslint-disable-next-line
+							'Links to the official WordPress theme site, manuals, and user forums will be displayed.',
 							'admin-bar-tools'
 						) }
 					</p>
