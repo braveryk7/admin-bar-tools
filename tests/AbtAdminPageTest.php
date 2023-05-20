@@ -21,11 +21,11 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 		}
 
 		if ( ! class_exists( 'Abt_Base ' ) ) {
-			require_once './class/class-abt-base.php';
+			require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
 		}
 
-		require_once './class/class-abt-admin-page.php';
-		require_once './tests/lib/wordpress-functions.php';
+		require_once dirname( __FILE__ ) . '/../class/class-abt-admin-page.php';
+		require_once dirname( __FILE__ ) . '/../tests/lib/wordpress-functions.php';
 	}
 
 	/**

@@ -20,8 +20,8 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 			define( 'ABSPATH', '' );
 		}
 
-		require_once './class/class-abt-base.php';
-		require_once './tests/lib/wordpress-functions.php';
+		require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
+		require_once dirname( __FILE__ ) . '/../tests/lib/wordpress-functions.php';
 	}
 
 	/**

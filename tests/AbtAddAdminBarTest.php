@@ -21,11 +21,11 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 		}
 
 		if ( ! class_exists( 'Abt_Base ' ) ) {
-			require_once './class/class-abt-base.php';
+			require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
 		}
 
-		require_once './class/class-abt-add-admin-bar.php';
-		require_once './tests/lib/wordpress-functions.php';
+		require_once dirname( __FILE__ ) . '/../class/class-abt-add-admin-bar.php';
+		require_once dirname( __FILE__ ) . '/../tests/lib/wordpress-functions.php';
 	}
 
 	/**
