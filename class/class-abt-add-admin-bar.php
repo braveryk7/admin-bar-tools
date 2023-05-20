@@ -122,7 +122,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				'manual'   => 'https://jin-theme.com/manual/',
 				'forum'    => 'https://jin-forum.jp/',
 			],
-			'jinr2'         => [
+			'jinr'          => [
 				'name'     => 'JIN:R',
 				'official' => 'https://jinr.jp/',
 				'manual'   => 'https://jinr.jp/manual/',
