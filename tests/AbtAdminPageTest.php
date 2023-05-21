@@ -25,7 +25,6 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 		}
 
 		require_once dirname( __FILE__ ) . '/../class/class-abt-admin-page.php';
-		require_once dirname( __FILE__ ) . '/../tests/lib/wordpress-functions.php';
 	}
 
 	/**

@@ -25,7 +25,6 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 		}
 
 		require_once dirname( __FILE__ ) . '/../class/class-abt-add-admin-bar.php';
-		require_once dirname( __FILE__ ) . '/../tests/lib/wordpress-functions.php';
 	}
 
 	/**
