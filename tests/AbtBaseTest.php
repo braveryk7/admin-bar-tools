@@ -88,11 +88,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance )
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
 	}
