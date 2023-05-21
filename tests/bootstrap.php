@@ -12,7 +12,7 @@ require dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpuni
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 if ( ! $_tests_dir ) {
-	$_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
+	exit( PHP_EOL . "\033[41mWP_TESTS_DIR environment variable is not defined.\033[0m" . PHP_EOL . PHP_EOL );
 }
 
 // Give access to tests_add_filter() function.
