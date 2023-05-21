@@ -71,11 +71,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/send-chat-tools',
+			ABSPATH . 'wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
