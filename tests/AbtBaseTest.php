@@ -16,7 +16,7 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
-		require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
+		require_once ROOT_DIR . '/class/class-abt-base.php';
 	}
 
 	/**

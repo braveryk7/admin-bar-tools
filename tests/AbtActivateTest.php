@@ -17,10 +17,10 @@ class AbtActivateTest extends PHPUnit\Framework\TestCase {
 	 */
 	public static function setUpBeforeClass(): void {
 		if ( ! class_exists( 'Abt_Base' ) ) {
-			require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
+			require_once ROOT_DIR . '/class/class-abt-base.php';
 		}
 
-		require_once dirname( __FILE__ ) . '/../class/class-abt-activate.php';
+		require_once ROOT_DIR . '/class/class-abt-activate.php';
 	}
 
 	/**
