@@ -20,7 +20,7 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 			define( 'ABSPATH', '' );
 		}
 
-		if ( ! class_exists( 'Abt_Base ' ) ) {
+		if ( ! class_exists( 'Abt_Base' ) ) {
 			require_once dirname( __FILE__ ) . '/../class/class-abt-base.php';
 		}
 
