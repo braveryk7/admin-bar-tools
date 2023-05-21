@@ -1,10 +1,4 @@
 <?php
-/**
- * PHPUnit bootstrap file
- *
- * @package Never_Let_Me_Go
- */
-
 require dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
