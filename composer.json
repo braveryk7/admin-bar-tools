@@ -7,7 +7,8 @@
         "wp-cli/wp-cli-bundle": "^2.6",
         "phpunit/phpunit": "^9.6",
         "phpstan/phpstan": "^1.8",
-        "szepeviktor/phpstan-wordpress": "^1.1"
+        "szepeviktor/phpstan-wordpress": "^1.1",
+        "yoast/phpunit-polyfills": "^1.0"
     },
     "scripts": {
         "post-autoload-dump": [
@@ -25,7 +26,12 @@
         "wplint-rules": "./vendor/bin/phpcs -i",
         "phpcb": "./vendor/bin/phpcs --standard=ruleset.xml",
         "phpstan": "./vendor/bin/phpstan analyse . -c ./phpstan.neon --memory-limit 2G",
-        "test": "./vendor/bin/phpunit tests --testdox",
+        "env": "npm run wp-env start --update",
+        "test": "npm run wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/admin-bar-tools/phpunit.xml --testdox'",
+        "test-ci": [
+            "@env",
+            "@test"
+        ],
         "ghinit": "curl https://raw.githubusercontent.com/braveryk7/GitHooks/main/conf/init.sh > init.sh && sh init.sh",
         "gh-script-init": "curl -o cmd/create-verup-issue.sh https://raw.githubusercontent.com/braveryk7/github-cli-scripts/main/cmd/create-verup-issue.sh",
         "zip": "npm run build && bash cmd/zip.sh",

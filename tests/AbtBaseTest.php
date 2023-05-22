@@ -16,12 +16,7 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
-		if ( ! defined( 'ABSPATH' ) ) {
-			define( 'ABSPATH', '' );
-		}
-
-		require_once './class/class-abt-base.php';
-		require_once './tests/lib/wordpress-functions.php';
+		require_once ROOT_DIR . '/class/class-abt-base.php';
 	}
 
 	/**
@@ -47,11 +42,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/admin-bar-tools',
+			WP_PLUGIN_URL . '/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/send-chat-tools',
+			WP_PLUGIN_URL . '/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -71,11 +66,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/send-chat-tools',
+			ABSPATH . 'wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -88,11 +83,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance )
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			ABSPATH . 'wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
 	}

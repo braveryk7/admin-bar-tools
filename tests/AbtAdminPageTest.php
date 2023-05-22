@@ -16,16 +16,11 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
-		if ( ! defined( 'ABSPATH' ) ) {
-			define( 'ABSPATH', '' );
+		if ( ! class_exists( 'Abt_Base' ) ) {
+			require_once ROOT_DIR . '/class/class-abt-base.php';
 		}
 
-		if ( ! class_exists( 'Abt_Base ' ) ) {
-			require_once './class/class-abt-base.php';
-		}
-
-		require_once './class/class-abt-admin-page.php';
-		require_once './tests/lib/wordpress-functions.php';
+		require_once ROOT_DIR . '/class/class-abt-admin-page.php';
 	}
 
 	/**
