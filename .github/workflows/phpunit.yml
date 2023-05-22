@@ -50,4 +50,4 @@ jobs:
         run: npx @wordpress/env start
 
       - name: Run test suite
-        run: composer run-script test-ci
+        run: composer run-script test
