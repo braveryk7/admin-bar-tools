@@ -4,6 +4,8 @@
 	"env": {},
 	"mappings": {},
 	"phpVersion": null,
-	"plugins": [],
+	"plugins": [
+        "."
+	],
 	"themes": []
 }
