@@ -51,7 +51,6 @@ jobs:
             ${{ runner.os }}-wp-env-${{ env.CACHE_TAG }}-
             ${{ runner.os }}-wp-env-
 
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -61,8 +60,5 @@ jobs:
         if: steps.wp_env_cache.outputs.cache-hit != 'true'
         run: npm install wp-env
 
-      - name: Install wp-env
-        run: npm i -D
-
       - name: Run test suite
-        run: composer run-script test
+        run: composer run-script test-ci
