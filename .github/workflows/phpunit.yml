@@ -62,7 +62,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Check section
-        run: npm run wp-env run cli "ls -la"
+        run: npm run wp-env start && npm run wp-env run cli "ls -la"
 
       - name: Run test suite
         run: composer run-script test-ci
