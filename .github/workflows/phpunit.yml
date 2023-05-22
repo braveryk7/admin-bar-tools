@@ -47,7 +47,7 @@ jobs:
           node-version: 16
 
       - name: Install wp-env
-        run: npm i -D @wordpress/env
+        run: npx @wordpress/env start
 
       - name: Run test suite
         run: composer run-script test-ci
