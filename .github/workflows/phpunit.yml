@@ -41,5 +41,28 @@ jobs:
         if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
+      - name: Cache wp-env package
+        id: wp_env_cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/node_modules/wp-env
+          key: ${{ runner.os }}-wp-env-${{ env.CACHE_TAG }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-wp-env-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-wp-env-
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install wp-env
+        if: steps.wp_env_cache.outputs.cache-hit != 'true'
+        run: npm install wp-env
+
+      - name: Install wp-env
+        run: npm i -D
+
       - name: Run test suite
         run: composer run-script test
