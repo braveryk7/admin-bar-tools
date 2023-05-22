@@ -41,13 +41,25 @@ jobs:
         if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
+      - name: Cache npm
+        id: npm_cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-composer-
+            ${{ runner.os }}
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Install wp-env
-        run: npx @wordpress/env start
+        if: steps.npm_cache.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
 
       - name: Run test suite
-        run: composer run-script test
+        run: composer run-script test-ci
