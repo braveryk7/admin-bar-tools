@@ -62,7 +62,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Check section
-        run: npm run wp-env start && npm run wp-env run cli "pwd" && npm run wp-env run cli "ls -la"
+        run: npm run wp-env start && npm run wp-env run cli "pwd" && npm run wp-env run cli "ls -la /var/www/html/wp-content/plugins/admin-bar-tools"
 
       - name: Run test suite
         run: composer run-script test-ci
