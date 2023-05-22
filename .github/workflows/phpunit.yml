@@ -58,7 +58,7 @@ jobs:
 
       - name: Install wp-env
         if: steps.wp_env_cache.outputs.cache-hit != 'true'
-        run: npm i -D @wordpress/wp-env
+        run: npm i -D @wordpress/env
 
       - name: Run test suite
         run: composer run-script test-ci
