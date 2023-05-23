@@ -7,6 +7,8 @@ if ( ! $_tests_dir ) {
 
 define( 'ROOT_DIR', dirname( dirname( __FILE__ ) ) );
 
+require_once $_tests_dir . '/includes/functions.php';
+
 require_once dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 
 require_once $_tests_dir . '/includes/bootstrap.php';
