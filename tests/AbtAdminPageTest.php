@@ -42,9 +42,11 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 * TEST: add_settings_links()
 	 */
 	public function test_add_settings_links() {
+		$settings_str = __( 'Settings', 'admin-bar-tools' );
+
 		$this->assertSame(
 			[
-				'<a href="options-general.php?page=admin-bar-tools">Settings</a>',
+				'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
 			],
 			$this->instance->add_settings_links( [] ),
 		);
