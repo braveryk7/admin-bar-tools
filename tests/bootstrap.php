@@ -7,6 +7,16 @@ if ( ! $_tests_dir ) {
 
 define( 'ROOT_DIR', dirname( dirname( __FILE__ ) ) );
 
+require_once $_tests_dir . '/includes/functions.php';
+
+/**
+ * Manually load the Admin Bar Tools.
+ */
+function _manually_load_plugin() {
+	require dirname( dirname( __FILE__ ) ) . '/admin-bar-tools.php';
+}
+tests_add_filter( 'plugins_loaded', '_manually_load_plugin' );
+
 require_once dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 
 require_once $_tests_dir . '/includes/bootstrap.php';
