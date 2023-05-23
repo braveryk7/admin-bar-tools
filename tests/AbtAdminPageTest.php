@@ -29,6 +29,8 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 */
 	protected function setUp() :void {
 		$this->instance = new Abt_Admin_Page();
+
+		wp_set_current_user( null, 'admin' );
 	}
 
 	/**
