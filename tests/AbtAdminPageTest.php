@@ -29,6 +29,8 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 */
 	protected function setUp() :void {
 		$this->instance = new Abt_Admin_Page();
+
+		wp_set_current_user( null, 'admin' );
 	}
 
 	/**
@@ -42,9 +44,11 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 * TEST: add_settings_links()
 	 */
 	public function test_add_settings_links() {
+		$settings_str = __( 'Settings', 'admin-bar-tools' );
+
 		$this->assertSame(
 			[
-				'<a href="options-general.php?page=admin-bar-tools">Settings</a>',
+				'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
 			],
 			$this->instance->add_settings_links( [] ),
 		);
@@ -68,7 +72,9 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 * TEST: get_wordpress_permission()
 	 */
 	public function test_get_wordpress_permission() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$this->assertTrue(
+			$this->instance->get_wordpress_permission(),
+		);
 	}
 
 	/**
