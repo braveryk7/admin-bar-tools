@@ -32,6 +32,13 @@ class AbtActivateTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: check_environment
+	 */
+	public function test_check_environment() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
 	 * TEST: register_options()
 	 */
 	public function test_register_options() {
