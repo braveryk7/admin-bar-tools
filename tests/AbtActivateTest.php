@@ -39,6 +39,13 @@ class AbtActivateTest extends PHPUnit\Framework\TestCase {
 	}
 
 	/**
+	 * TEST: check_abt_options_column_exists
+	 */
+	public function test_check_abt_options_column_exists() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
+
+	/**
 	 * TEST: register_options()
 	 */
 	public function test_register_options() {
