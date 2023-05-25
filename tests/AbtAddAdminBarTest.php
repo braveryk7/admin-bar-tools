@@ -34,8 +34,20 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 
 	/**
 	 * TEST: add_admin_bar()
+	 *
+	 * @testWith [ "psi" ]
+	 *           [ "lh" ]
+	 *           [ "gsc" ]
+	 *           [ "gc" ]
+	 *           [ "gi" ]
+	 *           [ "bi" ]
+	 *           [ "twitter" ]
+	 *           [ "facebook" ]
+	 *           [ "hatena" ]
+	 *
+	 * @param string $expected expected.
 	 */
-	public function test_add_admin_bar() {
+	public function test_add_admin_bar( string $expected ) {
 		wp_set_current_user( null, 'admin' );
 
 		require_once ABSPATH . 'wp-includes/class-wp-admin-bar.php';
@@ -45,7 +57,7 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 
 		$this->instance->add_admin_bar( $wp_admin_bar );
 		$wp_admin_bar_nodes = $wp_admin_bar->get_nodes();
-		$this->assertArrayHasKey( 'abt', $wp_admin_bar_nodes );
+		$this->assertArrayHasKey( $expected, $wp_admin_bar_nodes );
 	}
 
 	/**
