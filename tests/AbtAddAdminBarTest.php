@@ -28,6 +28,7 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 	 * Create instance.
 	 */
 	protected function setUp() :void {
+		parent::setUp();
 		$this->instance = new Abt_Add_Admin_Bar();
 	}
 
