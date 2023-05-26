@@ -1,10 +1,11 @@
 <?php
 declare( strict_types = 1 );
 
+use Yoast\WPTestUtils\WPIntegration\TestCase;
 /**
  * Test: Abt_Add_Admin_Bar
  */
-class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
+class AbtAddAdminBarTest extends TestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -15,7 +16,7 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
-	public static function setUpBeforeClass(): void {
+	public static function set_up_before_class(): void {
 		if ( ! class_exists( 'Abt_Base' ) ) {
 			require_once ROOT_DIR . '/class/class-abt-base.php';
 		}
@@ -27,8 +28,8 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function setUp() :void {
-		parent::setUp();
+	public function set_up() :void {
+		parent::set_up();
 		$this->instance = new Abt_Add_Admin_Bar();
 	}
 
