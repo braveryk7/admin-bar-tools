@@ -63,8 +63,39 @@ class AbtAddAdminBarTest extends TestCase {
 
 	/**
 	 * TEST: searchconsole_url()
+	 *
+	 * @testWith [ 1 ]
+	 *           [ 2 ]
+	 *
+	 * @param int $status status.
 	 */
-	public function test_searchconsole_url() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_searchconsole_url( int $status ) {
+		$method = new ReflectionMethod( $this->instance, 'searchconsole_url' );
+		$method->setAccessible( true );
+
+		$post_id = $this->factory()->post->create();
+		$url     = get_permalink( $post_id );
+		$this->go_to( $url );
+
+		$search_console_url = 'https://search.google.com/search-console';
+
+		$generate_url = function ( $status ) {
+			$encode_url = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
+			$domain     = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+			$parameter  = [
+				'?resource_id=sc-domain:',
+				'/performance/search-analytics?resource_id=sc-domain:',
+			];
+
+			return match ( $status ) {
+				1       => is_front_page() ? $parameter[0] . $domain : $parameter[1] . $domain . '&page=!' . $encode_url,
+				2       => is_front_page() ? $parameter[0] . $encode_url : $parameter[1] . rawurlencode( $domain . '/' ) . '&page=!' . $encode_url,
+				default => null,
+			};
+		};
+
+		$expected = $search_console_url . $generate_url( $status );
+
+		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) ) ) );
 	}
 }
