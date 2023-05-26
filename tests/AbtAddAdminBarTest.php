@@ -98,4 +98,11 @@ class AbtAddAdminBarTest extends TestCase {
 
 		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) ) ) );
 	}
+
+	/**
+	 * TEST: add_theme_support_link()
+	 */
+	public function test_add_theme_support_link() {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
