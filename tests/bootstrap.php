@@ -1,5 +1,10 @@
 <?php
-$_tests_dir = getenv( 'WP_TESTS_DIR' );
+
+use Yoast\WPTestUtils\WPIntegration;
+
+require_once dirname( __DIR__ ) . '/vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php';
+
+$_tests_dir = WPIntegration\get_path_to_wp_test_dir();
 
 if ( ! $_tests_dir ) {
 	exit( PHP_EOL . "\033[41mWP_TESTS_DIR environment variable is not defined.\033[0m" . PHP_EOL . PHP_EOL );
@@ -7,7 +12,7 @@ if ( ! $_tests_dir ) {
 
 define( 'ROOT_DIR', dirname( dirname( __FILE__ ) ) );
 
-require_once $_tests_dir . '/includes/functions.php';
+WPIntegration\bootstrap_it();
 
 /**
  * Manually load the Admin Bar Tools.
@@ -15,8 +20,4 @@ require_once $_tests_dir . '/includes/functions.php';
 function _manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/admin-bar-tools.php';
 }
-tests_add_filter( 'plugins_loaded', '_manually_load_plugin' );
-
-require_once dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
-
-require_once $_tests_dir . '/includes/bootstrap.php';
+tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
