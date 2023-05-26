@@ -9,7 +9,8 @@
         "phpstan/phpstan": "^1.8",
         "szepeviktor/phpstan-wordpress": "^1.1",
         "yoast/phpunit-polyfills": "^1.0",
-        "yoast/wp-test-utils": "^1.1"
+        "yoast/wp-test-utils": "^1.1",
+        "php-stubs/wordpress-tests-stubs": "^6.2"
     },
     "scripts": {
         "post-autoload-dump": [
