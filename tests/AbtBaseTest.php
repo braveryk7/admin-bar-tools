@@ -1,10 +1,12 @@
 <?php
 declare( strict_types = 1 );
 
+use Yoast\WPTestUtils\WPIntegration\TestCase;
+
 /**
  * Test: Sct_Base
  */
-class AbtBaseTest extends PHPUnit\Framework\TestCase {
+class AbtBaseTest extends TestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -23,7 +25,8 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function setUp() :void {
+	public function set_up() :void {
+		parent::set_up();
 		$this->instance = new Abt_Base();
 	}
 
