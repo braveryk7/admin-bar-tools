@@ -1,10 +1,11 @@
 <?php
 declare( strict_types = 1 );
 
+use Yoast\WPTestUtils\WPIntegration\TestCase;
 /**
  * Test: Abt_Admin_Page
  */
-class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
+class AbtAdminPageTest extends TestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -27,7 +28,8 @@ class AbtAdminPageTest extends PHPUnit\Framework\TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function setUp() :void {
+	protected function set_up() :void {
+		parent::set_up();
 		$this->instance = new Abt_Admin_Page();
 
 		wp_set_current_user( null, 'admin' );
