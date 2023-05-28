@@ -28,7 +28,7 @@ class AbtAdminPageTest extends TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function set_up() :void {
+	public function set_up() :void {
 		parent::set_up();
 		$this->instance = new Abt_Admin_Page();
 
@@ -81,9 +81,35 @@ class AbtAdminPageTest extends TestCase {
 
 	/**
 	 * TEST: readable_api()
+	 *
+	 * @testWith [ "items", "" ]
+	 *           [ "locale", "" ]
+	 *           [ "sc", "" ]
+	 *           [ "theme_support", "" ]
+	 *           [ "version", "" ]
+	 *           [ "psi", "items" ]
+	 *           [ "lh", "items" ]
+	 *           [ "gsc", "items" ]
+	 *           [ "gc", "items" ]
+	 *           [ "gi", "items" ]
+	 *           [ "bi", "items" ]
+	 *           [ "twitter", "items" ]
+	 *           [ "facebook", "items" ]
+	 *           [ "hatena", "items" ]
+	 *
+	 * @param string $property  Property name.
+	 * @param string $parameter Parameter name.
 	 */
-	public function test_readable_api() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_readable_api( string $property, string $parameter ) {
+		$abt_base                  = new Abt_Base();
+		$abt_base_class_reflection = new ReflectionMethod( $abt_base, 'get_api_namespace' );
+		$abt_base_class_reflection->setAccessible( true );
+
+		$request  = new WP_REST_Request( 'GET', "/{$abt_base_class_reflection->invoke( $abt_base )}/options" );
+		$response = rest_do_request( $request );
+		$data     = $response->get_data();
+
+		empty( $parameter ) ? $this->assertArrayHasKey( $property, $data ) : $this->assertArrayHasKey( $property, $data[ $parameter ] );
 	}
 
 	/**
