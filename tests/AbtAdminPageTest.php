@@ -65,9 +65,27 @@ class AbtAdminPageTest extends TestCase {
 
 	/**
 	 * TEST: register_rest_api()
+	 *
+	 * @testWith [ "GET", "options" ]
+	 *           [ "POST", "update" ]
+	 *
+	 * @param string $request_method HTTP request method.
+	 * @param string $end_point      end point.
 	 */
-	public function test_register_rest_api() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_register_rest_api( string $request_method, string $end_point ) {
+		$abt_base                  = new Abt_Base();
+		$abt_base_class_reflection = new ReflectionMethod( $abt_base, 'get_api_namespace' );
+		$abt_base_class_reflection->setAccessible( true );
+
+		$request = new WP_REST_Request( $request_method, "/{$abt_base_class_reflection->invoke( $abt_base )}/{$end_point}" );
+		if ( 'POST' === $request_method ) {
+			$request->set_header( 'Content-Type', 'application/json' );
+			$request->set_param( 'theme_support', true );
+		}
+		$response    = rest_do_request( $request );
+		$status_code = $response->get_status();
+
+		$this->assertSame( 200, $status_code );
 	}
 
 	/**
