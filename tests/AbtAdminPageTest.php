@@ -131,11 +131,11 @@ class AbtAdminPageTest extends TestCase {
 	 * @param string $parameter Parameter name.
 	 */
 	public function test_readable_api( string $property, string $parameter ) {
-		$abt_base                  = new Abt_Base();
-		$abt_base_class_reflection = new ReflectionMethod( $abt_base, 'get_api_namespace' );
-		$abt_base_class_reflection->setAccessible( true );
+		$abt_base                   = new Abt_Base();
+		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
+		$abt_base_get_api_namespace->setAccessible( true );
 
-		$request  = new WP_REST_Request( 'GET', "/{$abt_base_class_reflection->invoke( $abt_base )}/options" );
+		$request  = new WP_REST_Request( 'GET', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/options" );
 		$response = rest_do_request( $request );
 		$data     = $response->get_data();
 
