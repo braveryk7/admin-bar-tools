@@ -60,19 +60,19 @@ class AbtAdminPageTest extends TestCase {
 	 * TEST: add_scripts()
 	 */
 	public function test_add_scripts() {
-		$abt_base                  = new Abt_Base();
-		$abt_base_class_reflection = new ReflectionMethod( $abt_base, 'add_prefix' );
-		$abt_base_class_reflection->setAccessible( true );
+		$abt_base            = new Abt_Base();
+		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
+		$abt_base_add_prefix->setAccessible( true );
 
 		$this->instance->add_scripts( '' );
 
-		$this->assertFalse( wp_style_is( $abt_base_class_reflection->invoke( $abt_base, 'style' ) ) );
-		$this->assertFalse( wp_script_is( $abt_base_class_reflection->invoke( $abt_base, 'script' ) ) );
+		$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+		$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
 
 		$this->instance->add_scripts( 'settings_page_admin-bar-tools' );
 
-		$this->assertTrue( wp_style_is( $abt_base_class_reflection->invoke( $abt_base, 'style' ) ) );
-		$this->assertTrue( wp_script_is( $abt_base_class_reflection->invoke( $abt_base, 'script' ) ) );
+		$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+		$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
 	}
 
 	/**
