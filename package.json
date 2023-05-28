@@ -12,6 +12,7 @@
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
 		"wp-env": "wp-env",
+		"wp-env:set-env-install-path": "npm run wp-env run cli -- \"echo \"CONTAINER_PATH=$(npm run wp-env install-path | awk -F '/' '/\\.wp-env/{print $NF}')\" > .env\"",
 		"packages-update": "wp-scripts packages-update",
 		"zip": "sh cmd/zip.sh"
 	},
@@ -26,7 +27,7 @@
 		"@types/wordpress__components": "^23.0.1",
 		"@typescript-eslint/eslint-plugin": "^5.30.5",
 		"@typescript-eslint/parser": "^5.30.5",
-		"@wordpress/env": "^5.14.0",
+		"@wordpress/env": "^8.0.0",
 		"@wordpress/scripts": "^26.0.0",
 		"eslint-import-resolver-typescript": "^3.2.4",
 		"stylelint-order": "^6.0.3",
