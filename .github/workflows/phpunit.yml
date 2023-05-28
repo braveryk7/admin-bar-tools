@@ -61,6 +61,9 @@ jobs:
         if: steps.npm_cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
+      - name: JS build
+        run: npm run build
+
       - name: Start wp-env
         run: npm run wp-env start --update
 
