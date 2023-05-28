@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-composer-
             ${{ runner.os }}
 
-      - name: Install dependencies
+      - name: Install composer packages
         if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
@@ -57,9 +57,15 @@ jobs:
             ${{ runner.os }}-composer-
             ${{ runner.os }}
 
-      - name: Install wp-env
+      - name: Install npm packages
         if: steps.npm_cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
+      - name: JS build
+        run: npm run build
+
+      - name: Start wp-env
+        run: npm run wp-env start --update
+
       - name: Run test suite
-        run: composer run-script test-ci
+        run: npm run test:env
