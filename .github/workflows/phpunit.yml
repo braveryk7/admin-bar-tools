@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-composer-
             ${{ runner.os }}
 
-      - name: Install dependencies
+      - name: Install composer dependencies
         if: steps.vendor_cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
