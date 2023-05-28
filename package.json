@@ -12,7 +12,6 @@
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
 		"wp-env": "wp-env",
-		"wp-env:set-env-install-path": "npm run wp-env run cli -- \"echo \"CONTAINER_PATH=$(npm run wp-env install-path | awk -F '/' '/\\.wp-env/{print $NF}')\" > .env\"",
         "test:env": "wp-env run --env-cwd='wp-content/plugins/admin-bar-tools' tests-cli vendor/bin/phpunit -c phpunit.xml --verbose --testdox",
 		"packages-update": "wp-scripts packages-update",
 		"zip": "sh cmd/zip.sh"
