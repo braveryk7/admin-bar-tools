@@ -146,7 +146,21 @@ class AbtAdminPageTest extends TestCase {
 	 * TEST: editable_api()
 	 */
 	public function test_editable_api() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$abt_base                   = new Abt_Base();
+		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
+		$abt_base_get_api_namespace->setAccessible( true );
+
+		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
+		$abt_base_get_abt_options->setAccessible( true );
+
+		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+
+		$request = new WP_REST_Request( 'POST', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/update" );
+		$request->set_header( 'Content-Type', 'application/json' );
+		$request->set_param( 'theme_support', ! $abt_options['theme_support'] );
+		$response = rest_do_request( $request );
+
+		$this->assertNotSame( $abt_options['theme_support'], $abt_base_get_abt_options->invoke( $abt_base )['theme_support'] );
 	}
 
 	/**
