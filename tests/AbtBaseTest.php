@@ -139,9 +139,32 @@ class AbtBaseTest extends TestCase {
 
 	/**
 	 * TEST: get_abt_options()
+	 *
+	 * @testWith [ "items", "" ]
+	 *           [ "locale", "" ]
+	 *           [ "sc", "" ]
+	 *           [ "theme_support", "" ]
+	 *           [ "version", "" ]
+	 *           [ "psi", "items" ]
+	 *           [ "lh", "items" ]
+	 *           [ "gsc", "items" ]
+	 *           [ "gc", "items" ]
+	 *           [ "gi", "items" ]
+	 *           [ "bi", "items" ]
+	 *           [ "twitter", "items" ]
+	 *           [ "facebook", "items" ]
+	 *           [ "hatena", "items" ]
+	 *
+	 * @param string $property  Property name.
+	 * @param string $parameter Parameter name.
 	 */
-	public function test_get_abt_options() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_get_abt_options( string $property, string $parameter ) {
+		$method = new ReflectionMethod( $this->instance, 'get_abt_options' );
+		$method->setAccessible( true );
+
+		empty( $parameter )
+			? $this->assertArrayHasKey( $property, $method->invoke( $this->instance ) )
+			: $this->assertArrayHasKey( $property, $method->invoke( $this->instance )[ $parameter ] );
 	}
 
 	/**
