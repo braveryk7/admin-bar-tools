@@ -15,6 +15,13 @@ class AbtActivateTest extends TestCase {
 	private $instance;
 
 	/**
+	 * Property that holds data for abt_options.
+	 *
+	 * @var array $abt_options
+	 */
+	private $abt_options;
+
+	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
@@ -50,22 +57,75 @@ class AbtActivateTest extends TestCase {
 
 	/**
 	 * TEST: register_options()
+	 *
+	 * @testWith [ "items", "" ]
+	 *           [ "locale", "" ]
+	 *           [ "sc", "" ]
+	 *           [ "theme_support", "" ]
+	 *           [ "version", "" ]
+	 *           [ "psi", "items" ]
+	 *           [ "lh", "items" ]
+	 *           [ "gsc", "items" ]
+	 *           [ "gc", "items" ]
+	 *           [ "gi", "items" ]
+	 *           [ "bi", "items" ]
+	 *           [ "twitter", "items" ]
+	 *           [ "facebook", "items" ]
+	 *           [ "hatena", "items" ]
+	 *
+	 * @param string $property  Property name.
+	 * @param string $parameter Parameter name.
 	 */
-	public function test_register_options() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_register_options( string $property, string $parameter ) {
+		$abt_base                 = new Abt_Base();
+		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
+		$abt_base_get_abt_options->setAccessible( true );
+
+		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+
+		empty( $parameter ) ? $this->assertArrayHasKey( $property, $abt_options ) : $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
 
 	/**
 	 * TEST: uninstall_options()
 	 */
 	public function test_uninstall_options() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$abt_base                 = new Abt_Base();
+		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
+		$abt_base_get_abt_options->setAccessible( true );
+
+		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+
+		$this->assertTrue( ! empty( $abt_options ) );
+
+		Abt_Activate::uninstall_options();
+
+		$removed_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+
+		$this->assertTrue( empty( $removed_abt_options ) );
 	}
 
 	/**
 	 * TEST: create_items()
+	 *
+	 * @testWith [ "psi" ]
+	 *           [ "lh" ]
+	 *           [ "gsc" ]
+	 *           [ "gc" ]
+	 *           [ "gi" ]
+	 *           [ "bi" ]
+	 *           [ "twitter" ]
+	 *           [ "facebook" ]
+	 *           [ "hatena" ]
+	 *
+	 * @param string $key  Array key name.
 	 */
-	public function test_create_items() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_create_items( string $key ) {
+		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
+		$create_items->setAccessible( true );
+
+		$items = $create_items->invoke( $this->instance );
+
+		$this->assertArrayHasKey( $key, $items );
 	}
 }
