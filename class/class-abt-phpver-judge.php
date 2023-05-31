@@ -76,6 +76,8 @@ class Abt_Phpver_Judge {
 	 *
 	 * @param string $project Project name.
 	 * @param string $version PHP version.
+	 *
+	 * @return string[]
 	 */
 	public function deactivate_message( string $project, string $version ): array {
 		$messages = [
