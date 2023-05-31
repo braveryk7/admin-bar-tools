@@ -107,8 +107,25 @@ class AbtActivateTest extends TestCase {
 
 	/**
 	 * TEST: create_items()
+	 *
+	 * @testWith [ "psi" ]
+	 *           [ "lh" ]
+	 *           [ "gsc" ]
+	 *           [ "gc" ]
+	 *           [ "gi" ]
+	 *           [ "bi" ]
+	 *           [ "twitter" ]
+	 *           [ "facebook" ]
+	 *           [ "hatena" ]
+	 *
+	 * @param string $key  Array key name.
 	 */
-	public function test_create_items() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_create_items( string $key ) {
+		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
+		$create_items->setAccessible( true );
+
+		$items = $create_items->invoke( $this->instance );
+
+		$this->assertArrayHasKey( $key, $items );
 	}
 }
