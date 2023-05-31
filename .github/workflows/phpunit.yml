@@ -54,66 +54,60 @@ jobs:
         if: steps.node_modules_dependencies.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
-
   test:
     name: PHPUnit
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
         php-version: ['8.0', '8.1', '8.2']
+        wp-version:  ['master', '6.2', '6.1', '6.0', '5.9']
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Setup -> PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, xdebug, dom
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-          cache-dependency-path: ${{ github.workspace }}/package-lock.json
-
-
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cache composer packages
-        id: vendor_cache
+      - name: Cache vendor dependencies
+        id: vendor_dependencies
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/vendor
-          key: ${{ runner.os }}-composer-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-composer-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-composer-
+            ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-vendor-
+            ${{ runner.os }}
+
+      - name: Cache node_modules dependencies
+        id: node_modules_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/node_modules
+          key: ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-node_modules_dependencies-
             ${{ runner.os }}
 
       - name: Install composer packages
-        if: steps.vendor_cache.outputs.cache-hit != 'true'
+        if: steps.vendor_dependencies.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-scripts --no-progress
 
-      - name: Cache npm
-        id: npm_cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-composer-
-            ${{ runner.os }}
-
       - name: Install npm packages
-        if: steps.npm_cache.outputs.cache-hit != 'true'
+        if: steps.node_modules_dependencies.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
 
-      - name: JS build
-        run: npm run build
+      - name: Generate .wp-env.override.json
+        run: |
+          echo '{"config": {},"core": "WordPress/WordPress#${{ matrix.wp-version }}","env": {},"mappings": {},"phpVersion": "${{ matrix.php-version }}","plugins": ["."],"themes": []}' > .wp-env.override.json
 
       - name: Start wp-env
-        run: npm run wp-env start --update
+        run: npm run wp-env start
 
       - name: Run test suite
         run: npm run test:env
