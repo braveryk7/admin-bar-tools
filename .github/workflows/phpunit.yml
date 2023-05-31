@@ -22,10 +22,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/vendor
-          key: ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-vendor-
+            ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-vendor_dependencies-
             ${{ runner.os }}
 
       - name: Cache node_modules dependencies
@@ -77,10 +77,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/vendor
-          key: ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-vendor-
+            ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-vendor_dependencies-
             ${{ runner.os }}
 
       - name: Cache node_modules dependencies
