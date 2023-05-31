@@ -39,18 +39,20 @@ class AbtBaseTest extends TestCase {
 
 	/**
 	 * TEST: return_plugin_url()
+	 *
+	 * @testWith [ "admin-bar-tools", null ]
+	 *           [ "send-chat-tools", "send-chat-tools" ]
+	 *
+	 * @param string $expected_plugin_name plugin name.
+	 * @param string $actual_plugin_name   plugin name.
 	 */
-	public function test_get_plugin_url() {
+	public function test_get_plugin_url( string $expected_plugin_name, ?string $actual_plugin_name ) {
 		$method = new ReflectionMethod( $this->instance, 'get_plugin_url' );
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			WP_PLUGIN_URL . '/admin-bar-tools',
-			$method->invoke( $this->instance ),
-		);
-		$this->assertSame(
-			WP_PLUGIN_URL . '/send-chat-tools',
-			$method->invoke( $this->instance, 'send-chat-tools' ),
+			content_url( 'plugins/' . $expected_plugin_name ),
+			$actual_plugin_name ? $method->invoke( $this->instance, $actual_plugin_name ) : $method->invoke( $this->instance ),
 		);
 	}
 
