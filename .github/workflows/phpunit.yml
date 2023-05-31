@@ -27,6 +27,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm'
+          cache-dependency-path: ${{ github.workspace }}/package-lock.json
+
 
       - name: Checkout
         uses: actions/checkout@v3
