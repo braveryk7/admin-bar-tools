@@ -55,7 +55,7 @@ class Abt_Base {
 	 * @param string $plugin_name Plugin name.
 	 */
 	protected function get_plugin_url( string $plugin_name = self::PLUGIN_SLUG ): string {
-		return WP_PLUGIN_URL . '/' . $plugin_name;
+		return content_url( 'plugins/' . $plugin_name );
 	}
 
 	/**
