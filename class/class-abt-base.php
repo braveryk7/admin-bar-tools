@@ -73,7 +73,7 @@ class Abt_Base {
 	 * @param string $plugin_slug Plugin slug.
 	 */
 	protected function get_plugin_dir( string $plugin_slug = self::PLUGIN_SLUG ): string {
-		return WP_PLUGIN_DIR . '/' . $plugin_slug;
+		return dirname( plugin_dir_path( __FILE__ ), 2 ) . '/' . $plugin_slug;
 	}
 
 	/**
