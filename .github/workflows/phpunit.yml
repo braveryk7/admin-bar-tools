@@ -10,6 +10,51 @@ on:
 env:
   CACHE_TAG: v1
 jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cache vendor dependencies
+        id: vendor_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/vendor
+          key: ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-vendor-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-vendor-
+            ${{ runner.os }}
+
+      - name: Cache node_modules dependencies
+        id: node_modules_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/node_modules
+          key: ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-
+            ${{ runner.os }}-node_modules_dependencies-
+            ${{ runner.os }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: ${{ github.workspace }}/package-lock.json
+
+      - name: Install composer packages
+        if: steps.vendor_dependencies.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-scripts --no-progress
+
+      - name: Install npm packages
+        if: steps.node_modules_dependencies.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+
+
   test:
     name: PHPUnit
     runs-on: ubuntu-latest
