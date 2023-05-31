@@ -125,7 +125,7 @@ class Abt_Base {
 	/**
 	 * Set abt_options.
 	 *
-	 * @param array $abt_options abt_options column data.
+	 * @param array<string|int|bool> $abt_options abt_options column data.
 	 */
 	protected function set_abt_options( array $abt_options ): bool {
 		return update_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ), $abt_options );
