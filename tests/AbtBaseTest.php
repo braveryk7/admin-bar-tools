@@ -65,18 +65,20 @@ class AbtBaseTest extends TestCase {
 
 	/**
 	 * TEST: get_plugin_dir()
+	 *
+	 * @testWith [ "admin-bar-tools", null ]
+	 *           [ "send-chat-tools", "send-chat-tools" ]
+	 *
+	 * @param string $expected_plugin_name plugin name.
+	 * @param string $actual_plugin_name   plugin name.
 	 */
-	public function test_get_plugin_dir() {
+	public function test_get_plugin_dir( string $expected_plugin_name, ?string $actual_plugin_name ) {
 		$method = new ReflectionMethod( $this->instance, 'get_plugin_dir' );
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			ABSPATH . 'wp-content/plugins/admin-bar-tools',
-			$method->invoke( $this->instance ),
-		);
-		$this->assertSame(
-			ABSPATH . 'wp-content/plugins/send-chat-tools',
-			$method->invoke( $this->instance, 'send-chat-tools' ),
+			ABSPATH . 'wp-content/plugins/' . $expected_plugin_name,
+			$actual_plugin_name ? $method->invoke( $this->instance, $actual_plugin_name ) : $method->invoke( $this->instance ),
 		);
 	}
 
