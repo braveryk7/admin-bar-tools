@@ -32,7 +32,7 @@ class Abt_Activate extends Abt_Base {
 	 *
 	 * @param array $args WordPress environment variables.
 	 */
-	public function check_environment( array $args ) {
+	public function check_environment( array $args, $environment_type = null ) {
 		$args['sslverify'] = match ( wp_get_environment_type() ) {
 			'development', 'local' => false,
 			'production', 'staging' => true,

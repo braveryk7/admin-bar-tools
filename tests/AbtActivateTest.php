@@ -43,16 +43,30 @@ class AbtActivateTest extends TestCase {
 
 	/**
 	 * TEST: check_environment
+	 *
+	 * @testWith [ "development", false ]
+	 *           [ "local", false ]
+	 *           [ "production", true ]
+	 *           [ "staging", true ]
+	 *
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 *
+	 * @param string $environment Environment type.
+	 * @param bool   $expected    Expected result.
 	 */
-	public function test_check_environment() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_check_environment( string $environment, bool $expected ) {
+		$result = apply_filters( 'http_request_args', [ 'sslverify' => $environment ] );
+		define( 'WP_ENVIRONMENT_TYPE', $environment );
+
+		$this->assertSame( $expected, $this->instance->check_environment( $result )['sslverify'] );
 	}
 
 	/**
 	 * TEST: check_abt_options_column_exists
 	 */
 	public function test_check_abt_options_column_exists() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$this->markTestIncomplete( 'This test is incomplete . ' );
 	}
 
 	/**
