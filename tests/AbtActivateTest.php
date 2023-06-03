@@ -48,14 +48,22 @@ class AbtActivateTest extends TestCase {
 	 *           [ "local", false ]
 	 *           [ "production", true ]
 	 *           [ "staging", true ]
+	 *           [ null, null ]
 	 *
 	 * @param string $environment Environment type.
 	 * @param bool   $expected    Expected result.
 	 */
-	public function test_check_environment( string $environment, bool $expected ) {
+	public function test_check_environment( ?string $environment, ?bool $expected ) {
 		$result = apply_filters( 'http_request_args', [ 'sslverify' => false ] );
 
-		$this->assertSame( $expected, $this->instance->check_environment( $result, $environment )['sslverify'] );
+		if ( ! is_null( $environment ) ) {
+			$this->assertSame( $expected, $this->instance->check_environment( $result, $environment )['sslverify'] );
+		} else {
+			$this->assertSame(
+				in_array( wp_get_environment_type(), [ 'production', 'staging' ], true ),
+				$this->instance->check_environment( args: $result )['sslverify']
+			);
+		}
 	}
 
 	/**
