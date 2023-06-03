@@ -19,20 +19,10 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
 
-      - name: Cache npm packages
-        id: npm_cache
-        uses: actions/cache@v3
+      - name: Install npm packages & cache node_modules directory
+        uses: ./.github/actions/node_modules-dependencies
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-composer-
-            ${{ runner.os }}
-
-      - name: Install dependencies
-        if: steps.npm_cache.outputs.cache-hit != 'true'
-        run: npm ci --ignore-scripts
+          cache_tag: ${{ env.CACHE_TAG }}
 
       - name: JS build
         run: npm run build
