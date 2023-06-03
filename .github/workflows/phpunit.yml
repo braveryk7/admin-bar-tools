@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
       
-      - name: Install npm packages & cache node_modules
+      - name: Install npm packages & cache node_modules directory
         uses: ./.github/actions/node_modules-dependencies
         with:
           cache_tag: ${{ env.CACHE_TAG }}
@@ -56,7 +56,7 @@ jobs:
         with:
           cache_tag: ${{ env.CACHE_TAG }}
 
-      - name: Install npm packages & cache node_modules
+      - name: Install npm packages & cache node_modules directory
         uses: ./.github/actions/node_modules-dependencies
         with:
           cache_tag: ${{ env.CACHE_TAG }}
