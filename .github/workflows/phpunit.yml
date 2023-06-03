@@ -24,13 +24,6 @@ jobs:
 
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-          cache-dependency-path: ${{ github.workspace }}/package-lock.json
       
       - name: Install npm packages & cache node_modules
         uses: ./.github/actions/node_modules-dependencies
