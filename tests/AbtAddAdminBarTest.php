@@ -101,8 +101,23 @@ class AbtAddAdminBarTest extends TestCase {
 
 	/**
 	 * TEST: add_theme_support_link()
+	 *
+	 * @testWith [ "abt_theme_support", "abt" ]
+	 *           [ "official", "abt_theme_support" ]
+	 *           [ "manual", "abt_theme_support" ]
+	 *           [ "forum", "abt_theme_support" ]
+	 *
+	 * @param string $id     node id.
+	 * @param string $parent node parent.
 	 */
-	public function test_add_theme_support_link() {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_add_theme_support_link( string $id, string $parent ) {
+		$wp_admin_bar = new WP_Admin_Bar();
+		$wp_admin_bar->initialize();
+
+		switch_theme( 'cocoon-master' );
+		$this->instance->add_theme_support_link( $wp_admin_bar );
+
+		$this->assertArrayHasKey( $id, $wp_admin_bar->get_nodes() );
+		$this->assertSame( $parent, $wp_admin_bar->get_node( $id )->parent );
 	}
 }
