@@ -23,6 +23,9 @@ jobs:
           cache_tag: ${{ env.CACHE_TAG }}
 
       - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -51,6 +54,9 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, xdebug, dom
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
 
       - name: Install composer packages & cache vendor directory
         uses: ./.github/actions/vendor-dependencies
