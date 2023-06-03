@@ -31,8 +31,8 @@ class Abt_Admin_Page extends Abt_Base {
 	/**
 	 * Add WordPress menu.
 	 */
-	public function add_menu(): void {
-		add_options_page(
+	public function add_menu(): string {
+		return add_options_page(
 			$this->get_plugin_name(),
 			$this->get_plugin_name(),
 			'administrator',
