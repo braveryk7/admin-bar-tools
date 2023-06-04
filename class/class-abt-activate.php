@@ -64,29 +64,6 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Check abt_options column exists.
-	 */
-	public function check_abt_options_column_exists() {
-		$abt_options = $this->get_abt_options();
-		$this->create_items();
-
-		if ( ! $abt_options ) {
-			$this->register_options();
-		} elseif ( $this->get_version() !== $abt_options['version'] ) {
-			foreach ( self::OPTIONS_KEY as $key_name ) {
-				if ( ! array_key_exists( $key_name, $abt_options ) ) {
-					if ( 'theme_support' === $key_name ) {
-						$abt_options[ $key_name ] = true;
-					}
-				}
-			}
-
-			$this->set_abt_options( $abt_options );
-		}
-
-	}
-
-	/**
 	 * Method to check if abt_options exists.
 	 */
 	private function is_abt_options(): bool {
