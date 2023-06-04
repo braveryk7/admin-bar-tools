@@ -88,6 +88,20 @@ class AbtActivateTest extends TestCase {
 	}
 
 	/**
+	 * TEST: is_abt_version
+	 */
+	public function test_is_abt_version() {
+		$is_plugin_version = new ReflectionMethod( $this->instance, 'is_abt_version' );
+		$is_plugin_version->setAccessible( true );
+
+		$abt_base                 = new Abt_Base();
+		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
+		$abt_base_get_abt_options->setAccessible( true );
+
+		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_base_get_abt_options->invoke( $abt_base )['version'] ) );
+	}
+
+	/**
 	 * TEST: register_options()
 	 *
 	 * @testWith [ "items", "" ]
