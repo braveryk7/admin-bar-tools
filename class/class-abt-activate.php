@@ -66,6 +66,13 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
+	 * Method to check if abt_options exists.
+	 */
+	private function is_abt_options(): bool {
+		return $this->get_abt_options() ? true : false;
+	}
+
+	/**
 	 * Register wp_options column.
 	 */
 	public function register_options(): void {
