@@ -17,42 +17,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Cache vendor dependencies
-        id: vendor_dependencies
-        uses: actions/cache@v3
+      - name: Install composer packages & cache vendor directory
+        uses: ./.github/actions/vendor-dependencies
         with:
-          path: ${{ github.workspace }}/vendor
-          key: ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-vendor_dependencies-
-            ${{ runner.os }}
-
-      - name: Cache node_modules dependencies
-        id: node_modules_dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-node_modules_dependencies-
-            ${{ runner.os }}
+          cache_tag: ${{ env.CACHE_TAG }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: ./.github/actions/setup-nodejs
+      
+      - name: Install npm packages & cache node_modules directory
+        uses: ./.github/actions/node_modules-dependencies
         with:
-          node-version: 18
-          cache: 'npm'
-          cache-dependency-path: ${{ github.workspace }}/package-lock.json
-
-      - name: Install composer packages
-        if: steps.vendor_dependencies.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-scripts --no-progress
-
-      - name: Install npm packages
-        if: steps.node_modules_dependencies.outputs.cache-hit != 'true'
-        run: npm ci --ignore-scripts
+          cache_tag: ${{ env.CACHE_TAG }}
 
   test:
     name: PHPUnit
@@ -72,35 +48,18 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, xdebug, dom
 
-      - name: Cache vendor dependencies
-        id: vendor_dependencies
-        uses: actions/cache@v3
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
+
+      - name: Install composer packages & cache vendor directory
+        uses: ./.github/actions/vendor-dependencies
         with:
-          path: ${{ github.workspace }}/vendor
-          key: ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-vendor_dependencies-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-vendor_dependencies-
-            ${{ runner.os }}
+          cache_tag: ${{ env.CACHE_TAG }}
 
-      - name: Cache node_modules dependencies
-        id: node_modules_dependencies
-        uses: actions/cache@v3
+      - name: Install npm packages & cache node_modules directory
+        uses: ./.github/actions/node_modules-dependencies
         with:
-          path: ${{ github.workspace }}/node_modules
-          key: ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules_dependencies-${{ env.CACHE_TAG }}-
-            ${{ runner.os }}-node_modules_dependencies-
-            ${{ runner.os }}
-
-      - name: Install composer packages
-        if: steps.vendor_dependencies.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-scripts --no-progress
-
-      - name: Install npm packages
-        if: steps.node_modules_dependencies.outputs.cache-hit != 'true'
-        run: npm ci --ignore-scripts
+          cache_tag: ${{ env.CACHE_TAG }}
 
       - name: TypeScript compile
         run: npm run build

@@ -30,10 +30,11 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * For development environments (development or local), set sslverify to false.
 	 *
-	 * @param array $args WordPress environment variables.
+	 * @param array       $args             WordPress environment variables.
+	 * @param string|null $environment_type WordPress environment type.
 	 */
-	public function check_environment( $args ) {
-		$args['sslverify'] = match ( wp_get_environment_type() ) {
+	public function check_environment( array $args, ?string $environment_type = null ) {
+		$args['sslverify'] = match ( $environment_type ?? wp_get_environment_type() ) {
 			'development', 'local' => false,
 			'production', 'staging' => true,
 			default => true,
