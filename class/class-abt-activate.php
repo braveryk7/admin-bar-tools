@@ -23,7 +23,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
-		add_action( 'init', [ $this, 'check_abt_options_column_exists' ], 10 );
+		add_action( 'init', [ $this, 'update_abt_options' ], 10 );
 		add_filter( 'http_request_args', [ $this, 'check_environment' ], 0, 1 );
 	}
 
@@ -43,15 +43,14 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Check abt_options column exists.
+	 * Method to add missing items to abt_options.
 	 */
-	public function check_abt_options_column_exists() {
+	public function update_abt_options() {
 		$abt_options = $this->get_abt_options();
-		$this->create_items();
 
 		if ( ! $abt_options ) {
 			$this->register_options();
-		} elseif ( $this->get_version() !== $abt_options['version'] ) {
+		} elseif ( $this->is_abt_version( $abt_options['version'] ) ) {
 			foreach ( self::OPTIONS_KEY as $key_name ) {
 				if ( ! array_key_exists( $key_name, $abt_options ) ) {
 					if ( 'theme_support' === $key_name ) {
@@ -62,7 +61,15 @@ class Abt_Activate extends Abt_Base {
 
 			$this->set_abt_options( $abt_options );
 		}
+	}
 
+	/**
+	 * Method that compares the VERSION of abt_options with the VERSION value of Abt_Base.
+	 *
+	 * @param string $abt_options_version abt_options version.
+	 */
+	private function is_abt_version( string $abt_options_version ): bool {
+		return $this->get_version() === $abt_options_version ? true : false;
 	}
 
 	/**
