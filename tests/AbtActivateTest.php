@@ -74,6 +74,20 @@ class AbtActivateTest extends TestCase {
 	}
 
 	/**
+	 * TEST: is_abt_options
+	 */
+	public function test_is_abt_options() {
+		$is_abt_options = new ReflectionMethod( $this->instance, 'is_abt_options' );
+		$is_abt_options->setAccessible( true );
+
+		$this->assertTrue( $is_abt_options->invoke( $this->instance ) );
+
+		delete_option( 'abt_options' );
+
+		$this->assertFalse( $is_abt_options->invoke( $this->instance ) );
+	}
+
+	/**
 	 * TEST: register_options()
 	 *
 	 * @testWith [ "items", "" ]
