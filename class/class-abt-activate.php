@@ -23,7 +23,7 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function __construct() {
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
-		add_action( 'init', [ $this, 'check_abt_options_column_exists' ], 10 );
+		add_action( 'init', [ $this, 'update_abt_options' ], 10 );
 		add_filter( 'http_request_args', [ $this, 'check_environment' ], 0, 1 );
 	}
 
