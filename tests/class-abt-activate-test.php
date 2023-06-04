@@ -6,7 +6,7 @@ use Yoast\WPTestUtils\WPIntegration\TestCase;
 /**
  * Test: Abt_Activate
  */
-class AbtActivateTest extends TestCase {
+class Abt_Activate_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *

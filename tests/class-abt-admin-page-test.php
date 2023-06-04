@@ -5,7 +5,7 @@ use Yoast\WPTestUtils\WPIntegration\TestCase;
 /**
  * Test: Abt_Admin_Page
  */
-class AbtAdminPageTest extends TestCase {
+class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *

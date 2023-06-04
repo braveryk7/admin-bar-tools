@@ -5,7 +5,7 @@ use Yoast\WPTestUtils\WPIntegration\TestCase;
 /**
  * Test: Abt_Add_Admin_Bar
  */
-class AbtAddAdminBarTest extends TestCase {
+class Abt_Add_Admin_Bar_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
