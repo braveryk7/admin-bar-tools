@@ -67,6 +67,44 @@ class AbtActivateTest extends TestCase {
 	}
 
 	/**
+	 * TEST: update_abt_options
+	 */
+	public function test_update_abt_options() {
+		$abt_base                 = new Abt_Base();
+		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
+		$abt_base_get_abt_options->setAccessible( true );
+
+		$get_abt_options = function() use ( $abt_base_get_abt_options ) {
+			return $abt_base_get_abt_options->invoke( $this->instance );
+		};
+
+		$delete_abt_options = function() {
+			delete_option( 'abt_options' );
+		};
+
+		if ( $get_abt_options() ) {
+			$delete_abt_options();
+		}
+
+		$this->assertTrue( empty( $get_abt_options() ) );
+
+		$this->instance->update_abt_options();
+
+		$this->assertTrue( ! empty( $get_abt_options() ) );
+
+		$abt_options            = $get_abt_options();
+		$abt_options['version'] = '0.0.0';
+		unset( $abt_options['theme_support'] );
+
+		$this->assertArrayNotHasKey( 'theme_support', $abt_options );
+
+		$this->instance->update_abt_options();
+
+		$this->assertNotSame( $abt_options['version'], $get_abt_options()['version'] );
+		$this->assertArrayHasKey( 'theme_support', $get_abt_options() );
+	}
+
+	/**
 	 * TEST: check_abt_options_column_exists
 	 */
 	public function test_check_abt_options_column_exists() {
