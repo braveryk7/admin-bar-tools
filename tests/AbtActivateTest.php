@@ -105,13 +105,6 @@ class AbtActivateTest extends TestCase {
 	}
 
 	/**
-	 * TEST: check_abt_options_column_exists
-	 */
-	public function test_check_abt_options_column_exists() {
-		$this->markTestIncomplete( 'This test is incomplete . ' );
-	}
-
-	/**
 	 * TEST: is_abt_options
 	 */
 	public function test_is_abt_options() {
