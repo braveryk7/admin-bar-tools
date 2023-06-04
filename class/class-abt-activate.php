@@ -64,13 +64,6 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Method to check if abt_options exists.
-	 */
-	private function is_abt_options(): bool {
-		return $this->get_abt_options() ? true : false;
-	}
-
-	/**
 	 * Method that compares the VERSION of abt_options with the VERSION value of Abt_Base.
 	 *
 	 * @param string $abt_options_version abt_options version.
