@@ -43,6 +43,27 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
+	 * Method to add missing items to abt_options.
+	 */
+	public function update_abt_options() {
+		$abt_options = $this->get_abt_options();
+
+		if ( ! $abt_options ) {
+			$this->register_options();
+		} elseif ( $this->is_abt_version( $abt_options['version'] ) ) {
+			foreach ( self::OPTIONS_KEY as $key_name ) {
+				if ( ! array_key_exists( $key_name, $abt_options ) ) {
+					if ( 'theme_support' === $key_name ) {
+						$abt_options[ $key_name ] = true;
+					}
+				}
+			}
+
+			$this->set_abt_options( $abt_options );
+		}
+	}
+
+	/**
 	 * Check abt_options column exists.
 	 */
 	public function check_abt_options_column_exists() {
