@@ -108,11 +108,20 @@ class Abt_Activate extends Abt_Base {
 		$psi            = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		try {
-			$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
+			require_once ABSPATH . 'wp-admin/includes/file.php';
 
-			if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
-				$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
-				$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+			if ( WP_Filesystem() ) {
+				global $wp_filesystem;
+
+				$locales       = $wp_filesystem->get_contents( $this->get_plugin_dir() . '/common/locales.json' );
+				$psi_admin_url = $psi . json_decode( $locales )->$current_locale->id;
+			} else {
+				$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
+
+				if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
+					$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
+					$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+				}
 			}
 		} finally {
 			$psi_url = $psi_admin_url ?? $psi . 'us';
