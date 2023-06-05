@@ -39,22 +39,14 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: add_menu()
 	 */
 	public function test_add_menu() {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_plugin_name = new ReflectionMethod( $abt_base, 'get_plugin_name' );
-		$abt_base_get_plugin_name->setAccessible( true );
+		$admin_menu_callback = function() {
+			$this->instance->add_menu();
+			$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
+		};
 
-		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
-		$abt_base_add_prefix->setAccessible( true );
+		add_action( 'admin_menu', $admin_menu_callback, 999 );
 
-		$expected = add_options_page(
-			$abt_base_get_plugin_name->invoke( $abt_base ),
-			$abt_base_get_plugin_name->invoke( $abt_base ),
-			'administrator',
-			'admin-bar-tools',
-			$abt_base_add_prefix->invoke( $abt_base, 'settings' ),
-		);
-
-		$this->assertSame( 'admin_page_admin-bar-tools', $expected );
+		do_action( 'admin_menu' );
 	}
 
 	/**
