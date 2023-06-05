@@ -1,5 +1,7 @@
 includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 parameters:
     excludePaths:
         - ./vendor/
@@ -8,4 +10,4 @@ parameters:
     level: 0
     paths:
         - ./admin-bar-tools.php
-        - class/
+        - ./class/
