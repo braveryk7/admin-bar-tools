@@ -10,4 +10,4 @@ parameters:
     level: 0
     paths:
         - ./admin-bar-tools.php
-        - class/
+        - ./class/
