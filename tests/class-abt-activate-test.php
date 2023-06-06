@@ -46,7 +46,7 @@ class Abt_Activate_Test extends TestCase {
 	 * @param string $environment Environment type.
 	 * @param bool   $expected    Expected result.
 	 */
-	public function test_check_environment( ?string $environment, ?bool $expected ) {
+	public function test_check_environment( ?string $environment, ?bool $expected ): void {
 		$result = apply_filters( 'http_request_args', [ 'sslverify' => false ] );
 
 		if ( ! is_null( $environment ) ) {
@@ -62,7 +62,7 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * TEST: update_abt_options
 	 */
-	public function test_update_abt_options() {
+	public function test_update_abt_options(): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
@@ -100,7 +100,7 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * TEST: is_abt_version
 	 */
-	public function test_is_abt_version() {
+	public function test_is_abt_version(): void {
 		$is_plugin_version = new ReflectionMethod( $this->instance, 'is_abt_version' );
 		$is_plugin_version->setAccessible( true );
 
@@ -132,7 +132,7 @@ class Abt_Activate_Test extends TestCase {
 	 * @param string $property  Property name.
 	 * @param string $parameter Parameter name.
 	 */
-	public function test_register_options( string $property, string $parameter ) {
+	public function test_register_options( string $property, string $parameter ): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
@@ -145,7 +145,7 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * TEST: uninstall_options()
 	 */
-	public function test_uninstall_options() {
+	public function test_uninstall_options(): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
@@ -176,7 +176,7 @@ class Abt_Activate_Test extends TestCase {
 	 *
 	 * @param string $key  Array key name.
 	 */
-	public function test_create_items( string $key ) {
+	public function test_create_items( string $key ): void {
 		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
 		$create_items->setAccessible( true );
 
