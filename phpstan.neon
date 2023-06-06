@@ -4,13 +4,13 @@ includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 parameters:
     excludePaths:
-        - ./vendor/
-        - ./node_modules/
+        - vendor/
+        - node_modules/
     ignoreErrors:
     level: 0
     paths:
-        - ./admin-bar-tools.php
-        - ./class/
+        - admin-bar-tools.php
+        - class/
     scanFiles:
         - vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php
         - vendor/yoast/wp-test-utils/src/WPIntegration/TestCase.php
