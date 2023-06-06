@@ -195,6 +195,7 @@ class Abt_Admin_Page_Test extends TestCase {
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $abt_options );
 
 		$api_namespace = $abt_base_get_api_namespace->invoke( $abt_base );
 		$this->assertIsString( $api_namespace );
