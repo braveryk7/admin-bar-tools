@@ -68,7 +68,9 @@ class Abt_Activate_Test extends TestCase {
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$get_abt_options = function() use ( $abt_base_get_abt_options ) {
-			return $abt_base_get_abt_options->invoke( $this->instance );
+			$abt_options = $abt_base_get_abt_options->invoke( $this->instance );
+			$this->assertIsArray( $abt_options );
+			return $abt_options;
 		};
 
 		$delete_abt_options = function() {
