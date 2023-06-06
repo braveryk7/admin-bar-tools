@@ -196,7 +196,10 @@ class Abt_Admin_Page_Test extends TestCase {
 
 		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
 
-		$request = new WP_REST_Request( 'POST', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/update" );
+		$api_namespace = $abt_base_get_api_namespace->invoke( $abt_base );
+		$this->assertIsString( $api_namespace );
+
+		$request = new WP_REST_Request( 'POST', "/{$api_namespace}/update" );
 		$request->set_header( 'Content-Type', 'application/json' );
 		$request->set_param( 'theme_support', ! $abt_options['theme_support'] );
 		$response = rest_do_request( $request );
