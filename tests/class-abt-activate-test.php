@@ -68,9 +68,7 @@ class Abt_Activate_Test extends TestCase {
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$get_abt_options = function() use ( $abt_base_get_abt_options ) {
-			$abt_options = $abt_base_get_abt_options->invoke( $this->instance );
-			$this->assertIsArray( $abt_options );
-			return $abt_options;
+			return $abt_base_get_abt_options->invoke( $this->instance );
 		};
 
 		$delete_abt_options = function() {
@@ -87,7 +85,10 @@ class Abt_Activate_Test extends TestCase {
 
 		$this->assertTrue( ! empty( $get_abt_options() ) );
 
-		$abt_options            = $get_abt_options();
+		$abt_options = $get_abt_options();
+
+		$this->assertIsArray( $abt_options );
+
 		$abt_options['version'] = '0.0.0';
 		unset( $abt_options['theme_support'] );
 
@@ -95,8 +96,11 @@ class Abt_Activate_Test extends TestCase {
 
 		$this->instance->update_abt_options();
 
-		$this->assertNotSame( $abt_options['version'], $get_abt_options()['version'] );
-		$this->assertArrayHasKey( 'theme_support', $get_abt_options() );
+		$actual_abt_options = $get_abt_options();
+		$this->assertIsArray( $actual_abt_options );
+
+		$this->assertNotSame( $abt_options['version'], $actual_abt_options['version'] );
+		$this->assertArrayHasKey( 'theme_support', $actual_abt_options );
 	}
 
 	/**
