@@ -110,7 +110,10 @@ class Abt_Activate_Test extends TestCase {
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
 
-		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_base_get_abt_options->invoke( $abt_base )['version'] ) );
+		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $abt_options );
+
+		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_options['version'] ) );
 	}
 
 	/**
