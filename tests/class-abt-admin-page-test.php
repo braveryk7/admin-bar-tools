@@ -163,6 +163,9 @@ class Abt_Admin_Page_Test extends TestCase {
 		$response = rest_do_request( $request );
 		$data     = $response->get_data();
 
+		$this->assertIsArray( $data );
+		$this->assertIsArray( $data[ $parameter ] );
+
 		empty( $parameter ) ? $this->assertArrayHasKey( $property, $data ) : $this->assertArrayHasKey( $property, $data[ $parameter ] );
 	}
 
