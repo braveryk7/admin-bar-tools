@@ -9,7 +9,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Admin_Page $instance instance.
 	 */
 	private $instance;
 
