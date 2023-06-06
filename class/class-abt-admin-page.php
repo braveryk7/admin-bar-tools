@@ -46,7 +46,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 *
 	 * @param array<string,string> $links plugin page setting links.
 	 *
-	 * @return array<string,string> $links
+	 * @return array<int|string,string> $links
 	 */
 	public function add_settings_links( array $links ): array {
 		$add_link = '<a href="options-general.php?page=' . self::PLUGIN_SLUG . '">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
