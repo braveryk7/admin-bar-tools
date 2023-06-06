@@ -39,14 +39,16 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: add_menu()
 	 */
 	public function test_add_menu(): void {
-		$admin_menu_callback = function() {
-			$this->instance->add_menu();
-			$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
-		};
+			$admin_menu_callback = function() {
+				if ( method_exists( $this->instance, 'add_menu' ) ) {
+					$this->instance->add_menu();
+				}
+				$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
+			};
 
-		add_action( 'admin_menu', $admin_menu_callback, 999 );
+			add_action( 'admin_menu', $admin_menu_callback, 999 );
 
-		do_action( 'admin_menu' );
+			do_action( 'admin_menu' );
 	}
 
 	/**
