@@ -123,8 +123,13 @@ class Abt_Activate extends Abt_Base {
 				$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
 
 				if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
-					$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
-					$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+					$locales = json_decode( wp_remote_retrieve_body( $request ), true );
+
+					if ( is_array( $locales ) && array_key_exists( $current_locale, $locales ) && is_array( $locales[ $current_locale ] ) ) {
+						$psi_admin_url = is_array( $locales ) && array_key_exists( $current_locale, $locales )
+							? $psi . $locales[ $current_locale ]['id']
+							: $psi . 'us';
+					}
 				}
 			}
 		} finally {
