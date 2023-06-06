@@ -123,11 +123,11 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * TEST: register_options()
 	 *
-	 * @testWith [ "items", "" ]
-	 *           [ "locale", "" ]
-	 *           [ "sc", "" ]
-	 *           [ "theme_support", "" ]
-	 *           [ "version", "" ]
+	 * @testWith [ "items", null ]
+	 *           [ "locale", null ]
+	 *           [ "sc", null ]
+	 *           [ "theme_support", null ]
+	 *           [ "version", null ]
 	 *           [ "psi", "items" ]
 	 *           [ "lh", "items" ]
 	 *           [ "gsc", "items" ]
@@ -138,17 +138,28 @@ class Abt_Activate_Test extends TestCase {
 	 *           [ "facebook", "items" ]
 	 *           [ "hatena", "items" ]
 	 *
-	 * @param string $property  Property name.
-	 * @param string $parameter Parameter name.
+	 * @param string  $property  Property name.
+	 * @param ?string $parameter Parameter name.
 	 */
-	public function test_register_options( string $property, string $parameter ): void {
+	public function test_register_options( string $property, ?string $parameter ): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
 
-		empty( $parameter ) ? $this->assertArrayHasKey( $property, $abt_options ) : $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
+		$this->assertIsArray( $abt_options );
+
+		if ( is_null( $parameter ) ) {
+			$this->assertArrayHasKey( $property, $abt_options );
+		} else {
+			$this->assertIsArray( $abt_options[ $parameter ] );
+			$this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
+		}
+
+		is_null( $parameter )
+			? $this->assertArrayHasKey( $property, $abt_options )
+			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
 
 	/**
