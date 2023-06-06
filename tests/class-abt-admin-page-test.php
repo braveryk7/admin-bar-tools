@@ -133,11 +133,11 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: readable_api()
 	 *
-	 * @testWith [ "items", "" ]
-	 *           [ "locale", "" ]
-	 *           [ "sc", "" ]
-	 *           [ "theme_support", "" ]
-	 *           [ "version", "" ]
+	 * @testWith [ "items", null ]
+	 *           [ "locale", null ]
+	 *           [ "sc", null ]
+	 *           [ "theme_support", null ]
+	 *           [ "version", null ]
 	 *           [ "psi", "items" ]
 	 *           [ "lh", "items" ]
 	 *           [ "gsc", "items" ]
@@ -148,10 +148,10 @@ class Abt_Admin_Page_Test extends TestCase {
 	 *           [ "facebook", "items" ]
 	 *           [ "hatena", "items" ]
 	 *
-	 * @param string $property  Property name.
-	 * @param string $parameter Parameter name.
+	 * @param string  $property  Property name.
+	 * @param ?string $parameter Parameter name.
 	 */
-	public function test_readable_api( string $property, string $parameter ): void {
+	public function test_readable_api( string $property, ?string $parameter ): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
@@ -164,9 +164,23 @@ class Abt_Admin_Page_Test extends TestCase {
 		$data     = $response->get_data();
 
 		$this->assertIsArray( $data );
-		$this->assertIsArray( $data[ $parameter ] );
 
-		empty( $parameter ) ? $this->assertArrayHasKey( $property, $data ) : $this->assertArrayHasKey( $property, $data[ $parameter ] );
+		if ( is_null( $parameter ) ) {
+			if ( 'items' === $property ) {
+				$this->assertArrayHasKey( $property, $data );
+				$this->assertIsArray( $data[ $property ] );
+			} else {
+				$this->assertArrayHasKey( $property, $data );
+				$this->assertIsNotArray( $data[ $property ] );
+			}
+		} else {
+			$this->assertArrayHasKey( $parameter, $data );
+			if ( is_array( $data[ $parameter ] ) ) {
+				$this->assertArrayHasKey( $property, $data[ $parameter ] );
+			} else {
+				$this->fail( "\$data[ \$parameter ] with parameter {$parameter} not found" );
+			}
+		}
 	}
 
 	/**
