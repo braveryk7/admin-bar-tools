@@ -116,6 +116,10 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * @param object $wp_admin_bar Admin bar.
 	 */
 	public function add_theme_support_link( object $wp_admin_bar ): void {
+		if ( ! method_exists( $wp_admin_bar, 'add_node' ) ) {
+			return;
+		}
+
 		$theme_url_list = [
 			'cocoon-master' => [
 				'name'     => 'Cocoon',
