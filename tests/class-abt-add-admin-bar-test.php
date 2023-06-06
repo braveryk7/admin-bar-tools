@@ -123,6 +123,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		switch_theme( 'cocoon-master' );
 		$this->instance->add_theme_support_link( $wp_admin_bar );
 
+		$this->assertIsArray( $wp_admin_bar->get_nodes() );
 		$this->assertArrayHasKey( $id, $wp_admin_bar->get_nodes() );
 
 		$node = $wp_admin_bar->get_node( $id );
