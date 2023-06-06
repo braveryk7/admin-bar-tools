@@ -38,7 +38,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: add_menu()
 	 */
-	public function test_add_menu() {
+	public function test_add_menu(): void {
 		$admin_menu_callback = function() {
 			$this->instance->add_menu();
 			$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
@@ -52,7 +52,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: add_settings_links()
 	 */
-	public function test_add_settings_links() {
+	public function test_add_settings_links(): void {
 		$settings_str = __( 'Settings', 'admin-bar-tools' );
 
 		$this->assertSame(
@@ -66,7 +66,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: add_scripts()
 	 */
-	public function test_add_scripts() {
+	public function test_add_scripts(): void {
 		$abt_base            = new Abt_Base();
 		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
 		$abt_base_add_prefix->setAccessible( true );
@@ -91,7 +91,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * @param string $request_method HTTP request method.
 	 * @param string $end_point      end point.
 	 */
-	public function test_register_rest_api( string $request_method, string $end_point ) {
+	public function test_register_rest_api( string $request_method, string $end_point ): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
@@ -110,7 +110,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: get_wordpress_permission()
 	 */
-	public function test_get_wordpress_permission() {
+	public function test_get_wordpress_permission(): void {
 		$this->assertTrue(
 			$this->instance->get_wordpress_permission(),
 		);
@@ -137,7 +137,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * @param string $property  Property name.
 	 * @param string $parameter Parameter name.
 	 */
-	public function test_readable_api( string $property, string $parameter ) {
+	public function test_readable_api( string $property, string $parameter ): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
@@ -152,7 +152,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: editable_api()
 	 */
-	public function test_editable_api() {
+	public function test_editable_api(): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
@@ -173,7 +173,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: abt_settings()
 	 */
-	public function test_abt_settings() {
+	public function test_abt_settings(): void {
 		ob_start();
 		$this->instance->abt_settings();
 		$actual = ob_get_clean();
