@@ -121,7 +121,13 @@ class Abt_Base {
 	 * @return array<mixed>|bool
 	 */
 	protected function get_abt_options(): array|bool {
-		return get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
+		$abt_options = get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
+
+		if ( is_array( $abt_options ) || is_bool( $abt_options ) ) {
+			return $abt_options;
+		}
+
+		return false;
 	}
 
 	/**
