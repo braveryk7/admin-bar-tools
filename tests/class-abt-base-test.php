@@ -46,7 +46,7 @@ class Abt_Base_Test extends TestCase {
 	 * @param string $expected_plugin_name plugin name.
 	 * @param string $actual_plugin_name   plugin name.
 	 */
-	public function test_get_plugin_url( string $expected_plugin_name, ?string $actual_plugin_name ) {
+	public function test_get_plugin_url( string $expected_plugin_name, ?string $actual_plugin_name ): void {
 		$method = new ReflectionMethod( $this->instance, 'get_plugin_url' );
 		$method->setAccessible( true );
 
@@ -59,7 +59,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: get_plugin_name()
 	 */
-	public function test_get_plugin_name() {
+	public function test_get_plugin_name(): void {
 		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
 	}
 
@@ -72,7 +72,7 @@ class Abt_Base_Test extends TestCase {
 	 * @param string $expected_plugin_name plugin name.
 	 * @param string $actual_plugin_name   plugin name.
 	 */
-	public function test_get_plugin_dir( string $expected_plugin_name, ?string $actual_plugin_name ) {
+	public function test_get_plugin_dir( string $expected_plugin_name, ?string $actual_plugin_name ): void {
 		$method = new ReflectionMethod( $this->instance, 'get_plugin_dir' );
 		$method->setAccessible( true );
 
@@ -85,7 +85,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: get_plugin_path()
 	 */
-	public function test_get_plugin_path() {
+	public function test_get_plugin_path(): void {
 		$method = new ReflectionMethod( $this->instance, 'get_plugin_path' );
 		$method->setAccessible( true );
 
@@ -102,7 +102,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: get_api_namespace()
 	 */
-	public function test_get_api_namespace() {
+	public function test_get_api_namespace(): void {
 		$method = new ReflectionMethod( $this->instance, 'get_api_namespace' );
 		$method->setAccessible( true );
 
@@ -131,7 +131,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: get_option_group()
 	 */
-	public function test_get_option_group() {
+	public function test_get_option_group(): void {
 		$method = new ReflectionMethod( $this->instance, 'get_option_group' );
 		$method->setAccessible( true );
 
@@ -162,7 +162,7 @@ class Abt_Base_Test extends TestCase {
 	 * @param string $property  Property name.
 	 * @param string $parameter Parameter name.
 	 */
-	public function test_get_abt_options( string $property, string $parameter ) {
+	public function test_get_abt_options( string $property, string $parameter ): void {
 		$method = new ReflectionMethod( $this->instance, 'get_abt_options' );
 		$method->setAccessible( true );
 
@@ -174,7 +174,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: set_abt_options()
 	 */
-	public function test_set_abt_options() {
+	public function test_set_abt_options(): void {
 		$abt_base_set_abt_options = new ReflectionMethod( $this->instance, 'set_abt_options' );
 		$abt_base_set_abt_options->setAccessible( true );
 
@@ -193,7 +193,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: console()
 	 */
-	public function test_console() {
+	public function test_console(): void {
 		$method = new ReflectionMethod( $this->instance, 'console' );
 		$method->setAccessible( true );
 
