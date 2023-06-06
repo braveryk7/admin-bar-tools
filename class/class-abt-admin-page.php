@@ -147,7 +147,9 @@ class Abt_Admin_Page extends Abt_Base {
 			default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
 		};
 
-		$this->set_abt_options( $abt_options );
+		if ( is_array( $abt_options ) ) {
+			$this->set_abt_options( $abt_options );
+		}
 
 		return new WP_REST_Response( $params, 200 );
 	}
