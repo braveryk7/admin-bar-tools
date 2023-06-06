@@ -7,7 +7,7 @@ parameters:
         - vendor/
         - node_modules/
     ignoreErrors:
-    level: 0
+    level: 5
     paths:
         - admin-bar-tools.php
         - class/
