@@ -52,7 +52,7 @@ class Abt_Activate extends Abt_Base {
 
 		if ( ! $abt_options ) {
 			$this->register_options();
-		} elseif ( $this->is_abt_version( $abt_options['version'] ) ) {
+		} elseif ( isset( $abt_options['version'] ) && $this->is_abt_version( $abt_options['version'] ) ) {
 			foreach ( self::OPTIONS_KEY as $key_name ) {
 				if ( ! array_key_exists( $key_name, $abt_options ) ) {
 					if ( 'theme_support' === $key_name ) {
