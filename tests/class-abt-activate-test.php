@@ -15,13 +15,6 @@ class Abt_Activate_Test extends TestCase {
 	private $instance;
 
 	/**
-	 * Property that holds data for abt_options.
-	 *
-	 * @var array $abt_options
-	 */
-	private $abt_options;
-
-	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
 	public static function setUpBeforeClass(): void {
