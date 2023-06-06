@@ -205,7 +205,10 @@ class Abt_Admin_Page_Test extends TestCase {
 		$request->set_param( 'theme_support', ! $abt_options['theme_support'] );
 		$response = rest_do_request( $request );
 
-		$this->assertNotSame( $abt_options['theme_support'], $abt_base_get_abt_options->invoke( $abt_base )['theme_support'] );
+		$actual_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $actual_abt_options );
+
+		$this->assertNotSame( $abt_options['theme_support'], $actual_abt_options['theme_support'] );
 	}
 
 	/**
