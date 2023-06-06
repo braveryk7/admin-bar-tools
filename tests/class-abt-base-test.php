@@ -180,7 +180,10 @@ class Abt_Base_Test extends TestCase {
 		$abt_base_get_abt_options = new ReflectionMethod( $this->instance, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
 
-		$get_abt_options              = $abt_base_get_abt_options->invoke( $this->instance );
+		$get_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
+
+		$this->assertIsArray( $get_abt_options );
+
 		$abt_options                  = $get_abt_options;
 		$abt_options['theme_support'] = ! $abt_options['theme_support'];
 
