@@ -7,7 +7,7 @@ parameters:
         - vendor/
         - node_modules/
     ignoreErrors:
-    level: 8
+    level: 9
     paths:
         - class/class-abt-base.php
         - admin-bar-tools.php
