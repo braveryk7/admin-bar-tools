@@ -78,12 +78,18 @@ class Abt_Admin_Page_Test extends TestCase {
 
 		$this->instance->add_scripts( $arg );
 
+		$style_handle  = $abt_base_add_prefix->invoke( $abt_base, 'style' );
+		$script_handle = $abt_base_add_prefix->invoke( $abt_base, 'script' );
+
+		$this->assertIsString( $style_handle );
+		$this->assertIsString( $script_handle );
+
 		if ( '' === $arg ) {
-			$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-			$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+			$this->assertFalse( wp_style_is( $style_handle ) );
+			$this->assertFalse( wp_script_is( $script_handle ) );
 		} else {
-			$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-			$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+			$this->assertTrue( wp_style_is( $style_handle ) );
+			$this->assertTrue( wp_script_is( $script_handle ) );
 		}
 	}
 
