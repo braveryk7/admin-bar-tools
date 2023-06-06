@@ -7,10 +7,14 @@ parameters:
         - vendor/
         - node_modules/
     ignoreErrors:
-    level: 5
+    level: 6
     paths:
         - admin-bar-tools.php
         - class/
+        - tests/
+    scanDirectories:
+        - class/
+        - tests/
     scanFiles:
         - conf/stubs/admin-bar-tools-tests-stubs.php
         - vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php
