@@ -165,9 +165,13 @@ class Abt_Base_Test extends TestCase {
 		$method = new ReflectionMethod( $this->instance, 'get_abt_options' );
 		$method->setAccessible( true );
 
+		$abt_options = $method->invoke( $this->instance );
+		$this->assertIsArray( $abt_options );
+		$this->assertIsArray( $abt_options[ $parameter ] );
+
 		empty( $parameter )
-			? $this->assertArrayHasKey( $property, $method->invoke( $this->instance ) )
-			: $this->assertArrayHasKey( $property, $method->invoke( $this->instance )[ $parameter ] );
+			? $this->assertArrayHasKey( $property, $abt_options )
+			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
 
 	/**
