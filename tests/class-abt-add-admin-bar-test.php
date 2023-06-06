@@ -85,9 +85,10 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$search_console_url = 'https://search.google.com/search-console';
 
-		$generate_url = function ( $status ) {
-			$query = get_query_var( 'paged' );
-			$this->assertIsInt( $query );
+		$query = get_query_var( 'paged' );
+		$this->assertIsInt( $query );
+
+		$generate_url = function ( $status ) use ( $query ) {
 
 			$encode_url = rawurlencode( get_pagenum_link( $query ) );
 			$domain     = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
@@ -105,7 +106,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$expected = $search_console_url . $generate_url( $status );
 
-		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) ) ) );
+		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( $query ) ) ) );
 	}
 
 	/**
