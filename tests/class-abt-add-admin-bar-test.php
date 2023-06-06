@@ -9,7 +9,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Add_Admin_Bar $instance instance.
 	 */
 	private $instance;
 
@@ -48,7 +48,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 *
 	 * @param string $expected expected.
 	 */
-	public function test_add_admin_bar( string $expected ) {
+	public function test_add_admin_bar( string $expected ): void {
 		wp_set_current_user( null, 'admin' );
 
 		require_once ABSPATH . 'wp-includes/class-wp-admin-bar.php';
@@ -58,6 +58,8 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$this->instance->add_admin_bar( $wp_admin_bar );
 		$wp_admin_bar_nodes = $wp_admin_bar->get_nodes();
+
+		$this->assertIsArray( $wp_admin_bar_nodes );
 		$this->assertArrayHasKey( $expected, $wp_admin_bar_nodes );
 	}
 
@@ -69,18 +71,25 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 *
 	 * @param int $status status.
 	 */
-	public function test_searchconsole_url( int $status ) {
+	public function test_searchconsole_url( int $status ): void {
 		$method = new ReflectionMethod( $this->instance, 'searchconsole_url' );
 		$method->setAccessible( true );
 
 		$post_id = $this->factory()->post->create();
-		$url     = get_permalink( $post_id );
+
+		$this->assertIsInt( $post_id );
+		$url = get_permalink( $post_id );
+
+		$this->assertTrue( is_string( $url ) );
 		$this->go_to( $url );
 
 		$search_console_url = 'https://search.google.com/search-console';
 
-		$generate_url = function ( $status ) {
-			$encode_url = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
+		$query = get_query_var( 'paged' );
+		$this->assertIsInt( $query );
+
+		$generate_url = function ( $status ) use ( $query ) {
+			$encode_url = rawurlencode( get_pagenum_link( $query ) );
 			$domain     = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
 			$parameter  = [
 				'?resource_id=sc-domain:',
@@ -96,7 +105,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$expected = $search_console_url . $generate_url( $status );
 
-		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) ) ) );
+		$this->assertSame( $expected, $method->invoke( $this->instance, $search_console_url, $status, rawurlencode( get_pagenum_link( $query ) ) ) );
 	}
 
 	/**
@@ -110,14 +119,17 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 * @param string $id     node id.
 	 * @param string $parent node parent.
 	 */
-	public function test_add_theme_support_link( string $id, string $parent ) {
+	public function test_add_theme_support_link( string $id, string $parent ): void {
 		$wp_admin_bar = new WP_Admin_Bar();
 		$wp_admin_bar->initialize();
 
 		switch_theme( 'cocoon-master' );
 		$this->instance->add_theme_support_link( $wp_admin_bar );
 
+		$this->assertIsArray( $wp_admin_bar->get_nodes() );
 		$this->assertArrayHasKey( $id, $wp_admin_bar->get_nodes() );
-		$this->assertSame( $parent, $wp_admin_bar->get_node( $id )->parent );
+
+		$node = $wp_admin_bar->get_node( $id );
+		isset( $node->parent ) ? $this->assertSame( $parent, $node->parent ) : $this->fail( "Node with id {$id} not found" );
 	}
 }

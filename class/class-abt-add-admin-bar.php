@@ -25,13 +25,19 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999 );
 		add_action( 'admin_bar_menu', [ $this, 'add_theme_support_link' ], 999 );
 	}
+
 	/**
 	 * Insert Admin bar
 	 *
 	 * @param object $wp_admin_bar Admin bar.
 	 */
 	public function add_admin_bar( object $wp_admin_bar ): void {
-		$url             = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
+		if ( ! method_exists( $wp_admin_bar, 'add_node' ) ) {
+			return;
+		}
+
+		$query           = intval( get_query_var( 'paged' ) );
+		$url             = rawurlencode( get_pagenum_link( $query ) );
 		$add_url_lists   = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
 		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
 		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
@@ -50,28 +56,30 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			$abt_options = $this->get_abt_options();
 			$link_url    = '';
 
-			foreach ( $abt_options['items'] as $item ) {
-				if ( $item['status'] ) {
-					if ( is_admin() ) {
-						$link_url = $item['adminurl'];
-					} else {
-						$link_url = match ( $item['shortname'] ) {
-							'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-							'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
-							default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-						};
-					}
-					$wp_admin_bar->add_node(
-						[
-							'id'     => $item['shortname'],
-							'title'  => $item['name'],
-							'parent' => self::PREFIX,
-							'href'   => $link_url,
-							'meta'   => [
-								'target' => '_blank',
+			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
+				foreach ( $abt_options['items'] as $item ) {
+					if ( is_array( $item ) && $item['status'] ) {
+						if ( is_admin() ) {
+							$link_url = $item['adminurl'];
+						} else {
+							$link_url = match ( $item['shortname'] ) {
+								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+							};
+						}
+						$wp_admin_bar->add_node(
+							[
+								'id'     => $item['shortname'],
+								'title'  => $item['name'],
+								'parent' => self::PREFIX,
+								'href'   => $link_url,
+								'meta'   => [
+									'target' => '_blank',
+								],
 							],
-						],
-					);
+						);
+					}
 				}
 			}
 		}
@@ -109,6 +117,10 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * @param object $wp_admin_bar Admin bar.
 	 */
 	public function add_theme_support_link( object $wp_admin_bar ): void {
+		if ( ! method_exists( $wp_admin_bar, 'add_node' ) ) {
+			return;
+		}
+
 		$theme_url_list = [
 			'cocoon-master' => [
 				'name'     => 'Cocoon',
@@ -141,9 +153,11 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				'forum'    => null,
 			],
 		];
-		$current_theme  = wp_get_theme()->Template;
+		$current_theme  = wp_get_theme()->get_template();
 
-		if ( $this->get_abt_options()['theme_support'] && array_key_exists( $current_theme, $theme_url_list ) ) {
+		$abt_options = $this->get_abt_options();
+
+		if ( isset( $abt_options['theme_support'] ) && array_key_exists( $current_theme, $theme_url_list ) ) {
 			$theme_data = $theme_url_list[ $current_theme ];
 			$title_list = [
 				'official' => __( 'Official Site', 'admin-bar-tools' ),

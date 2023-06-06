@@ -37,14 +37,16 @@ class Abt_Admin_Page extends Abt_Base {
 			$this->get_plugin_name(),
 			'administrator',
 			'admin-bar-tools',
-			[ $this, $this->add_prefix( 'settings' ) ]
+			[ $this, 'abt_settings' ]
 		);
 	}
 
 	/**
 	 * Add configuration link to plugin page.
 	 *
-	 * @param array|string $links plugin page setting links.
+	 * @param array<string,string> $links plugin page setting links.
+	 *
+	 * @return array<int|string,string> $links
 	 */
 	public function add_settings_links( array $links ): array {
 		$add_link = '<a href="options-general.php?page=' . self::PLUGIN_SLUG . '">' . __( 'Settings', 'admin-bar-tools' ) . '</a>';
@@ -135,15 +137,17 @@ class Abt_Admin_Page extends Abt_Base {
 		$abt_options = $this->get_abt_options();
 		$params      = $request->get_json_params();
 
-		match ( true ) {
-			array_key_exists( 'items', $params )  => $abt_options['items']                = $params['items'],
-			array_key_exists( 'locale', $params ) => $abt_options['locale']               = $params['locale'],
-			array_key_exists( 'sc', $params )     => $abt_options['sc']                   = $params['sc'],
-			array_key_exists( 'theme_support', $params ) => $abt_options['theme_support'] = $params['theme_support'],
-			default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
-		};
+		if ( is_array( $abt_options ) ) {
+			match ( true ) {
+				array_key_exists( 'items', $params )  => $abt_options['items']                = $params['items'],
+				array_key_exists( 'locale', $params ) => $abt_options['locale']               = $params['locale'],
+				array_key_exists( 'sc', $params )     => $abt_options['sc']                   = $params['sc'],
+				array_key_exists( 'theme_support', $params ) => $abt_options['theme_support'] = $params['theme_support'],
+				default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
+			};
 
-		$this->set_abt_options( $abt_options );
+			$this->set_abt_options( $abt_options );
+		}
 
 		return new WP_REST_Response( $params, 200 );
 	}

@@ -7,11 +7,17 @@ parameters:
         - vendor/
         - node_modules/
     ignoreErrors:
-    level: 0
+    level: 9
     paths:
+        - class/class-abt-base.php
         - admin-bar-tools.php
         - class/
+        - tests/
+    scanDirectories:
+        - class/
+        - tests/
     scanFiles:
+        - conf/stubs/admin-bar-tools-tests-stubs.php
         - vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php
         - vendor/yoast/wp-test-utils/src/WPIntegration/TestCase.php
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php

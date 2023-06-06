@@ -9,7 +9,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Admin_Page $instance instance.
 	 */
 	private $instance;
 
@@ -38,7 +38,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: add_menu()
 	 */
-	public function test_add_menu() {
+	public function test_add_menu(): void {
 		$admin_menu_callback = function() {
 			$this->instance->add_menu();
 			$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
@@ -52,7 +52,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: add_settings_links()
 	 */
-	public function test_add_settings_links() {
+	public function test_add_settings_links(): void {
 		$settings_str = __( 'Settings', 'admin-bar-tools' );
 
 		$this->assertSame(
@@ -65,21 +65,32 @@ class Abt_Admin_Page_Test extends TestCase {
 
 	/**
 	 * TEST: add_scripts()
+	 *
+	 * @testWith [ "" ]
+	 *           [ "settings_page_admin-bar-tools" ]
+	 *
+	 * @param string $arg add_scripts method arg.
 	 */
-	public function test_add_scripts() {
+	public function test_add_scripts( string $arg ): void {
 		$abt_base            = new Abt_Base();
 		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
 		$abt_base_add_prefix->setAccessible( true );
 
-		$this->instance->add_scripts( '' );
+		$this->instance->add_scripts( $arg );
 
-		$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-		$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+		$style_handle  = $abt_base_add_prefix->invoke( $abt_base, 'style' );
+		$script_handle = $abt_base_add_prefix->invoke( $abt_base, 'script' );
 
-		$this->instance->add_scripts( 'settings_page_admin-bar-tools' );
+		$this->assertIsString( $style_handle );
+		$this->assertIsString( $script_handle );
 
-		$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-		$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+		if ( '' === $arg ) {
+			$this->assertFalse( wp_style_is( $style_handle ) );
+			$this->assertFalse( wp_script_is( $script_handle ) );
+		} else {
+			$this->assertTrue( wp_style_is( $style_handle ) );
+			$this->assertTrue( wp_script_is( $script_handle ) );
+		}
 	}
 
 	/**
@@ -91,12 +102,15 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * @param string $request_method HTTP request method.
 	 * @param string $end_point      end point.
 	 */
-	public function test_register_rest_api( string $request_method, string $end_point ) {
+	public function test_register_rest_api( string $request_method, string $end_point ): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
 
-		$request = new WP_REST_Request( $request_method, "/{$abt_base_get_api_namespace->invoke( $abt_base )}/{$end_point}" );
+		$api_name_space = $abt_base_get_api_namespace->invoke( $abt_base );
+		$this->assertIsString( $api_name_space );
+
+		$request = new WP_REST_Request( $request_method, "/{$api_name_space}/{$end_point}" );
 		if ( 'POST' === $request_method ) {
 			$request->set_header( 'Content-Type', 'application/json' );
 			$request->set_param( 'theme_support', true );
@@ -110,7 +124,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: get_wordpress_permission()
 	 */
-	public function test_get_wordpress_permission() {
+	public function test_get_wordpress_permission(): void {
 		$this->assertTrue(
 			$this->instance->get_wordpress_permission(),
 		);
@@ -119,11 +133,11 @@ class Abt_Admin_Page_Test extends TestCase {
 	/**
 	 * TEST: readable_api()
 	 *
-	 * @testWith [ "items", "" ]
-	 *           [ "locale", "" ]
-	 *           [ "sc", "" ]
-	 *           [ "theme_support", "" ]
-	 *           [ "version", "" ]
+	 * @testWith [ "items", null ]
+	 *           [ "locale", null ]
+	 *           [ "sc", null ]
+	 *           [ "theme_support", null ]
+	 *           [ "version", null ]
 	 *           [ "psi", "items" ]
 	 *           [ "lh", "items" ]
 	 *           [ "gsc", "items" ]
@@ -134,25 +148,45 @@ class Abt_Admin_Page_Test extends TestCase {
 	 *           [ "facebook", "items" ]
 	 *           [ "hatena", "items" ]
 	 *
-	 * @param string $property  Property name.
-	 * @param string $parameter Parameter name.
+	 * @param string  $property  Property name.
+	 * @param ?string $parameter Parameter name.
 	 */
-	public function test_readable_api( string $property, string $parameter ) {
+	public function test_readable_api( string $property, ?string $parameter ): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
 
-		$request  = new WP_REST_Request( 'GET', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/options" );
+		$api_name_space = $abt_base_get_api_namespace->invoke( $abt_base );
+		$this->assertIsString( $api_name_space );
+
+		$request  = new WP_REST_Request( 'GET', "/{$api_name_space}/options" );
 		$response = rest_do_request( $request );
 		$data     = $response->get_data();
 
-		empty( $parameter ) ? $this->assertArrayHasKey( $property, $data ) : $this->assertArrayHasKey( $property, $data[ $parameter ] );
+		$this->assertIsArray( $data );
+
+		if ( is_null( $parameter ) ) {
+			if ( 'items' === $property ) {
+				$this->assertArrayHasKey( $property, $data );
+				$this->assertIsArray( $data[ $property ] );
+			} else {
+				$this->assertArrayHasKey( $property, $data );
+				$this->assertIsNotArray( $data[ $property ] );
+			}
+		} else {
+			$this->assertArrayHasKey( $parameter, $data );
+			if ( is_array( $data[ $parameter ] ) ) {
+				$this->assertArrayHasKey( $property, $data[ $parameter ] );
+			} else {
+				$this->fail( "\$data[ \$parameter ] with parameter {$parameter} not found" );
+			}
+		}
 	}
 
 	/**
 	 * TEST: editable_api()
 	 */
-	public function test_editable_api() {
+	public function test_editable_api(): void {
 		$abt_base                   = new Abt_Base();
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
@@ -161,19 +195,26 @@ class Abt_Admin_Page_Test extends TestCase {
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $abt_options );
 
-		$request = new WP_REST_Request( 'POST', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/update" );
+		$api_namespace = $abt_base_get_api_namespace->invoke( $abt_base );
+		$this->assertIsString( $api_namespace );
+
+		$request = new WP_REST_Request( 'POST', "/{$api_namespace}/update" );
 		$request->set_header( 'Content-Type', 'application/json' );
 		$request->set_param( 'theme_support', ! $abt_options['theme_support'] );
-		$response = rest_do_request( $request );
+		rest_do_request( $request );
 
-		$this->assertNotSame( $abt_options['theme_support'], $abt_base_get_abt_options->invoke( $abt_base )['theme_support'] );
+		$actual_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $actual_abt_options );
+
+		$this->assertNotSame( $abt_options['theme_support'], $actual_abt_options['theme_support'] );
 	}
 
 	/**
 	 * TEST: abt_settings()
 	 */
-	public function test_abt_settings() {
+	public function test_abt_settings(): void {
 		ob_start();
 		$this->instance->abt_settings();
 		$actual = ob_get_clean();

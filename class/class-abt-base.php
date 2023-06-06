@@ -117,15 +117,23 @@ class Abt_Base {
 
 	/**
 	 * Get abt_options.
+	 *
+	 * @return array<mixed>|bool
 	 */
 	protected function get_abt_options(): array|bool {
-		return get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
+		$abt_options = get_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ) );
+
+		if ( is_array( $abt_options ) || is_bool( $abt_options ) ) {
+			return $abt_options;
+		}
+
+		return false;
 	}
 
 	/**
 	 * Set abt_options.
 	 *
-	 * @param mixed[] $abt_options abt_options column data.
+	 * @param array<string,mixed> $abt_options abt_options column data.
 	 */
 	protected function set_abt_options( array $abt_options ): bool {
 		return update_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ), $abt_options );

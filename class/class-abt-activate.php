@@ -30,10 +30,12 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * For development environments (development or local), set sslverify to false.
 	 *
-	 * @param array       $args             WordPress environment variables.
-	 * @param string|null $environment_type WordPress environment type.
+	 * @param array<string,mixed> $args             WordPress environment variables.
+	 * @param string|null         $environment_type WordPress environment type.
+	 *
+	 * @return array<string,mixed> $args
 	 */
-	public function check_environment( array $args, ?string $environment_type = null ) {
+	public function check_environment( array $args, ?string $environment_type = null ): array {
 		$args['sslverify'] = match ( $environment_type ?? wp_get_environment_type() ) {
 			'development', 'local' => false,
 			'production', 'staging' => true,
@@ -45,12 +47,12 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * Method to add missing items to abt_options.
 	 */
-	public function update_abt_options() {
+	public function update_abt_options(): void {
 		$abt_options = $this->get_abt_options();
 
 		if ( ! $abt_options ) {
 			$this->register_options();
-		} elseif ( $this->is_abt_version( $abt_options['version'] ) ) {
+		} elseif ( isset( $abt_options['version'] ) && is_string( $abt_options['version'] ) && $this->is_abt_version( $abt_options['version'] ) ) {
 			foreach ( self::OPTIONS_KEY as $key_name ) {
 				if ( ! array_key_exists( $key_name, $abt_options ) ) {
 					if ( 'theme_support' === $key_name ) {
@@ -100,6 +102,8 @@ class Abt_Activate extends Abt_Base {
 
 	/**
 	 * Create status item value.
+	 *
+	 * @return array<string,array<string,string|int>>
 	 */
 	private function create_items(): array {
 		$items          = [];
@@ -119,8 +123,13 @@ class Abt_Activate extends Abt_Base {
 				$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
 
 				if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
-					$locales       = json_decode( wp_remote_retrieve_body( $request ), true );
-					$psi_admin_url = array_key_exists( $current_locale, $locales ) ? $psi . $locales[ $current_locale ]['id'] : $psi . 'us';
+					$locales = json_decode( wp_remote_retrieve_body( $request ), true );
+
+					if ( is_array( $locales ) && array_key_exists( $current_locale, $locales ) && is_array( $locales[ $current_locale ] ) ) {
+						$psi_admin_url = is_array( $locales ) && array_key_exists( $current_locale, $locales )
+							? $psi . $locales[ $current_locale ]['id']
+							: $psi . 'us';
+					}
 				}
 			}
 		} finally {
@@ -188,7 +197,7 @@ class Abt_Activate extends Abt_Base {
 			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => $abt_options ? $abt_options['items'][ $key ]['status'] : true,
+				'status'    => $abt_options && isset( $abt_options['items'] ) ? $abt_options['items'][ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],

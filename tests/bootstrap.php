@@ -15,7 +15,7 @@ require_once $_tests_dir . 'includes/functions.php';
 /**
  * Manually load the Admin Bar Tools.
  */
-function _manually_load_plugin() {
+function _manually_load_plugin() :void {
 	require dirname( dirname( __FILE__ ) ) . '/admin-bar-tools.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );

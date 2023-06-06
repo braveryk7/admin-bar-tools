@@ -10,16 +10,9 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Activate $instance instance.
 	 */
 	private $instance;
-
-	/**
-	 * Property that holds data for abt_options.
-	 *
-	 * @var array $abt_options
-	 */
-	private $abt_options;
 
 	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
@@ -53,7 +46,7 @@ class Abt_Activate_Test extends TestCase {
 	 * @param string $environment Environment type.
 	 * @param bool   $expected    Expected result.
 	 */
-	public function test_check_environment( ?string $environment, ?bool $expected ) {
+	public function test_check_environment( ?string $environment, ?bool $expected ): void {
 		$result = apply_filters( 'http_request_args', [ 'sslverify' => false ] );
 
 		if ( ! is_null( $environment ) ) {
@@ -69,7 +62,7 @@ class Abt_Activate_Test extends TestCase {
 	/**
 	 * TEST: update_abt_options
 	 */
-	public function test_update_abt_options() {
+	public function test_update_abt_options(): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
@@ -92,7 +85,10 @@ class Abt_Activate_Test extends TestCase {
 
 		$this->assertTrue( ! empty( $get_abt_options() ) );
 
-		$abt_options            = $get_abt_options();
+		$abt_options = $get_abt_options();
+
+		$this->assertIsArray( $abt_options );
+
 		$abt_options['version'] = '0.0.0';
 		unset( $abt_options['theme_support'] );
 
@@ -100,14 +96,17 @@ class Abt_Activate_Test extends TestCase {
 
 		$this->instance->update_abt_options();
 
-		$this->assertNotSame( $abt_options['version'], $get_abt_options()['version'] );
-		$this->assertArrayHasKey( 'theme_support', $get_abt_options() );
+		$actual_abt_options = $get_abt_options();
+		$this->assertIsArray( $actual_abt_options );
+
+		$this->assertNotSame( $abt_options['version'], $actual_abt_options['version'] );
+		$this->assertArrayHasKey( 'theme_support', $actual_abt_options );
 	}
 
 	/**
 	 * TEST: is_abt_version
 	 */
-	public function test_is_abt_version() {
+	public function test_is_abt_version(): void {
 		$is_plugin_version = new ReflectionMethod( $this->instance, 'is_abt_version' );
 		$is_plugin_version->setAccessible( true );
 
@@ -115,17 +114,20 @@ class Abt_Activate_Test extends TestCase {
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
 
-		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_base_get_abt_options->invoke( $abt_base )['version'] ) );
+		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$this->assertIsArray( $abt_options );
+
+		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_options['version'] ) );
 	}
 
 	/**
 	 * TEST: register_options()
 	 *
-	 * @testWith [ "items", "" ]
-	 *           [ "locale", "" ]
-	 *           [ "sc", "" ]
-	 *           [ "theme_support", "" ]
-	 *           [ "version", "" ]
+	 * @testWith [ "items", null ]
+	 *           [ "locale", null ]
+	 *           [ "sc", null ]
+	 *           [ "theme_support", null ]
+	 *           [ "version", null ]
 	 *           [ "psi", "items" ]
 	 *           [ "lh", "items" ]
 	 *           [ "gsc", "items" ]
@@ -136,23 +138,34 @@ class Abt_Activate_Test extends TestCase {
 	 *           [ "facebook", "items" ]
 	 *           [ "hatena", "items" ]
 	 *
-	 * @param string $property  Property name.
-	 * @param string $parameter Parameter name.
+	 * @param string  $property  Property name.
+	 * @param ?string $parameter Parameter name.
 	 */
-	public function test_register_options( string $property, string $parameter ) {
+	public function test_register_options( string $property, ?string $parameter ): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
 
 		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
 
-		empty( $parameter ) ? $this->assertArrayHasKey( $property, $abt_options ) : $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
+		$this->assertIsArray( $abt_options );
+
+		if ( is_null( $parameter ) ) {
+			$this->assertArrayHasKey( $property, $abt_options );
+		} else {
+			$this->assertIsArray( $abt_options[ $parameter ] );
+			$this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
+		}
+
+		is_null( $parameter )
+			? $this->assertArrayHasKey( $property, $abt_options )
+			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
 
 	/**
 	 * TEST: uninstall_options()
 	 */
-	public function test_uninstall_options() {
+	public function test_uninstall_options(): void {
 		$abt_base                 = new Abt_Base();
 		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
 		$abt_base_get_abt_options->setAccessible( true );
@@ -183,11 +196,13 @@ class Abt_Activate_Test extends TestCase {
 	 *
 	 * @param string $key  Array key name.
 	 */
-	public function test_create_items( string $key ) {
+	public function test_create_items( string $key ): void {
 		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
 		$create_items->setAccessible( true );
 
 		$items = $create_items->invoke( $this->instance );
+
+		$this->assertIsArray( $items );
 
 		$this->assertArrayHasKey( $key, $items );
 	}
