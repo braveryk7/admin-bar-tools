@@ -102,6 +102,8 @@ class Abt_Activate extends Abt_Base {
 
 	/**
 	 * Create status item value.
+	 *
+	 * @return array<string,array<string,string|int>>
 	 */
 	private function create_items(): array {
 		$items          = [];
