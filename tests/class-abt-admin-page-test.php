@@ -39,32 +39,28 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: add_menu()
 	 */
 	public function test_add_menu(): void {
-			$admin_menu_callback = function() {
-				if ( method_exists( $this->instance, 'add_menu' ) ) {
-					$this->instance->add_menu();
-				}
-				$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
-			};
+		$admin_menu_callback = function() {
+			$this->instance->add_menu();
+			$this->assertNotFalse( remove_submenu_page( 'options-general.php', 'admin-bar-tools' ) );
+		};
 
-			add_action( 'admin_menu', $admin_menu_callback, 999 );
+		add_action( 'admin_menu', $admin_menu_callback, 999 );
 
-			do_action( 'admin_menu' );
+		do_action( 'admin_menu' );
 	}
 
 	/**
 	 * TEST: add_settings_links()
 	 */
 	public function test_add_settings_links(): void {
-		if ( method_exists( $this->instance, 'add_settings_links' ) ) {
-			$settings_str = __( 'Settings', 'admin-bar-tools' );
+		$settings_str = __( 'Settings', 'admin-bar-tools' );
 
-			$this->assertSame(
-				[
-					'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
-				],
-				$this->instance->add_settings_links( [] ),
-			);
-		}
+		$this->assertSame(
+			[
+				'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
+			],
+			$this->instance->add_settings_links( [] ),
+		);
 	}
 
 	/**
@@ -80,16 +76,14 @@ class Abt_Admin_Page_Test extends TestCase {
 		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
 		$abt_base_add_prefix->setAccessible( true );
 
-		if ( method_exists( $this->instance, 'add_scripts' ) ) {
-			$this->instance->add_scripts( $arg );
+		$this->instance->add_scripts( $arg );
 
-			if ( '' === $arg ) {
-				$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-				$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
-			} else {
-				$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-				$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
-			}
+		if ( '' === $arg ) {
+			$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+			$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+		} else {
+			$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+			$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
 		}
 	}
 
@@ -122,11 +116,9 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: get_wordpress_permission()
 	 */
 	public function test_get_wordpress_permission(): void {
-		if ( method_exists( $this->instance, 'get_wordpress_permission' ) ) {
-			$this->assertTrue(
-				$this->instance->get_wordpress_permission(),
-			);
-		}
+		$this->assertTrue(
+			$this->instance->get_wordpress_permission(),
+		);
 	}
 
 	/**
@@ -187,14 +179,12 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: abt_settings()
 	 */
 	public function test_abt_settings(): void {
-		if ( method_exists( $this->instance, 'abt_settings' ) ) {
-			ob_start();
-			$this->instance->abt_settings();
-			$actual = ob_get_clean();
-			$this->assertSame(
-				'<div id="admin-bar-tools-settings"></div>',
-				$actual
-			);
-		}
+		ob_start();
+		$this->instance->abt_settings();
+		$actual = ob_get_clean();
+		$this->assertSame(
+			'<div id="admin-bar-tools-settings"></div>',
+			$actual
+		);
 	}
 }
