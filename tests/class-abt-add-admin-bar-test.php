@@ -77,6 +77,8 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$post_id = $this->factory()->post->create();
 		$url     = get_permalink( $post_id );
+
+		$this->assertTrue( is_string( $url ) );
 		$this->go_to( $url );
 
 		$search_console_url = 'https://search.google.com/search-console';
