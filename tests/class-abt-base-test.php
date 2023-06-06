@@ -143,11 +143,11 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: get_abt_options()
 	 *
-	 * @testWith [ "items", "" ]
-	 *           [ "locale", "" ]
-	 *           [ "sc", "" ]
-	 *           [ "theme_support", "" ]
-	 *           [ "version", "" ]
+	 * @testWith [ "items", null ]
+	 *           [ "locale", null ]
+	 *           [ "sc", null ]
+	 *           [ "theme_support", null ]
+	 *           [ "version", null ]
 	 *           [ "psi", "items" ]
 	 *           [ "lh", "items" ]
 	 *           [ "gsc", "items" ]
@@ -158,18 +158,20 @@ class Abt_Base_Test extends TestCase {
 	 *           [ "facebook", "items" ]
 	 *           [ "hatena", "items" ]
 	 *
-	 * @param string $property  Property name.
-	 * @param string $parameter Parameter name.
+	 * @param string  $property  Property name.
+	 * @param ?string $parameter Parameter name.
 	 */
-	public function test_get_abt_options( string $property, string $parameter ): void {
+	public function test_get_abt_options( string $property, ?string $parameter ): void {
 		$method = new ReflectionMethod( $this->instance, 'get_abt_options' );
 		$method->setAccessible( true );
 
 		$abt_options = $method->invoke( $this->instance );
 		$this->assertIsArray( $abt_options );
-		$this->assertIsArray( $abt_options[ $parameter ] );
+		if ( ! is_null( $parameter ) ) {
+			$this->assertIsArray( $abt_options[ $parameter ] );
+		}
 
-		empty( $parameter )
+		is_null( $parameter )
 			? $this->assertArrayHasKey( $property, $abt_options )
 			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
