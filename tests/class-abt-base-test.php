@@ -33,9 +33,7 @@ class Abt_Base_Test extends TestCase {
 	 * TEST: add_prefix()
 	 */
 	public function test_add_prefix(): void {
-		if ( method_exists( $this->instance, 'add_prefix' ) ) {
-			$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
-		}
+		$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
 	}
 
 	/**
@@ -61,9 +59,7 @@ class Abt_Base_Test extends TestCase {
 	 * TEST: get_plugin_name()
 	 */
 	public function test_get_plugin_name(): void {
-		if ( method_exists( $this->instance, 'get_plugin_name' ) ) {
-			$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
-		}
+		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
 	}
 
 	/**
