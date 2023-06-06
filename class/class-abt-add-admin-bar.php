@@ -56,7 +56,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			$abt_options = $this->get_abt_options();
 			$link_url    = '';
 
-			if ( isset( $abt_options['items'] ) ) {
+			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
 				foreach ( $abt_options['items'] as $item ) {
 					if ( $item['status'] ) {
 						if ( is_admin() ) {
