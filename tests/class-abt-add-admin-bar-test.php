@@ -58,6 +58,8 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 
 		$this->instance->add_admin_bar( $wp_admin_bar );
 		$wp_admin_bar_nodes = $wp_admin_bar->get_nodes();
+
+		$this->assertIsArray( $wp_admin_bar_nodes );
 		$this->assertArrayHasKey( $expected, $wp_admin_bar_nodes );
 	}
 
