@@ -58,7 +58,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 
 			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
 				foreach ( $abt_options['items'] as $item ) {
-					if ( $item['status'] ) {
+					if ( is_array( $item ) && $item['status'] ) {
 						if ( is_admin() ) {
 							$link_url = $item['adminurl'];
 						} else {
