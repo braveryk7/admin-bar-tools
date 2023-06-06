@@ -86,7 +86,10 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		$search_console_url = 'https://search.google.com/search-console';
 
 		$generate_url = function ( $status ) {
-			$encode_url = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
+			$query = get_query_var( 'paged' );
+			$this->assertIsInt( $query );
+
+			$encode_url = rawurlencode( get_pagenum_link( $query ) );
 			$domain     = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
 			$parameter  = [
 				'?resource_id=sc-domain:',
