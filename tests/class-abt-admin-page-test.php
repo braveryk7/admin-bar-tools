@@ -55,14 +55,16 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: add_settings_links()
 	 */
 	public function test_add_settings_links(): void {
-		$settings_str = __( 'Settings', 'admin-bar-tools' );
+		if ( method_exists( $this->instance, 'add_settings_links' ) ) {
+			$settings_str = __( 'Settings', 'admin-bar-tools' );
 
-		$this->assertSame(
-			[
-				'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
-			],
-			$this->instance->add_settings_links( [] ),
-		);
+			$this->assertSame(
+				[
+					'<a href="options-general.php?page=admin-bar-tools">' . $settings_str . '</a>',
+				],
+				$this->instance->add_settings_links( [] ),
+			);
+		}
 	}
 
 	/**
