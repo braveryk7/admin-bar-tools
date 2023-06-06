@@ -25,6 +25,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999 );
 		add_action( 'admin_bar_menu', [ $this, 'add_theme_support_link' ], 999 );
 	}
+
 	/**
 	 * Insert Admin bar
 	 *
