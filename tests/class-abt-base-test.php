@@ -33,7 +33,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * TEST: add_prefix()
 	 */
-	public function test_add_prefix() {
+	public function test_add_prefix(): void {
 		$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
 	}
 
