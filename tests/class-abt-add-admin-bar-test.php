@@ -9,7 +9,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Add_Admin_Bar $instance instance.
 	 */
 	private $instance;
 
