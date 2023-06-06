@@ -48,7 +48,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 *
 	 * @param string $expected expected.
 	 */
-	public function test_add_admin_bar( string $expected ) {
+	public function test_add_admin_bar( string $expected ): void {
 		wp_set_current_user( null, 'admin' );
 
 		require_once ABSPATH . 'wp-includes/class-wp-admin-bar.php';
@@ -69,7 +69,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 *
 	 * @param int $status status.
 	 */
-	public function test_searchconsole_url( int $status ) {
+	public function test_searchconsole_url( int $status ): void {
 		$method = new ReflectionMethod( $this->instance, 'searchconsole_url' );
 		$method->setAccessible( true );
 
@@ -110,7 +110,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 * @param string $id     node id.
 	 * @param string $parent node parent.
 	 */
-	public function test_add_theme_support_link( string $id, string $parent ) {
+	public function test_add_theme_support_link( string $id, string $parent ): void {
 		$wp_admin_bar = new WP_Admin_Bar();
 		$wp_admin_bar->initialize();
 
