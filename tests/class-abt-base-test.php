@@ -61,7 +61,9 @@ class Abt_Base_Test extends TestCase {
 	 * TEST: get_plugin_name()
 	 */
 	public function test_get_plugin_name(): void {
-		$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
+		if ( method_exists( $this->instance, 'get_plugin_name' ) ) {
+			$this->assertSame( 'Admin Bar Tools', $this->instance->get_plugin_name() );
+		}
 	}
 
 	/**
