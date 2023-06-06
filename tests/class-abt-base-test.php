@@ -9,7 +9,7 @@ class Abt_Base_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var object $instance instance.
+	 * @var Abt_Base $instance instance.
 	 */
 	private $instance;
 
