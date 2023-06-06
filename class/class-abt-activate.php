@@ -47,7 +47,7 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * Method to add missing items to abt_options.
 	 */
-	public function update_abt_options() {
+	public function update_abt_options(): void {
 		$abt_options = $this->get_abt_options();
 
 		if ( ! $abt_options ) {
