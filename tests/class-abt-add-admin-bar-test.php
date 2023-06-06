@@ -118,6 +118,8 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		$this->instance->add_theme_support_link( $wp_admin_bar );
 
 		$this->assertArrayHasKey( $id, $wp_admin_bar->get_nodes() );
-		$this->assertSame( $parent, $wp_admin_bar->get_node( $id )->parent );
+
+		$node = $wp_admin_bar->get_node( $id );
+		isset( $node->parent ) ? $this->assertSame( $parent, $node->parent ) : $this->fail( "Node with id {$id} not found" );
 	}
 }
