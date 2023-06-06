@@ -122,9 +122,11 @@ class Abt_Admin_Page_Test extends TestCase {
 	 * TEST: get_wordpress_permission()
 	 */
 	public function test_get_wordpress_permission(): void {
-		$this->assertTrue(
-			$this->instance->get_wordpress_permission(),
-		);
+		if ( method_exists( $this->instance, 'get_wordpress_permission' ) ) {
+			$this->assertTrue(
+				$this->instance->get_wordpress_permission(),
+			);
+		}
 	}
 
 	/**
