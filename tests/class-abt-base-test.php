@@ -189,7 +189,10 @@ class Abt_Base_Test extends TestCase {
 
 		$abt_base_set_abt_options->invoke( $this->instance, $abt_options );
 
-		$this->assertNotSame( $get_abt_options['theme_support'], $abt_base_get_abt_options->invoke( $this->instance )['theme_support'] );
+		$actual_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
+		$this->assertIsArray( $actual_abt_options );
+
+		$this->assertNotSame( $get_abt_options['theme_support'], $actual_abt_options['theme_support'] );
 	}
 
 	/**
