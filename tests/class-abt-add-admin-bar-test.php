@@ -89,7 +89,6 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		$this->assertIsInt( $query );
 
 		$generate_url = function ( $status ) use ( $query ) {
-
 			$encode_url = rawurlencode( get_pagenum_link( $query ) );
 			$domain     = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
 			$parameter  = [
