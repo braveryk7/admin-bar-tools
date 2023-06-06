@@ -202,6 +202,8 @@ class Abt_Activate_Test extends TestCase {
 
 		$items = $create_items->invoke( $this->instance );
 
+		$this->assertIsArray( $items );
+
 		$this->assertArrayHasKey( $key, $items );
 	}
 }
