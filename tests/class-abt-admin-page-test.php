@@ -156,7 +156,10 @@ class Abt_Admin_Page_Test extends TestCase {
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
 
-		$request  = new WP_REST_Request( 'GET', "/{$abt_base_get_api_namespace->invoke( $abt_base )}/options" );
+		$api_name_space = $abt_base_get_api_namespace->invoke( $abt_base );
+		$this->assertIsString( $api_name_space );
+
+		$request  = new WP_REST_Request( 'GET', "/{$api_name_space}/options" );
 		$response = rest_do_request( $request );
 		$data     = $response->get_data();
 
