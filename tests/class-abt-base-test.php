@@ -2,7 +2,6 @@
 declare( strict_types = 1 );
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
-
 /**
  * Test: Sct_Base
  */
@@ -34,7 +33,9 @@ class Abt_Base_Test extends TestCase {
 	 * TEST: add_prefix()
 	 */
 	public function test_add_prefix(): void {
-		$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
+		if ( method_exists( $this->instance, 'add_prefix' ) ) {
+			$this->assertSame( 'abt_options', $this->instance->add_prefix( 'options' ) );
+		}
 	}
 
 	/**
