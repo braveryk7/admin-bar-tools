@@ -76,7 +76,9 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		$method->setAccessible( true );
 
 		$post_id = $this->factory()->post->create();
-		$url     = get_permalink( $post_id );
+
+		$this->assertIsInt( $post_id );
+		$url = get_permalink( $post_id );
 
 		$this->assertTrue( is_string( $url ) );
 		$this->go_to( $url );
