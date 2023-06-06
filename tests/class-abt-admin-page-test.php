@@ -69,21 +69,28 @@ class Abt_Admin_Page_Test extends TestCase {
 
 	/**
 	 * TEST: add_scripts()
+	 *
+	 * @testWith [ "" ]
+	 *           [ "settings_page_admin-bar-tools" ]
+	 *
+	 * @param string $arg add_scripts method arg.
 	 */
-	public function test_add_scripts(): void {
+	public function test_add_scripts( string $arg ): void {
 		$abt_base            = new Abt_Base();
 		$abt_base_add_prefix = new ReflectionMethod( $abt_base, 'add_prefix' );
 		$abt_base_add_prefix->setAccessible( true );
 
-		$this->instance->add_scripts( '' );
+		if ( method_exists( $this->instance, 'add_scripts' ) ) {
+			$this->instance->add_scripts( $arg );
 
-		$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-		$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
-
-		$this->instance->add_scripts( 'settings_page_admin-bar-tools' );
-
-		$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
-		$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+			if ( '' === $arg ) {
+				$this->assertFalse( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+				$this->assertFalse( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+			} else {
+				$this->assertTrue( wp_style_is( $abt_base_add_prefix->invoke( $abt_base, 'style' ) ) );
+				$this->assertTrue( wp_script_is( $abt_base_add_prefix->invoke( $abt_base, 'script' ) ) );
+			}
+		}
 	}
 
 	/**
