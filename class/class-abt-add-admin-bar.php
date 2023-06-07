@@ -29,7 +29,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	/**
 	 * Insert Admin bar
 	 *
-	 * @param object $wp_admin_bar Admin bar.
+	 * @param object $wp_admin_bar WordPress Admin bar object.
 	 */
 	public function add_admin_bar( object $wp_admin_bar ): void {
 		if ( ! method_exists( $wp_admin_bar, 'add_node' ) ) {
