@@ -1,6 +1,6 @@
 <?php
 /**
- * Returns data class
+ * Class to add various items to the WordPress Admin bar.
  *
  * @author Ken-chan
  * @package WordPress
