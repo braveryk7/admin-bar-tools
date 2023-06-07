@@ -86,7 +86,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	}
 
 	/**
-	 * Create Google SearchConsole URL.
+	 * Generate Google SearchConsole URL.
 	 *
 	 * @param string $url           SearchConsole URL.
 	 * @param int    $status        Use SearchConsole type (Don't use, Domain or URL Prefix).
