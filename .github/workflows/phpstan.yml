@@ -1,0 +1,34 @@
+name: PHPStan
+
+on: 
+  pull_request:
+    paths:
+      - 'class/**'
+      - 'tests/**'
+      - 'admin-bar-tools.php'
+
+env:
+  CACHE_TAG: v1
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.0', '8.1', '8.2']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup -> PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install composer packages & cache vendor directory
+        uses: ./.github/actions/vendor-dependencies
+        with:
+          cache_tag: ${{ env.CACHE_TAG }}
+
+      - name: Run PHPStan
+        run: composer run phpstan
