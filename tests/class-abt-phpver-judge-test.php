@@ -20,4 +20,13 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	public static function set_up_before_class(): void {
 		require_once ROOT_DIR . '/class/class-abt-phpver-judge.php';
 	}
+
+	/**
+	 * SetUp.
+	 * Create instance.
+	 */
+	public function set_up() :void {
+		parent::set_up();
+		$this->instance = new Abt_Phpver_Judge();
+	}
 }
