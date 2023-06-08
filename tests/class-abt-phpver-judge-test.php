@@ -29,4 +29,11 @@ class Abt_Phpver_Judge_Test extends TestCase {
 		parent::set_up();
 		$this->instance = new Abt_Phpver_Judge();
 	}
+
+	/**
+	 * TEST: judgment()
+	 */
+	public function test_judgment(): void {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
