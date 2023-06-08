@@ -34,7 +34,11 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	 * TEST: judgment()
 	 */
 	public function test_judgment(): void {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$require_php_version = '8.0.0';
+		$this->assertTrue( $this->instance->judgment( $require_php_version ) );
+
+		$unrealistic_php_version = '100.0';
+		$this->assertFalse( $this->instance->judgment( $unrealistic_php_version ) );
 	}
 
 	/**
