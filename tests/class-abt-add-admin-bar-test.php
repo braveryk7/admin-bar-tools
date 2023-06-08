@@ -49,6 +49,10 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 * @param string $expected expected.
 	 */
 	public function test_add_admin_bar( string $expected ): void {
+		$blank_wp_admin_bar = new stdClass();
+		$this->instance->add_admin_bar( $blank_wp_admin_bar );
+		$this->assertFalse( method_exists( $blank_wp_admin_bar, 'add_node' ) );
+
 		wp_set_current_user( null, 'admin' );
 
 		require_once ABSPATH . 'wp-includes/class-wp-admin-bar.php';
@@ -120,6 +124,10 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 * @param string $parent node parent.
 	 */
 	public function test_add_theme_support_link( string $id, string $parent ): void {
+		$blank_wp_admin_bar = new stdClass();
+		$this->instance->add_theme_support_link( $blank_wp_admin_bar );
+		$this->assertFalse( method_exists( $blank_wp_admin_bar, 'add_node' ) );
+
 		$wp_admin_bar = new WP_Admin_Bar();
 		$wp_admin_bar->initialize();
 

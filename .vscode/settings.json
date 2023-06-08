@@ -124,5 +124,9 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 4,
         "editor.insertSpaces": false,
-    }
+    },
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#FF0000"
+    },
+    "window.title": "~[PHPUnit TEST]~${separator}${activeEditorShort}${separator}${rootName}${separator}${profileName}"
 }
