@@ -101,7 +101,7 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Create status item value.
+	 * Generate status item value.
 	 *
 	 * @return array<string,array<string,string|int>>
 	 */
