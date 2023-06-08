@@ -52,6 +52,40 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	 * TEST: deactivate_message()
 	 */
 	public function test_deactivate_message(): void {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+		$plugin_name = 'Admin Bar Tools';
+		$version     = '8.0';
+		$message     = $this->instance->deactivate_message( $plugin_name, $version );
+		$this->assertIsArray( $message );
+
+		$this->assertArrayHasKey( 'header', $message );
+		$this->assertArrayHasKey( 'require', $message );
+		$this->assertArrayHasKey( 'upgrade', $message );
+		$this->assertArrayHasKey( 'current', $message );
+
+		$this->assertSame(
+			sprintf(
+				/* translators: 1: Plugin name */
+				__( '[Plugin error] %s has been stopped because the PHP version is old.', 'admin-bar-tools' ),
+				$plugin_name,
+			),
+			$message['header'],
+		);
+		$this->assertSame(
+			sprintf(
+				/* translators: 1: Plugin name 2: PHP version */
+				__( '%1$s requires at least PHP %2$s or later.', 'admin-bar-tools' ),
+				$plugin_name,
+				$version,
+			),
+			$message['require'],
+		);
+		$this->assertSame(
+			__( 'Please upgrade PHP.', 'admin-bar-tools' ),
+			$message['upgrade'],
+		);
+		$this->assertSame(
+			__( 'Current PHP version:', 'admin-bar-tools' ),
+			$message['current'],
+		);
 	}
 }
