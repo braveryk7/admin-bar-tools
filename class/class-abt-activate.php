@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin activate.
+ * File that defines the class Abt_Activate for the process to be executed during activation and uninstallation.
  *
  * @author     Ken-chan
  * @package    WordPress
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Activate process.
+ * Class for the process to be executed when a plugin is activated or uninstalled.
  */
 class Abt_Activate extends Abt_Base {
 	/**
@@ -101,7 +101,7 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Create status item value.
+	 * Generate status item value.
 	 *
 	 * @return array<string,array<string,string|int>>
 	 */

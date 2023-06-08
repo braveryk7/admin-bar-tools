@@ -46,7 +46,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: mbstring, xdebug, dom
 
       - name: Setup Node.js
         uses: ./.github/actions/setup-nodejs
@@ -69,7 +68,7 @@ jobs:
           echo '{"config": {},"core": "WordPress/WordPress#${{ matrix.wp-version }}","env": {},"mappings": {},"phpVersion": "${{ matrix.php-version }}","plugins": ["."],"themes": []}' > .wp-env.override.json
 
       - name: Start wp-env
-        run: npm run wp-env start
+        run: npm run wp-env start -- --xdebug=coverage
 
       - name: Run test suite
         run: npm run test:env
