@@ -10,7 +10,7 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	/**
 	 * This test class instance.
 	 *
-	 * @var Abt_Add_Admin_Bar $instance instance.
+	 * @var Abt_Phpver_Judge $instance instance.
 	 */
 	private $instance;
 
