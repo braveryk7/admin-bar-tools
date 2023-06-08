@@ -75,4 +75,5 @@ jobs:
         run: npm run test:env
 
       - name: Upload coverage reports to Codecov
+        if: matrix.php-version == '8.2' && matrix.wp-version == 'master'
         uses: codecov/codecov-action@v3
