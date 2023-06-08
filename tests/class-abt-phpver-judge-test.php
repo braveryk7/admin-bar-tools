@@ -15,7 +15,7 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	private $instance;
 
 	/**
-	 * Settings: ABSPATH, test class file, WordPress functions.
+	 * Methods to process before testing.
 	 */
 	public static function set_up_before_class(): void {
 		require_once ROOT_DIR . '/class/class-abt-phpver-judge.php';
