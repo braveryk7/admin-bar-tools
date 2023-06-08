@@ -43,4 +43,11 @@ class Abt_Phpver_Judge_Test extends TestCase {
 	public function test_deactivate(): void {
 		$this->markTestIncomplete( 'This test is incomplete.' );
 	}
+
+	/**
+	 * TEST: deactivate_message()
+	 */
+	public function test_deactivate_message(): void {
+		$this->markTestIncomplete( 'This test is incomplete.' );
+	}
 }
