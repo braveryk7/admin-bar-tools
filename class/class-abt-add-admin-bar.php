@@ -157,7 +157,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 
 		$abt_options = $this->get_abt_options();
 
-		if ( isset( $abt_options['theme_support'] ) && array_key_exists( $current_theme, $theme_url_list ) ) {
+		if ( isset( $abt_options['theme_support'] ) && $abt_options['theme_support'] && array_key_exists( $current_theme, $theme_url_list ) ) {
 			$theme_data = $theme_url_list[ $current_theme ];
 			$title_list = [
 				'official' => __( 'Official Site', 'admin-bar-tools' ),
