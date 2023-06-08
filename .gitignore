@@ -32,8 +32,9 @@ build/
 #   Created by Tester
 #-------------------------------
 .cache/
+coverage/
 .phpunit.result.cache
-tests/logs/
+
 
 #-------------------------------
 #   WordPress environment
