@@ -32,6 +32,7 @@ build/
 #   Created by Tester
 #-------------------------------
 .cache/
+coverage/
 .phpunit.result.cache
 
 
