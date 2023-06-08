@@ -34,6 +34,7 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 		__FILE__,
 		'Admin Bar Tools',
 		$require_php_version,
+		is_admin(),
 	);
 } else {
 	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
