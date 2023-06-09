@@ -100,7 +100,9 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * @return string SearchConsole URL.
 	 */
 	private function searchconsole_url( string $url, int $status, string $encode_url ): string {
-		$domain    = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+		$domain    = isset( $_SERVER['SERVER_NAME'] ) && is_string( $_SERVER['SERVER_NAME'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) )
+			: '';
 		$gsc_url   = $url;
 		$parameter = [
 			'?resource_id=sc-domain:',
