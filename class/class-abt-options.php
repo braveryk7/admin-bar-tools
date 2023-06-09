@@ -19,6 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Options extends Abt_Base {
 	/**
+	 * Static instance property that holds itself.
+	 *
+	 * @var Abt_Options $instance
+	 */
+	private static $instance;
+
+	/**
 	 * Property that holds the contents of the abt_options column.
 	 *
 	 * @var array<mixed>|bool $abt_options
