@@ -23,7 +23,7 @@ class Abt_Options extends Abt_Base {
 	 *
 	 * @var array<mixed>|bool $abt_options
 	 */
-	private static $abt_options;
+	private $abt_options;
 
 	/**
 	 * Instantiate and return itself.
