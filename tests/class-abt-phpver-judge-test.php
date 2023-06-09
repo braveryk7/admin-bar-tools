@@ -76,7 +76,6 @@ class Abt_Phpver_Judge_Test extends TestCase {
 		$plugin_name = 'Admin Bar Tools';
 		$version     = '8.0';
 		$message     = $this->instance->deactivate_message( $plugin_name, $version );
-		$this->assertIsArray( $message );
 
 		$this->assertArrayHasKey( 'header', $message );
 		$this->assertArrayHasKey( 'require', $message );

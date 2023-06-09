@@ -36,11 +36,14 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			return;
 		}
 
-		$query           = intval( get_query_var( 'paged' ) );
-		$url             = rawurlencode( get_pagenum_link( $query ) );
-		$add_url_lists   = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
-		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
-		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		$add_url_lists = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
+
+		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) && is_string( $_SERVER['HTTP_HOST'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) )
+			: '';
+		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) && is_string( $_SERVER['REQUEST_URI'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) )
+			: '';
 
 		if ( is_user_logged_in() ) {
 			$wp_admin_bar->add_node(
@@ -62,11 +65,14 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 						if ( is_admin() ) {
 							$link_url = $item['adminurl'];
 						} else {
-							$link_url = match ( $item['shortname'] ) {
-								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
-								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-							};
+							if ( get_the_ID() ) {
+								$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
+								$link_url = match ( $item['shortname'] ) {
+									'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+									'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+									default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+								};
+							}
 						}
 						$wp_admin_bar->add_node(
 							[
@@ -95,7 +101,9 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * @return string SearchConsole URL.
 	 */
 	private function searchconsole_url( string $url, int $status, string $encode_url ): string {
-		$domain    = isset( $_SERVER['SERVER_NAME'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) ) : '';
+		$domain    = isset( $_SERVER['SERVER_NAME'] ) && is_string( $_SERVER['SERVER_NAME'] )
+			? sanitize_text_field( wp_unslash( $_SERVER['SERVER_NAME'] ) )
+			: '';
 		$gsc_url   = $url;
 		$parameter = [
 			'?resource_id=sc-domain:',
