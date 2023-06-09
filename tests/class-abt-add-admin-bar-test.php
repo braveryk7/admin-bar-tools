@@ -60,11 +60,20 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 		$wp_admin_bar = new WP_Admin_Bar();
 		$wp_admin_bar->initialize();
 
-		$this->instance->add_admin_bar( $wp_admin_bar );
+		$this->instance->add_admin_bar( $wp_admin_bar, true );
 		$wp_admin_bar_nodes = $wp_admin_bar->get_nodes();
 
 		$this->assertIsArray( $wp_admin_bar_nodes );
 		$this->assertArrayHasKey( $expected, $wp_admin_bar_nodes );
+
+		$wp_admin_bar_not_admin = new WP_Admin_Bar();
+		$wp_admin_bar_not_admin->initialize();
+
+		$this->instance->add_admin_bar( $wp_admin_bar_not_admin, false );
+		$wp_admin_bar_nodes_not_admin = $wp_admin_bar_not_admin->get_nodes();
+
+		$this->assertIsArray( $wp_admin_bar_nodes_not_admin );
+		$this->assertArrayHasKey( $expected, $wp_admin_bar_nodes_not_admin );
 	}
 
 	/**
