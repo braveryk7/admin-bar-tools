@@ -43,9 +43,30 @@ class Abt_Phpver_Judge_Test extends TestCase {
 
 	/**
 	 * TEST: deactivate()
+	 *
+	 * @testWith [ true ]
+	 *           [ false ]
+	 *
+	 * @param bool $is_admin Is admin.
 	 */
-	public function test_deactivate(): void {
-		$this->markTestIncomplete( 'This test is incomplete.' );
+	public function test_deactivate( bool $is_admin ): void {
+		$plugin_file = 'admin-bar-tools/admin-bar-tools.php';
+
+		$this->assertFalse( is_plugin_active( $plugin_file ) );
+
+		activate_plugin( $plugin_file );
+
+		$this->assertTrue( is_plugin_active( $plugin_file ) );
+
+		ob_start();
+		$this->instance->deactivate( $plugin_file, 'Admin Bar Tools', '8.0', $is_admin );
+		$actual = ob_get_clean();
+
+		if ( $is_admin && is_string( $actual ) ) {
+			$this->assertStringContainsString( '<div class="error">', $actual );
+		}
+
+		$this->assertFalse( is_plugin_active( $plugin_file ) );
 	}
 
 	/**
