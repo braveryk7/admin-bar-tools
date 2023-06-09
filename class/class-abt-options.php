@@ -36,6 +36,10 @@ class Abt_Options extends Abt_Base {
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
-		return new self();
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
 	}
 }
