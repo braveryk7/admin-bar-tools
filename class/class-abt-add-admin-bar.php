@@ -64,15 +64,13 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 					if ( is_array( $item ) && $item['status'] ) {
 						if ( is_admin() ) {
 							$link_url = $item['adminurl'];
-						} else {
-							if ( get_the_ID() ) {
-								$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
-								$link_url = match ( $item['shortname'] ) {
-									'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-									'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
-									default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-								};
-							}
+						} elseif ( get_the_ID() ) {
+							$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
+							$link_url = match ( $item['shortname'] ) {
+								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+							};
 						}
 						$wp_admin_bar->add_node(
 							[
