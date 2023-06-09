@@ -17,4 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Abt_Options class.
  */
-class Abt_Options extends Abt_Base {}
+class Abt_Options extends Abt_Base {
+	/**
+	 * Instantiate and return itself.
+	 */
+	public function get_instance(): Abt_Options {
+		return new self();
+	}
+}
