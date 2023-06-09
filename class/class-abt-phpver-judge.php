@@ -58,17 +58,6 @@ class Abt_Phpver_Judge {
 
 			}
 			deactivate_plugins( plugin_basename( $path ) );
-		} else {
-			$messages = $this->deactivate_message( $project, $version );
-
-			?>
-			<p>
-				<?php echo esc_html( $messages['require'] ); ?>
-				<?php echo esc_html( $messages['upgrade'] ); ?>
-			</p>
-			<?php
-
-			exit;
 		}
 	}
 
