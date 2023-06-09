@@ -12,26 +12,26 @@
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
 		"wp-env": "wp-env",
-        "test:env": "wp-env run --env-cwd='wp-content/plugins/admin-bar-tools' tests-cli vendor/bin/phpunit -c phpunit.xml --verbose --testdox",
+		"test:env": "wp-env run --env-cwd='wp-content/plugins/admin-bar-tools' tests-cli vendor/bin/phpunit -c phpunit.xml --verbose --testdox",
 		"packages-update": "wp-scripts packages-update",
 		"zip": "sh cmd/zip.sh"
 	},
 	"dependencies": {
-		"@wordpress/api-fetch": "^6.26.0",
+		"@wordpress/api-fetch": "^6.32.0",
 		"@wordpress/components": "^23.6.0",
 		"@wordpress/element": "^5.6.0",
-		"@wordpress/i18n": "^4.29.0"
+		"@wordpress/i18n": "^4.35.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.0.15",
+		"@types/react": "^18.2.9",
 		"@types/wordpress__components": "^23.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.30.5",
-		"@typescript-eslint/parser": "^5.30.5",
-		"@wordpress/env": "^8.0.0",
-		"@wordpress/scripts": "^26.0.0",
-		"eslint-import-resolver-typescript": "^3.2.4",
+		"@typescript-eslint/eslint-plugin": "^5.59.9",
+		"@typescript-eslint/parser": "^5.59.9",
+		"@wordpress/env": "^8.1.0",
+		"@wordpress/scripts": "^26.6.0",
+		"eslint-import-resolver-typescript": "^3.5.5",
 		"stylelint-order": "^6.0.3",
-		"ts-loader": "^9.3.1",
-		"typescript": "^5.0.2"
+		"ts-loader": "^9.4.3",
+		"typescript": "^5.1.3"
 	}
 }
