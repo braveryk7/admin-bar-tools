@@ -22,7 +22,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * WordPress hook.
 	 */
 	public function __construct() {
-		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999 );
+		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999, 2 );
 		add_action( 'admin_bar_menu', [ $this, 'add_theme_support_link' ], 999 );
 	}
 
@@ -30,10 +30,15 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 * Insert Admin bar
 	 *
 	 * @param object $wp_admin_bar Admin bar.
+	 * @param bool   $is_admin     Admin or not.
 	 */
-	public function add_admin_bar( object $wp_admin_bar ): void {
+	public function add_admin_bar( object $wp_admin_bar, bool $is_admin = false ): void {
 		if ( ! method_exists( $wp_admin_bar, 'add_node' ) ) {
 			return;
+		}
+
+		if ( is_admin() ) {
+			$is_admin = true;
 		}
 
 		$add_url_lists = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
@@ -62,7 +67,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
 				foreach ( $abt_options['items'] as $item ) {
 					if ( is_array( $item ) && $item['status'] ) {
-						if ( is_admin() ) {
+						if ( $is_admin ) {
 							$link_url = $item['adminurl'];
 						} elseif ( get_the_ID() ) {
 							$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
