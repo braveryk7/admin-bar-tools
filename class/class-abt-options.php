@@ -19,6 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Options extends Abt_Base {
 	/**
+	 * Property that holds the contents of the abt_options column.
+	 *
+	 * @var array<mixed> $abt_options
+	 */
+	private $abt_options;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
