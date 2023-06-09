@@ -36,8 +36,6 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 			return;
 		}
 
-		$query         = intval( get_query_var( 'paged' ) );
-		$url           = rawurlencode( get_pagenum_link( $query ) );
 		$add_url_lists = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
 
 		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) && is_string( $_SERVER['HTTP_HOST'] )
@@ -67,11 +65,14 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 						if ( is_admin() ) {
 							$link_url = $item['adminurl'];
 						} else {
-							$link_url = match ( $item['shortname'] ) {
-								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
-								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-							};
+							if ( get_the_ID() ) {
+								$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
+								$link_url = match ( $item['shortname'] ) {
+									'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+									'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+									default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+								};
+							}
 						}
 						$wp_admin_bar->add_node(
 							[
