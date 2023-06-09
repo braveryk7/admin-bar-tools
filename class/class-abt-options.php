@@ -1,0 +1,20 @@
+<?php
+/**
+ * Class for communication with abt_options column and retention of values.
+ *
+ * @author Ken-chan
+ * @package WordPress
+ * @subpackage Admin Bar Tools
+ * @since 1.7.0
+ */
+
+declare( strict_types = 1 );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'You do not have access rights.' );
+}
+
+/**
+ * Abt_Options class.
+ */
+class Abt_Options extends Abt_Base {}
