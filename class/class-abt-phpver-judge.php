@@ -34,11 +34,12 @@ class Abt_Phpver_Judge {
 	 * @param string $path Plugin path.
 	 * @param string $project Project name.
 	 * @param string $version PHP version.
+	 * @param bool   $is_admin Admin page or not.
 	 */
-	public function deactivate( string $path, string $project, string $version ): void {
+	public function deactivate( string $path, string $project, string $version, bool $is_admin = false ): void {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		if ( is_plugin_active( plugin_basename( $path ) ) ) {
-			if ( is_admin() ) {
+			if ( $is_admin ) {
 				$messages = $this->deactivate_message( $project, $version );
 
 				?>
@@ -57,17 +58,6 @@ class Abt_Phpver_Judge {
 
 			}
 			deactivate_plugins( plugin_basename( $path ) );
-		} else {
-			$messages = $this->deactivate_message( $project, $version );
-
-			?>
-			<p>
-				<?php echo esc_html( $messages['require'] ); ?>
-				<?php echo esc_html( $messages['upgrade'] ); ?>
-			</p>
-			<?php
-
-			exit;
 		}
 	}
 
