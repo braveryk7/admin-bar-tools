@@ -26,6 +26,13 @@ class Abt_Options extends Abt_Base {
 	private static $instance;
 
 	/**
+	 * Property that holds the items of abt_options.
+	 *
+	 * @var array<array<string,int,bool>> $items
+	 */
+	private $items;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
