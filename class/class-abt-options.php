@@ -40,6 +40,13 @@ class Abt_Options extends Abt_Base {
 	private $locale;
 
 	/**
+	 * Property that holds the sc (Google Search Console) of abt_options.
+	 *
+	 * @var int $sc
+	 */
+	private $sc;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
