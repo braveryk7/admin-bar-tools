@@ -61,6 +61,13 @@ class Abt_Options extends Abt_Base {
 	private $version;
 
 	/**
+	 * Property that holds whether the abt_options column exists.
+	 *
+	 * @var bool $abt_options_exists
+	 */
+	private $abt_options_exists;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
