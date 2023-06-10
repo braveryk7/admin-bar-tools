@@ -26,13 +26,6 @@ class Abt_Options extends Abt_Base {
 	private static $instance;
 
 	/**
-	 * Property that holds the contents of the abt_options column.
-	 *
-	 * @var array<mixed>|bool $abt_options
-	 */
-	private $abt_options;
-
-	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
