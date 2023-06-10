@@ -47,6 +47,13 @@ class Abt_Options extends Abt_Base {
 	private $sc;
 
 	/**
+	 * Property that holds the theme_support of abt_options.
+	 *
+	 * @var bool $theme_support
+	 */
+	private $theme_support;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
