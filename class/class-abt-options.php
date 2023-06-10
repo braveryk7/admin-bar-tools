@@ -33,6 +33,13 @@ class Abt_Options extends Abt_Base {
 	private $items;
 
 	/**
+	 * Property that holds the locale of abt_options.
+	 *
+	 * @var string $locale
+	 */
+	private $locale;
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
