@@ -68,6 +68,40 @@ class Abt_Options extends Abt_Base {
 	private $abt_options_exists;
 
 	/**
+	 * Constructor.
+	 * Get the abt_options column and store it in the property.
+	 */
+	private function __construct() {
+		$abt_options = get_option( 'abt_options' );
+
+		if ( isset( $abt_options ) && is_array( $abt_options ) ) {
+			$this->abt_options_exists = true;
+
+			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
+				$this->items = $abt_options['items'];
+			}
+
+			if ( isset( $abt_options['locale'] ) && is_string( $abt_options['locale'] ) ) {
+				$this->locale = $abt_options['locale'];
+			}
+
+			if ( isset( $abt_options['sc'] ) && is_int( $abt_options['sc'] ) ) {
+				$this->sc = $abt_options['sc'];
+			}
+
+			if ( isset( $abt_options['theme_support'] ) && is_bool( $abt_options['theme_support'] ) ) {
+				$this->theme_support = $abt_options['theme_support'];
+			}
+
+			if ( isset( $abt_options['version'] ) && is_string( $abt_options['version'] ) ) {
+				$this->version = $abt_options['version'];
+			}
+		} else {
+			$this->abt_options_exists = false;
+		}
+	}
+
+	/**
 	 * Instantiate and return itself.
 	 */
 	public function get_instance(): Abt_Options {
