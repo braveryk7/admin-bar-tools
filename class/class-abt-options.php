@@ -132,6 +132,6 @@ class Abt_Options extends Abt_Base {
 	 * @param string $version The version to compare.
 	 */
 	public function is_version( string $version ): bool {
-		return version_compare( $this->version, $version, '<' );
+		return version_compare( $this->version, $version, '=' );
 	}
 }
