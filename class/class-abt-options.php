@@ -118,4 +118,11 @@ class Abt_Options extends Abt_Base {
 	public function is_abt_options_exists(): bool {
 		return $this->abt_options_exists;
 	}
+
+	/**
+	 * A method that returns the value of theme_support.
+	 */
+	public function is_theme_support(): bool {
+		return $this->theme_support;
+	}
 }
