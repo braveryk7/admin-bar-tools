@@ -157,5 +157,6 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function abt_settings(): void {
 		echo '<div id="' . esc_attr( $this->get_option_group() ) . '"></div>';
+		$this->console( $this->get_abt_options() );
 	}
 }

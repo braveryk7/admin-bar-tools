@@ -139,6 +139,16 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method that returns the items.
+	 *
+	 * @phpstan-return Items
+	 * @return         array
+	 */
+	public function get_items(): array {
+		return $this->items;
+	}
+
+	/**
 	 * A method that returns the locale.
 	 */
 	public function get_locale(): string {
