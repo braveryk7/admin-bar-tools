@@ -141,4 +141,11 @@ class Abt_Options extends Abt_Base {
 	public function get_locale(): string {
 		return $this->locale;
 	}
+
+	/**
+	 * A method that returns the sc (SearchConsole) value.
+	 */
+	public function get_sc(): int {
+		return $this->sc;
+	}
 }
