@@ -16,8 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Abt_Options class.
- *
- * @phpstan-type items_type = array<array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}>
  */
 class Abt_Options extends Abt_Base {
 	/**
@@ -30,8 +28,7 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * Property that holds the items of abt_options.
 	 *
-	 * @phpstan-var items_type $items
-	 * @var         array      $items
+	 * @var array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}} $items
 	 */
 	private $items;
 
@@ -75,30 +72,21 @@ class Abt_Options extends Abt_Base {
 	 * Get the abt_options column and store it in the property.
 	 */
 	private function __construct() {
+		/**
+		 * $abt_options.
+		 *
+		 * @var array{"items":array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}},"locale":string,"sc":int,"theme_support":bool,"version":string}|bool $abt_options
+		 */
 		$abt_options = get_option( 'abt_options' );
 
-		if ( isset( $abt_options ) && is_array( $abt_options ) ) {
+		if ( $abt_options && is_array( $abt_options ) ) {
 			$this->abt_options_exists = true;
 
-			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
-				$this->items = $abt_options['items'];
-			}
-
-			if ( isset( $abt_options['locale'] ) && is_string( $abt_options['locale'] ) ) {
-				$this->locale = $abt_options['locale'];
-			}
-
-			if ( isset( $abt_options['sc'] ) && is_int( $abt_options['sc'] ) ) {
-				$this->sc = $abt_options['sc'];
-			}
-
-			if ( isset( $abt_options['theme_support'] ) && is_bool( $abt_options['theme_support'] ) ) {
-				$this->theme_support = $abt_options['theme_support'];
-			}
-
-			if ( isset( $abt_options['version'] ) && is_string( $abt_options['version'] ) ) {
-				$this->version = $abt_options['version'];
-			}
+			$this->items         = $abt_options['items'];
+			$this->locale        = $abt_options['locale'];
+			$this->sc            = $abt_options['sc'];
+			$this->theme_support = $abt_options['theme_support'];
+			$this->version       = $abt_options['version'];
 		} else {
 			$this->abt_options_exists = false;
 		}
@@ -141,8 +129,7 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * A method that returns the items.
 	 *
-	 * @phpstan-return items_type
-	 * @return         array
+	 * @return array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}}
 	 */
 	public function get_items(): array {
 		return $this->items;
