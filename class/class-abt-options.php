@@ -134,4 +134,11 @@ class Abt_Options extends Abt_Base {
 	public function is_version( string $version ): bool {
 		return version_compare( $this->version, $version, '=' );
 	}
+
+	/**
+	 * A method that returns the locale.
+	 */
+	public function get_locale(): string {
+		return $this->locale;
+	}
 }
