@@ -125,4 +125,13 @@ class Abt_Options extends Abt_Base {
 	public function is_theme_support(): bool {
 		return $this->theme_support;
 	}
+
+	/**
+	 * A method that compares the value of version and returns a boolean value.
+	 *
+	 * @param string $version The version to compare.
+	 */
+	public function is_version( string $version ): bool {
+		return version_compare( $this->version, $version, '<' );
+	}
 }
