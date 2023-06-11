@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Abt_Options class.
  *
- * @phpstan-type Items = array<array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order",int}>
+ * @phpstan-type items_type = array<array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}>
  */
 class Abt_Options extends Abt_Base {
 	/**
@@ -30,8 +30,8 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * Property that holds the items of abt_options.
 	 *
-	 * @phpstan-var Items $items
-	 * @var         array $items
+	 * @phpstan-var items_type $items
+	 * @var         array      $items
 	 */
 	private $items;
 
@@ -141,7 +141,7 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * A method that returns the items.
 	 *
-	 * @phpstan-return Items
+	 * @phpstan-return items_type
 	 * @return         array
 	 */
 	public function get_items(): array {
