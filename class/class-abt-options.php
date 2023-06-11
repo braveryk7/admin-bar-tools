@@ -16,6 +16,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Abt_Options class.
+ *
+ * @phpstan-type abt_options_items_types array{
+ *    string: array{
+ *      "name": string,
+ *      "shortname": string,
+ *      "status": bool,
+ *      "url": string,
+ *      "adminurl": string,
+ *      "order": int
+ *    }
+ * }
+ *
+ * @phpstan-type abt_options_types array{
+ *   "items": abt_options_items_types,
+ *   "locale": string,
+ *   "sc": int,
+ *   "theme_support": bool,
+ *   "version": string
+ * }|bool
  */
 class Abt_Options extends Abt_Base {
 	/**
@@ -28,7 +47,8 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * Property that holds the items of abt_options.
 	 *
-	 * @var array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}} $items
+	 * @phpstan-var abt_options_items_types $items
+	 * @var array $items
 	 */
 	private $items;
 
@@ -75,7 +95,7 @@ class Abt_Options extends Abt_Base {
 		/**
 		 * $abt_options.
 		 *
-		 * @var array{"items":array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}},"locale":string,"sc":int,"theme_support":bool,"version":string}|bool $abt_options
+		 * @phpstan-var abt_options_types $abt_options
 		 */
 		$abt_options = get_option( 'abt_options' );
 
@@ -129,7 +149,8 @@ class Abt_Options extends Abt_Base {
 	/**
 	 * A method that returns the items.
 	 *
-	 * @return array{string:array{"name":string,"shortname":string,"status":bool,"url":string,"adminurl":string,"order":int}}
+	 * @phpstan-return abt_options_items_types
+	 * @return array
 	 */
 	public function get_items(): array {
 		return $this->items;
