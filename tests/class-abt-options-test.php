@@ -14,6 +14,13 @@ class Abt_Options_Test extends TestCase {
 	private $instance;
 
 	/**
+	 * Settings: ABSPATH, test class file, WordPress functions.
+	 */
+	public static function set_up_before_class(): void {
+		require_once ROOT_DIR . '/class/class-abt-options.php';
+	}
+
+	/**
 	 * SetUp.
 	 * Create instance.
 	 */
