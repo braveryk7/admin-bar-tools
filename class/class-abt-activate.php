@@ -119,7 +119,6 @@ class Abt_Activate extends Abt_Base {
 	private function create_items(): array {
 		$items          = [];
 		$current_locale = get_locale();
-		$abt_options    = $this->get_abt_options();
 		$psi            = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
 
 		try {
@@ -208,7 +207,7 @@ class Abt_Activate extends Abt_Base {
 			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => $abt_options && isset( $abt_options['items'] ) ? $abt_options['items'][ $key ]['status'] : true,
+				'status'    => isset( $this->abt_options['items'] ) ? $this->abt_options['items'][ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],
