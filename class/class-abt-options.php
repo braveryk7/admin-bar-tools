@@ -38,13 +38,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Options extends Abt_Base {
 	/**
-	 * Static instance property that holds itself.
-	 *
-	 * @var Abt_Options $instance
-	 */
-	private static $instance;
-
-	/**
 	 * Property that holds the items of abt_options.
 	 *
 	 * @phpstan-var abt_options_items_types $items
