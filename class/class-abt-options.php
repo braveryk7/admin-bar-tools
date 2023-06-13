@@ -221,6 +221,17 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method to change the value of a version.
+	 *
+	 * @param string $version Version Value.
+	 */
+	public function set_version( string $version ): Abt_Options {
+		$this->version = $version;
+
+		return $this;
+	}
+
+	/**
 	 * Method to save the value in the abt_options column.
 	 */
 	public function save(): bool {
