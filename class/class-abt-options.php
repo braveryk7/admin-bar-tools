@@ -176,6 +176,18 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method to change the value of a items.
+	 *
+	 * @phpstan-param abt_options_items_types $items
+	 * @param array $items Items Value.
+	 */
+	public function set_items( array $items ): Abt_Options {
+		$this->items = $items;
+
+		return $this;
+	}
+
+	/**
 	 * A method to change the value of a locale.
 	 *
 	 * @param string $locale Locale Value.
