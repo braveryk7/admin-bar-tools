@@ -26,6 +26,6 @@ class Abt_Options_Test extends TestCase {
 	 */
 	public function set_up() :void {
 		parent::set_up();
-		$this->instance = Abt_Options::get_instance();
+		$this->instance = new Abt_Options();
 	}
 }
