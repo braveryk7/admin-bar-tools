@@ -86,7 +86,7 @@ class Abt_Options extends Abt_Base {
 	 *
 	 * @param array<string|int|bool|array<string>>|null $dependencies An array of dependencies.
 	 */
-	private function __construct( ?array $dependencies = null ) {
+	public function __construct( ?array $dependencies = null ) {
 		/**
 		 * $abt_options.
 		 *
