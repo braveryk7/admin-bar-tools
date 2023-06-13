@@ -91,13 +91,13 @@ class Abt_Options extends Abt_Base {
 	 * Constructor.
 	 * Get the abt_options column and store it in the property.
 	 *
-	 * @param array $dependencies An array of dependencies.
+	 * @param array<string|int|bool|array<string>>|null $dependencies An array of dependencies.
 	 */
-	private function __construct( array $dependencies = null ) {
+	private function __construct( ?array $dependencies = null ) {
 		/**
 		 * $abt_options.
 		 *
-		 * @phpstan-var abt_options_types $abt_options
+		 * @phpstan-var abt_options_types|null $abt_options
 		 */
 		$abt_options = $dependencies ?? get_option( 'abt_options' );
 
