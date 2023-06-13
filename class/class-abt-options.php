@@ -141,6 +141,16 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method that returns all values of abt_options.
+	 *
+	 * @phpstan-return abt_options_types
+	 * @return array|bool
+	 */
+	public function get_all_options(): array|bool {
+		return $this->abt_options;
+	}
+
+	/**
 	 * A method that returns the items.
 	 *
 	 * @phpstan-return abt_options_items_types
