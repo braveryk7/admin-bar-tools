@@ -38,6 +38,7 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	);
 } else {
 	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
+	require_once dirname( __FILE__ ) . '/class/class-abt-options.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
