@@ -72,11 +72,10 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$abt_options = $this->get_abt_options();
-			$link_url    = '';
+			$link_url = '';
 
-			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
-				foreach ( $abt_options['items'] as $item ) {
+			if ( isset( $this->abt_options['items'] ) && is_array( $this->abt_options['items'] ) ) {
+				foreach ( $this->abt_options['items'] as $item ) {
 					if ( is_array( $item ) && $item['status'] ) {
 						if ( $is_admin ) {
 							$link_url = $item['adminurl'];
@@ -84,7 +83,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 							$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
 							$link_url = match ( $item['shortname'] ) {
 								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
+								'gsc'    => $this->searchconsole_url( $item['url'], $this->abt_options['sc'], $url ),
 								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
 							};
 						}
@@ -177,9 +176,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		];
 		$current_theme  = wp_get_theme()->get_template();
 
-		$abt_options = $this->get_abt_options();
-
-		if ( isset( $abt_options['theme_support'] ) && $abt_options['theme_support'] && array_key_exists( $current_theme, $theme_url_list ) ) {
+		if ( isset( $this->abt_options['theme_support'] ) && $this->abt_options['theme_support'] && array_key_exists( $current_theme, $theme_url_list ) ) {
 			$theme_data = $theme_url_list[ $current_theme ];
 			$title_list = [
 				'official' => __( 'Official Site', 'admin-bar-tools' ),
