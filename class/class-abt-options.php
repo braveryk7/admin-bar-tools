@@ -198,6 +198,17 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method to change the value of a theme_support.
+	 *
+	 * @param bool $theme_support Theme Support Value.
+	 */
+	public function set_theme_support( bool $theme_support ): Abt_Options {
+		$this->theme_support = $theme_support;
+
+		return $this;
+	}
+
+	/**
 	 * Method to save the value in the abt_options column.
 	 */
 	public function save(): bool {
