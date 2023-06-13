@@ -90,15 +90,13 @@ class Abt_Activate extends Abt_Base {
 	 */
 	public function register_options(): void {
 		if ( ! $this->get_abt_options() ) {
-			$options = [
-				'items'         => $this->create_items(),
-				'locale'        => get_locale(),
-				'sc'            => 0,
-				'theme_support' => true,
-				'version'       => $this->get_version(),
-			];
-
-			$this->set_abt_options( $options );
+			$this->abt_options
+				->set_items( $this->create_items() )
+				->set_locale( get_locale() )
+				->set_sc( 0 )
+				->set_theme_support( true )
+				->set_version( $this->get_version() )
+				->save();
 		}
 	}
 
@@ -207,7 +205,7 @@ class Abt_Activate extends Abt_Base {
 			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => isset( $this->abt_options['items'] ) ? $this->abt_options['items'][ $key ]['status'] : true,
+				'status'    => $this->abt_options->is_abt_options_exists() && isset( $this->abt_options['items'] ) ? $this->abt_options['items'][ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],
