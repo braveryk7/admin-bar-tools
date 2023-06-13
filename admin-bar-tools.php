@@ -43,10 +43,12 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
+	$abt_options = new Abt_Options();
+
 	/**
 	 * Start admin page.
 	 */
-	new Abt_Admin_Page();
+	new Abt_Admin_Page( $abt_options );
 
 	/**
 	 * Plugin activate.
