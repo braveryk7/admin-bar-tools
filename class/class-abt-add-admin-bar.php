@@ -74,31 +74,29 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 
 			$link_url = '';
 
-			if ( isset( $this->abt_options['items'] ) && is_array( $this->abt_options['items'] ) ) {
-				foreach ( $this->abt_options['items'] as $item ) {
-					if ( is_array( $item ) && $item['status'] ) {
-						if ( $is_admin ) {
-							$link_url = $item['adminurl'];
-						} elseif ( get_the_ID() ) {
-							$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
-							$link_url = match ( $item['shortname'] ) {
-								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-								'gsc'    => $this->searchconsole_url( $item['url'], $this->abt_options['sc'], $url ),
-								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-							};
-						}
-						$wp_admin_bar->add_node(
-							[
-								'id'     => $item['shortname'],
-								'title'  => $item['name'],
-								'parent' => self::PREFIX,
-								'href'   => $link_url,
-								'meta'   => [
-									'target' => '_blank',
-								],
-							],
-						);
+			foreach ( $this->abt_options->get_items() as $item ) {
+				if ( $item['status'] ) {
+					if ( $is_admin ) {
+						$link_url = $item['adminurl'];
+					} elseif ( get_the_ID() ) {
+						$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
+						$link_url = match ( $item['shortname'] ) {
+							'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+							'gsc'    => $this->searchconsole_url( $item['url'], $this->abt_options->get_sc(), $url ),
+							default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+						};
 					}
+					$wp_admin_bar->add_node(
+						[
+							'id'     => $item['shortname'],
+							'title'  => $item['name'],
+							'parent' => self::PREFIX,
+							'href'   => $link_url,
+							'meta'   => [
+								'target' => '_blank',
+							],
+						],
+					);
 				}
 			}
 		}
