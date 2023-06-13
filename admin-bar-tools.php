@@ -58,7 +58,7 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	/**
 	 * Add admin bar menu.
 	 */
-	new Abt_Add_Admin_Bar();
+	new Abt_Add_Admin_Bar( $abt_options );
 
 	/**
 	 * Plugin uninstall hook.
