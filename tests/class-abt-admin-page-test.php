@@ -30,7 +30,7 @@ class Abt_Admin_Page_Test extends TestCase {
 	 */
 	public function set_up() :void {
 		parent::set_up();
-		$this->instance = new Abt_Admin_Page();
+		$this->instance = new Abt_Admin_Page( new Abt_Options() );
 
 		wp_set_current_user( null, 'admin' );
 	}
