@@ -19,6 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Add_Admin_Bar extends Abt_Base {
 	/**
+	 * Abt_Options instance.
+	 *
+	 * @var Abt_Options $abt_options instance
+	 */
+	private $abt_options;
+
+	/**
 	 * WordPress hook.
 	 */
 	public function __construct() {
