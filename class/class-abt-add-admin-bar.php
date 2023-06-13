@@ -27,8 +27,12 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 
 	/**
 	 * WordPress hook.
+	 *
+	 * @param Abt_Options $abt_options Abt_Options instance.
 	 */
-	public function __construct() {
+	public function __construct( Abt_Options $abt_options ) {
+		$this->abt_options = $abt_options;
+
 		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999, 2 );
 		add_action( 'admin_bar_menu', [ $this, 'add_theme_support_link' ], 999 );
 	}
