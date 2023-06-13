@@ -28,4 +28,14 @@ class Abt_Options_Test extends TestCase {
 		parent::set_up();
 		$this->instance = new Abt_Options();
 	}
+
+	/**
+	 * TEST: is_abt_options_exists()
+	 */
+	public function test_is_abt_options_exists(): void {
+		$this->assertTrue( $this->instance->is_abt_options_exists() );
+
+		delete_option( 'abt_options' );
+		$this->assertFalse( ( new Abt_Options() )->is_abt_options_exists() );
+	}
 }
