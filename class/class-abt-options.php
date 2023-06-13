@@ -176,6 +176,13 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method that returns the theme_support value.
+	 */
+	public function get_theme_support(): bool {
+		return $this->theme_support;
+	}
+
+	/**
 	 * A method to change the value of a items.
 	 *
 	 * @phpstan-param abt_options_items_types $items
