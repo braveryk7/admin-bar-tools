@@ -105,6 +105,8 @@ class Abt_Options extends Abt_Base {
 		if ( $abt_options && is_array( $abt_options ) ) {
 			$this->abt_options_exists = true;
 
+			$this->abt_options = $abt_options;
+
 			$this->items         = $abt_options['items'];
 			$this->locale        = $abt_options['locale'];
 			$this->sc            = $abt_options['sc'];
