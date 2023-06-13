@@ -53,7 +53,7 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	/**
 	 * Plugin activate.
 	 */
-	new Abt_Activate();
+	new Abt_Activate( $abt_options );
 
 	/**
 	 * Add admin bar menu.
