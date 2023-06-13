@@ -135,8 +135,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Custom endpoint for read.
 	 */
 	public function readable_api(): WP_REST_Response {
-		$abt_options = $this->get_abt_options();
-		return new WP_REST_Response( $abt_options, 200 );
+		return new WP_REST_Response( $this->abt_options->get_all_options(), 200 );
 	}
 
 	/**
@@ -168,5 +167,6 @@ class Abt_Admin_Page extends Abt_Base {
 	 */
 	public function abt_settings(): void {
 		echo '<div id="' . esc_attr( $this->get_option_group() ) . '"></div>';
+		$this->console( $this->get_abt_options() );
 	}
 }
