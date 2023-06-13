@@ -38,6 +38,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Options extends Abt_Base {
 	/**
+	 * Property that holds all values of abt_options.
+	 *
+	 * @phpstan-var abt_options_types $abt_options
+	 * @var array|false $abt_options
+	 */
+	private $abt_options;
+
+	/**
 	 * Property that holds the items of abt_options.
 	 *
 	 * @phpstan-var abt_options_items_types $items
