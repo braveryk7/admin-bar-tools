@@ -187,6 +187,17 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method to change the value of a sc (SearchConsole).
+	 *
+	 * @param int $sc SearchConsole Value.
+	 */
+	public function set_sc( int $sc ): Abt_Options {
+		$this->sc = $sc;
+
+		return $this;
+	}
+
+	/**
 	 * Method to save the value in the abt_options column.
 	 */
 	public function save(): bool {
