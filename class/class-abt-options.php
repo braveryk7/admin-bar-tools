@@ -224,6 +224,14 @@ class Abt_Options extends Abt_Base {
 	 * Method to save the value in the abt_options column.
 	 */
 	public function save(): bool {
+		$this->abt_options = [
+			'items'         => $this->items,
+			'locale'        => $this->locale,
+			'sc'            => $this->sc,
+			'theme_support' => $this->theme_support,
+			'version'       => $this->version,
+		];
+
 		return update_option( 'abt_options', $this->abt_options );
 	}
 }
