@@ -173,4 +173,11 @@ class Abt_Options extends Abt_Base {
 	public function get_sc(): int {
 		return $this->sc;
 	}
+
+	/**
+	 * Method to save the value in the abt_options column.
+	 */
+	public function save(): bool {
+		return update_option( 'abt_options', $this->abt_options );
+	}
 }
