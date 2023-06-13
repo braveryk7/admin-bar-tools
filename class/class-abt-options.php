@@ -92,6 +92,7 @@ class Abt_Options extends Abt_Base {
 	 * Constructor.
 	 * Get the abt_options column and store it in the property.
 	 *
+	 * @@phpstan-param abt_options_type|null $dependencies
 	 * @param array<string|int|bool|array<string>>|null $dependencies An array of dependencies.
 	 */
 	public function __construct( ?array $dependencies = null ) {
@@ -172,6 +173,17 @@ class Abt_Options extends Abt_Base {
 	 */
 	public function get_sc(): int {
 		return $this->sc;
+	}
+
+	/**
+	 * A method to change the value of a locale.
+	 *
+	 * @param string $locale Locale Value.
+	 */
+	public function set_locale( string $locale ): Abt_Options {
+		$this->locale = $locale;
+
+		return $this;
 	}
 
 	/**
