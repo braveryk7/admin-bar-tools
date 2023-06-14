@@ -165,7 +165,7 @@ class Abt_Options extends Abt_Base {
 	 * Method to add missing items to abt_options.
 	 */
 	public function update_abt_options(): void {
-		if ( $this->get_version() && is_array( $this->get_all_options() ) && ! $this->is_version( $this->get_version() ) ) {
+		if ( is_array( $this->get_all_options() ) ) {
 			foreach ( self::OPTIONS_KEY as $key_name ) {
 				if ( ! array_key_exists( $key_name, $this->get_all_options() ) ) {
 					if ( 'theme_support' === $key_name ) {
