@@ -110,11 +110,7 @@ class Abt_Options extends Abt_Base {
 
 			$this->abt_options = $abt_options;
 
-			$this->items         = $abt_options['items'];
-			$this->locale        = $abt_options['locale'];
-			$this->sc            = $abt_options['sc'];
-			$this->theme_support = $abt_options['theme_support'];
-			$this->version       = $abt_options['version'];
+			$this->set_properties( $abt_options );
 		} else {
 			$this->abt_options_exists = false;
 		}
