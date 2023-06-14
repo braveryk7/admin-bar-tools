@@ -16,6 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Class for the process to be executed when a plugin is activated or uninstalled.
+ *
+ * @phpstan-import-type abt_options_items_types from Abt_Options
  */
 class Abt_Activate extends Abt_Base {
 	/**
@@ -112,7 +114,8 @@ class Abt_Activate extends Abt_Base {
 	/**
 	 * Generate status item value.
 	 *
-	 * @return array<string,array<string,string|int>>
+	 * @phpstan-return abt_options_items_types
+	 * @return array
 	 */
 	private function create_items(): array {
 		$items          = [];
@@ -205,7 +208,7 @@ class Abt_Activate extends Abt_Base {
 			$items[ $key ] = [
 				'name'      => $value['name'],
 				'shortname' => $key,
-				'status'    => $this->abt_options->is_abt_options_exists() && isset( $this->abt_options['items'] ) ? $this->abt_options['items'][ $key ]['status'] : true,
+				'status'    => $this->abt_options->is_abt_options_exists() ? $this->abt_options->get_items()[ $key ]['status'] : true,
 				'url'       => $value['url'],
 				'adminurl'  => $value['admin'],
 				'order'     => $value['order'],
