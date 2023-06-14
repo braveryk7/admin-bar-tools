@@ -28,13 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  *      "order": int
  * }>
  *
- * @phpstan-type abt_options_types array{
+ * @phpstan-type abt_options_array_type array{
  *   "items": abt_options_items_types,
  *   "locale": string,
  *   "sc": int,
  *   "theme_support": bool,
  *   "version": string
- * }|bool
+ * }
+ *
+ * @phpstan-type abt_options_types abt_options_array_type|false
  */
 class Abt_Options extends Abt_Base {
 	/**
@@ -103,7 +105,7 @@ class Abt_Options extends Abt_Base {
 		 */
 		$abt_options = $dependencies ?? get_option( 'abt_options' );
 
-		if ( $abt_options && is_array( $abt_options ) ) {
+		if ( $abt_options ) {
 			$this->abt_options_exists = true;
 
 			$this->abt_options = $abt_options;
