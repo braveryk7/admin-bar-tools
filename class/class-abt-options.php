@@ -138,18 +138,17 @@ class Abt_Options extends Abt_Base {
 
 	/**
 	 * Method to set the value of abt_options to the property.
-	 *
-	 * @phpstan-param abt_options_array_type $abt_options
-	 * @param array $abt_options An array of abt_options.
 	 */
-	private function set_properties( array $abt_options ): void {
-		$this->abt_options_exists = true;
+	private function set_properties(): void {
+		if ( $this->abt_options ) {
+			$this->abt_options_exists = true;
 
-		$this->items         = $abt_options['items'];
-		$this->locale        = $abt_options['locale'];
-		$this->sc            = $abt_options['sc'];
-		$this->theme_support = $abt_options['theme_support'];
-		$this->version       = $abt_options['version'];
+			$this->items         = $this->abt_options['items'];
+			$this->locale        = $this->abt_options['locale'];
+			$this->sc            = $this->abt_options['sc'];
+			$this->theme_support = $this->abt_options['theme_support'];
+			$this->version       = $this->abt_options['version'];
+		}
 	}
 
 	/**
