@@ -17,16 +17,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Abt_Options class.
  *
- * @phpstan-type abt_options_items_types array{
- *    string: array{
+ * @phpstan-type abt_options_items_key_types "psi"|"lh"|"gsc"|"gc"|"gi"|"bi"|"twitter"|"facebook"|"hatena"
+ *
+ * @phpstan-type abt_options_items_types array<abt_options_items_key_types, array{
  *      "name": string,
- *      "shortname": string,
+ *      "shortname": abt_options_items_key_types,
  *      "status": bool,
  *      "url": string,
  *      "adminurl": string,
  *      "order": int
- *    }
- * }
+ * }>
  *
  * @phpstan-type abt_options_types array{
  *   "items": abt_options_items_types,
