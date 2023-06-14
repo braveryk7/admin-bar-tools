@@ -162,6 +162,21 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * Method to add missing items to abt_options.
+	 */
+	public function update_abt_options(): void {
+		if ( $this->get_version() && is_array( $this->get_all_options() ) && ! $this->is_version( $this->get_version() ) ) {
+			foreach ( self::OPTIONS_KEY as $key_name ) {
+				if ( ! array_key_exists( $key_name, $this->get_all_options() ) ) {
+					if ( 'theme_support' === $key_name ) {
+						$this->set_theme_support( true )->save();
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * A method that returns all values of abt_options.
 	 *
 	 * @phpstan-return abt_options_types
