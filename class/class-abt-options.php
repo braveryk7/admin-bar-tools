@@ -119,6 +119,26 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * Method to check if the key specified in abt_options exists.
+	 *
+	 * @param array<mixed>|bool $abt_options An array of abt_options.
+	 */
+	public function is_key_exists( array|bool $abt_options ): bool {
+		if ( is_bool( $abt_options ) ) {
+			return false;
+		}
+
+		return match ( true ) {
+			! array_key_exists( 'items', $abt_options ) => false,
+			! array_key_exists( 'locale', $abt_options ) => false,
+			! array_key_exists( 'sc', $abt_options ) => false,
+			! array_key_exists( 'theme_support', $abt_options ) => false,
+			! array_key_exists( 'version', $abt_options ) => false,
+			default => true,
+		};
+	}
+
+	/**
 	 * A method that returns whether or not the abt_options column exists.
 	 */
 	public function is_abt_options_exists(): bool {
