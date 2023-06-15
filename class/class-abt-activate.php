@@ -57,15 +57,6 @@ class Abt_Activate extends Abt_Base {
 	}
 
 	/**
-	 * Method that compares the VERSION of abt_options with the VERSION value of Abt_Base.
-	 *
-	 * @param string $abt_options_version abt_options version.
-	 */
-	private function is_abt_version( string $abt_options_version ): bool {
-		return $this->get_version() === $abt_options_version ? true : false;
-	}
-
-	/**
 	 * Register wp_options column.
 	 */
 	public function register_options(): void {
