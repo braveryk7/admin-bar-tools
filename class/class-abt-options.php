@@ -320,4 +320,111 @@ class Abt_Options extends Abt_Base {
 
 		return update_option( 'abt_options', $this->abt_options );
 	}
+
+	/**
+	 * Generate status item value.
+	 *
+	 * @phpstan-return abt_options_items_types
+	 * @return array
+	 */
+	private function create_items(): array {
+		$items          = [];
+		$current_locale = get_locale();
+		$psi            = 'https://developers.google.com/speed/pagespeed/insights/?hl=';
+
+		try {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+
+			if ( WP_Filesystem() ) {
+				global $wp_filesystem;
+
+				$locales       = $wp_filesystem->get_contents( $this->get_plugin_dir() . '/common/locales.json' );
+				$psi_admin_url = $psi . json_decode( $locales )->$current_locale->id;
+			} else {
+				$request = wp_remote_get( $this->get_plugin_url() . '/common/locales.json' );
+
+				if ( 200 === wp_remote_retrieve_response_code( $request ) ) {
+					$locales = json_decode( wp_remote_retrieve_body( $request ), true );
+
+					if ( is_array( $locales ) && array_key_exists( $current_locale, $locales ) && is_array( $locales[ $current_locale ] ) ) {
+						$psi_admin_url = array_key_exists( $current_locale, $locales )
+							? $psi . $locales[ $current_locale ]['id']
+							: $psi . 'us';
+					}
+				}
+			}
+		} finally {
+			$psi_url = $psi_admin_url ?? $psi . 'us';
+		}
+
+		$location_url = [
+			'psi'      => [
+				'url'   => $psi_url . '&url=',
+				'admin' => $psi_url,
+				'name'  => __( 'PageSpeed Insights', 'admin-bar-tools' ),
+				'order' => 1,
+			],
+			'lh'       => [
+				'url'   => 'https://googlechrome.github.io/lighthouse/viewer/?psiurl=',
+				'admin' => 'https://googlechrome.github.io/lighthouse/viewer/',
+				'name'  => __( 'Lighthouse', 'admin-bar-tools' ),
+				'order' => 2,
+			],
+			'gsc'      => [
+				'url'   => 'https://search.google.com/search-console',
+				'admin' => 'https://search.google.com/search-console',
+				'name'  => __( 'Google Search Console', 'admin-bar-tools' ),
+				'order' => 3,
+			],
+			'gc'       => [
+				'url'   => 'https://webcache.googleusercontent.com/search?q=cache%3A',
+				'admin' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
+				'name'  => __( 'Google Cache', 'admin-bar-tools' ),
+				'order' => 4,
+			],
+			'gi'       => [
+				'url'   => 'https://www.google.com/search?q=site%3A',
+				'admin' => 'https://www.google.com/search?q=site%3A',
+				'name'  => __( 'Google Index', 'admin-bar-tools' ),
+				'order' => 5,
+			],
+			'bi'       => [
+				'url'   => 'https://www.bing.com/search?q=url%3a',
+				'admin' => 'https://www.bing.com/search?q=url%3a',
+				'name'  => __( 'Bing Index', 'admin-bar-tools' ),
+				'order' => 9,
+			],
+			'twitter'  => [
+				'url'   => 'https://twitter.com/search?f=live&q=',
+				'admin' => 'https://twitter.com/',
+				'name'  => __( 'Twitter Search', 'admin-bar-tools' ),
+				'order' => 6,
+			],
+			'facebook' => [
+				'url'   => 'https://www.facebook.com/search/top?q=',
+				'admin' => 'https://www.facebook.com/',
+				'name'  => __( 'Facebook Search', 'admin-bar-tools' ),
+				'order' => 7,
+			],
+			'hatena'   => [
+				'url'   => 'https://b.hatena.ne.jp/entry/s/',
+				'admin' => 'https://b.hatena.ne.jp/',
+				'name'  => __( 'Hatena Bookmark', 'admin-bar-tools' ),
+				'order' => 8,
+			],
+		];
+
+		foreach ( $location_url as $key => $value ) {
+			$items[ $key ] = [
+				'name'      => $value['name'],
+				'shortname' => $key,
+				'status'    => $this->is_abt_options_exists() ? $this->get_items()[ $key ]['status'] : true,
+				'url'       => $value['url'],
+				'adminurl'  => $value['admin'],
+				'order'     => $value['order'],
+			];
+		}
+
+		return $items;
+	}
 }
