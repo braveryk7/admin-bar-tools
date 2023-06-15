@@ -108,11 +108,26 @@ class Abt_Options extends Abt_Base {
 		if ( $abt_options ) {
 			$this->abt_options_exists = true;
 
-			$this->abt_options = $abt_options;
-
-			$this->set_properties( $abt_options );
+			if ( ! $this->is_key_exists( $abt_options ) ) {
+				$abt_options = $this->update_abt_options( $abt_options );
+			}
 		} else {
 			$this->abt_options_exists = false;
+			$this->register_options();
+			$this->abt_options_exists = true;
+
+			/**
+			 * $abt_options.
+			 *
+			 * @phpstan-var abt_options_types|false $abt_options
+			 */
+			$abt_options = get_option( 'abt_options' );
+		}
+
+		if ( is_array( $abt_options ) ) {
+			$this->abt_options = $abt_options;
+
+			$this->set_properties();
 		}
 	}
 
