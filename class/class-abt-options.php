@@ -101,7 +101,7 @@ class Abt_Options extends Abt_Base {
 		/**
 		 * $abt_options.
 		 *
-		 * @phpstan-var abt_options_types|null $abt_options
+		 * @phpstan-var abt_options_types|false|null $abt_options
 		 */
 		$abt_options = $dependencies ?? get_option( 'abt_options' );
 
