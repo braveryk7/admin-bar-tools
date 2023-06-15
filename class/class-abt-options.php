@@ -137,6 +137,20 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * Register wp_options column.
+	 */
+	public function register_options(): void {
+		if ( ! $this->get_abt_options() ) {
+			$this->set_items( $this->create_items() )
+				->set_locale( get_locale() )
+				->set_sc( 0 )
+				->set_theme_support( true )
+				->set_version( $this->get_version() )
+				->save();
+		}
+	}
+
+	/**
 	 * Method to set the value of abt_options to the property.
 	 */
 	private function set_properties(): void {
