@@ -36,7 +36,6 @@ class Abt_Activate extends Abt_Base {
 		$this->abt_options = $abt_options;
 
 		register_activation_hook( $this->get_plugin_path(), [ $this, 'register_options' ] );
-		add_action( 'init', [ $this, 'update_abt_options' ], 10 );
 		add_filter( 'http_request_args', [ $this, 'check_environment' ], 0, 1 );
 	}
 
@@ -55,27 +54,6 @@ class Abt_Activate extends Abt_Base {
 			default => true,
 		};
 		return $args;
-	}
-
-	/**
-	 * Method to add missing items to abt_options.
-	 */
-	public function update_abt_options(): void {
-		$abt_options = $this->get_abt_options();
-
-		if ( ! $abt_options ) {
-			$this->register_options();
-		} elseif ( isset( $abt_options['version'] ) && is_string( $abt_options['version'] ) && $this->is_abt_version( $abt_options['version'] ) ) {
-			foreach ( self::OPTIONS_KEY as $key_name ) {
-				if ( ! array_key_exists( $key_name, $abt_options ) ) {
-					if ( 'theme_support' === $key_name ) {
-						$abt_options[ $key_name ] = true;
-					}
-				}
-			}
-
-			$this->set_abt_options( $abt_options );
-		}
 	}
 
 	/**
