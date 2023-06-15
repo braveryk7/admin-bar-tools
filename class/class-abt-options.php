@@ -176,17 +176,23 @@ class Abt_Options extends Abt_Base {
 
 	/**
 	 * Method to add missing items to abt_options.
+	 *
+	 * @phpstan-param abt_options_array_type $abt_options
+	 * @param array $abt_options An array of abt_options.
+	 *
+	 * @phpstan-return abt_options_array_type
+	 * @return array
 	 */
-	public function update_abt_options(): void {
-		if ( is_array( $this->get_all_options() ) ) {
-			foreach ( self::OPTIONS_KEY as $key_name ) {
-				if ( ! array_key_exists( $key_name, $this->get_all_options() ) ) {
-					if ( 'theme_support' === $key_name ) {
-						$this->set_theme_support( true )->save();
-					}
+	public function update_abt_options( array $abt_options ): array {
+		foreach ( self::OPTIONS_KEY as $key_name ) {
+			if ( ! array_key_exists( $key_name, $abt_options ) ) {
+				if ( 'theme_support' === $key_name ) {
+					$abt_options['theme_support'] = true;
 				}
 			}
 		}
+
+		return $abt_options;
 	}
 
 	/**
