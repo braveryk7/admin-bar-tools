@@ -150,4 +150,11 @@ class Abt_Options_Test extends TestCase {
 	public function test_set_version(): void {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
+
+	/**
+	 * TEST: save()
+	 */
+	public function test_save(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
