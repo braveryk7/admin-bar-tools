@@ -94,4 +94,11 @@ class Abt_Options_Test extends TestCase {
 	public function test_get_items(): void {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
+
+	/**
+	 * TEST: get_locale()
+	 */
+	public function test_get_locale(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
