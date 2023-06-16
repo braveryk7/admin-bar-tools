@@ -129,7 +129,10 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: set_locale()
 	 */
 	public function test_set_locale(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$current_locale = get_locale();
+		$this->assertSame( $current_locale, $this->instance->get_locale() );
+		$this->instance->set_locale( 'ja' === $current_locale ? 'en_US' : 'ja' )->save();
+		$this->assertNotSame( $current_locale, $this->instance->get_locale() );
 	}
 
 	/**
@@ -165,7 +168,7 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: save()
 	 */
 	public function test_save(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$this->markTestIncomplete( 'This test has not been implemented yet . ' );
 	}
 
 	/**
