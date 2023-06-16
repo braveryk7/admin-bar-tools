@@ -37,6 +37,13 @@ class Abt_Options_Test extends TestCase {
 	}
 
 	/**
+	 * TEST: register_options()
+	 */
+	public function test_register_options(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
+
+	/**
 	 * TEST: is_abt_options_exists()
 	 */
 	public function test_is_abt_options_exists(): void {
