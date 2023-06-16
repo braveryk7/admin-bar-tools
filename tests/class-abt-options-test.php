@@ -80,4 +80,11 @@ class Abt_Options_Test extends TestCase {
 	public function test_update_abt_options(): void {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
+
+	/**
+	 * TEST: get_all_options()
+	 */
+	public function test_get_all_options(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
