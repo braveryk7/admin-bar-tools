@@ -136,7 +136,9 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: set_sc()
 	 */
 	public function test_set_sc(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$this->assertSame( 0, $this->instance->get_sc() );
+		$this->instance->set_sc( 1 )->save();
+		$this->assertSame( 1, $this->instance->get_sc() );
 	}
 
 	/**
