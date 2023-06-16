@@ -31,7 +31,7 @@ class Abt_Activate_Test extends TestCase {
 	 */
 	public function set_up() :void {
 		parent::set_up();
-		$this->instance = new Abt_Activate();
+		$this->instance = new Abt_Activate( new Abt_Options() );
 	}
 
 	/**
