@@ -59,4 +59,11 @@ class Abt_Options_Test extends TestCase {
 		delete_option( 'abt_options' );
 		$this->assertFalse( ( new Abt_Options() )->is_abt_options_exists() );
 	}
+
+	/**
+	 * TEST: is_theme_support()
+	 */
+	public function test_is_theme_support(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
