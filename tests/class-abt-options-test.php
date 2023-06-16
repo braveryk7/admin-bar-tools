@@ -64,7 +64,9 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: is_theme_support()
 	 */
 	public function test_is_theme_support(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$this->assertTrue( $this->instance->is_theme_support() );
+		$this->instance->set_theme_support( false );
+		$this->assertFalse( $this->instance->is_theme_support() );
 	}
 
 	/**
