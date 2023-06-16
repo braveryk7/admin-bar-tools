@@ -180,30 +180,4 @@ class Abt_Activate_Test extends TestCase {
 
 		$this->assertTrue( empty( $removed_abt_options ) );
 	}
-
-	/**
-	 * TEST: create_items()
-	 *
-	 * @testWith [ "psi" ]
-	 *           [ "lh" ]
-	 *           [ "gsc" ]
-	 *           [ "gc" ]
-	 *           [ "gi" ]
-	 *           [ "bi" ]
-	 *           [ "twitter" ]
-	 *           [ "facebook" ]
-	 *           [ "hatena" ]
-	 *
-	 * @param string $key  Array key name.
-	 */
-	public function test_create_items( string $key ): void {
-		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
-		$create_items->setAccessible( true );
-
-		$items = $create_items->invoke( $this->instance );
-
-		$this->assertIsArray( $items );
-
-		$this->assertArrayHasKey( $key, $items );
-	}
 }

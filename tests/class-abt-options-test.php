@@ -160,8 +160,27 @@ class Abt_Options_Test extends TestCase {
 
 	/**
 	 * TEST: create_items()
+	 *
+	 * @testWith [ "psi" ]
+	 *           [ "lh" ]
+	 *           [ "gsc" ]
+	 *           [ "gc" ]
+	 *           [ "gi" ]
+	 *           [ "bi" ]
+	 *           [ "twitter" ]
+	 *           [ "facebook" ]
+	 *           [ "hatena" ]
+	 *
+	 * @param string $key  Array key name.
 	 */
-	public function test_create_items(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	public function test_create_items( string $key ): void {
+		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
+		$create_items->setAccessible( true );
+
+		$items = $create_items->invoke( $this->instance );
+
+		$this->assertIsArray( $items );
+
+		$this->assertArrayHasKey( $key, $items );
 	}
 }
