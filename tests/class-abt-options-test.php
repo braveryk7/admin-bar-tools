@@ -129,4 +129,11 @@ class Abt_Options_Test extends TestCase {
 	public function test_set_locale(): void {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
+
+	/**
+	 * TEST: set_sc()
+	 */
+	public function test_set_sc(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
