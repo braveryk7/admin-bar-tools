@@ -30,6 +30,13 @@ class Abt_Options_Test extends TestCase {
 	}
 
 	/**
+	 * TEST: is_key_exists()
+	 */
+	public function test_is_key_exists(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
+
+	/**
 	 * TEST: is_abt_options_exists()
 	 */
 	public function test_is_abt_options_exists(): void {
