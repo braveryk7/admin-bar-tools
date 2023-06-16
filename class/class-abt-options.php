@@ -219,6 +219,7 @@ class Abt_Options extends Abt_Base {
 					$abt_options['theme_support'] = true;
 				}
 			}
+			update_option( 'abt_options', $abt_options );
 		}
 
 		return $abt_options;
