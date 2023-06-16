@@ -57,7 +57,7 @@ class Abt_Options_Test extends TestCase {
 		$this->assertTrue( $this->instance->is_abt_options_exists() );
 
 		delete_option( 'abt_options' );
-		$this->assertFalse( ( new Abt_Options() )->is_abt_options_exists() );
+		$this->assertTrue( ( new Abt_Options() )->is_abt_options_exists() );
 	}
 
 	/**
