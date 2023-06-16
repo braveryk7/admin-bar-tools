@@ -44,6 +44,13 @@ class Abt_Options_Test extends TestCase {
 	}
 
 	/**
+	 * TEST: set_properties()
+	 */
+	public function test_set_properties(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
+
+	/**
 	 * TEST: is_abt_options_exists()
 	 */
 	public function test_is_abt_options_exists(): void {
