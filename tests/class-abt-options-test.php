@@ -115,4 +115,11 @@ class Abt_Options_Test extends TestCase {
 	public function test_get_theme_support(): void {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
+
+	/**
+	 * TEST: set_items()
+	 */
+	public function test_set_items(): void {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	}
 }
