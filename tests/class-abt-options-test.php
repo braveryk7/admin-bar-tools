@@ -168,7 +168,11 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: save()
 	 */
 	public function test_save(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet . ' );
+		$this->instance->set_locale( 'ja' )->save();
+		$this->assertSame( 'ja', $this->instance->get_locale() );
+
+		$this->instance->set_locale( 'en_US' )->save();
+		$this->assertSame( 'en_US', $this->instance->get_locale() );
 	}
 
 	/**
