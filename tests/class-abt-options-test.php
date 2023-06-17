@@ -40,7 +40,11 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: register_options()
 	 */
 	public function test_register_options(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		delete_option( 'abt_options' );
+		$this->assertFalse( get_option( 'abt_options' ) );
+
+		$this->instance->register_options();
+		$this->assertNotFalse( get_option( 'abt_options' ) );
 	}
 
 	/**
