@@ -80,7 +80,17 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: update_abt_options()
 	 */
 	public function test_update_abt_options(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$abt_options_without_theme_support = [
+			'items'   => [],
+			'locale'  => '',
+			'sc'      => 0,
+			'version' => '',
+		];
+
+		// @phpstan-ignore-next-line
+		$abt_options = $this->instance->update_abt_options( $abt_options_without_theme_support );
+		// @phpstan-ignore-next-line
+		$this->assertTrue( array_key_exists( 'theme_support', $abt_options ) );
 	}
 
 	/**
