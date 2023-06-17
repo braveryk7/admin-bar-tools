@@ -299,7 +299,7 @@ class Abt_Options_Test extends TestCase {
 	 *
 	 * @return array<array<string>>
 	 */
-	public function data_provider_test_get_items(): array {
+	public function data_provider_items_key(): array {
 		return [
 			'psi'      => [ 'psi' ],
 			'lh'       => [ 'lh' ],
