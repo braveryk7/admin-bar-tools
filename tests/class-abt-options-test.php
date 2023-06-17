@@ -106,9 +106,16 @@ class Abt_Options_Test extends TestCase {
 
 	/**
 	 * TEST: get_sc()
+	 *
+	 * @testWith [ 0 ]
+	 *           [ 1 ]
+	 *           [ 2 ]
+	 *
+	 * @param int $sc_value sc_value.
 	 */
-	public function test_get_sc(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	public function test_get_sc( int $sc_value ): void {
+		$this->instance->set_sc( $sc_value )->save();
+		$this->assertSame( $sc_value, $this->instance->get_sc() );
 	}
 
 	/**
