@@ -81,11 +81,7 @@ class Abt_Activate_Test extends TestCase {
 	 * @param ?string $parameter Parameter name.
 	 */
 	public function test_register_options( string $property, ?string $parameter ): void {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$abt_options = ( new Abt_Options() )->get_all_options();
 
 		$this->assertIsArray( $abt_options );
 
