@@ -58,7 +58,27 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: set_properties()
 	 */
 	public function test_set_properties(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$abt_options = [
+			'items'         => [],
+			'locale'        => '',
+			'sc'            => 0,
+			'theme_support' => true,
+			'version'       => '',
+		];
+
+		$method = new ReflectionMethod( $this->instance, 'set_properties' );
+		$method->setAccessible( true );
+
+		$reflection = new ReflectionClass( $this->instance );
+		$property   = $reflection->getProperty( 'abt_options' );
+		$property->setAccessible( true );
+
+		$this->assertNotSame( $abt_options['locale'], $this->instance->get_locale() );
+
+		$property->setValue( $this->instance, $abt_options );
+		$method->invoke( $this->instance );
+
+		$this->assertSame( $abt_options['locale'], $this->instance->get_locale() );
 	}
 
 	/**
