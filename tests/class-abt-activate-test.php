@@ -101,17 +101,13 @@ class Abt_Activate_Test extends TestCase {
 	 * TEST: uninstall_options()
 	 */
 	public function test_uninstall_options(): void {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$abt_options = ( new Abt_Options() )->get_all_options();
 
 		$this->assertTrue( ! empty( $abt_options ) );
 
 		Abt_Activate::uninstall_options();
 
-		$removed_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$removed_abt_options = get_option( 'abt_options' );
 
 		$this->assertTrue( empty( $removed_abt_options ) );
 	}
