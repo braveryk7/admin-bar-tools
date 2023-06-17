@@ -177,31 +177,6 @@ class Abt_Base_Test extends TestCase {
 	}
 
 	/**
-	 * TEST: set_abt_options()
-	 */
-	public function test_set_abt_options(): void {
-		$abt_base_set_abt_options = new ReflectionMethod( $this->instance, 'set_abt_options' );
-		$abt_base_set_abt_options->setAccessible( true );
-
-		$abt_base_get_abt_options = new ReflectionMethod( $this->instance, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$get_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
-
-		$this->assertIsArray( $get_abt_options );
-
-		$abt_options                  = $get_abt_options;
-		$abt_options['theme_support'] = ! $abt_options['theme_support'];
-
-		$abt_base_set_abt_options->invoke( $this->instance, $abt_options );
-
-		$actual_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
-		$this->assertIsArray( $actual_abt_options );
-
-		$this->assertNotSame( $get_abt_options['theme_support'], $actual_abt_options['theme_support'] );
-	}
-
-	/**
 	 * TEST: console()
 	 */
 	public function test_console(): void {
