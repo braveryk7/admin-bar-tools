@@ -277,6 +277,20 @@ class Abt_Options extends Abt_Base {
 	}
 
 	/**
+	 * A method to switch the status of each element of items.
+	 *
+	 * @param string $key Key Value.
+	 * @param bool   $status Status Value.
+	 */
+	public function set_items_status( string $key, bool $status ): Abt_Options {
+		if ( array_key_exists( $key, $this->items ) ) {
+			$this->items[ $key ]['status'] = $status;
+		}
+
+		return $this;
+	}
+
+	/**
 	 * A method to change the value of a locale.
 	 *
 	 * @param string $locale Locale Value.
