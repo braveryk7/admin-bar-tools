@@ -33,7 +33,14 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: is_key_exists()
 	 */
 	public function test_is_key_exists(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$abt_options = [
+			'items'   => [],
+			'locale'  => '',
+			'sc'      => 0,
+			'version' => '',
+		];
+
+		$this->assertFalse( $this->instance->is_key_exists( $abt_options ) );
 	}
 
 	/**
