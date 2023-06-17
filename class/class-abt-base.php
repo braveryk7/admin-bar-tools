@@ -116,15 +116,6 @@ class Abt_Base {
 	}
 
 	/**
-	 * Set abt_options.
-	 *
-	 * @param array<string,mixed> $abt_options abt_options column data.
-	 */
-	protected function set_abt_options( array $abt_options ): bool {
-		return update_option( $this->add_prefix( self::OPTIONS_COLUMN_NAME ), $abt_options );
-	}
-
-	/**
 	 * Output browser console.
 	 * WARNING: Use debag only!
 	 *
