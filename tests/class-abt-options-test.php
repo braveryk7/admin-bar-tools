@@ -73,7 +73,10 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: is_version()
 	 */
 	public function test_is_version(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$version = '1.0.0';
+		$this->instance->set_version( $version )->save();
+
+		$this->assertTrue( $this->instance->is_version( $version ) );
 	}
 
 	/**
