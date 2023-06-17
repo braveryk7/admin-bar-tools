@@ -191,10 +191,7 @@ class Abt_Admin_Page_Test extends TestCase {
 		$abt_base_get_api_namespace = new ReflectionMethod( $abt_base, 'get_api_namespace' );
 		$abt_base_get_api_namespace->setAccessible( true );
 
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$abt_options = ( new Abt_Options() )->get_all_options();
 		$this->assertIsArray( $abt_options );
 
 		$api_namespace = $abt_base_get_api_namespace->invoke( $abt_base );
@@ -205,7 +202,7 @@ class Abt_Admin_Page_Test extends TestCase {
 		$request->set_param( 'theme_support', ! $abt_options['theme_support'] );
 		rest_do_request( $request );
 
-		$actual_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$actual_abt_options = ( new Abt_Options() )->get_all_options();
 		$this->assertIsArray( $actual_abt_options );
 
 		$this->assertNotSame( $abt_options['theme_support'], $actual_abt_options['theme_support'] );
