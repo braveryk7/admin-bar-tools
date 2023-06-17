@@ -145,7 +145,11 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: set_items()
 	 */
 	public function test_set_items(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$items                  = $this->instance->get_items();
+		$items['psi']['status'] = ! $items['psi']['status'];
+		$this->instance->set_items( $items )->save();
+
+		$this->assertSame( $items['psi']['status'], $this->instance->get_items()['psi']['status'] );
 	}
 
 	/**
