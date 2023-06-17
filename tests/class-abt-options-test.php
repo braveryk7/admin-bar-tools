@@ -85,9 +85,16 @@ class Abt_Options_Test extends TestCase {
 
 	/**
 	 * TEST: get_all_options()
+	 *
+	 * @dataProvider data_provider_test_get_all_options
+	 * @param string $key_name key_name.
 	 */
-	public function test_get_all_options(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	public function test_get_all_options( string $key_name ): void {
+		if ( is_array( $this->instance->get_all_options() ) ) {
+			$this->assertTrue( array_key_exists( $key_name, $this->instance->get_all_options() ) );
+		} else {
+			$this->assertFalse( $this->instance->get_all_options() );
+		}
 	}
 
 	/**
