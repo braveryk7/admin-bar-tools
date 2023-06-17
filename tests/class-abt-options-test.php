@@ -204,6 +204,20 @@ class Abt_Options_Test extends TestCase {
 	}
 
 	/**
+	 * TEST: set_items_status()
+	 *
+	 * @dataProvider data_provider_items_key
+	 * @param string $key key.
+	 */
+	public function test_set_items_status( string $key ): void {
+		$items  = $this->instance->get_items();
+		$status = $items[ $key ]['status'];
+
+		$this->instance->set_items_status( $key, ! $status )->save();
+		$this->assertNotSame( $status, $this->instance->get_items()[ $key ]['status'] );
+	}
+
+	/**
 	 * TEST: set_locale()
 	 */
 	public function test_set_locale(): void {
