@@ -99,9 +99,16 @@ class Abt_Options_Test extends TestCase {
 
 	/**
 	 * TEST: get_locale()
+	 *
+	 * @testWith [ "ja" ]
+	 *           [ "en_US" ]
+	 *
+	 * @param string $locale_value locale_value.
 	 */
-	public function test_get_locale(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	public function test_get_locale( string $locale_value ): void {
+		$this->instance->set_locale( $locale_value )->save();
+		$this->assertSame( $locale_value, $this->instance->get_locale() );
+
 	}
 
 	/**
