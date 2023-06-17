@@ -92,9 +92,12 @@ class Abt_Options_Test extends TestCase {
 
 	/**
 	 * TEST: get_get_items()
+	 *
+	 * @dataProvider data_provider_test_get_items
+	 * @param string $key_name key_name.
 	 */
-	public function test_get_items(): void {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+	public function test_get_items( string $key_name ): void {
+		$this->assertTrue( array_key_exists( $key_name, $this->instance->get_items() ) );
 	}
 
 	/**
