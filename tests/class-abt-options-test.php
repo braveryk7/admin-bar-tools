@@ -144,7 +144,7 @@ class Abt_Options_Test extends TestCase {
 	/**
 	 * TEST: get_get_items()
 	 *
-	 * @dataProvider data_provider_test_get_items
+	 * @dataProvider data_provider_items_key
 	 * @param string $key_name key_name.
 	 */
 	public function test_get_items( string $key_name ): void {
