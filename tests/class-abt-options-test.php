@@ -229,11 +229,11 @@ class Abt_Options_Test extends TestCase {
 	}
 
 	/**
-	 * Data provider for test_get_all_items method.
+	 * Data provider for test_get_all_options method.
 	 *
 	 * @return array<array<string>>
 	 */
-	public function data_provider_test_get_all_items(): array {
+	public function data_provider_test_get_all_options(): array {
 		return [
 			'items'         => [ 'items' ],
 			'locale'        => [ 'locale' ],
