@@ -220,4 +220,23 @@ class Abt_Options_Test extends TestCase {
 
 		$this->assertArrayHasKey( $key, $items );
 	}
+
+	/**
+	 * Data provider for test_get_items method.
+	 *
+	 * @return array<array<string>>
+	 */
+	public function data_provider_test_get_items(): array {
+		return [
+			'psi'      => [ 'psi' ],
+			'lh'       => [ 'lh' ],
+			'gsc'      => [ 'gsc' ],
+			'gc'       => [ 'gc' ],
+			'gi'       => [ 'gi' ],
+			'bi'       => [ 'bi' ],
+			'twitter'  => [ 'twitter' ],
+			'facebook' => [ 'facebook' ],
+			'hatena'   => [ 'hatena' ],
+		];
+	}
 }
