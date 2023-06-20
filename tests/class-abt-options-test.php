@@ -33,6 +33,8 @@ class Abt_Options_Test extends TestCase {
 	 * TEST: is_key_exists()
 	 */
 	public function test_is_key_exists(): void {
+		$this->assertFalse( $this->instance->is_key_exists( false ) );
+
 		$abt_options = [
 			'items'   => [],
 			'locale'  => '',
