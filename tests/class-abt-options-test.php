@@ -41,6 +41,11 @@ class Abt_Options_Test extends TestCase {
 		];
 
 		$this->assertFalse( $this->instance->is_key_exists( $abt_options ) );
+
+		$abt_options_with_theme_support                  = $abt_options;
+		$abt_options_with_theme_support['theme_support'] = true;
+
+		$this->assertTrue( $this->instance->is_key_exists( $abt_options_with_theme_support ) );
 	}
 
 	/**
