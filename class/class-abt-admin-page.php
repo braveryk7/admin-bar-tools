@@ -19,9 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Admin_Page extends Abt_Base {
 	/**
-	 * WordPress hook.
+	 * Abt_Options instance.
+	 *
+	 * @var Abt_Options $abt_options instance
 	 */
-	public function __construct() {
+	private $abt_options;
+
+	/**
+	 * WordPress hook.
+	 *
+	 * @param Abt_Options $abt_options Abt_Options instance.
+	 */
+	public function __construct( Abt_Options $abt_options ) {
+		$this->abt_options = $abt_options;
+
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_scripts' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( $this->get_plugin_path() ), [ $this, 'add_settings_links' ] );
@@ -124,8 +135,7 @@ class Abt_Admin_Page extends Abt_Base {
 	 * Custom endpoint for read.
 	 */
 	public function readable_api(): WP_REST_Response {
-		$abt_options = $this->get_abt_options();
-		return new WP_REST_Response( $abt_options, 200 );
+		return new WP_REST_Response( $this->abt_options->get_all_options(), 200 );
 	}
 
 	/**
@@ -134,20 +144,15 @@ class Abt_Admin_Page extends Abt_Base {
 	 * @param WP_REST_Request $request WP_REST_Request object.
 	 */
 	public function editable_api( WP_REST_Request $request ): WP_REST_Response {
-		$abt_options = $this->get_abt_options();
-		$params      = $request->get_json_params();
+		$params = $request->get_json_params();
 
-		if ( is_array( $abt_options ) ) {
-			match ( true ) {
-				array_key_exists( 'items', $params )  => $abt_options['items']                = $params['items'],
-				array_key_exists( 'locale', $params ) => $abt_options['locale']               = $params['locale'],
-				array_key_exists( 'sc', $params )     => $abt_options['sc']                   = $params['sc'],
-				array_key_exists( 'theme_support', $params ) => $abt_options['theme_support'] = $params['theme_support'],
-				default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
-			};
-
-			$this->set_abt_options( $abt_options );
-		}
+		match ( true ) {
+			array_key_exists( 'items', $params )         => $this->abt_options->set_items( $params['items'] )->save(),
+			array_key_exists( 'locale', $params )        => $this->abt_options->set_locale( $params['locale'] )->save(),
+			array_key_exists( 'sc', $params )            => $this->abt_options->set_sc( $params['sc'] )->save(),
+			array_key_exists( 'theme_support', $params ) => $this->abt_options->set_theme_support( $params['theme_support'] )->save(),
+			default => new WP_Error( 'invalid_key', __( 'Required key does not exist', 'admin-bar-tools' ), [ 'status' => 404 ] ),
+		};
 
 		return new WP_REST_Response( $params, 200 );
 	}

@@ -19,9 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Abt_Add_Admin_Bar extends Abt_Base {
 	/**
-	 * WordPress hook.
+	 * Abt_Options instance.
+	 *
+	 * @var Abt_Options $abt_options instance
 	 */
-	public function __construct() {
+	private $abt_options;
+
+	/**
+	 * WordPress hook.
+	 *
+	 * @param Abt_Options $abt_options Abt_Options instance.
+	 */
+	public function __construct( Abt_Options $abt_options ) {
+		$this->abt_options = $abt_options;
+
 		add_action( 'admin_bar_menu', [ $this, 'add_admin_bar' ], 999, 2 );
 		add_action( 'admin_bar_menu', [ $this, 'add_theme_support_link' ], 999 );
 	}
@@ -61,34 +72,31 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 				]
 			);
 
-			$abt_options = $this->get_abt_options();
-			$link_url    = '';
+			$link_url = '';
 
-			if ( isset( $abt_options['items'] ) && is_array( $abt_options['items'] ) ) {
-				foreach ( $abt_options['items'] as $item ) {
-					if ( is_array( $item ) && $item['status'] ) {
-						if ( $is_admin ) {
-							$link_url = $item['adminurl'];
-						} elseif ( get_the_ID() ) {
-							$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
-							$link_url = match ( $item['shortname'] ) {
-								'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
-								'gsc'    => $this->searchconsole_url( $item['url'], $abt_options['sc'], $url ),
-								default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
-							};
-						}
-						$wp_admin_bar->add_node(
-							[
-								'id'     => $item['shortname'],
-								'title'  => $item['name'],
-								'parent' => self::PREFIX,
-								'href'   => $link_url,
-								'meta'   => [
-									'target' => '_blank',
-								],
-							],
-						);
+			foreach ( $this->abt_options->get_items() as $item ) {
+				if ( $item['status'] ) {
+					if ( $is_admin ) {
+						$link_url = $item['adminurl'];
+					} elseif ( get_the_ID() ) {
+						$url      = rawurlencode( get_pagenum_link( get_the_ID() ) );
+						$link_url = match ( $item['shortname'] ) {
+							'hatena' => $item['url'] . $sanitize_domain . $sanitize_uri,
+							'gsc'    => $this->searchconsole_url( $item['url'], $this->abt_options->get_sc(), $url ),
+							default  => in_array( $item['shortname'], $add_url_lists, true ) ? $item['url'] . $url : $item['url'],
+						};
 					}
+					$wp_admin_bar->add_node(
+						[
+							'id'     => $item['shortname'],
+							'title'  => $item['name'],
+							'parent' => self::PREFIX,
+							'href'   => $link_url,
+							'meta'   => [
+								'target' => '_blank',
+							],
+						],
+					);
 				}
 			}
 		}
@@ -166,9 +174,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 		];
 		$current_theme  = wp_get_theme()->get_template();
 
-		$abt_options = $this->get_abt_options();
-
-		if ( isset( $abt_options['theme_support'] ) && $abt_options['theme_support'] && array_key_exists( $current_theme, $theme_url_list ) ) {
+		if ( $this->abt_options->get_theme_support() && array_key_exists( $current_theme, $theme_url_list ) ) {
 			$theme_data = $theme_url_list[ $current_theme ];
 			$title_list = [
 				'official' => __( 'Official Site', 'admin-bar-tools' ),

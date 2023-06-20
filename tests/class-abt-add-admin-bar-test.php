@@ -30,7 +30,7 @@ class Abt_Add_Admin_Bar_Test extends TestCase {
 	 */
 	public function set_up() :void {
 		parent::set_up();
-		$this->instance = new Abt_Add_Admin_Bar();
+		$this->instance = new Abt_Add_Admin_Bar( new Abt_Options() );
 	}
 
 	/**

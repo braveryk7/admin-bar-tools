@@ -38,24 +38,27 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 	);
 } else {
 	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
+	require_once dirname( __FILE__ ) . '/class/class-abt-options.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
 	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
 
+	$abt_options = new Abt_Options();
+
 	/**
 	 * Start admin page.
 	 */
-	new Abt_Admin_Page();
+	new Abt_Admin_Page( $abt_options );
 
 	/**
 	 * Plugin activate.
 	 */
-	new Abt_Activate();
+	new Abt_Activate( $abt_options );
 
 	/**
 	 * Add admin bar menu.
 	 */
-	new Abt_Add_Admin_Bar();
+	new Abt_Add_Admin_Bar( $abt_options );
 
 	/**
 	 * Plugin uninstall hook.

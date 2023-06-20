@@ -141,67 +141,6 @@ class Abt_Base_Test extends TestCase {
 	}
 
 	/**
-	 * TEST: get_abt_options()
-	 *
-	 * @testWith [ "items", null ]
-	 *           [ "locale", null ]
-	 *           [ "sc", null ]
-	 *           [ "theme_support", null ]
-	 *           [ "version", null ]
-	 *           [ "psi", "items" ]
-	 *           [ "lh", "items" ]
-	 *           [ "gsc", "items" ]
-	 *           [ "gc", "items" ]
-	 *           [ "gi", "items" ]
-	 *           [ "bi", "items" ]
-	 *           [ "twitter", "items" ]
-	 *           [ "facebook", "items" ]
-	 *           [ "hatena", "items" ]
-	 *
-	 * @param string  $property  Property name.
-	 * @param ?string $parameter Parameter name.
-	 */
-	public function test_get_abt_options( string $property, ?string $parameter ): void {
-		$method = new ReflectionMethod( $this->instance, 'get_abt_options' );
-		$method->setAccessible( true );
-
-		$abt_options = $method->invoke( $this->instance );
-		$this->assertIsArray( $abt_options );
-		if ( ! is_null( $parameter ) ) {
-			$this->assertIsArray( $abt_options[ $parameter ] );
-		}
-
-		is_null( $parameter )
-			? $this->assertArrayHasKey( $property, $abt_options )
-			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
-	}
-
-	/**
-	 * TEST: set_abt_options()
-	 */
-	public function test_set_abt_options(): void {
-		$abt_base_set_abt_options = new ReflectionMethod( $this->instance, 'set_abt_options' );
-		$abt_base_set_abt_options->setAccessible( true );
-
-		$abt_base_get_abt_options = new ReflectionMethod( $this->instance, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$get_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
-
-		$this->assertIsArray( $get_abt_options );
-
-		$abt_options                  = $get_abt_options;
-		$abt_options['theme_support'] = ! $abt_options['theme_support'];
-
-		$abt_base_set_abt_options->invoke( $this->instance, $abt_options );
-
-		$actual_abt_options = $abt_base_get_abt_options->invoke( $this->instance );
-		$this->assertIsArray( $actual_abt_options );
-
-		$this->assertNotSame( $get_abt_options['theme_support'], $actual_abt_options['theme_support'] );
-	}
-
-	/**
 	 * TEST: console()
 	 */
 	public function test_console(): void {

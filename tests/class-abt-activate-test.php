@@ -31,7 +31,7 @@ class Abt_Activate_Test extends TestCase {
 	 */
 	public function set_up() :void {
 		parent::set_up();
-		$this->instance = new Abt_Activate();
+		$this->instance = new Abt_Activate( new Abt_Options() );
 	}
 
 	/**
@@ -60,67 +60,6 @@ class Abt_Activate_Test extends TestCase {
 	}
 
 	/**
-	 * TEST: update_abt_options
-	 */
-	public function test_update_abt_options(): void {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$get_abt_options = function() use ( $abt_base_get_abt_options ) {
-			return $abt_base_get_abt_options->invoke( $this->instance );
-		};
-
-		$delete_abt_options = function() {
-			delete_option( 'abt_options' );
-		};
-
-		if ( $get_abt_options() ) {
-			$delete_abt_options();
-		}
-
-		$this->assertTrue( empty( $get_abt_options() ) );
-
-		$this->instance->update_abt_options();
-
-		$this->assertTrue( ! empty( $get_abt_options() ) );
-
-		$abt_options = $get_abt_options();
-
-		$this->assertIsArray( $abt_options );
-
-		$abt_options['version'] = '0.0.0';
-		unset( $abt_options['theme_support'] );
-
-		$this->assertArrayNotHasKey( 'theme_support', $abt_options );
-
-		$this->instance->update_abt_options();
-
-		$actual_abt_options = $get_abt_options();
-		$this->assertIsArray( $actual_abt_options );
-
-		$this->assertNotSame( $abt_options['version'], $actual_abt_options['version'] );
-		$this->assertArrayHasKey( 'theme_support', $actual_abt_options );
-	}
-
-	/**
-	 * TEST: is_abt_version
-	 */
-	public function test_is_abt_version(): void {
-		$is_plugin_version = new ReflectionMethod( $this->instance, 'is_abt_version' );
-		$is_plugin_version->setAccessible( true );
-
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
-		$this->assertIsArray( $abt_options );
-
-		$this->assertTrue( $is_plugin_version->invoke( $this->instance, $abt_options['version'] ) );
-	}
-
-	/**
 	 * TEST: register_options()
 	 *
 	 * @testWith [ "items", null ]
@@ -142,11 +81,7 @@ class Abt_Activate_Test extends TestCase {
 	 * @param ?string $parameter Parameter name.
 	 */
 	public function test_register_options( string $property, ?string $parameter ): void {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$abt_options = ( new Abt_Options() )->get_all_options();
 
 		$this->assertIsArray( $abt_options );
 
@@ -158,52 +93,22 @@ class Abt_Activate_Test extends TestCase {
 		}
 
 		is_null( $parameter )
-			? $this->assertArrayHasKey( $property, $abt_options )
-			: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
+		? $this->assertArrayHasKey( $property, $abt_options )
+		: $this->assertArrayHasKey( $property, $abt_options[ $parameter ] );
 	}
 
 	/**
 	 * TEST: uninstall_options()
 	 */
 	public function test_uninstall_options(): void {
-		$abt_base                 = new Abt_Base();
-		$abt_base_get_abt_options = new ReflectionMethod( $abt_base, 'get_abt_options' );
-		$abt_base_get_abt_options->setAccessible( true );
-
-		$abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$abt_options = ( new Abt_Options() )->get_all_options();
 
 		$this->assertTrue( ! empty( $abt_options ) );
 
 		Abt_Activate::uninstall_options();
 
-		$removed_abt_options = $abt_base_get_abt_options->invoke( $abt_base );
+		$removed_abt_options = get_option( 'abt_options' );
 
 		$this->assertTrue( empty( $removed_abt_options ) );
-	}
-
-	/**
-	 * TEST: create_items()
-	 *
-	 * @testWith [ "psi" ]
-	 *           [ "lh" ]
-	 *           [ "gsc" ]
-	 *           [ "gc" ]
-	 *           [ "gi" ]
-	 *           [ "bi" ]
-	 *           [ "twitter" ]
-	 *           [ "facebook" ]
-	 *           [ "hatena" ]
-	 *
-	 * @param string $key  Array key name.
-	 */
-	public function test_create_items( string $key ): void {
-		$create_items = new ReflectionMethod( $this->instance, 'create_items' );
-		$create_items->setAccessible( true );
-
-		$items = $create_items->invoke( $this->instance );
-
-		$this->assertIsArray( $items );
-
-		$this->assertArrayHasKey( $key, $items );
 	}
 }
