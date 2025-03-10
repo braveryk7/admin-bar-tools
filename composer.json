@@ -34,7 +34,10 @@
         "release": "bash cmd/create-verup-issue.sh",
         "make-jspot": "./vendor/bin/wp i18n make-pot . languages/js/admin-bar-tools-ja.pot --skip-php",
         "make-pot": "./vendor/bin/wp i18n make-pot . languages/admin-bar-tools-ja.po --skip-js",
-        "make-json": "./vendor/bin/wp i18n make-json languages/js --no-purge"
+        "make-json": "./vendor/bin/wp i18n make-json languages/js --no-purge",
+        "wp-env": "wp-env",
+        "test:env": "wp-env run --env-cwd='wp-content/plugins/admin-bar-tools' tests-cli vendor/bin/phpunit -c phpunit.xml --testdox --verbose"
+      
     },
     "config": {
         "allow-plugins": {
