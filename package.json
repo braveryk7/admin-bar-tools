@@ -16,21 +16,15 @@
 		"zip": "sh cmd/zip.sh"
 	},
 	"dependencies": {
-		"@wordpress/api-fetch": "^6.26.0",
-		"@wordpress/components": "^23.6.0",
-		"@wordpress/element": "^5.6.0",
-		"@wordpress/i18n": "^4.29.0"
+		"@wordpress/api-fetch": "^7.19.0",
+		"@wordpress/components": "^29.5.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.0.15",
 		"@types/wordpress__components": "^23.0.1",
-		"@typescript-eslint/eslint-plugin": "^5.30.5",
-		"@typescript-eslint/parser": "^5.30.5",
-		"@wordpress/env": "^5.14.0",
-		"@wordpress/scripts": "^26.0.0",
-		"eslint-import-resolver-typescript": "^3.2.4",
-		"stylelint-order": "^6.0.3",
-		"ts-loader": "^9.3.1",
-		"typescript": "^5.0.2"
+		"@wordpress/env": "^10.19.0",
+		"@wordpress/scripts": "^30.12.0",
+		"eslint-import-resolver-typescript": "^3.8.3",
+		"stylelint-order": "^6.0.4",
+		"ts-loader": "^9.5.2"
 	}
 }
