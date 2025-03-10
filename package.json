@@ -17,7 +17,7 @@
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^7.19.0",
-		"@wordpress/components": "^23.6.0"
+		"@wordpress/components": "^29.5.0"
 	},
 	"devDependencies": {
 		"@types/wordpress__components": "^23.0.1",
