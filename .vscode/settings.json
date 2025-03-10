@@ -3,8 +3,8 @@
     "scss.validate": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.stylelint": true,
+        "source.fixAll.eslint": "always",
+        "source.fixAll.stylelint": "always",
     },
     "editor.insertSpaces": false,
     "intelephense.format.enable": false,
@@ -47,10 +47,6 @@
         "pcntl",
         "pcre",
         "PDO",
-        "pdo_ibm",
-        "pdo_mysql",
-        "pdo_pgsql",
-        "pdo_sqlite",
         "pgsql",
         "Phar",
         "posix",
@@ -114,6 +110,7 @@
         "editor.formatOnSave": true,
         "editor.tabSize": 4,
         "editor.insertSpaces": false,
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
