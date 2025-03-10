@@ -29,7 +29,6 @@ class AbtAdminPageTest extends TestCase {
 		}
 
 		require_once './class/class-abt-admin-page.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**

@@ -29,7 +29,6 @@ class AbtAddAdminBarTest extends TestCase {
 		}
 
 		require_once './class/class-abt-add-admin-bar.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**

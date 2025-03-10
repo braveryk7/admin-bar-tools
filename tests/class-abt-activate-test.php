@@ -29,7 +29,6 @@ class AbtActivateTest extends TestCase {
 		}
 
 		require_once './class/class-abt-activate.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**

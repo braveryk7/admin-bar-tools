@@ -25,7 +25,6 @@ class AbtBaseTest extends TestCase {
 		}
 
 		require_once './class/class-abt-base.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**
