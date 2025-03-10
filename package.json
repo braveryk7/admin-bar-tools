@@ -11,7 +11,8 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
-		"wp-env": "wp-env",
+        "wp-env": "wp-env",
+        "test:env": "wp-env run --env-cwd='wp-content/plugins/admin-bar-tools' tests-cli vendor/bin/phpunit -c phpunit.xml --testdox --verbose",
 		"packages-update": "wp-scripts packages-update",
 		"zip": "sh cmd/zip.sh"
 	},
