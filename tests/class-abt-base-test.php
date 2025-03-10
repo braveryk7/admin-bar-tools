@@ -31,7 +31,7 @@ class AbtBaseTest extends TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function set_up(): void {
+	public function set_up(): void {
 		parent::set_up();
 
 		$this->instance = new Abt_Base();

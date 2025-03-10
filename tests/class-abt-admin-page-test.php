@@ -35,7 +35,7 @@ class AbtAdminPageTest extends TestCase {
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function set_up(): void {
+	public function set_up(): void {
 		parent::setUp();
 
 		$this->instance = new Abt_Admin_Page();
