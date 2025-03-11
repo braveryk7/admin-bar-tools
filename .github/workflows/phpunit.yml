@@ -78,10 +78,11 @@ jobs:
         run: npm run wp-env start -- --xdebug=coverage
 
       - name: Run test suite
-        run: npm run test:env
+        run: npm run test:env -- --log-junit junit.xml
 
       - name: Stop wp-env
         run: npm run wp-env stop
       
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
