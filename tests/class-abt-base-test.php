@@ -50,11 +50,11 @@ class Abt_Base_Test extends WP_UnitTestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/admin-bar-tools',
+			home_url() . '/wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/send-chat-tools',
+			home_url() . '/wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -74,11 +74,11 @@ class Abt_Base_Test extends WP_UnitTestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools',
+			'/var/www/html/wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/send-chat-tools',
+			'/var/www/html/wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -91,11 +91,11 @@ class Abt_Base_Test extends WP_UnitTestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			'/var/www/html/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance )
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			'/var/www/html/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
 	}
