@@ -52,6 +52,11 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
 
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
+        with:
+          node-version: 22
+
       - name: Install composer packages & cache vendor directory
         uses: ./.github/actions/cache-vendor-dependencies
         with:
