@@ -18,11 +18,7 @@ class Abt_Admin_Page_Test extends WP_UnitTestCase {
 	public static function set_up_before_class(): void {
 		parent::set_up_before_class();
 
-		if ( ! defined( 'ABSPATH' ) ) {
-			define( 'ABSPATH', '' );
-		}
-
-		if ( ! class_exists( 'Abt_Base ' ) ) {
+		if ( ! class_exists( 'Abt_Base' ) ) {
 			require_once './class/class-abt-base.php';
 		}
 
@@ -34,7 +30,7 @@ class Abt_Admin_Page_Test extends WP_UnitTestCase {
 	 * Create instance.
 	 */
 	public function set_up(): void {
-		parent::setUp();
+		parent::set_up();
 
 		$this->instance = new Abt_Admin_Page();
 	}
