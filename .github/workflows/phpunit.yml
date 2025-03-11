@@ -26,7 +26,7 @@ jobs:
           cache_tag: ${{ env.CACHE_TAG }}-${{ matrix.php-version }}
 
       - name: Setup Node.js
-        uses: ./.github/actions/setup-node
+        uses: ./.github/actions/setup-nodejs
         with:
           node-version: 22
       
