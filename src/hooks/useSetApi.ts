@@ -27,13 +27,13 @@ export const useSetApi: useSetApiType = ( itemKey, value ) => {
 				path: '/admin-bar-tools/v1/update',
 				method: 'POST',
 				data: { [ itemKey ]: value[ itemKey ] },
-			} ).then( ( ) => {
+			} ).then( () => {
 				setNoticeValue( 'abt_success' );
 				setNoticeMessage( __( 'Success.', 'admin-bar-tools' ) );
-			} ).catch( ( ) => {
+			} ).catch( () => {
 				setNoticeValue( 'abt_error' );
 				setNoticeMessage( __( 'Error.', 'admin-bar-tools' ) );
 			} );
 		}
-	}, [ apiData ] );
+	}, [ apiData, itemKey, setNoticeMessage, setNoticeValue, snackbarTimer, value ] );
 };

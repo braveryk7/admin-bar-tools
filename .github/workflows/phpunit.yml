@@ -6,35 +6,85 @@ on:
       - 'class/**'
       - 'tests/**'
       - 'admin-bar-tools.php'
+env:
+  CACHE_TAG: v1
 
 jobs:
-  test:
-    name: PHPUnit
+  setup:
+    name: PHPUnit Setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.0', '8.1', '8.2']
+        php-version: ['8.1', '8.2', '8.3']
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install composer packages & cache vendor directory
+        uses: ./.github/actions/cache-vendor-dependencies
+        with:
+          cache_tag: ${{ env.CACHE_TAG }}-${{ matrix.php-version }}
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
+        with:
+          node-version: 22
+      
+      - name: Install npm packages & cache node_modules
+        uses: ./.github/actions/cache-node_modules-dependencies
+        with:
+          cache_tag: ${{ env.CACHE_TAG }}
+
+  test:
+    name: PHPUnit Test
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['8.1', '8.2', '8.3',]
+        wp-version: ['6.5', '6.6', '6.7', 'master']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup -> PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: mbstring, xdebug, dom
 
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Cache composer packages
-        id: vendor_cache
-        uses: actions/cache@v3
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-nodejs
         with:
-          path: ~/.vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
+          node-version: 22
 
-      - name: Install dependencies
-        if: steps.vendor_cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-scripts --no-progress
+      - name: Install composer packages & cache vendor directory
+        uses: ./.github/actions/cache-vendor-dependencies
+        with:
+          cache_tag: ${{ env.CACHE_TAG }}-${{ matrix.php-version }}
+
+      - name: Install npm packages & cache node_modules
+        uses: ./.github/actions/cache-node_modules-dependencies
+        with:
+          cache_tag: ${{ env.CACHE_TAG }}
+
+      - name: Build React components
+        run: npm run build
+
+      - name: Generate .wp-env.override.json
+        run: |
+          echo '{"config": {},"core": "WordPress/WordPress#${{ matrix.wp-version }}","env": {},"mappings": {},"phpVersion": "${{ matrix.php-version }}","plugins": ["."],"themes": []}' > .wp-env.override.json
+
+      - name: Start wp-env
+        run: npm run wp-env start -- --xdebug=coverage
 
       - name: Run test suite
-        run: composer run-script test
+        run: npm run test:env -- --log-junit junit.xml
+
+      - name: Stop wp-env
+        run: npm run wp-env stop
+      
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 /**
  * Test: Abt_Add_Admin_Bar
  */
-class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
+class Abt_Add_AdminBar_Test extends WP_UnitTestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -15,7 +15,9 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
-	public static function setUpBeforeClass(): void {
+	public static function set_up_before_class(): void {
+		parent::set_up_before_class();
+
 		if ( ! defined( 'ABSPATH' ) ) {
 			define( 'ABSPATH', '' );
 		}
@@ -25,14 +27,15 @@ class AbtAddAdminBarTest extends PHPUnit\Framework\TestCase {
 		}
 
 		require_once './class/class-abt-add-admin-bar.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function setUp() :void {
+	public function set_up(): void {
+		parent::set_up();
+
 		$this->instance = new Abt_Add_Admin_Bar();
 	}
 

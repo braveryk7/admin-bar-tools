@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 /**
  * Test: Sct_Base
  */
-class AbtBaseTest extends PHPUnit\Framework\TestCase {
+class Abt_Base_Test extends WP_UnitTestCase {
 	/**
 	 * This test class instance.
 	 *
@@ -15,20 +15,23 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * Settings: ABSPATH, test class file, WordPress functions.
 	 */
-	public static function setUpBeforeClass(): void {
+	public static function set_up_before_class(): void {
+		parent::set_up_before_class();
+
 		if ( ! defined( 'ABSPATH' ) ) {
 			define( 'ABSPATH', '' );
 		}
 
 		require_once './class/class-abt-base.php';
-		require_once './tests/lib/wordpress-functions.php';
 	}
 
 	/**
 	 * SetUp.
 	 * Create instance.
 	 */
-	protected function setUp() :void {
+	public function set_up(): void {
+		parent::set_up();
+
 		$this->instance = new Abt_Base();
 	}
 
@@ -47,11 +50,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/admin-bar-tools',
+			home_url() . '/wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'https://example.com/wp-content/plugins/send-chat-tools',
+			home_url() . '/wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -71,11 +74,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools',
+			'/var/www/html/wp-content/plugins/admin-bar-tools',
 			$method->invoke( $this->instance ),
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/send-chat-tools',
+			'/var/www/html/wp-content/plugins/send-chat-tools',
 			$method->invoke( $this->instance, 'send-chat-tools' ),
 		);
 	}
@@ -88,11 +91,11 @@ class AbtBaseTest extends PHPUnit\Framework\TestCase {
 		$method->setAccessible( true );
 
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			'/var/www/html/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance )
 		);
 		$this->assertSame(
-			'/DocumentRoot/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
+			'/var/www/html/wp-content/plugins/admin-bar-tools/admin-bar-tools.php',
 			$method->invoke( $this->instance, 'admin-bar-tools', 'admin-bar-tools.php' ),
 		);
 	}
