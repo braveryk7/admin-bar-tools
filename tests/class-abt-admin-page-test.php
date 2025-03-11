@@ -1,12 +1,10 @@
 <?php
 declare( strict_types = 1 );
 
-use Yoast\WPTestUtils\WPIntegration\TestCase;
-
 /**
  * Test: Abt_Admin_Page
  */
-class AbtAdminPageTest extends TestCase {
+class Abt_Admin_Page_Test extends WP_UnitTestCase {
 	/**
 	 * This test class instance.
 	 *

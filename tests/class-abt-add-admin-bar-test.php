@@ -1,12 +1,10 @@
 <?php
 declare( strict_types = 1 );
 
-use Yoast\WPTestUtils\WPIntegration\TestCase;
-
 /**
  * Test: Abt_Add_Admin_Bar
  */
-class AbtAddAdminBarTest extends TestCase {
+class Abt_Add_AdminBar_Test extends WP_UnitTestCase {
 	/**
 	 * This test class instance.
 	 *
