@@ -16,3 +16,5 @@ function _manually_load_plugin() {
 	require dirname( __DIR__ ) . '/admin-bar-tools.php';
 }
 tests_add_filter( 'plugins_loaded', '_manually_load_plugin' );
+
+define( 'ROOT_DIR', dirname( __DIR__ ) );
