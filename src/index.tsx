@@ -3,7 +3,7 @@ import 'src/scss/index.scss';
 import locales from '../common/locales.json';
 
 import { ExternalLink, Snackbar, Spinner } from '@wordpress/components';
-import { createContext, useEffect, useState, render } from '@wordpress/element';
+import { createContext, useEffect, useState, createRoot } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { ApiError } from 'src/components/atoms/ApiError';
@@ -128,4 +128,9 @@ const AdminPage = () => {
 	);
 };
 
-render( <AdminPage />, document.getElementById( 'admin-bar-tools-settings' ) );
+const rootElement = document.getElementById( 'admin-bar-tools-settings' );
+if ( rootElement ) {
+	const root = createRoot( rootElement );
+	root.render( <AdminPage /> );
+}
+
