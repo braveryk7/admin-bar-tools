@@ -15,13 +15,13 @@ export const Radio = ( props: { itemKey: itemKeyType } ) => {
 	return (
 		<>
 			{ apiData && <RadioControl
-				selected={ apiData.sc }
+				selected={ String( apiData.sc ) }
 				options={ [
-					{ label: __( "I don't use it.", 'admin-bar-tools' ), value: 0 },
-					{ label: __( 'Domain', 'admin-bar-tools' ), value: 1 },
-					{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: 2 },
+					{ label: __( "I don't use it.", 'admin-bar-tools' ), value: '0' },
+					{ label: __( 'Domain', 'admin-bar-tools' ), value: '1' },
+					{ label: __( 'URL Prefix', 'admin-bar-tools' ), value: '2' },
 				] }
-				onChange={ ( value: number ) => changeValue( Number( value ) ) }
+				onChange={ ( value ) => changeValue( Number( value ) ) }
 			/> }
 		</>
 	);
