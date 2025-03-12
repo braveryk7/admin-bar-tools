@@ -61,9 +61,13 @@ class Abt_Activate extends Abt_Base {
 				}
 			}
 
+			// v1.6.3: Delete the Google Cache key if it exists.
+			if ( array_key_exists( 'gc', $abt_options['items'] ) ) {
+				unset( $abt_options['items']['gc'] );
+			}
+
 			$this->set_abt_options( $abt_options );
 		}
-
 	}
 
 	/**
@@ -130,12 +134,6 @@ class Abt_Activate extends Abt_Base {
 				'admin' => 'https://search.google.com/search-console',
 				'name'  => __( 'Google Search Console', 'admin-bar-tools' ),
 				'order' => 3,
-			],
-			'gc'       => [
-				'url'   => 'https://webcache.googleusercontent.com/search?q=cache%3A',
-				'admin' => 'https://webcache.googleusercontent.com/search?q=cache%3A',
-				'name'  => __( 'Google Cache', 'admin-bar-tools' ),
-				'order' => 4,
 			],
 			'gi'       => [
 				'url'   => 'https://www.google.com/search?q=site%3A',
