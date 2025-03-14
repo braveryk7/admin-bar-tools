@@ -36,7 +36,7 @@ class Abt_Phpver_Judge {
 	 * @param string $version PHP version.
 	 */
 	public function deactivate( string $path, string $project, string $version ): void {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		require_once ABSPATH . 'wp-admin/includes/plugin.php'; // @phpstan-ignore-line
 		if ( is_plugin_active( plugin_basename( $path ) ) ) {
 			if ( is_admin() ) {
 				$messages = $this->deactivate_message( $project, $version );
