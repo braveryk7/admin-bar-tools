@@ -32,7 +32,7 @@ class Abt_Add_Admin_Bar extends Abt_Base {
 	 */
 	public function add_admin_bar( object $wp_admin_bar ): void {
 		$url             = rawurlencode( get_pagenum_link( get_query_var( 'paged' ) ) );
-		$add_url_lists   = [ 'psi', 'lh', 'gc', 'gi', 'bi', 'twitter', 'facebook' ];
+		$add_url_lists   = [ 'psi', 'lh', 'gi', 'bi', 'twitter', 'facebook' ];
 		$sanitize_domain = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
 		$sanitize_uri    = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
