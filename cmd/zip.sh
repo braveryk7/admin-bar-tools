@@ -37,6 +37,11 @@ excludes=(
 	"src"
 	"cmd"
 	"conf"
+	# Devbox
+	devbox.json
+	devbox.lock
+	.devbox/
+	devbox.d/
 	# composer
 	"vendor"
 	"composer.json"
