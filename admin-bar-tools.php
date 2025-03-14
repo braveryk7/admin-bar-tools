@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'You do not have access rights.' );
 }
 
-load_plugin_textdomain( 'admin-bar-tools', false, basename( dirname( __FILE__ ) ) . '/languages' );
+load_plugin_textdomain( 'admin-bar-tools', false, basename( __DIR__ ) . '/languages' );
 
-require_once dirname( __FILE__ ) . '/class/class-abt-phpver-judge.php';
+require_once __DIR__ . '/class/class-abt-phpver-judge.php';
 
 $abt_phpver_judge    = new Abt_Phpver_Judge();
 $require_php_version = '8.0.0';
@@ -36,10 +36,10 @@ if ( ! $abt_phpver_judge->judgment( $require_php_version ) ) {
 		$require_php_version,
 	);
 } else {
-	require_once dirname( __FILE__ ) . '/class/class-abt-base.php';
-	require_once dirname( __FILE__ ) . '/class/class-abt-activate.php';
-	require_once dirname( __FILE__ ) . '/class/class-abt-admin-page.php';
-	require_once dirname( __FILE__ ) . '/class/class-abt-add-admin-bar.php';
+	require_once __DIR__ . '/class/class-abt-base.php';
+	require_once __DIR__ . '/class/class-abt-activate.php';
+	require_once __DIR__ . '/class/class-abt-admin-page.php';
+	require_once __DIR__ . '/class/class-abt-add-admin-bar.php';
 
 	/**
 	 * Start admin page.
